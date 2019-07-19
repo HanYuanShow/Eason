@@ -2,11 +2,16 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Science from '../pages/Science'
 import ContentNews from '../pages/ContentNews'
-
+import Home from '../pages/Home.vue'
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path:"/Home",
+      name:"Home",
+      component:Home
+    },
     {
       path: '/Science',
       name: 'Science',
@@ -40,7 +45,7 @@ export default new Router({
       name:'ContentNews',
       component:ContentNews
     },
-    {path:'*',component:Science}
+    {path:'/*',component:Home}
   ]
   
 })
