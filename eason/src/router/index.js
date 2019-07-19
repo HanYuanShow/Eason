@@ -5,6 +5,8 @@ import FindDoctor from '../pages/FindDoctor'
 import Bbb from '../pages/bbb'
 import DoctorConsult from '../pages/DoctorConsult'
 import DoctorList from '../pages/DoctorList'
+import Home from '../pages/Home'
+import Science from '../pages/Science'
 Vue.use(Router)
 
 export default new Router({
@@ -13,6 +15,16 @@ export default new Router({
       path: '/Question',
       name: 'Question',
       component: Question
+    },
+    {
+      path: '/Home',
+      name: 'Home',
+      component: Home
+    },
+    {
+      path: '/Science',
+      name: 'Science',
+      component: Science
     },
     {
       path: '/Bbb',
