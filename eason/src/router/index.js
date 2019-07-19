@@ -1,57 +1,38 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Science from '../pages/Science'
-import ContentNews from '../pages/ContentNews'
-import Home from "../pages/Home"
-import MyAdvice from "../pages/MyAdvice"
+import Question from '../pages/Question'
+import FindDoctor from '../pages/FindDoctor'
+import Bbb from '../pages/bbb'
+import DoctorConsult from '../pages/DoctorConsult'
+import DoctorList from '../pages/DoctorList'
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
-      path:"/Home",
-      name:"Home",
-      component:Home
+      path: '/Question',
+      name: 'Question',
+      component: Question
     },
     {
-      path:"/MyAdvice",
-      name:"MyAdvice",
-      component:MyAdvice
+      path: '/Bbb',
+      name: 'Bbb',
+      component: Bbb
     },
     {
-      path: '/Science',
-      name: 'Science',
-      component: Science,
-      children:[
-        {
-          path:'Hot',
-          name:'Hot',
-          component:()=>import('../components/ScienceBodyRouter/HotRouter')
-        },
-        {
-          path:'Topic',
-          name:'Topic',
-          component:()=>import('../components/ScienceBodyRouter/TopicRouter')
-        },
-        {
-          path:'Live',
-          name:'Live',
-          component:()=>import('../components/ScienceBodyRouter/LiveRouter')
-        },
-        {
-          path:'Sleep',
-          name:'Sleep',
-          component:()=>import('../components/ScienceBodyRouter/SleepRouter')
-        },
-        {path:'*',component:()=>import('../components/ScienceBodyRouter/HotRouter')}
-      ]
+      path: '/FindDoctor',
+      name: 'FindDoctor',
+      component: FindDoctor
     },
     {
-      path:'/ContentNews/:id',
-      name:'ContentNews',
-      component:ContentNews
+      path: '/DoctorConsult',
+      name: 'DoctorConsult',
+      component: DoctorConsult
     },
-    {path:'/*',component:Home}
+    {
+      path: '/DoctorList',
+      name: 'DoctorList',
+      component: DoctorList
+    }
   ]
-  
 })
