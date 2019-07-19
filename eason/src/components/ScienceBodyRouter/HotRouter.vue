@@ -20,7 +20,7 @@ export default {
     },
     created(){
         this.axios({
-            url:"/aaa/bbb",
+            url:"/aaazyz",
             method:"get",
         }).then((ok)=>{
             console.log(ok)

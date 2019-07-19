@@ -2,35 +2,35 @@
     <div>
         <div class="ScienceDetails">
             <div @click="routerGo()">
-                <span class="ScienceDetailsLeft"><img src="../../static/w/a61.png"></span>
+                <span><img src="../../static/w/a61.png"></span>
             </div>
             <div>
-                <span class="ScienceDetailsRight"><img src="../../static/w/asj.png"></span>
-                <span><img src="../../static/w/a7r.png"></span>
+                <span class="ScienceDetailsRight"><img src="../../static/w/asj.png"><span class="ScienceDetailsRightone">{{arr.click.collectNumber}}</span></span>
+                <span ><img src="../../static/w/a7r.png"><span class="ScienceDetailsRightone">{{arr.click.transmitNumber}}</span></span>
             </div>
         </div>
 
         <div>
-            <img src="">
-            <h3></h3>
+            <img class="ScienceDetailsTitleImg" :src="arr.imgurl">
+            <h3>{{arr.title}}</h3>
             <div>
-                <img src="">
+                <img :src="arr.click.logurl">
                 <div>
                     <div>
-                        <span></span>
-                        <span></span>
+                        <span>{{arr.click.title}}</span>
+                        <span>{{arr.click.subtitle}}</span>
                     </div>
                     <div>
-                        <span></span>
+                        <span>{{arr.time}}</span>
                     </div>
                 </div>
             </div>
-            <p> </p>
-            <p> </p>
-            <img src="">
+            <p>{{arr.click.content}}</p>
+            <p>图片来源:{{arr.click.mapDepot}}</p>
+            <img :src="arr.click.warrantyUrl">
             <div>
-                <span></span>
-                <span></span>
+                <span>点赞{{arr.praiseNumber}}</span>
+                <span>立即咨询</span>
             </div>
 
             <div>
@@ -41,21 +41,41 @@
                     <img src="../../static/w/arl.png">
                     <img src="../../static/w/aro.png">
                 </div>
-                <span v-for="(v,i) in arr" :key="i">{{}}</span>
+                <span v-for="(v,i) in arr.click.smallLabel" :key="i">{{v.title}}</span>
             </div>
         </div>
         <div>
-            <p>猜你还想读</p>
+            <p class="ScienceDetailsFootP">猜你还想读</p>
             <div class="ScienceDetailsFoot">
                 <div>
-                    <img src="">
+                    <img src="../../static/w/ac4.jpg">
                 </div>
                 <div class="ScienceDetailsFootRight">
                     <p>标题啊</p>
                     <span>2019-07-19</span>
                 </div>
             </div>
-
+            <div class="ScienceDetailsFoot">
+                <div>
+                    <img src="../../static/w/ac4.jpg">
+                </div>
+                <div class="ScienceDetailsFootRight">
+                    <p>标题啊</p>
+                    <span>2019-07-19</span>
+                </div>
+            </div>
+            <div class="ScienceDetailsFoot">
+                <div>
+                    <img src="../../static/w/ac4.jpg">
+                </div>
+                <div class="ScienceDetailsFootRight">
+                    <p>标题啊</p>
+                    <span>2019-07-19</span>
+                </div>
+            </div>
+        </div>
+        <div class="comment">
+            <input type="text" value="评论一下~">
         </div>
     </div>
 </template>
@@ -89,11 +109,12 @@ export default {
         width:22px;
         height:21px;
     }
-    .ScienceDetailsLeft{
-        line-height: 21px;
-    }
     .ScienceDetailsRight{
         margin-right:25px;
+    }
+    .ScienceDetailsRightone{
+        line-height: 21px;
+        color:black
     }
     .ScienceDetailsFoot{
         display: flex;
@@ -102,6 +123,9 @@ export default {
         padding-top:20px;
         padding-left:15px;
         padding-right:15px;
+    }
+    .ScienceDetailsFootP{
+        border-bottom:1px solid #e7e7e7;
     }
     .ScienceDetailsFoot img{
         width:90px;
@@ -121,6 +145,10 @@ export default {
     .ScienceDetailsFootRight span{
         font-size:12px;
         color:#b2b2b2;
+    }
+    .ScienceDetailsTitleImg{
+        width:100%;
+        height:160px;
     }
 </style>
 

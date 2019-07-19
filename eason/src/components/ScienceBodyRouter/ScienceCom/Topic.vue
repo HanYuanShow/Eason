@@ -1,7 +1,7 @@
 <template>
     <div>
         <dir>
-            <img src="">
+            <img :src="arr.list">
             <div>
                 <div>
                     <span></span>
