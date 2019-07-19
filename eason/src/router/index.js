@@ -1,50 +1,73 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Question from '../pages/Question'
-import FindDoctor from '../pages/FindDoctor'
-import Bbb from '../pages/bbb'
-import DoctorConsult from '../pages/DoctorConsult'
-import DoctorList from '../pages/DoctorList'
-import Home from '../pages/Home'
-import Science from '../pages/Science'
+import Seek from '../pages/Seek'
+import Autognosis from '../pages/autognosis'
+import Symptomlist from '../components/symptomlist'
+import Bodypic from '../components/bodypic'
+// import Automenu from '../components/automenu'
+import DrugStore from '../pages/DrugStore'
+import Body from '../components/symptomlist/body'
+import Skin from '../components/symptomlist/skin'
+import Head from '../components/symptomlist/head'
+import Throat from '../components/symptomlist/throat'
+import Breast from '../components/symptomlist/breast'
+import Belly from '../components/symptomlist/belly'
+import Reproduction from '../components/symptomlist/reproduction'
+import Bone from '../components/symptomlist/bone'
+import Arm from '../components/symptomlist/arm'
+import Belt from '../components/symptomlist/belt'
+import Hip from '../components/symptomlist/hip'
+import SelfTest from '../pages/SelfTest'
+import DetailPage from '../pages/DetailPage'
 Vue.use(Router)
-
 export default new Router({
   routes: [
     {
-      path: '/Question',
-      name: 'Question',
-      component: Question
+      path: '/seek',
+      name: 'Seek',
+      component: Seek
     },
     {
-      path: '/Home',
-      name: 'Home',
-      component: Home
+      path: '/autognosis',
+      name: 'Autognosis',
+      component: Autognosis,
+      children:[
+        {path: '/symptomlist', name:'Symptomlist',component: Symptomlist,
+            children:[
+              {path:'/body',name:"Body",component:Body},
+              {path:'/skin',name:"Skin",component:Skin},
+              {path:'/head',name:"Head",component:Head},
+              {path:'/throat',name:"Throat",component:Throat},
+              {path:'/breast',name:"Breast",component:Breast},
+              {path:'/belly',name:"Belly",component:Belly},
+              {path:'/reproduction',name:"Reproduction",component:Reproduction},
+              {path:'/bone',name:"Bone",component:Bone},
+              {path:'/arm',name:"Arm",component:Arm},
+              {path:'/belt',name:"Belt",component:Belt},
+              {path:'/hip',name:"Hip",component:Hip},
+            ]
+      },
+      
+        {path: '/bodypic', name:'Bodypic',component: Bodypic}
+      ]
+    },
+
+
+    {
+      path: '/DrugStore',
+      name: 'DrugStore',
+      component: DrugStore,
     },
     {
-      path: '/Science',
-      name: 'Science',
-      component: Science
+      path: '/SelfTest',
+      name: 'SelfTest',
+      component: SelfTest,
     },
     {
-      path: '/Bbb',
-      name: 'Bbb',
-      component: Bbb
+      path: '/DetailPage',
+      name: 'DetailPage',
+      component: DetailPage,
     },
-    {
-      path: '/FindDoctor',
-      name: 'FindDoctor',
-      component: FindDoctor
-    },
-    {
-      path: '/DoctorConsult',
-      name: 'DoctorConsult',
-      component: DoctorConsult
-    },
-    {
-      path: '/DoctorList',
-      name: 'DoctorList',
-      component: DoctorList
-    }
+    {path:'/*',redirect:'/seek'}
   ]
 })
