@@ -2,7 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Science from '../pages/Science'
 import ContentNews from '../pages/ContentNews'
-import Home from '../pages/Home.vue'
+import Home from "../pages/Home"
+import MyAdvice from "../pages/MyAdvice"
 Vue.use(Router)
 
 export default new Router({
@@ -11,6 +12,11 @@ export default new Router({
       path:"/Home",
       name:"Home",
       component:Home
+    },
+    {
+      path:"/MyAdvice",
+      name:"MyAdvice",
+      component:MyAdvice
     },
     {
       path: '/Science',

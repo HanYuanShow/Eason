@@ -4,7 +4,7 @@
       <van-row type="flex" justify="center">
         <van-col span="14" offset="5">
           <div class="HotSale-out">
-            <van-image fit="contain" height="18" width="18" src="../../static/images/w/amq.png" />
+            <van-image fit="contain" height="18" width="18" src="../../static/w/amq.png" />
             <span class="HotSale-tital">医生话题</span>
             <van-image fit="contain" height="18" width="18" src="../../static/images/w/ams.png" />
           </div>

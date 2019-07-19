@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="Doctor">
     <van-row type="flex" justify="center">
       <van-col span="22">
         <div class="FindDoctor-div">
@@ -44,6 +44,9 @@
 export default {};
 </script>
 <style scoped>
+/* .Doctor{
+  padding-top: 80px;
+} */
 .FindDoctor-out {
   display: flex;
 }

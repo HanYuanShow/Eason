@@ -8,6 +8,9 @@
     <HotService></HotService>
     <DoctotTopic></DoctotTopic>
     <GoodDiscuss></GoodDiscuss>
+    <LectrueRoom></LectrueRoom>
+    <Tool></Tool>
+    <HomeTabbar></HomeTabbar>
   </div>
 </template>
 
@@ -20,6 +23,9 @@ import HotSale from "../components/HotSale"
 import HotService from "../components/HotService"
 import DoctotTopic from "../components/DoctorTopic"
 import GoodDiscuss from "../components/GoodDiscuss"
+import LectrueRoom from "../components/LectureRoom"
+import Tool from "../components/Tool"
+import HomeTabbar from "../components/HomeTabbar"
 export default {
   data() {
     return {
@@ -38,6 +44,9 @@ export default {
       HotService,
       DoctotTopic,
       GoodDiscuss,
+      LectrueRoom,
+      Tool,
+      HomeTabbar
   }
 };
 </script>   

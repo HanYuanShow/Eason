@@ -24,12 +24,12 @@
         <van-row type="flex" justify="center">
         <van-col span="23" offset="1">
             <div v-for="(v,i) in getcontent" :key="i" class="out">
-                <div>
+                <div class="Good-titel">
                      <van-image fit="fill" height="18" width="18" src="../../static/images/w/abv.png" />
-                     <span>{{v.content.number}}</span>
-                     <span>评价{{v.content.name}}医生</span>
+                     <span class="Good-number">{{v.content.number}}</span>
+                     <span class="Good-discuss">评价{{v.content.name}}医生</span>
                      <van-image fit="fill" height="18" width="18" src="../../static/images/w/a6x.png" />
-                     <span>好评</span>
+                     <span class="Good-like">好评</span>
                 </div>
                 <div>
                     <p>{{v.content.text}}</p>
@@ -57,12 +57,18 @@ export default {
             url:"/aaa",
             method:"get"
         }).then((ok)=>{
-            this.getcontent=ok.data.discuss;
+            this.getcontent=ok.data.discuss.slice(0,4);
         })
     },
     methods: {
         changeText(){
-        
+          let num = 4;
+          this.axios({
+            url:"/aaa",
+            method:"get"
+        }).then((ok)=>{
+            this.getcontent=ok.data.discuss.slice(0+num,4+num);
+        })
         }
     },
 
@@ -70,6 +76,26 @@ export default {
 </script>
 
 <style scoped>
+.Good-titel{
+  display: flex;
+  margin-bottom: 15px;
+  
+}
+.Good-like{
+      font-size: 12px;
+      color: rgb(255, 72, 0);
+          margin-left: 10px;
+}
+.Good-number{
+    font-size: 12px;
+    margin-left: 10px;
+}
+.Good-discuss{
+  font-size: 12px;
+  color: gainsboro;
+      margin-left: 10px;
+           margin-right: 10px;
+}
 .HotSale-end{
     height: 8px;
     background-color: gainsboro;
