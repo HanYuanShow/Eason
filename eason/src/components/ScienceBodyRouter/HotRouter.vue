@@ -1,0 +1,37 @@
+<template>
+    <div>
+        <NonTopicBanner></NonTopicBanner>
+        <NonTopic :arr="arr"></NonTopic>
+    </div>
+</template>
+
+<script>
+import NonTopic from "./ScienceCom/NonTopic"
+import NonTopicBanner from "./ScienceCom/NonTopicBanner"
+export default {
+    data(){
+        return {
+            arr:""
+        }
+    },
+    components:{
+        NonTopic,
+        NonTopicBanner
+    },
+    created(){
+        this.axios({
+            url:"/aaa/bbb",
+            method:"get",
+        }).then((ok)=>{
+            console.log(ok)
+            this.arr = ok.data.hot
+        })
+    }
+}
+</script>
+
+<style scoped>
+    
+</style>
+
+
