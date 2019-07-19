@@ -1,0 +1,15 @@
+[
+    {
+        "administrativeOffice":{
+           "medicine":["消化内科","肾内科"],
+           "surgeon":["神经外科","泌尿外科"],
+           "other":["麻醉科"],
+           "featuredUnit":["麻醉科"]
+        },
+        "doctor":[
+            {"doctorName":"张双民","picUrl":"url","theTitle":"主任医师","isOnline":"true","goodAT":"擅长肝炎、肝硬化、肿瘤等疑难杂症的治疗","price":"180","buyer":"122"},
+            {"doctorName":"张双民","picUrl":"url","theTitle":"主任医师","isOnline":"true","goodAT":"擅长肝炎、肝硬化、肿瘤等疑难杂症的治疗","price":"180","buyer":"122"}
+        ]
+    }
+]
+
