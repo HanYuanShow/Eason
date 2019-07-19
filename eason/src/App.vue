@@ -1,12 +1,7 @@
 <template>
-<<<<<<< HEAD
   <div id="app">
    
     <router-view/>
-=======
-  <div>
-   <router-view/>
->>>>>>> new
   </div>
   
 </template>
@@ -17,20 +12,13 @@ export default {
 }
 </script>
 
-<<<<<<< HEAD
-<style>
-/* body{
-  background: #f1f1f1;
-} */
-=======
 <style scoped>
  *{
-   margin: 0px;
-   padding: 0px;
+   margin: 0;
+   padding: 0;
  }
  a{
    text-decoration: none;
  }
 
->>>>>>> new
 </style>

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-<<<<<<< HEAD
+
 // import HelloWorld from '@/components/HelloWorld'
 import PersonalCentter from "../pages/PersonalCenter"
 import PersonalInformation from "../pages/PersonalInformation"
@@ -26,7 +26,7 @@ import Home from "../pages/Home"
 
 
 
-=======
+
 import Seek from '../pages/Seek'
 import Autognosis from '../pages/autognosis'
 import Symptomlist from '../components/symptomlist'
@@ -46,12 +46,12 @@ import Belt from '../components/symptomlist/belt'
 import Hip from '../components/symptomlist/hip'
 import SelfTest from '../pages/SelfTest'
 import DetailPage from '../pages/DetailPage'
->>>>>>> new
+
 Vue.use(Router)
 export default new Router({
   routes: [
     {
-<<<<<<< HEAD
+
       path:"/Home",
       name:"Home",
       component:Home
@@ -110,7 +110,8 @@ export default new Router({
       path: '/forgetpass',
       name: 'forgetpass',
       component: forgetpass
-=======
+    },
+   {
       path: '/seek',
       name: 'Seek',
       component: Seek
@@ -138,12 +139,12 @@ export default new Router({
       
         {path: '/bodypic', name:'Bodypic',component: Bodypic}
       ]
->>>>>>> new
+
     },
 
 
     {
-<<<<<<< HEAD
+
       path: '/test',
       name: 'test',
       component: test
@@ -166,8 +167,8 @@ export default new Router({
     {
       path:"/*",
       redirect:"/Home"
-    }
-=======
+    },
+	{
       path: '/DrugStore',
       name: 'DrugStore',
       component: DrugStore,
@@ -181,8 +182,7 @@ export default new Router({
       path: '/DetailPage',
       name: 'DetailPage',
       component: DetailPage,
-    },
-    {path:'/*',redirect:'/seek'}
->>>>>>> new
+    }
+
   ]
 })
