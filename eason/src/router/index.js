@@ -1,50 +1,111 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Question from '../pages/Question'
-import FindDoctor from '../pages/FindDoctor'
-import Bbb from '../pages/bbb'
-import DoctorConsult from '../pages/DoctorConsult'
-import DoctorList from '../pages/DoctorList'
-import Home from '../pages/Home'
-import Science from '../pages/Science'
+// import HelloWorld from '@/components/HelloWorld'
+import PersonalCentter from "../pages/PersonalCenter"
+import PersonalInformation from "../pages/PersonalInformation"
+import Install from "../pages/Install.vue"
+import MessageCenter from '../pages/MessageCenter'
+import HealthRecord from "../pages/HealthRecord.vue"
+import MyCollect from "../pages/MyCollect.vue"
+import Opinion from "../pages/Opinion.vue" 
+import InviteSomeOne from "../pages/InviteSomeOne.vue" 
+import logon from "../pages/logon.vue" 
+import denglu from "../pages/denglu.vue" 
+import forgetpass from "../pages/forgetpass.vue" 
+import test from "../pages/test.vue" 
+import password from "../pages/password.vue" 
+import ModifyPersonalInformation from "../pages/ModifyPersonalInformation.vue" 
+
+
+
+
+
+
+
+
+
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
-      path: '/Question',
-      name: 'Question',
-      component: Question
+      path: '/personalCentter',
+      name: 'PersonalCentter',
+      component: PersonalCentter
     },
     {
-      path: '/Home',
-      name: 'Home',
-      component: Home
+      path: '/personalInformation',
+      name: 'PersonalInformation',
+      component: PersonalInformation
     },
     {
-      path: '/Science',
-      name: 'Science',
-      component: Science
+      path: '/install',
+      name: 'Install',
+      component: Install
     },
     {
-      path: '/Bbb',
-      name: 'Bbb',
-      component: Bbb
+      path: '/messageCenter',
+      name: 'MessageCenter',
+      component: MessageCenter
     },
     {
-      path: '/FindDoctor',
-      name: 'FindDoctor',
-      component: FindDoctor
+      path: '/healthRecord',
+      name: 'HealthRecord',
+      component: HealthRecord
     },
     {
-      path: '/DoctorConsult',
-      name: 'DoctorConsult',
-      component: DoctorConsult
+      path: '/myCollect',
+      name: 'MyCollect',
+      component: MyCollect
     },
     {
-      path: '/DoctorList',
-      name: 'DoctorList',
-      component: DoctorList
+      path: '/opinion',
+      name: 'Opinion',
+      component: Opinion
+    },
+    {
+      path: '/inviteSomeOne',
+      name: 'InviteSomeOne',
+      component: InviteSomeOne
+    },
+    {
+      path: '/logon',
+      name: 'Logon',
+      component: logon
+    },
+    {
+      path: '/denglu',
+      name: 'denglu',
+      component: denglu
+    },
+    {
+      path: '/forgetpass',
+      name: 'forgetpass',
+      component: forgetpass
+    },
+    {
+      path: '/test',
+      name: 'test',
+      component: test
+    },
+    {
+      path: '/password',
+      name: 'password',
+      component: password
+    },
+    {
+      path: '/modifyPersonalInformation',
+      name: 'ModifyPersonalInformation',
+      component: ModifyPersonalInformation
+    },
+
+
+
+
+
+    {
+      path:"/*",
+      redirect:"/personalCentter"
     }
   ]
 })
