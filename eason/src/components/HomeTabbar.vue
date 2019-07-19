@@ -20,7 +20,7 @@
     </van-tabbar>
   </div>
 </template>
-<script>
+<script> 
 export default {
   data() {
     return {
