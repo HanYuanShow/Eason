@@ -15,6 +15,7 @@ import forgetpass from "../pages/forgetpass.vue"
 import test from "../pages/test.vue" 
 import password from "../pages/password.vue" 
 import ModifyPersonalInformation from "../pages/ModifyPersonalInformation.vue" 
+import Home from "../pages/Home"
 
 
 
@@ -28,6 +29,11 @@ Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path:"/Home",
+      name:"Home",
+      component:Home
+    },
     {
       path: '/personalCentter',
       name: 'PersonalCentter',
@@ -105,7 +111,7 @@ export default new Router({
 
     {
       path:"/*",
-      redirect:"/personalCentter"
+      redirect:"/Home"
     }
   ]
 })
