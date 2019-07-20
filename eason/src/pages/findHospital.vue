@@ -1,7 +1,8 @@
 <template>
   <div id="findHospital">
+    <ReturnComp></ReturnComp>
     <div>
-      <Search></Search>
+      <HospitalSearch></HospitalSearch>
     </div>
     <div>
       <!-- 医院筛选 -->
@@ -30,7 +31,9 @@
 <script>
 import HospitalList from "../components/hospitalList/hospitalList"
 import Select from "../components/hospitalList/select"
-import Search from "../components/hospitalList/search"
+import HospitalSearch from "../components/hospitalList/hospitalSearch"
+import ReturnComp from "../components/returnComp/returnComp"
+
 export default {
   data() {
     return {
@@ -41,7 +44,8 @@ export default {
   components:{
     HospitalList,
     Select,
-    Search
+    HospitalSearch,
+    ReturnComp
   },
   methods: {
     rankingBased(){
