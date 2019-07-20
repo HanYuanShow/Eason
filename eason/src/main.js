@@ -5,11 +5,7 @@ import App from './App'
 import router from './router'
 import axios from 'axios'
 
-<<<<<<< HEAD
 
-=======
-import Vant from 'vant';
-import 'vant/lib/index.css';
 
 import BaiduMap from 'vue-baidu-map'
 Vue.use(BaiduMap, {
@@ -17,21 +13,16 @@ Vue.use(BaiduMap, {
   ak: 'BUbSZS9mXUkBHimbs8jl4f5MT8OE5jQh'   //1ubvYueRQYZXdflH0GYULl4o
 })
 
-Vue.use(Vant);
->>>>>>> 03d84fec5103b547ed8fa351fe7be667e1307e3f
 
 Vue.prototype.axios = axios
 require('./mock')
 import {store} from './store/store'
 Vue.config.productionTip = false
 
-<<<<<<< HEAD
 import Vant from 'vant';
 import 'vant/lib/index.css';
 Vue.use(Vant);
 
-=======
->>>>>>> 03d84fec5103b547ed8fa351fe7be667e1307e3f
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

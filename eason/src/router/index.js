@@ -17,21 +17,10 @@ import password from "../pages/password.vue"
 import ModifyPersonalInformation from "../pages/ModifyPersonalInformation.vue" 
 import Home from "../pages/Home"
 
-<<<<<<< HEAD
-
-
-
-
-
-
-
-
-=======
 import MyAdvice from "../pages/MyAdvice"
 import NowConsult from "../components/NowConsult"
 import MyDoctor from "../components/MyDoctor"
 import HistoryCode from "../components/HistoryCode"
->>>>>>> 03d84fec5103b547ed8fa351fe7be667e1307e3f
 import Seek from '../pages/Seek'
 import Autognosis from '../pages/autognosis'
 import Symptomlist from '../components/symptomlist'
@@ -51,29 +40,24 @@ import Belt from '../components/symptomlist/belt'
 import Hip from '../components/symptomlist/hip'
 import SelfTest from '../pages/SelfTest'
 import DetailPage from '../pages/DetailPage'
-<<<<<<< HEAD
 import Science from '../pages/Science'
 import ContentNews from '../pages/ContentNews'
 import ContentTopic from '../pages/ContentTopic'
-=======
 import FindHospital from '../pages/findHospital'
 import HospitaDetails from '../pages/hospitaDetails'
 import HospitalIntro from '../pages/hospitalIntro'
 import Location from '../pages/location'
 
 Vue.use(Router)
->>>>>>> 03d84fec5103b547ed8fa351fe7be667e1307e3f
-
-Vue.use(Router)
 
 export default new Router({
   routes: [
     {
-<<<<<<< HEAD
       path:"/Home",
       name:"Home",
-      component:Home
-=======
+      component:Home,
+    },
+    {
       path: '/findHospital',
       name: 'FindHospital',
       component: FindHospital
@@ -108,9 +92,7 @@ export default new Router({
           name:"MyDoctor",
           component:MyDoctor
         }
-        
       ]
->>>>>>> 03d84fec5103b547ed8fa351fe7be667e1307e3f
     },
     {
       path: '/personalCentter',
@@ -202,12 +184,6 @@ export default new Router({
         }
         
       ]
-<<<<<<< HEAD
-    },
-
-=======
->>>>>>> 03d84fec5103b547ed8fa351fe7be667e1307e3f
-
     },
     {
       path: '/test',
@@ -224,15 +200,12 @@ export default new Router({
       name: 'ModifyPersonalInformation',
       component: ModifyPersonalInformation
     },
-<<<<<<< HEAD
 
 
 
 
 
 
-=======
->>>>>>> 03d84fec5103b547ed8fa351fe7be667e1307e3f
     {
       path: '/DrugStore',
       name: 'DrugStore',
@@ -244,7 +217,6 @@ export default new Router({
       component:ContentTopic
     },
     {
-<<<<<<< HEAD
       path:'/ContentNews/:id',
       name:'ContentNews',
       component:ContentNews
@@ -252,11 +224,13 @@ export default new Router({
     {
       path:"*",
       redirect:"/Home"
-    }
-=======
+    },
+    {
       path: '/DetailPage',
       name: 'DetailPage',
       component: DetailPage,
+    },
+    {
       path: '/hospitalIntro/:clickId',
       name: 'HospitalIntro',
       component: HospitalIntro
@@ -267,10 +241,9 @@ export default new Router({
       component: Location
     },
     {
-      path:"/*",
+      path:"*",
       redirect:"/Home"
     },
->>>>>>> 03d84fec5103b547ed8fa351fe7be667e1307e3f
   ]
   
 })
