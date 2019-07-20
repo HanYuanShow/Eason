@@ -5,16 +5,18 @@
         </div> 
         <h4>{{title}}</h4>
 
-            <form action="">
+            <form action="" >
                 <div class="input"> 
-                    <input type="text" placeholder="请填写邮箱" class="text">
-                    </div>
-               <div @click="funtest()">
-                <input type="submit" value="获 取 验 证" class="submit" >
+                    <input type="text" placeholder="请填写邮箱" class="text" v-model="email"/>
+                </div>
+                <span>{{ags}}</span>
+               <div >@click="funtest()"
+                <input type="button"  value="获 取 验 证" class="submit"  
+                :disabled="disabled" @click="sendcode" >
                 </div>
             </form>
 
-            <div class="dl" @click="fun1()">
+            <div class="dl"  @click="fun1()">
                 {{txt}}
             </div>
           <div class="footer">
@@ -38,6 +40,16 @@ export default {
            listtitle:"注册",
            title:"注册春雨账户",
            txt:"账号密码登录",
+            ags:"",
+            formMess:{
+                    email:this.email,
+                    phone:this.phone
+                },
+
+
+           disabled:false,
+                time:0,
+          
            
         }
     },
@@ -48,12 +60,29 @@ export default {
          funtest(){
             this.$router.push({path:"/test"})
         },
+         sendcode(){
+               var regEmail= /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+                if(this.email==''){
+                   this.alert("请输入邮箱");
+                }else if(!reg.test(this.phone)){
+                    this.alert("邮箱格式不正确");
+                }else{
+                    // this.time=60;
+                    // this.disabled=true;
+                    // this.timer();
+                    /*axios.post(url).then(
+                        res=>{
+                        this.phonedata=res.data;
+                    })*/
+               }
+            },
+            
     },
 }
 </script>
 <style scoped>
 .header{
-    border-bottom: 1px solid #c1bebe;
+    border-bottom: 1px solid #eeecec;
 }
 .quan{
     background:white;
@@ -72,6 +101,8 @@ form{
 }
 form input{
     display: block;
+caret-color:#20c02d;
+
     /* text-align:center; */
 }
 .input{

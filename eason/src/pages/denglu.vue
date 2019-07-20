@@ -60,13 +60,9 @@ export default {
 }
 </script>
 <style scoped>
-.quan{
-    background: white;
-    width: 100%;
-    height: 100%;
-}
+
 .header{
-    border-bottom: 1px solid #e2dfdf;
+    border-bottom: 1px solid #f1f1f1;
 }
 h4{
     text-align: center;

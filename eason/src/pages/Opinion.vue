@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="quan">
       <div class="header">
           <Installhead :himg="himg" :headtitle="listtitle"></Installhead>
         </div> 
@@ -47,6 +47,13 @@ export default {
 }
 </script>
 <style scoped>
+.quan{
+      position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0px;
+        background-color: #f7f7f7;
+}
 .header{
     border-bottom: 1px solid #c1c1c1;
 }

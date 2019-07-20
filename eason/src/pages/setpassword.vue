@@ -12,10 +12,7 @@
                 <input type="submit" value="获 取 验 证" class="submit" @click="funget()">
             </form>
 
-            <div class="dl" @click="funstop()">
-                {{txt}}
-                       
-            </div>
+           
     </div>
 </template>
 <script>
@@ -24,15 +21,15 @@ import Installhead from "../components/Install/Installhead"
 export default {
     components:{
         Installhead,
-        //  [Dialog.Component.name]: Dialog.Component,
+       
 
     },
     data(){
         return{
             himg:"../../static/images/w/b1a.png",
-            listtitle:"忘记密码",
-            title:"填写你注册时的邮箱",
-            txt:"手机号已停用？"
+            listtitle:"重新设置密码",
+            title:"重新设置你的密码",
+            // txt:"手机号已停用？"
         }
     },
     methods: {

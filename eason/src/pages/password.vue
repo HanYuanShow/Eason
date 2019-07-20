@@ -9,7 +9,7 @@
                     <input type="password" placeholder="密码" class="text">
                     </div>
 
-                <input type="submit" value="开始使用" class="submit" @click="fun3()">
+                <input type="submit" value="开始使用" class="submit"  @click="fun3()">
             </form>
 
     </div>
@@ -34,7 +34,7 @@ export default {
     methods: {
         
          fun3(){
-              this.$router.push({path:"PersonalCenter"})
+              this.$router.push({ path:"/PersonalCentter"});
         },
     },
 }
