@@ -1,10 +1,10 @@
 <template>
     <div class="out">
         <div class="inner">
-              <van-image fit="fill" height="60" width="80" src="../../static/images/w/ay_.png" />
+              <van-image fit="fill" height="70" width="95" src="../../static/images/w/ay_.png" />
               <p>暂无医生</p>
               <h6>关注或者购买过服务的医生将显示在这里</h6>
-              <span>快速提问</span>
+              <span>去找医生</span>
         </div>
     </div>
 </template>

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import HelloWorld from '@/components/HelloWorld'
+
 import PersonalCentter from "../pages/PersonalCenter"
 import PersonalInformation from "../pages/PersonalInformation"
 import Install from "../pages/Install.vue"
@@ -16,6 +16,8 @@ import test from "../pages/test.vue"
 import password from "../pages/password.vue" 
 import ModifyPersonalInformation from "../pages/ModifyPersonalInformation.vue" 
 import Home from "../pages/Home"
+import AllHistory from "../components/AllHistory"
+import HistoryEnd from "../components/HistoryEnd"
 
 import MyAdvice from "../pages/MyAdvice"
 import NowConsult from "../components/NowConsult"
@@ -25,7 +27,7 @@ import Seek from '../pages/Seek'
 import Autognosis from '../pages/autognosis'
 import Symptomlist from '../components/symptomlist'
 import Bodypic from '../components/bodypic'
-// import Automenu from '../components/automenu'
+
 import DrugStore from '../pages/DrugStore'
 import Body from '../components/symptomlist/body'
 import Skin from '../components/symptomlist/skin'
@@ -63,11 +65,6 @@ export default new Router({
       component: FindHospital
     },
     {
-      path: '/Home',
-      name: 'Home',
-      component: Home
-    },
-    {
       path: '/hospitaDetails/:clickId',
       name: 'HospitaDetails',
       component: HospitaDetails
@@ -76,6 +73,16 @@ export default new Router({
       path:"/HistoryCode",
       name:"HistoryCode",
       component:HistoryCode
+    },
+    {
+      path:"/AllHistory",
+      name:"AllHistory",
+      component:AllHistory
+    },
+    {
+      path:"/HistoryEnd",
+      name:"HistoryEnd",
+      component:HistoryEnd
     },
     {
       path:"/MyAdvice",
@@ -200,12 +207,6 @@ export default new Router({
       name: 'ModifyPersonalInformation',
       component: ModifyPersonalInformation
     },
-
-
-
-
-
-
     {
       path: '/DrugStore',
       name: 'DrugStore',
@@ -221,10 +222,7 @@ export default new Router({
       name:'ContentNews',
       component:ContentNews
     },
-    {
-      path:"*",
-      redirect:"/Home"
-    },
+ 
     {
       path: '/DetailPage',
       name: 'DetailPage',
@@ -241,9 +239,10 @@ export default new Router({
       component: Location
     },
     {
-      path:"*",
+      path:"/*",
       redirect:"/Home"
     },
+ 
   ]
   
 })

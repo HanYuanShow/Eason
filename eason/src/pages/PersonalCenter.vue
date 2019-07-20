@@ -60,15 +60,20 @@
 <div class="zyc">
 
 </div>
-
+    <HomeTabbar></HomeTabbar>
 
     </div>
 </template>
+
+
 <script>
 import personalcenteritam from "../components/personalcenteritam/personalcenteritam"
+import HomeTabbar from "../components/HomeTabbar"
 export default {
     components:{
-        personalcenteritam
+        personalcenteritam,
+        HomeTabbar,
+
     },
     data(){
         return {
