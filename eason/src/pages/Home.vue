@@ -1,5 +1,6 @@
 <template>
   <div>
+    
     <HomeSeek></HomeSeek>
     <FindDoctor></FindDoctor>
     <SencondNav></SencondNav>
