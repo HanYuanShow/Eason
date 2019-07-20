@@ -36,14 +36,6 @@ import changephonenewpass from "../pages/changephonenewpass";
 import setpassword from "../pages/setpassword";
 import HomeTabbar from "../components/HomeTabbar";
 
-
-
-
-
-
-
-
-import FindDoctor from "../pages/FindDoctor"
 import MyAdvice from "../pages/MyAdvice"
 import NowConsult from "../components/NowConsult"
 import MyDoctor from "../components/MyDoctor"
@@ -76,11 +68,24 @@ import HospitalIntro from '../pages/hospitalIntro'
 import Location from '../pages/location'
 import Specialist from "../pages/Specialist"
 import SpecialistDetails from "../pages/SpecialistDetails"
+import FindDoctor from "../pages/FindDoctor"
+import DoctorConsult from '../pages/DoctorConsult'
+import Question from '../pages/Question'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path: '/Question',
+      name: 'Question',
+      component: Question
+    },
+    {
+      path: '/DoctorConsult',
+      name: 'DoctorConsult',
+      component: DoctorConsult
+    },
     {
       path: '/FindDoctor',
       name: 'FindDoctor',

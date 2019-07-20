@@ -1,6 +1,6 @@
 var Mock = require("mockjs");
 
-
+Mock.mock("/liuxiaojie","get",require("./json/data"))
 Mock.mock("/aaa","get",require("./json/data1"))
 Mock.mock("/automenu/eason","get",require("./json/easonNew"))
 Mock.mock("/automenu/infor","get",require("./json/data10"))
