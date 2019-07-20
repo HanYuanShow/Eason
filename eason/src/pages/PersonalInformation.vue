@@ -1,9 +1,9 @@
 <template>
-    <div>
+    <div class="quan">
        <div class="head">
            <Installhead :himg="himg" :headtitle="listtitle"></Installhead>
            </div> 
-           <div class="list">
+           <div class="list" f>
                <personinformasationlist :arrb="arr[0]"></personinformasationlist>
            </div>
            <div class="list">
@@ -41,11 +41,23 @@ export default {
             ],
         }
     },
-    
+    methods: {
+        mounted() {
+                
+                },
+    },
+
 }
 </script>
 <style scoped>
 .head{
-    border-bottom: 1px solid #e1e0e0;
+    border-bottom: 1px solid #fdfdfd;
+}
+.quan{
+      position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0px;
+        background-color: #faf7f7;
 }
 </style>

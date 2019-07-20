@@ -9,7 +9,7 @@
                     <input type="text" placeholder="请填写邮箱" class="text">
                     </div>
                
-                <input type="submit" value="获 取 验 证" class="submit">
+                <input type="submit" value="获 取 验 证" class="submit" @click="funget()">
             </form>
 
             <div class="dl" @click="funstop()">
@@ -36,7 +36,9 @@ export default {
         }
     },
     methods: {
-        
+        funget(){
+            this.$router.push({path:"/getyanzheng"})
+        }
          
     },
 }

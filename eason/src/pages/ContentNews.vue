@@ -1,6 +1,6 @@
 <template>
     <div>
-        <ScienceDetails :arr = listiddetails></ScienceDetails>
+        <ScienceDetails :arr = listiddetails[0]></ScienceDetails>
         
         
     </div>
@@ -10,7 +10,7 @@ import ScienceDetails from "../components/ScienceDetails"
 export default {
     data(){
         return {
-            arr:"",
+            arr:[],
             routerid:""
         }
     },
@@ -30,11 +30,11 @@ export default {
     created(){
         this.routerid = this.$route.params.id;
         this.axios({
-            url:"/aaa/bbb",
+            url:"/aaazyz",
             method:"get"
         }).then((ok)=>{
             console.log(ok)
-            this.arr = ok.data.hot.List
+            this.arr = ok.data.hot.list
         })
     }
 }

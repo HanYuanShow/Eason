@@ -5,11 +5,11 @@
         <van-col span="24">
           <div class="HotSale-out">
             <van-image fit="fill" height="18" width="18" src="../../static/images/w/amv.png" />
-            <span class="HotSale-tital">春雨热卖</span>
+            <span class="HotSale-tital">热门服务</span>
             <van-image fit="fill" height="18" width="18" src="../../static/images/w/amw.png" />
           </div>
         </van-col>
-      </van-row>
+      </van-row>  
     </div>
 
     <div>
@@ -27,14 +27,14 @@
                           </div>
                           <div class="HotSerice-left-mind">
                                <div class="HotSerice-inner">
-                                <van-image fit="fill" height="18" width="18" src="../../static/images/w/aif.png" />
+                                <van-image fit="fill" height="18" width="18" src="../../static/images/w/aca.png" />
                                 <span class="HotSerice-span">名医咨询</span>
                             </div>
                              <span class="span">找名医 更准更放心</span>
                           </div>
                           <div class="HotSerice-left-end">
                                <div class="HotSerice-inner">
-                                <van-image fit="fill" height="18" width="18" src="../../static/images/w/aif.png" />
+                                <van-image fit="fill" height="18" width="18" src="../../static/images/w/aup.png" />
                                 <span class="HotSerice-span">护士上门</span>
                             </div>  
                              <span class="span">专业护士 预约到家</span>
@@ -43,21 +43,21 @@
                       <div class="HotSerice-right">
                            <div class="HotSerice-left-top">
                                <div class="HotSerice-inner">
-                                <van-image fit="fill" height="18" width="18" src="../../static/images/w/aif.png" />
+                                <van-image fit="fill" height="18" width="18" src="../../static/images/w/a85.png" />
                                 <span class="HotSerice-span">图文急诊</span>
                             </div>
                             <span class="HotSerice-minl">60秒快速回复</span>
                            </div>
                           <div class="HotSerice-left-mind">
                               <div class="HotSerice-inner">
-                                <van-image fit="fill" height="18" width="18" src="../../static/images/w/aif.png" />
+                                <van-image fit="fill" height="18" width="18" src="../../static/images/w/ax2.png" />
                                 <span class="HotSerice-span">美肤祛痘</span>
                             </div>
                              <span class="span">一站式解决皮肤难题</span>
                           </div>
                           <div class="HotSerice-left-end">
                               <div class="HotSerice-inner">
-                                <van-image fit="fill" height="18" width="18" src="../../static/images/w/aif.png" />
+                                <van-image fit="fill" height="18" width="18" src="../../static/images/w/b4b.png" />
                                 <span class="HotSerice-span">试管名医</span>
                             </div>
                              <span class="span">专治不孕不育</span>

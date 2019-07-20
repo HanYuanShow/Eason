@@ -59,7 +59,7 @@ export default {
 </script>
 <style scoped>
 .header{
-    border-bottom: 1px solid #dfdddd;
+    border-bottom: 1px solid #f5f3f3;
 }
 h4{
     width: 100%;

@@ -16,7 +16,7 @@
             <p>名院专家</p>
           </div>
           <div class="SencondNav-signle">
-            <van-image src="../../static/images/w/ao0.png"  width="30" height="30" />
+            <van-image src="../../static/images/w/acs.png"  width="30" height="30" />
             <p>找医院</p>
           </div>
           <div class="SencondNav-signle">

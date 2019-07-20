@@ -1,5 +1,5 @@
 <template>
- <div>
+ <div class="quan">
     <div class="header">
         <Installhead :himg="himg" :headtitle="listtitle"></Installhead>
     </div>
@@ -111,7 +111,7 @@
   <van-tab title="专属病例" name="c">
      <div class="self">
         <div class="contentlist1">
-          <div class="center1">
+          <div class="center1" @click="funz()">
              <div>孕产信息</div>
              <div>
                  <img :src="rimg" alt="">
@@ -119,8 +119,8 @@
           </div>
         </div>
 
-        <div class="contentlist1">
-          <div class="center1">
+        <div class="contentlist1" @click="funy()">
+          <div class="center1" >
              <div>健康历史</div>
              <div>
                  <img :src="rimg" alt="">
@@ -164,7 +164,15 @@ export default {
     },
     methods: {
           funmodfiy(){
-              this.$router.push({path:"ModifyPersonalInformation"})
+              this.$router.push({path:"/ModifyPersonalInformation"})
+          
+        },
+          funz(){
+              this.$router.push({path:"/Maternityinformation"})
+          
+        },
+         funy(){
+              this.$router.push({path:"/HealthHistory"})
           
         },
     },
@@ -172,6 +180,16 @@ export default {
 }
 </script>
 <style scoped>
+.quan{
+      position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0px;
+        background-color: #faf7f7;
+}
+body{
+    background-color: red;
+}
 .header{
     border-bottom: 1px solid #c6c5c5;
 }

@@ -28,8 +28,11 @@ export default {
     align-items: center;
 }
 .HomeSeek-out{
-  margin-bottom: 20px;
-
+ position: fixed;
+ top: 0;
+ background-color: white;
+width: 100%;
+z-index: 1;
 }
 
 </style>
