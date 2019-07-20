@@ -11,8 +11,8 @@
                     <router-link to="/Science/Topic"><p>话题</p></router-link>
                     <router-link to="/Science/Live"><p>生活</p></router-link>
                     <router-link to="/Science/Sleep"><p>睡眠</p></router-link>
-                    <router-link to="/Science/Sleep"><p>男性</p></router-link>
-                    <router-link to="/Science/Sleep"><p>两性</p></router-link>
+                    <router-link to="/Science/ManRouter"><p>男性</p></router-link>
+                    <router-link to="/Science/BothRouter"><p>两性</p></router-link>
                     <router-link to="/Science/Sleep"><p>辟谣</p></router-link>
                     <router-link to="/Science/Sleep"><p>减肥</p></router-link>
                     <router-link to="/Science/Sleep"><p>女性</p></router-link>

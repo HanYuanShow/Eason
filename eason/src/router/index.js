@@ -181,7 +181,18 @@ export default new Router({
           path:'Sleep',
           name:'Sleep',
           component:()=>import('../components/ScienceBodyRouter/SleepRouter')
-        }
+        },
+        {
+          path:'BothRouter',
+          name:'BothRouter',
+          component:()=>import('../components/ScienceBodyRouter/BothRouter')
+        },
+        {
+          path:'ManRouter',
+          name:'ManRouter',
+          component:()=>import('../components/ScienceBodyRouter/ManRouter')
+        },
+
         
       ]
     },

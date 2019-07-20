@@ -9,44 +9,46 @@
                 <span ><img src="../../static/w/a7r.png"><span class="ScienceDetailsRightone"></span></span>
             </div>
         </div>
-        <p>{{arr.title}}</p>
 
-        <div>
+        <div class="DetailsTopicBig">
+            <h3 class="DetailsTopicTitle">{{arr.title}}</h3>
+
             <div>
                 <div>
-                    <img src="">
-                    <span>{{arr.name}}</span>
-                    <span>原创</span>
-                    <span>{{arr.time}}</span>
+                    <div>
+                        <img src="">
+                        <span>{{arr.name}}</span>
+                        <span>原创</span>
+                        <span>{{arr.time}}</span>
+                    </div>
+                    <div>
+                        <span>{{arr.desk}}</span>
+                        <span>{{arr.position}}</span>
+                        <span>{{arr.hospital}}</span>
+                    </div>
                 </div>
                 <div>
-                    <span>{{arr.desk}}</span>
-                    <span>{{arr.position}}</span>
-                    <span>{{arr.hospital}}</span>
+                    关注
                 </div>
             </div>
+
             <div>
-                关注
+                <p>{{arr.click.content}}</p>
             </div>
-        </div>
+            <div>
+                <span>阅读{{arr.readNumber}}</span>
+            </div>
+            <div>
+                <span>点赞{{arr.praiseNumber}}</span>
+                <span>送心意</span>
+                <span>立即咨询</span>
+            </div>
 
-        <div>
-            <p>{{arr.click.content}}</p>
-        </div>
-        <div>
-            <span>阅读{{arr.readNumber}}</span>
-        </div>
-        <div>
-            <span>点赞{{arr.praiseNumber}}</span>
-            <span>送心意</span>
-            <span>立即咨询</span>
-        </div>
-
-        <div>
-            <input type="text" value="添加评论">
-        </div>
+            <div>
+                <input type="text" value="添加评论">
+            </div>
         
-
+        </div>
     </div>
     
 </template>
@@ -86,6 +88,13 @@ export default {
     .ScienceDetailsRightone{
         line-height: 21px;
         color:black
+    }
+    .DetailsTopicBig{
+        padding:0 15px;
+    }
+    .DetailsTopicTitle{
+        font-size:20px;
+        letter-spacing:5px;
     }
 </style>
 
