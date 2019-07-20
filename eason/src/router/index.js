@@ -16,7 +16,6 @@ import test from "../pages/test.vue"
 import password from "../pages/password.vue" 
 import ModifyPersonalInformation from "../pages/ModifyPersonalInformation.vue" 
 import Home from "../pages/Home"
-
 import MyAdvice from "../pages/MyAdvice"
 import NowConsult from "../components/NowConsult"
 import MyDoctor from "../components/MyDoctor"
@@ -44,6 +43,8 @@ import FindHospital from '../pages/findHospital'
 import HospitaDetails from '../pages/hospitaDetails'
 import HospitalIntro from '../pages/hospitalIntro'
 import Location from '../pages/location'
+import Specialist from "../pages/Specialist"
+import SpecialistDetails from "../pages/SpecialistDetails"
 
 Vue.use(Router)
 
@@ -54,6 +55,16 @@ export default new Router({
       path: '/findHospital',
       name: 'FindHospital',
       component: FindHospital
+    },
+    {
+      path: '/Specialist',
+      name: 'Specialist',
+      component: Specialist
+    },
+    {
+      path: '/SpecialistDetails',
+      name: 'SpecialistDetails',
+      component: SpecialistDetails
     },
     {
       path: '/Home',

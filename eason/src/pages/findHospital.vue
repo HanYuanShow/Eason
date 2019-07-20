@@ -1,7 +1,8 @@
 <template>
   <div id="findHospital">
-    <ReturnComp></ReturnComp>
-    <div>
+    <ReturnComp routerTips="找医院" class="returnbar"></ReturnComp>
+    <div class="findHospital">
+      <div>
       <HospitalSearch></HospitalSearch>
     </div>
     <div>
@@ -25,72 +26,81 @@
         <p>(4)  医院对应科室的床位数</p>
       </div>
     </div>
+    </div>
   </div>
 </template>
 
 <script>
-import HospitalList from "../components/hospitalList/hospitalList"
-import Select from "../components/hospitalList/select"
-import HospitalSearch from "../components/hospitalList/hospitalSearch"
-import ReturnComp from "../components/returnComp/returnComp"
+import HospitalList from "../components/hospitalList/hospitalList";
+import Select from "../components/hospitalList/select";
+import HospitalSearch from "../components/hospitalList/hospitalSearch";
+import ReturnComp from "../components/returnComp/returnComp";
 
 export default {
   data() {
     return {
-      hospitalData:[],
-      rankingBool:false,
-    }
+      hospitalData: [],
+      rankingBool: false
+    };
   },
-  components:{
+  components: {
     HospitalList,
     Select,
     HospitalSearch,
     ReturnComp
   },
   methods: {
-    rankingBased(){
+    rankingBased() {
       this.rankingBool = !this.rankingBool;
     }
   },
   created() {
     this.axios({
-      url:"/reqHospitalData",
-      method:"get"
-    }).then((ok)=>{
+      url: "/reqHospitalData",
+      method: "get"
+    }).then(ok => {
       console.log(ok);
       this.hospitalData = ok.data;
-    })
+    });
   }
-}
+};
 </script>
 
 <style scoped>
-.rankingBased{
+.findHospital {
+  margin-top: 50px;
+}
+.rankingBased {
   padding: 0 15px;
 }
-.rankingCon{
+.rankingCon {
   display: flex;
   justify-content: flex-end;
   align-items: center;
 }
-.rankingCon span{
+.rankingCon span {
   font-size: 14px;
   color: #999;
   text-align: right;
   padding: 15px 5px 15px 15px;
 }
-.rankingCon img{
+.rankingCon img {
   width: 14px;
   height: 14px;
 }
-.basedOn{
+.basedOn {
   padding: 10px;
   background: #f9f9f9;
 }
-.basedOn p{
+.basedOn p {
   font-size: 12px;
   color: #999;
   line-height: 19px;
+}
+.returnbar {
+  position: fixed;
+  top: 0;
+  z-index: 999;
 }
 </style>
 

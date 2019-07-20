@@ -65,6 +65,7 @@ export default {
   height: 28px;
   font-size: 14px;
   color: #666;
+  font-weight: bold;
   line-height: 28px;
   background-color: #f8f8f8;
   /* background: #F8F8F8 url("../../../static/images/w/h1.png") no-repeat center; */

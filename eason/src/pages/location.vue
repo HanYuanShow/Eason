@@ -1,5 +1,6 @@
 <template>
 <div>
+    <ReturnComp :routerTips="keyword" class="returnbar"></ReturnComp>
     <div class="location">
         <!-- 我是地图demo1 -->
         <!-- <label>关键词：<input v-model="keyword"></label>
@@ -15,6 +16,8 @@
 </template>
  
 <script>
+import ReturnComp from "../components/returnComp/returnComp";
+
 export default {
   name: "map",
 
@@ -23,6 +26,9 @@ export default {
       location: "北京",
       keyword: "北京协和医院"
     }
+  },
+  components:{
+    ReturnComp
   },
   methods: {},
   created() {
@@ -40,5 +46,11 @@ export default {
 }
 .location{
     padding: 20px 15px;
+}
+
+.returnbar {
+  position: fixed;
+  top: 0;
+  z-index: 999;
 }
 </style>
