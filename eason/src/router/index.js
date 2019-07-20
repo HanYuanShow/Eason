@@ -4,6 +4,9 @@ import Science from '../pages/Science'
 import ContentNews from '../pages/ContentNews'
 import Home from "../pages/Home"
 import MyAdvice from "../pages/MyAdvice"
+import NowConsult from "../components/NowConsult"
+import MyDoctor from "../components/MyDoctor"
+import HistoryCode from "../components/HistoryCode"
 Vue.use(Router)
 
 export default new Router({
@@ -14,9 +17,27 @@ export default new Router({
       component:Home
     },
     {
+      path:"/HistoryCode",
+      name:"HistoryCode",
+      component:HistoryCode
+    },
+    {
       path:"/MyAdvice",
       name:"MyAdvice",
-      component:MyAdvice
+      component:MyAdvice,
+      children:[
+        {
+          path:"NowConsult",
+          name:"NowConsult",
+          component:NowConsult
+        },
+        {
+          path:"MyDoctor",
+          name:"MyDoctor",
+          component:MyDoctor
+        }
+        
+      ]
     },
     {
       path: '/Science',
