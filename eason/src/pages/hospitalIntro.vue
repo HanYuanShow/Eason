@@ -1,23 +1,27 @@
 <template>
     <div class="hospitalIntr">
-        <PromptingMessage></PromptingMessage>
-        <HospitalIntroComp titleCon="医院介绍" :introCon="loadmore"></HospitalIntroComp>
-        <div slot="morebtn" class="loadmore" @click="isloadMore()">{{loadBtn}}</div>
-        <HospitalIntroComp titleCon="地址及行车路线" :introCon="detailAddress"></HospitalIntroComp>
-        <div slot="morebtn" class="loadmore" @click="location()">在地图上打开</div>
-        <div slot="moreCon" class="carLines" v-html="carLines"></div>
-        <HospitalIntroComp titleCon="电话" :introCon="contactWay"></HospitalIntroComp>
+        <ReturnComp :routerTips="hospitalName" class="returnbar"></ReturnComp>
+        <div class="hospitalIntrCon">
+            <PromptingMessage></PromptingMessage>
+            <HospitalIntroComp titleCon="医院介绍" :introCon="loadmore"></HospitalIntroComp>
+            <div slot="morebtn" class="loadmore" @click="isloadMore()">{{loadBtn}}</div>
+            <HospitalIntroComp titleCon="地址及行车路线" :introCon="detailAddress"></HospitalIntroComp>
+            <div slot="morebtn" class="loadmore" @click="location()">在地图上打开</div>
+            <div slot="moreCon" class="carLines" v-html="carLines"></div>
+            <HospitalIntroComp titleCon="电话" :introCon="contactWay"></HospitalIntroComp>
+        </div>
     </div>
 </template>
 <script>
 import PromptingMessage from '../components/hospitalDetail/PromptingMessage'
 import HospitalIntroComp from '../components/hospitalDetail/hospitalIntroComp'
-
+import ReturnComp from "../components/returnComp/returnComp";
 export default {
     data() {
         return {
             id:0,
             allData:{},
+            hospitalName:"",
             HospitalIntroData:"", //医院介绍数据
             loadBtn:"",
             contactWay:"", //联系方式数据
@@ -34,7 +38,8 @@ export default {
     },
     components:{
         PromptingMessage,
-        HospitalIntroComp
+        HospitalIntroComp,
+        ReturnComp
     },
     created() {
         this.id = this.$route.params.clickId;//获取传过来的id
@@ -45,6 +50,7 @@ export default {
         }).then((ok)=>{
             this.allData = ok.data;//获取页面所需所有的数据
             this.HospitalIntroData = this.allData.HospitalIntroduction;
+            this.hospitalName = this.allData.hospitalName;
             this.contactWay = this.allData.contactWay;
             this.detailAddress = this.allData.detailAddress;
             this.city = this.allData.address;
@@ -76,6 +82,14 @@ export default {
 }
 </script>
 <style scoped>
+.hospitalIntrCon{
+    margin-top: 50px;
+}
+.returnbar {
+  position: fixed;
+  top: 0;
+  z-index: 999;
+}
 .loadmore{
     font-size: 14px;
     color: #999;

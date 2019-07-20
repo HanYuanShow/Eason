@@ -3,7 +3,7 @@
     <div class="hospitalListItem" v-for="(v,i) in hospitalListData" :key="i" @click="toDetail(v.id)">
         <div class="listItem_L">{{v.comprehensive}}</div>
         <div class="listItem_R">
-            <div class="hospitalTitle">
+            <div class="hospitalTitles">
                 <h3>{{v.hospitalName}}</h3>
                 <p>{{v.address}}</p>
             </div>
@@ -32,17 +32,18 @@ export default {
 </script>
 
 <style scoped>
-.hospitalTitle > h3 {
+.hospitalTitles > h3 {
   font-weight: normal;
   font-size: 18px;
   color: #323232;
   margin-right: 10px;
   vertical-align: middle;
 }
-.hospitalTitle > p {
+.hospitalTitles > p {
   font-size: 14px;
   color: #999;
   vertical-align: middle;
+  margin-top: 0px;
 }
 .rank {
   font-size: 14px;
@@ -64,6 +65,7 @@ export default {
   height: 28px;
   font-size: 14px;
   color: #666;
+  font-weight: bold;
   line-height: 28px;
   background-color: #f8f8f8;
   /* background: #F8F8F8 url("../../../static/images/w/h1.png") no-repeat center; */
@@ -76,7 +78,7 @@ export default {
   width: 90%;
   height: 100%;
 }
-.hospitalTitle {
+.hospitalTitles {
   display: flex;
   justify-content: space-between;
   align-items: center;

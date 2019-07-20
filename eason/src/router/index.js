@@ -42,6 +42,7 @@ import HomeTabbar from "../components/HomeTabbar";
 
 
 
+
 import MyAdvice from "../pages/MyAdvice"
 import NowConsult from "../components/NowConsult"
 import MyDoctor from "../components/MyDoctor"
@@ -72,20 +73,33 @@ import FindHospital from '../pages/findHospital'
 import HospitaDetails from '../pages/hospitaDetails'
 import HospitalIntro from '../pages/hospitalIntro'
 import Location from '../pages/location'
+import Specialist from "../pages/Specialist"
+import SpecialistDetails from "../pages/SpecialistDetails"
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
-    {
-      path:"/Home",
-      name:"Home",
-      component:Home,
-    },
+
     {
       path: '/findHospital',
       name: 'FindHospital',
       component: FindHospital
+    },
+    {
+      path: '/Specialist',
+      name: 'Specialist',
+      component: Specialist
+    },
+    {
+      path: '/SpecialistDetails',
+      name: 'SpecialistDetails',
+      component: SpecialistDetails
+    },
+    {
+      path: '/Home',
+      name: 'Home',
+      component: Home
     },
     {
       path: '/hospitaDetails/:clickId',
@@ -164,11 +178,7 @@ export default new Router({
       name: 'PersonalCentter',
       component: PersonalCentter
     },
-    {
-      path: '/Home',
-      name: 'Home',
-      component: Home
-    },
+
     {
       path: '/personalInformation',
       name: 'PersonalInformation',

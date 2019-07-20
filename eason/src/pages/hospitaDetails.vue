@@ -1,9 +1,12 @@
 <template>
   <div class="hospitalDetail">
-    <HospitalDetailHeader :hospitalRankingList="rankingList" :hospitalName="hospitalName"></HospitalDetailHeader>
-    <RegisteredWay :registeredWayData="registeredWay"></RegisteredWay>
-    <OnlineDoctor :onlineDoctor="doctorOnLine"></OnlineDoctor>
-    <HospitalIntroduction :hospitalIntro="hospitalIntroCon" :id="hospitalId"></HospitalIntroduction>
+    <ReturnComp :routerTips="hospitalName" class="returnbar"></ReturnComp>
+    <div class="hospitalDetailCon">
+      <HospitalDetailHeader :hospitalRankingList="rankingList" :hospitalName="hospitalName"></HospitalDetailHeader>
+      <RegisteredWay :registeredWayData="registeredWay"></RegisteredWay>
+      <OnlineDoctor :onlineDoctor="doctorOnLine"></OnlineDoctor>
+      <HospitalIntroduction :hospitalIntro="hospitalIntroCon" :id="hospitalId"></HospitalIntroduction>  
+    </div>
   </div>
 </template>
 
@@ -12,6 +15,7 @@ import HospitalDetailHeader from "../components/hospitalDetail/hospitalDetailHea
 import RegisteredWay from "../components/hospitalDetail/registeredWay"
 import OnlineDoctor from "../components/hospitalDetail/onlineDoctor"
 import HospitalIntroduction from "../components/hospitalDetail/hospitalIntroduction"
+import ReturnComp from "../components/returnComp/returnComp";
 
 export default {
   data() {
@@ -29,7 +33,8 @@ export default {
     HospitalDetailHeader,
     RegisteredWay,
     OnlineDoctor,
-    HospitalIntroduction
+    HospitalIntroduction,
+    ReturnComp
   },
   created() {
     this.axios({
@@ -53,6 +58,12 @@ export default {
 <style scoped>
 .hospitalDetail{
   background: #f1f1f1;
+  margin-top: 50px;
+}
+.returnbar {
+  position: fixed;
+  top: 0;
+  z-index: 999;
 }
 </style>
 
