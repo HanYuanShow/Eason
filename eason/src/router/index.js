@@ -40,14 +40,30 @@ import Belt from '../components/symptomlist/belt'
 import Hip from '../components/symptomlist/hip'
 import SelfTest from '../pages/SelfTest'
 import DetailPage from '../pages/DetailPage'
+import FindHospital from '../pages/findHospital'
+import HospitaDetails from '../pages/hospitaDetails'
+import HospitalIntro from '../pages/hospitalIntro'
+import Location from '../pages/location'
+
+Vue.use(Router)
 
 Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path:"/Home",
-      name:"Home",
-      component:Home
+      path: '/findHospital',
+      name: 'FindHospital',
+      component: FindHospital
+    },
+    {
+      path: '/Home',
+      name: 'Home',
+      component: Home
+    },
+    {
+      path: '/hospitaDetails/:clickId',
+      name: 'HospitaDetails',
+      component: HospitaDetails
     },
     {
       path:"/HistoryCode",
@@ -173,10 +189,6 @@ export default new Router({
       component: ModifyPersonalInformation
     },
     {
-      path:"/*",
-      redirect:"/Home"
-    },
-    {
       path: '/DrugStore',
       name: 'DrugStore',
       component: DrugStore,
@@ -190,6 +202,18 @@ export default new Router({
       path: '/DetailPage',
       name: 'DetailPage',
       component: DetailPage,
+      path: '/hospitalIntro/:clickId',
+      name: 'HospitalIntro',
+      component: HospitalIntro
+    },
+    {
+      path: '/location/:city/:keyword',
+      name: 'Location',
+      component: Location
+    },
+    {
+      path:"/*",
+      redirect:"/Home"
     },
   ]
 })
