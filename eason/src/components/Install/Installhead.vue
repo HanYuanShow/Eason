@@ -4,6 +4,9 @@
                 <img :src="himg" alt="">
                 <span>{{home}}</span>
             </div>
+            <div class="p">
+                {{dig}}
+            </div>
             <div class="title">
               {{headtitle}}
             </div>
@@ -24,6 +27,7 @@ export default {
         headtitle:String,
         righttitle:String,
         home:String,
+        dig:String,
 
     },
     methods: {
@@ -45,6 +49,10 @@ export default {
 .home{
     width:80px;
     display: flex;
+}
+.p{
+    color: #6bce72;
+    font-size: 25px;
 }
 .home img{
 width:12px ;

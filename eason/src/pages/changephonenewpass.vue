@@ -3,33 +3,19 @@
         <div class="header">
           <Installhead :headtitle="listtitle" :himg="himg" ></Installhead>                  
         </div>
-        <h4>{{title}} （邮箱号）</h4>
+        <h4>{{title}}</h4>
         <form action="">
                 <div class="input"> 
-                    <input type="text" placeholder="验证码" class="text">
+                    <input type="password" placeholder="密码" class="text">
                     </div>
-               <div @click="funpass()">
-                  
-                 <input type="submit" value="注册" class="submit">
-
-                </div>
+                    <div class="input1"> 
+                    <input type="password" placeholder="确认密码" class="text">
+                    </div>
+               
+                <input type="submit" value="确认重置" class="submit" @click="funset()">
             </form>
 
-            <div class="dl" @click="funstop()">
-                <!-- {{txt}} -->
-                <!-- <van-count-down :time="time">
-                    <template v-slot="timeData">
-                        <span class="item">{{ timeData.hours }}</span>
-                        <span class="item">{{ timeData.minutes }}</span>
-                        <span class="item">{{ timeData.seconds }}</span>
-                    </template>
-                </van-count-down> -->
-                <van-count-down
-                    :time="30"
-                    format="DD 天 HH 时 mm 分 ss 秒"
-                    />
-                       
-            </div>
+            
     </div>
 </template>
 <script>
@@ -44,22 +30,22 @@ export default {
     data(){
         return{
             himg:"../../static/images/w/b1a.png",
-            listtitle:"验证手机号",
-            title:"验证已发至到",
+            listtitle:"忘记密码",
+            title:"短信已发至",
             // txt:"点击重新发送验证"
         }
     },
     methods: {
-        
-         funpass(){
-            this.$router.push({path:"/password"})
-        },
+        funset(){
+            this.$router.push({path:"/"})
+        }
+         
     },
 }
 </script>
 <style scoped>
 .header{
-    border-bottom: 1px solid #f5f3f3;
+    border-bottom: 1px solid #dfdddd;
 }
 h4{
     width: 100%;
@@ -87,12 +73,26 @@ form input{
     align-items: center;
 
 }
+.input1{
+    width:85%;
+    height: 40px;
+    border: 1px solid #dddcdc;
+    margin:0 auto;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+
+}
 .text{
-    width: 80px;
+    width: 120px;
     height:30px;
     text-indent: 20px;
     border: none;
     caret-color:#20c02d;
+    text-indent: 30px;
+     /* text-align: center; */
 }
 .submit{
    width:86%;
@@ -110,14 +110,5 @@ form input{
     margin:30px auto;
     color: #20c02d;
     font-size: 15px;
-}
-.item {
-  display: inline-block;
-  width: 22px;
-  margin-right: 5px;
-  color: #fff;
-  font-size: 12px;
-  text-align: center;
-  background-color: #1989fa;
 }
 </style>

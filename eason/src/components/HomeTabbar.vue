@@ -13,7 +13,7 @@
           <span  class="Tabbar-text "> 我的咨询</span>
         <img slot="icon" slot-scope="props" :src="props.active ? icon.active[2] : icon.normal[2]" fit="contain" width="30"  height="40"/>
       </van-tabbar-item>
-       <van-tabbar-item icon="setting-o"   to="/PersonalCentter">
+       <van-tabbar-item icon="setting-o"   to="/personalCentter">
            <span  class="Tabbar-text">个人中心</span>
         <img slot="icon" slot-scope="props" :src="props.active ? icon.active[3] : icon.normal[3]"   fit="contain" width="30"  height="40"/>
        </van-tabbar-item>

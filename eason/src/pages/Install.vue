@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="quan">
        <div class="header">
            <Installhead :himg="himg" :headtitle="headtitle"></Installhead>
         </div>  
@@ -7,16 +7,16 @@
             <Installlist :title="listtitle"></Installlist>
         </div>
         
-        <div class="content1">
+        <div class="content1" @click="funa()">
             <Installnav :arrb="obj[0]"></Installnav>
         </div>
-        <div class="content1">
+        <div class="content1" @click="funb()">
             <Installnav :arrb="obj[1]"></Installnav>
         </div>
-        <div class="content1">
+        <div class="content1" @click="func()">
             <Installnav :arrb="obj[2]"></Installnav>
         </div>
-        <div class="content1">
+        <div class="content1" @click="fund()">
             <Installnav :arrb="obj[3]"></Installnav>
         </div>
         <div class="content2">
@@ -28,10 +28,10 @@
         <div class="content1">
             <Installnav :arrb="obj[6]"></Installnav>
         </div>
-        <div class="content4">
+        <div class="content4" @click="fune()">
             <Installnav :arrb="obj[7]"></Installnav>
         </div>
-        <div class="content1">
+        <div class="content1"  @click="funf()">
             <Installnav :arrb="obj[8]"></Installnav>
         </div>
 
@@ -69,14 +69,43 @@ export default {
             ],
         }
     },
+    methods: {
+        funa(){
+           this.$router.push({ path:"/MessageNotification"});
+        },
+        funb(){
+            this.$router.push({path:"/ChangePassword"})
+        },
+         func(){
+            this.$router.push({path:"/ChangePhone"})
+        },
+         fund(){
+            this.$router.push({path:"/LocalPassword"})
+        },
+        fune(){
+            this.$router.push({path:"/help"})
+        },
+        funf(){
+            this.$router.push({path:"/declaraction"})
+        },
+       
+    },
 }
 </script>
 <style scoped>
+.quan{
+      /* position: fixed; */
+        width: 100%;
+        height: 100%;
+        top: 0px;
+        background-color: #f7f7f7;
+}
 .header{
     position: fixed;
     top: 0;
     background: white;
     z-index: 99;
+    border-bottom: 1px solid #e7e7e7;
 }
 .content{
     

@@ -14,7 +14,7 @@
 
         <div class="footer">
            <div class="argin">{{argin}}</div>
-           <div class="book">{{of}}</div> 
+           <div class="book" @click="funbook()">{{of}}</div> 
         </div>
     </div>
 </template>
@@ -31,7 +31,12 @@ export default {
            argin:"注册代表阅读并同意",
            of:"《春雨医生用户协议》"
         }
-    }
+    },
+    methods: {
+        funbook(){
+            this.$router.push({path:"/chunyuxieyi"})
+        }
+    },
 }
 </script>
 <style scoped>

@@ -14,6 +14,10 @@ Vue.use(BaiduMap, {
 })
 
 
+// import { PasswordInput, NumberKeyboard } from 'vant';
+
+// Vue.use(PasswordInput).use(NumberKeyboard);
+
 Vue.prototype.axios = axios
 require('./mock')
 import {store} from './store/store'
