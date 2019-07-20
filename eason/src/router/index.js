@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Science from '../pages/Science'
 import ContentNews from '../pages/ContentNews'
+import ContentTopic from '../pages/ContentTopic'
+
 Vue.use(Router)
 
 export default new Router({
@@ -30,9 +32,14 @@ export default new Router({
           path:'Sleep',
           name:'Sleep',
           component:()=>import('../components/ScienceBodyRouter/SleepRouter')
-        },
-        {path:'*',component:()=>import('../components/ScienceBodyRouter/HotRouter')}
+        }
+        
       ]
+    },
+    {
+      path:'/ContentTopic/:id',
+      name:'ContentTopic',
+      component:ContentTopic
     },
     {
       path:'/ContentNews/:id',

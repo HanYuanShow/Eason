@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="rout">
         <NonTopicBanner></NonTopicBanner>
         <NonTopic :arr="arr"></NonTopic>
     </div>

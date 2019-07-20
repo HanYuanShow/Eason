@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="rout">
        <Topic :arr = arr></Topic>
     </div>
 </template>
@@ -20,8 +20,8 @@ export default {
             url:"/aaazyz",
             method:"get",
         }).then((ok)=>{
-            console.log(ok)
-            this.arr = ok.data.topic
+            this.arr = ok.data.topic.list
+            console.log(this.arr)
         })
     }
 }
