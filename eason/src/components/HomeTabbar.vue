@@ -9,15 +9,17 @@
           <span  class="Tabbar-text">科普</span>
         <img slot="icon" slot-scope="props" :src="props.active ? icon.active[1] : icon.normal[1]" fit="contain" width="30"  height="40"/>
       </van-tabbar-item>
-      <van-tabbar-item icon="setting-o"   to="/MyAdvice">
-          <span  class="Tabbar-text"> 我的咨询</span>
+      <van-tabbar-item icon="setting-o"   to="/MyAdvice/NowConsult">
+          <span  class="Tabbar-text "> 我的咨询</span>
         <img slot="icon" slot-scope="props" :src="props.active ? icon.active[2] : icon.normal[2]" fit="contain" width="30"  height="40"/>
       </van-tabbar-item>
-       <van-tabbar-item icon="setting-o"   to="/PersonalCenter">
+       <van-tabbar-item icon="setting-o"   to="/PersonalCentter">
            <span  class="Tabbar-text">个人中心</span>
         <img slot="icon" slot-scope="props" :src="props.active ? icon.active[3] : icon.normal[3]"   fit="contain" width="30"  height="40"/>
        </van-tabbar-item>
     </van-tabbar>
+    
+    
   </div>
 </template>
 <script> 
@@ -30,7 +32,8 @@ export default {
         active: ["../../static/w/b4x.png","../../static/w/b4t.png","../../static/w/b4z.png","../../static/w/b51.png"]
       }
     };
-  }
+  },
+
 };
 </script>
 
@@ -46,6 +49,20 @@ export default {
 }
 .Tool-out{
   padding-top: 55px;
-  border-top: 1px solid gainsboro;
+}
+.SencondNav-signle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.SencondNav-signle p{
+    font-size: 14px;
+    color: gray;
+    margin-top: 10px;
+}
+.SencondNav-out {
+  display: flex;
+  justify-content: space-around;
 }
 </style>

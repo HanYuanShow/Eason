@@ -16,6 +16,8 @@ import test from "../pages/test.vue"
 import password from "../pages/password.vue" 
 import ModifyPersonalInformation from "../pages/ModifyPersonalInformation.vue" 
 import Home from "../pages/Home"
+import AllHistory from "../components/AllHistory"
+import HistoryEnd from "../components/HistoryEnd"
 
 import MyAdvice from "../pages/MyAdvice"
 import NowConsult from "../components/NowConsult"
@@ -53,6 +55,16 @@ export default new Router({
       path:"/HistoryCode",
       name:"HistoryCode",
       component:HistoryCode
+    },
+    {
+      path:"/AllHistory",
+      name:"AllHistory",
+      component:AllHistory
+    },
+    {
+      path:"/HistoryEnd",
+      name:"HistoryEnd",
+      component:HistoryEnd
     },
     {
       path:"/MyAdvice",
@@ -172,10 +184,8 @@ export default new Router({
       name: 'ModifyPersonalInformation',
       component: ModifyPersonalInformation
     },
-    {
-      path:"/*",
-      redirect:"/Home"
-    },
+  
+
     {
       path: '/DrugStore',
       name: 'DrugStore',
@@ -190,6 +200,10 @@ export default new Router({
       path: '/DetailPage',
       name: 'DetailPage',
       component: DetailPage,
+    },
+    {
+      path:"/*",
+      redirect:"/Home"
     },
   ]
 })

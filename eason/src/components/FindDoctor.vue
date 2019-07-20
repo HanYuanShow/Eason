@@ -44,9 +44,9 @@
 export default {};
 </script>
 <style scoped>
-/* .Doctor{
-  padding-top: 80px;
-} */
+.Doctor{
+  padding-top: 70px;
+}
 .FindDoctor-out {
   display: flex;
 }

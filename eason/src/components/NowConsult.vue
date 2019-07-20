@@ -1,7 +1,7 @@
 <template>
     <div class="out">
         <div class="inner">
-              <van-image fit="fill" height="130" width="130" src="../../static/images/w/abo.png" />
+              <van-image fit="fill" height="92" width="100" src="../../static/images/w/abo.png" />
               <p>暂无进行中的服务</p>
               <span>快速提问</span>
         </div>

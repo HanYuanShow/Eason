@@ -63,6 +63,7 @@ export default {};
 </script>
 
 <style scoped>
+
 .HotSale-end{
     height: 8px;
     background-color: gainsboro;
