@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="rout">
         <NonTopicBanner></NonTopicBanner>
         <NonTopic :arr="arr"></NonTopic>
     </div>
@@ -20,7 +20,7 @@ export default {
     },
     created(){
         this.axios({
-            url:"/aaa/bbb",
+            url:"/aaazyz",
             method:"get",
         }).then((ok)=>{
             console.log(ok)

@@ -1,20 +1,19 @@
 <template>
-  <div id="app">
+  <div>
    
     <router-view/>
   </div>
-
-  
 </template>
 
 <script>
+
 export default {
 
 }
 </script>
 
 
-<style scoped>
+<style>
  *{
    margin: 0px;
    padding: 0px;
@@ -25,4 +24,11 @@ export default {
 ul,li{
   list-style: none;
 }
+
+li,ul{
+  list-style: none;
+}
+.rout{
+        margin-top:95px;
+    }
 </style>

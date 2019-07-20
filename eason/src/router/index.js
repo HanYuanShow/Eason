@@ -44,7 +44,12 @@ import Belt from '../components/symptomlist/belt'
 import Hip from '../components/symptomlist/hip'
 import SelfTest from '../pages/SelfTest'
 import DetailPage from '../pages/DetailPage'
+import Science from '../pages/Science'
+import ContentNews from '../pages/ContentNews'
+import ContentTopic from '../pages/ContentTopic'
+
 Vue.use(Router)
+
 export default new Router({
   routes: [
     {
@@ -116,24 +121,31 @@ export default new Router({
       path: '/autognosis',
       name: 'Autognosis',
       component: Autognosis,
+      path: '/Science',
+      name: 'Science',
+      component: Science,
       children:[
-        {path: '/symptomlist', name:'Symptomlist',component: Symptomlist,
-            children:[
-              {path:'/body',name:"Body",component:Body},
-              {path:'/skin',name:"Skin",component:Skin},
-              {path:'/head',name:"Head",component:Head},
-              {path:'/throat',name:"Throat",component:Throat},
-              {path:'/breast',name:"Breast",component:Breast},
-              {path:'/belly',name:"Belly",component:Belly},
-              {path:'/reproduction',name:"Reproduction",component:Reproduction},
-              {path:'/bone',name:"Bone",component:Bone},
-              {path:'/arm',name:"Arm",component:Arm},
-              {path:'/belt',name:"Belt",component:Belt},
-              {path:'/hip',name:"Hip",component:Hip},
-            ]
-      },
-      
-        {path: '/bodypic', name:'Bodypic',component: Bodypic}
+        {
+          path:'Hot',
+          name:'Hot',
+          component:()=>import('../components/ScienceBodyRouter/HotRouter')
+        },
+        {
+          path:'Topic',
+          name:'Topic',
+          component:()=>import('../components/ScienceBodyRouter/TopicRouter')
+        },
+        {
+          path:'Live',
+          name:'Live',
+          component:()=>import('../components/ScienceBodyRouter/LiveRouter')
+        },
+        {
+          path:'Sleep',
+          name:'Sleep',
+          component:()=>import('../components/ScienceBodyRouter/SleepRouter')
+        }
+        
       ]
     },
 
@@ -165,19 +177,19 @@ export default new Router({
       component: DrugStore,
     },
     {
-      path: '/SelfTest',
-      name: 'SelfTest',
-      component: SelfTest,
+      path:'/ContentTopic/:id',
+      name:'ContentTopic',
+      component:ContentTopic
     },
     {
-      path: '/DetailPage',
-      name: 'DetailPage',
-      component: DetailPage,
+      path:'/ContentNews/:id',
+      name:'ContentNews',
+      component:ContentNews
     },
     {
-      path:"/*",
+      path:"*",
       redirect:"/Home"
-    },
- 
+    }
   ]
+  
 })
