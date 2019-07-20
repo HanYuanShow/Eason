@@ -5,7 +5,7 @@
         </div>
         <div class="intr" v-html="introCon"></div>
         <slot name="morebtn"></slot>
-        <slot name="moreCon"></slot>
+        <slot name="moreCon" v-html="introCon"></slot>
     </div>
 </template>
 <script>

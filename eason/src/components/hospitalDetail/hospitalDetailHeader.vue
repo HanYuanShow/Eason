@@ -15,28 +15,31 @@
 export default {
   data() {
     return {
-      isTrue:false
+      isTrue:false,
+      // hospitalRankingList:[]
     }
   },
     props:{
       hospitalName:String,
-      hospitalRankingList:[Object,Array]
+      hospitalRankingList:Array
     },
     methods: {
       isloadMore(){
         this.isTrue = !this.isTrue;
-      }
+      },
     },
     computed: {
       hospitalRanking(){
-        console.log(this.hospitalRankingList)
+        // console.log(this.hospitalRankingList)
         if(this.isTrue){
           return this.hospitalRankingList;
         }else{
-          return this.hospitalRankingList.substring(0,4);
+          let ranking = this.hospitalRankingList
+          // this.hospitalRankingList = ranking.slice(0,4)
+          return this.hospitalRankingList;
         }
       }
-    },
+    }
 }
 
 </script>

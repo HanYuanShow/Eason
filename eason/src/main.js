@@ -8,6 +8,12 @@ import axios from 'axios'
 import Vant from 'vant';
 import 'vant/lib/index.css';
 
+import BaiduMap from 'vue-baidu-map'
+Vue.use(BaiduMap, {
+  // ak 是在百度地图开发者平台申请的密钥 详见 http://lbsyun.baidu.com/apiconsole/key */
+  ak: 'BUbSZS9mXUkBHimbs8jl4f5MT8OE5jQh'   //1ubvYueRQYZXdflH0GYULl4o
+})
+
 Vue.use(Vant);
 
 Vue.prototype.axios = axios
