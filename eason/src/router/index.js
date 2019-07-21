@@ -248,6 +248,8 @@ export default new Router({
       path: '/autognosis',
       name: 'Autognosis',
       component: Autognosis,
+    },
+    {
       path: '/Science',
       name: 'Science',
       component: Science,

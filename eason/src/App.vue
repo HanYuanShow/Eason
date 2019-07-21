@@ -31,4 +31,8 @@ ul,li{
 .rout{
         margin-top:95px;
     }
+.router-link-active {
+  text-decoration: none;
+  color: #111;
+}
 </style>

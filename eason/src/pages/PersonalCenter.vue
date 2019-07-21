@@ -6,12 +6,12 @@
           <img :src="imgs" alt @click="func()" />
         </div>
         <div class="center">
-          <div class="centerleft" @click="funa()">
-            <div class="toukuang" @click="funh()">
-              <img :src="imgs1" alt />
+          <div class="centerleft" >
+            <div class="toukuang" @click="funa()">
+              <img :src="imgs1" alt  />
             </div>
 
-            <span>登录/注册</span>
+            <span @click="funh()">登录/注册</span>
           </div>
 
           <div class="qiandao">
@@ -175,10 +175,7 @@ export default {
   border-top: 1px solid gainsboro;
 
 }
-.Tool-out{
-  /* padding-top: 55px; */
-  /* border-top: 1px solid gainsboro; */
-}
+
 
 .head {
   width: 100%;

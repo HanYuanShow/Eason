@@ -10,7 +10,7 @@
                     <input type="text" placeholder="请填写邮箱" class="text" v-model="email"/>
                 </div>
                 <span>{{ags}}</span>
-               <div >@click="funtest()"
+               <div @click="funtest()">
                 <input type="button"  value="获 取 验 证" class="submit"  
                 :disabled="disabled" @click="sendcode" >
                 </div>
@@ -49,6 +49,7 @@ export default {
 
            disabled:false,
                 time:0,
+                
           
            
         }

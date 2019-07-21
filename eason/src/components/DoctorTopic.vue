@@ -11,7 +11,7 @@
         </van-col>
 
         <van-col span="5">
-          <div>
+          <div @click="goMore()">
             <div class="HotSale-more">
               <span class="HotSale-text">更多</span>
               <van-image fit="fill" height="18" width="18" src="../../static/images/w/amr.png" />
@@ -63,6 +63,11 @@ export default {
         }).then((ok)=>{
             this.getcontent=ok.data.topic;
         })
+    },
+    methods: {
+      goMore(){
+        this.$router.push("/Science/Topic")
+      }
     },
 };
 </script>
