@@ -18,7 +18,7 @@
                     <div>
                         <img src="">
                         <span>{{arr.name}}</span>
-                        <span>原创</span>
+                        <span>原创啊</span>
                         <span>{{arr.time}}</span>
                     </div>
                     <div>
