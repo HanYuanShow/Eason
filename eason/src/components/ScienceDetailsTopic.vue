@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div>
-                        <span class="DetailsTopicEasonBottomConcern">+关注</span>
+                        <span class="DetailsTopicEasonBottomConcern">+ 关注</span>
                     </div>
                 </div>
 
@@ -85,6 +85,11 @@ export default {
         border-bottom:1px solid #dbdbdb;
         font-size:16px;
         color:#6bce72;
+        position:fixed;
+        top:0;
+        background: #ffffff;
+        width:100%;
+        box-sizing: border-box;
     }
     .ScienceDetails img {
         width:22px;
@@ -105,7 +110,7 @@ export default {
         vertical-align: middle;
     }
     .DetailsTopicBig{
-        padding:0 15px;
+        padding:10px 15px 0;
     }
     .DetailsTopicTitle{
         font-size:20px;
@@ -163,12 +168,14 @@ export default {
         font-size: 12px;
     }
     .DetailsTopicEasonBottomConcern{
+        display:inline-block;
         border:1px solid #6bce72;
         color:#6bce72;
         font-size: 14px;
         line-height:22px;
         padding:0 8px;
         border-radius: 2px;
+        
     }
     .DetailsTopicEasonBottomTextTwo{
         /* line-height:40px; */
