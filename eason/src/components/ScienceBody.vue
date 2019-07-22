@@ -22,7 +22,10 @@
                     <router-link to="/Science/Sleep"><p>糖尿病</p></router-link>
                 </div>
             </div>
-        <router-view></router-view>
+        <!-- <router-view></router-view> -->
+        <van-pull-refresh v-model="isLoading" @refresh="onRefresh" pulling-text="松开刷新数据" loading-text="正在加载" success-text="">
+            <router-view></router-view>
+        </van-pull-refresh>
     </div>
 </template>
 
@@ -31,13 +34,21 @@
 export default {
         data(){
             return {
-                value:""
+                value:"",
+                isLoading: false
             }
         },
         methods:{
             fun(){
                 this.$router.push('/Science/Hot')
-            }
+            },
+            onRefresh() {
+                    setTimeout(() => {
+                        this.$toast('刷新成功');
+                        this.isLoading = false;
+                        this.count++;
+                    }, 500);
+                }
         }
 }
 </script>
@@ -91,7 +102,7 @@ export default {
         width:100%;
         z-index: 1;
         box-sizing: border-box;
-        border-bottom:1px solid #e9e9e9;
+        border-bottom:1px solid #d9d9dd;
     }
     .commentInput{
         width:100%;
@@ -99,10 +110,10 @@ export default {
         border:1px solid #cdcdcd;
         line-height: 28px;
         text-indent: 15px;
-        background: #e9e9e9;
+        background: #f5f4f4;
     }
     .commentInput::-webkit-input-placeholder{
-         color:#b6b6bb; 
+         color:#d9d9dd; 
         padding-left:15px;
         
     }

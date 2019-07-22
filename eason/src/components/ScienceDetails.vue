@@ -6,9 +6,10 @@
             </div>
             <div class="ScienceDetailsRightBig">
                 <div class="ScienceDetailsRightone ScienceDetailsRight"><img src="../../static/w/asj.png"><p>{{arr.click.collectNumber}}</p></div>
-                <div class="ScienceDetailsRightone"><img src="../../static/w/a7r.png"><p>{{arr.click.transmitNumber}}</p></div>
+                <div class="ScienceDetailsRightone" ><img src="../../static/w/a7r.png"><p>{{arr.click.transmitNumber}}</p></div>
             </div>
         </div>
+        
         <div class="DetailsBody">
             <img class="ScienceDetailsTitleImg" :src="arr.imgurl">
             <div class="ScienceDetailsBody">
@@ -60,7 +61,7 @@
                 <p class="ScienceDetailsFootP">猜你还想读</p>
                 <div class="ScienceDetailsFoot">
                     <div>
-                        <img src="../../static/w/ac4.jpg">
+                        <img src="../../static/w/azc.png">
                     </div>
                     <div class="ScienceDetailsFootRight">
                         <p>标题啊</p>
@@ -69,7 +70,7 @@
                 </div>
                 <div class="ScienceDetailsFoot">
                     <div>
-                        <img src="../../static/w/ac4.jpg">
+                        <img src="../../static/w/azc.png">
                     </div>
                     <div class="ScienceDetailsFootRight">
                         <p>标题啊</p>
@@ -78,7 +79,7 @@
                 </div>
                 <div class="ScienceDetailsFoot">
                     <div>
-                        <img src="../../static/w/ac4.jpg">
+                        <img src="../../static/w/azc.png">
                     </div>
                     <div class="ScienceDetailsFootRight">
                         <p>标题啊</p>
@@ -86,13 +87,14 @@
                     </div>
                 </div>
             </div>
-            <div class="youzhandifang">
+            <!-- <div class="youzhandifang">
 
-            </div>
+            </div> -->
             <div class="comment">
                 <input class="commentInput" type="text" placeholder="评论一下~">
             </div>
         </div>
+        
     </div>
 </template>
 
@@ -104,7 +106,8 @@ export default {
     methods: {
         routerGo(){
             this.$router.go(-1)
-        }
+        },
+
     },
 }
 </script>
