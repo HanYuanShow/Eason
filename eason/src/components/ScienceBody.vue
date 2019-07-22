@@ -23,7 +23,7 @@
                 </div>
             </div>
         <!-- <router-view></router-view> -->
-        <van-pull-refresh v-model="isLoading" @refresh="onRefresh" pulling-text="松开刷新数据" loading-text="正在加载" success-text="">
+        <van-pull-refresh v-model="isLoading" @refresh="onRefresh" pulling-text="松开刷新数据" loading-text="正在加载">
             <router-view></router-view>
         </van-pull-refresh>
     </div>
