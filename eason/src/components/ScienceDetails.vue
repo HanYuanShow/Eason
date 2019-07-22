@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="Details">
         <div class="ScienceDetails">
             <div @click="routerGo()">
                 <span><img src="../../static/w/a61.png"></span>
@@ -9,87 +9,89 @@
                 <div class="ScienceDetailsRightone"><img src="../../static/w/a7r.png"><p>{{arr.click.transmitNumber}}</p></div>
             </div>
         </div>
+        <div class="DetailsBody">
             <img class="ScienceDetailsTitleImg" :src="arr.imgurl">
-        <div class="ScienceDetailsBody">
-            
-            <h3>{{arr.title}}</h3>
+            <div class="ScienceDetailsBody">
+                
+                <h3>{{arr.title}}</h3>
 
-            <div class="public">
-                <img :src="arr.click.logurl" class="publicLeft">
-                <div class="publicRigth">
-                    <div class="publicRigthTop">
-                        <span class="publicRigthTopLeft">{{arr.click.title}}</span>
-                        <span class="publicRigthTopRight">{{arr.click.subtitle}}</span>
-                    </div>
-                    <div class="publicRigthBottom">
-                        <span>{{arr.time}}</span>
+                <div class="public">
+                    <img :src="arr.click.logurl" class="publicLeft">
+                    <div class="publicRigth">
+                        <div class="publicRigthTop">
+                            <span class="publicRigthTopLeft">{{arr.click.title}}</span>
+                            <span class="publicRigthTopRight">{{arr.click.subtitle}}</span>
+                        </div>
+                        <div class="publicRigthBottom">
+                            <span>{{arr.time}}</span>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <p>{{arr.click.content}}</p>
-            <p class="urlmapDepot">图片来源:{{arr.click.mapDepot}}</p>
-            <img :src="arr.click.warrantyUrl" class="warrantyUrl">
-            <div class="praiseNumber">
-                <span class="praiseNumberLeft">{{arr.praiseNumber}}</span>
-                <span  class="praiseNumberRight">立即咨询</span>
+                <p>{{arr.click.content}}</p>
+                <p class="urlmapDepot">图片来源:{{arr.click.mapDepot}}</p>
+                <img :src="arr.click.warrantyUrl" class="warrantyUrl">
+                <div class="praiseNumber">
+                    <span class="praiseNumberLeft">{{arr.praiseNumber}}</span>
+                    <span  class="praiseNumberRight">立即咨询</span>
+                </div>
+
+                <div>
+                    <div class="shareBig">
+                        <img src="../../static/w/ay2.png" class="share">
+                        <span class="sharetwo">分享到</span>
+                        <img src="../../static/w/ay2.png" class="share">
+                    </div>
+                    
+                    <div class="sharepic">
+                        <img src="../../static/w/arp.png">
+                        <img src="../../static/w/arq.png">
+                        <img src="../../static/w/arl.png">
+                        <img src="../../static/w/aro.png">
+                    </div>
+                    <span class="sharepiclist" v-for="(v,i) in arr.click.smallLabel" :key="i">{{v.title}}</span>
+                </div>
+            </div>
+            <div class="zhandifang">
+
             </div>
 
             <div>
-                <div class="shareBig">
-                    <img src="../../static/w/ay2.png" class="share">
-                    <span class="sharetwo">分享到</span>
-                    <img src="../../static/w/ay2.png" class="share">
+                <p class="ScienceDetailsFootP">猜你还想读</p>
+                <div class="ScienceDetailsFoot">
+                    <div>
+                        <img src="../../static/w/ac4.jpg">
+                    </div>
+                    <div class="ScienceDetailsFootRight">
+                        <p>标题啊</p>
+                        <span>2019-07-19</span>
+                    </div>
                 </div>
-                
-                <div class="sharepic">
-                    <img src="../../static/w/arp.png">
-                    <img src="../../static/w/arq.png">
-                    <img src="../../static/w/arl.png">
-                    <img src="../../static/w/aro.png">
+                <div class="ScienceDetailsFoot">
+                    <div>
+                        <img src="../../static/w/ac4.jpg">
+                    </div>
+                    <div class="ScienceDetailsFootRight">
+                        <p>标题啊</p>
+                        <span>2019-07-19</span>
+                    </div>
                 </div>
-                <span class="sharepiclist" v-for="(v,i) in arr.click.smallLabel" :key="i">{{v.title}}</span>
+                <div class="ScienceDetailsFoot">
+                    <div>
+                        <img src="../../static/w/ac4.jpg">
+                    </div>
+                    <div class="ScienceDetailsFootRight">
+                        <p>标题啊</p>
+                        <span>2019-07-19</span>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="zhandifang">
+            <div class="youzhandifang">
 
-        </div>
-
-        <div>
-            <p class="ScienceDetailsFootP">猜你还想读</p>
-            <div class="ScienceDetailsFoot">
-                <div>
-                    <img src="../../static/w/ac4.jpg">
-                </div>
-                <div class="ScienceDetailsFootRight">
-                    <p>标题啊</p>
-                    <span>2019-07-19</span>
-                </div>
             </div>
-            <div class="ScienceDetailsFoot">
-                <div>
-                    <img src="../../static/w/ac4.jpg">
-                </div>
-                <div class="ScienceDetailsFootRight">
-                    <p>标题啊</p>
-                    <span>2019-07-19</span>
-                </div>
+            <div class="comment">
+                <input class="commentInput" type="text" placeholder="评论一下~">
             </div>
-            <div class="ScienceDetailsFoot">
-                <div>
-                    <img src="../../static/w/ac4.jpg">
-                </div>
-                <div class="ScienceDetailsFootRight">
-                    <p>标题啊</p>
-                    <span>2019-07-19</span>
-                </div>
-            </div>
-        </div>
-        <div class="youzhandifang">
-
-        </div>
-        <div class="comment">
-            <input class="commentInput" type="text" placeholder="评论一下~">
         </div>
     </div>
 </template>
@@ -118,6 +120,11 @@ export default {
         border-bottom:1px solid #dbdbdb;
         font-size:16px;
         color:#6bce72;
+        position: fixed;
+        top:0;
+        width:100%;
+        box-sizing: border-box;
+        background: #ffffff;
     }
     .ScienceDetailsRightBig{
         display: flex;
@@ -293,15 +300,18 @@ export default {
     }
     .youzhandifang{
         width:100%;
-        height:20px;
+        height:auto;
         background: #f3f3f3;
         border-bottom:1px solid #dedede;
     }
     .comment{
-        /* width:100%; */
         padding:7px 15px;
         background: #f0f0f0;
-        
+        position:fixed;
+        bottom:0;
+        width:100%;
+        z-index: 1;
+        box-sizing: border-box;
     }
     .commentInput{
         width:100%;

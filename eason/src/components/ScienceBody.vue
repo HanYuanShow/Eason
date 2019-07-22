@@ -1,10 +1,8 @@
 <template>
     <div>
-        
-        <div class="ScienceBody">
-            <div class=" ScienceBodytop">
-                <van-search placeholder="输入关键字搜索科普文章" v-model="value" shape="round" class="van-search-class"/>
-            </div>
+        <div class="commenttop">
+            <input class="commentInput" type="text" placeholder="输入关键字搜索科普文章">
+        </div>
             <div class="ScienceBodyTitleBox">
                 <div class="ScienceBodyTitle">
                     <router-link to="/Science/Hot"><p>热点</p></router-link>
@@ -24,7 +22,6 @@
                     <router-link to="/Science/Sleep"><p>糖尿病</p></router-link>
                 </div>
             </div>
-        </div>
         <router-view></router-view>
     </div>
 </template>
@@ -49,8 +46,12 @@ export default {
     .ScienceBodyTitleBox{
         overflow-x: auto;
         background: #ffffff;
-        /* opacity: 1; */
         width:100%;
+
+        position: fixed;
+        top:45px;
+        z-index:9999;
+        box-sizing: border-box;
     }
     .ScienceBodyTitle{
         display: flex;
@@ -72,11 +73,38 @@ export default {
     .van-search-class{
         border-bottom:1px solid #b2b2b2;
     }
-
-    .ScienceBody{
+    .ScienceBodytop{
+        box-sizing: border-box;
+    }
+    /* .ScienceBody{
         position: fixed;
+        top:45px;
+        z-index:9999;
+        box-sizing: border-box;
+    } */
+
+     .commenttop{
+        padding:7px 15px;
+        background: #ffffff;
+        position:fixed;
         top:0;
-        z-index:9999
+        width:100%;
+        z-index: 1;
+        box-sizing: border-box;
+        border-bottom:1px solid #e9e9e9;
+    }
+    .commentInput{
+        width:100%;
+        border-radius: 20px;;
+        border:1px solid #cdcdcd;
+        line-height: 28px;
+        text-indent: 15px;
+        background: #e9e9e9;
+    }
+    .commentInput::-webkit-input-placeholder{
+         color:#b6b6bb; 
+        padding-left:15px;
+        
     }
 </style>
 
