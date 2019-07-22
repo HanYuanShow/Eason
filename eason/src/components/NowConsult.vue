@@ -3,7 +3,10 @@
         <div class="inner">
               <van-image fit="fill" height="92" width="100" src="../../static/images/w/abo.png" />
               <p>暂无进行中的服务</p>
-              <span>快速提问</span>
+              <router-link to="/Question">
+                    <span>快速提问</span>
+              </router-link>
+              
         </div>
     </div>
 </template>

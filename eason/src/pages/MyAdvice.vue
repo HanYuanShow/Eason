@@ -1,21 +1,24 @@
 <template>
     <div>
            <AdviceNav></AdviceNav>
+           <MyAdviceTabbar></MyAdviceTabbar>
    
 
-            <HomeTabbar></HomeTabbar>
+
     </div>
 </template>
 <script>
 import AdviceNav from "../components/AdviceNav"
-import HomeTabbar from "../components/HomeTabbar"
+import MyAdviceTabbar from "../components/MyAdviceTabbar"
+
 
 
 
 export default {
     components:{
         AdviceNav,
-        HomeTabbar,
+        MyAdviceTabbar,
+   
     }
 }
 </script>

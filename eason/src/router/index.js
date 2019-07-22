@@ -71,6 +71,7 @@ import SpecialistDetails from "../pages/SpecialistDetails"
 import FindDoctor from "../pages/FindDoctor"
 import DoctorConsult from '../pages/DoctorConsult'
 import Question from '../pages/Question'
+import DiscussContent from '../components/DiscussContent'
 
 Vue.use(Router)
 
@@ -285,7 +286,7 @@ export default new Router({
           component:()=>import('../components/ScienceBodyRouter/ManRouter')
         },
 
-        
+       
       ]
     },
     {
@@ -381,9 +382,15 @@ export default new Router({
       component:HomeTabbar
     },
     {
+      path:"/DiscussContent",
+      name:"DiscussContent",
+      component:DiscussContent
+    },
+    {
       path:"/*",
       redirect:"/Home"
     }
+
   ]
 
 })

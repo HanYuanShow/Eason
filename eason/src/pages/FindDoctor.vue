@@ -39,6 +39,8 @@
                 <span class="keshiname">{{v.keshi}}</span>
             </li>
         </ul>
+
+           <div class="end"></div>
     </div>
 </template>
 
@@ -75,13 +77,21 @@ export default {
         this.$router.push("/DoctorConsult")
     }
   },
-  beforeCreate() {
-       document.querySelector('body').setAttribute('style', 'background:#f1f1f1')
-  }
+//   beforeCreate() {
+//        document.querySelector('body').setAttribute('style', 'background:#f1f1f1')
+//   }
 }
 </script>
 
 <style scoped>
+.end{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    background:#f0f0ee;
+    z-index: -1;
+}
 .keshi{
     font-size: 14px;
     font-weight: 800;

@@ -4,7 +4,10 @@
               <van-image fit="fill" height="70" width="95" src="../../static/images/w/ay_.png" />
               <p>暂无医生</p>
               <h6>关注或者购买过服务的医生将显示在这里</h6>
-              <span>去找医生</span>
+              <router-link to="/FindDoctor">
+                        <span>去找医生</span>
+              </router-link>
+          
         </div>
     </div>
 </template>

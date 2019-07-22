@@ -49,6 +49,7 @@
             <Doctortitle :title="keshi"></Doctortitle>
             <Doctorlist v-for="(v,i) in sarr" :key="i" :doctor_name="v.doctor_name" :disease_type="v.disease_type" :doctor_job="v.doctor_job"></Doctorlist> 
         </div>
+           <div class="end"></div>
     </div>
 </template>
 
@@ -135,13 +136,21 @@ export default {
             this.$router.go(-1);
         }
     },
-    beforeCreate() {
-       document.querySelector('body').setAttribute('style', 'background:#2e303d')
-  }
+//     beforeCreate() {
+//        document.querySelector('body').setAttribute('style', 'background:#2e303d')
+//   }
 }
 </script>
 
 <style scoped>
+.end{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+   background:#2e303d;
+    z-index: -1;
+}
 
 .van-icon-arrow-left:before {
     color: #6bce72;

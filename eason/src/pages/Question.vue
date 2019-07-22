@@ -1,6 +1,6 @@
 <template>
     <div class="box">
-        <div >
+        <div>
             <van-nav-bar
                 title="快速提问"
                 right-text="下一步"
@@ -23,6 +23,8 @@
                 <!-- <span class="note">上传相关图片(检查点、CT、病历、患处、药品等),春雨会确保您的隐私安全</span> -->
             </div>
         </div>
+        
+        <div class="end"></div>
     </div>
 </template>
 
@@ -45,13 +47,21 @@ export default {
             this.$router.push("/Bbb")
         }
     },
-    beforeCreate() {
-        document.querySelector('body').setAttribute('style', 'background:#f0f0ee')
-    }
+    // beforeCreate() {
+    //     document.querySelector('body').setAttribute('style', 'background:#f0f0ee')
+    // }
 }
 </script>
 
 <style scoped>
+.end{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    background:#f0f0ee;
+    z-index: -1;
+}
 .box{
     background: #ffffff;
 }

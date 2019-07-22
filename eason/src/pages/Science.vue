@@ -3,19 +3,21 @@
         
             <ScienceHeader></ScienceHeader>
             <ScienceBody></ScienceBody>
-            <HomeTabbar></HomeTabbar>
+            <ScienceTabbar></ScienceTabbar>
+           
         
     </div>
 </template>
 <script>
 import ScienceHeader from "../components/ScienceHeader"
 import ScienceBody from "../components/ScienceBody"
-import HomeTabbar from "../components/HomeTabbar"
+import ScienceTabbar from "../components/ScienceTabbar"
+
 export default {
     components:{
         ScienceHeader,
         ScienceBody ,
-        HomeTabbar
+        ScienceTabbar
     }
 }
 </script>

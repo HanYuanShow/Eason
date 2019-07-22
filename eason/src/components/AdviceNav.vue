@@ -7,8 +7,8 @@
 
             <div class="Advice-out">
                 
-                <router-link to="/MyAdvice/NowConsult" class="left">当前咨询</router-link>
-                <router-link to="/MyAdvice/MyDoctor" class="right">我的医生</router-link>
+                <router-link to="/MyAdvice/NowConsult" class="left" >当前咨询</router-link>
+                <router-link to="/MyAdvice/MyDoctor" class="right" >我的医生</router-link>
             </div>
 
         </van-col>
@@ -51,6 +51,9 @@ export default {
 </script>
 
 <style scoped>
+a{
+  color: rgb(39, 224, 39);
+}
 .more-out{
    display: flex;
     align-items: center;
@@ -96,7 +99,7 @@ export default {
     height: 30px;
     text-align: center;
     line-height: 30px;
-   /* color: rgb(39, 224, 39); */
+   /* color: white; */
    border: 1px solid rgb(39, 224, 39);
    border-top-left-radius: 10px;
    border-bottom-left-radius: 10px;

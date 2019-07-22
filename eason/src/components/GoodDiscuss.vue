@@ -23,7 +23,7 @@
        <div>
         <van-row type="flex" justify="center">
         <van-col span="23" offset="1">
-            <div v-for="(v,i) in getcontent" :key="i" class="out">
+            <div v-for="(v,i) in getcontent" :key="i" class="out" @click="send(v.content.id)">
                 <div class="Good-titel">
                      <van-image fit="fill" height="18" width="18" src="../../static/images/w/abv.png" />
                      <span class="Good-number">{{v.content.number}}</span>
@@ -69,7 +69,11 @@ export default {
         }).then((ok)=>{
             this.getcontent=ok.data.discuss.slice(0+num,4+num);
         })
+        },
+        send(num){
+            this.$router.push("DiscussContent?id="+num)
         }
+
     },
 
 };
