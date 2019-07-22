@@ -1,53 +1,61 @@
 <template>
-    <div>
+    <div class="Details">
         <div class="ScienceDetails"> 
             <div @click="routerGo()">
                 <span><img src="../../static/w/a61.png"></span>
             </div>
             <div>
-                <span class="ScienceDetailsRight"><img src="../../static/w/asj.png"><span class="ScienceDetailsRightone"></span></span>
-                <span ><img src="../../static/w/a7r.png"><span class="ScienceDetailsRightone"></span></span>
+                <span class="ScienceDetailsRight ScienceDetailsRightone"><img src="../../static/w/asj.png"><span>{{arr.click.collectNumber}}</span></span>
+                <span  class="ScienceDetailsRightone"><img src="../../static/w/a7r.png"><span>{{arr.click.collectNumber}}</span></span>
             </div>
         </div>
+        <div class="DetailsBody">
+            <div class="DetailsTopicBig">
+                <h3 class="DetailsTopicTitle">{{arr.title}}</h3>
 
-        <div class="DetailsTopicBig">
-            <h3 class="DetailsTopicTitle">{{arr.title}}</h3>
-
-            <div>
-                <div>
+                <div class="DetailsTopicEasonBig">
                     <div>
-                        <img src="">
-                        <span>{{arr.name}}</span>
-                        <span>原创啊</span>
-                        <span>{{arr.time}}</span>
+                        <div class="DetailsTopicEasonTop">
+                            <img :src="arr.imgurl" class="DetailsTopicEasonTopImg">
+                            <span class="DetailsTopicEasonTopName">{{arr.name}}</span>
+                            <span class="DetailsTopicEasonTopOriginal">原创</span>
+                            <span class="DetailsTopicEasonTopDate">{{arr.time}}</span>
+                        </div>
+                        <div class="DetailsTopicEasonBottom">
+                            <span class="DetailsTopicEasonBottomText">{{arr.desk}}</span>
+                            <span class="DetailsTopicEasonBottomText">{{arr.position}}</span>
+                            <span class="DetailsTopicEasonBottomText">{{arr.hospital}}</span>
+                        </div>
                     </div>
                     <div>
-                        <span>{{arr.desk}}</span>
-                        <span>{{arr.position}}</span>
-                        <span>{{arr.hospital}}</span>
+                        <span class="DetailsTopicEasonBottomConcern">+关注</span>
                     </div>
                 </div>
+
                 <div>
-                    关注
+                    <p>{{arr.click.content}}</p>
                 </div>
-            </div>
+                <div>
+                    <span class="DetailsTopicEasonBottomText DetailsTopicEasonBottomTextTwo">阅读{{arr.readNumber}}</span>
+                </div>
+                <!-- <div>
+                    
+                    <span>点赞{{arr.praiseNumber}}</span>
+                    <span>送心意</span>
+                    <span>立即咨询</span>
+                </div> -->
+                <div class="praiseNumber">
+                    <span class="praiseNumberLeft">{{arr.praiseNumber}}</span>
+                    <span class="praiseNumbermiddle">送心意</span>
+                    <span  class="praiseNumberRight">立即咨询</span>
+                </div>
 
-            <div>
-                <p>{{arr.click.content}}</p>
+                
+            
             </div>
-            <div>
-                <span>阅读{{arr.readNumber}}</span>
-            </div>
-            <div>
-                <span>点赞{{arr.praiseNumber}}</span>
-                <span>送心意</span>
-                <span>立即咨询</span>
-            </div>
-
-            <div>
-                <input type="text" value="添加评论">
-            </div>
-        
+        </div>
+        <div class="comment">
+            <input class="commentInput" type="text" placeholder="评论一下~">
         </div>
     </div>
     
@@ -87,7 +95,14 @@ export default {
     }
     .ScienceDetailsRightone{
         line-height: 21px;
-        color:black
+        color:black;
+        vertical-align: middle;
+    }
+    .ScienceDetailsRightone span{
+        vertical-align: middle;
+    }
+    .ScienceDetailsRightone img{
+        vertical-align: middle;
     }
     .DetailsTopicBig{
         padding:0 15px;
@@ -96,6 +111,120 @@ export default {
         font-size:20px;
         letter-spacing:5px;
     }
+    .comment{
+        padding:7px 15px;
+        background: #f0f0f0;
+        position:fixed;
+        bottom:0;
+        width:100%;
+        z-index: 1;
+        box-sizing: border-box;
+    }
+    .commentInput{
+        width:100%;
+        border-radius: 20px;;
+        border:1px solid #cdcdcd;
+        line-height: 28px;
+        text-indent: 15px;
+    }
+    .commentInput::-webkit-input-placeholder{
+         color:#7f7f7f; 
+        padding-left:15px;
+    }
+    .DetailsTopicEasonBig{
+        display: flex;
+        justify-content: space-between;
+        padding:18px 0;
+    }
+    .DetailsTopicEasonTopImg{
+        width:24px;
+        height:24px;
+        vertical-align: middle;
+    }
+    .DetailsTopicEasonTopName{
+        font-size: 15px;
+        font-weight: 600;
+        /* vertical-align: middle; */
+    }
+    .DetailsTopicEasonTopOriginal{
+        border: 1px solid #9a9a9a;
+        border-radius: 10px;
+        color:#9a9a9a;
+        padding:0 5px;
+        font-size: 12px;
+        margin:0 5px;
+    }
+    .DetailsTopicEasonTopDate{
+        color:#9a9a9a;
+        font-size: 12px;
+    }
+    .DetailsTopicEasonBottomText{
+        color:#9a9a9a;
+        font-size: 12px;
+    }
+    .DetailsTopicEasonBottomConcern{
+        border:1px solid #6bce72;
+        color:#6bce72;
+        font-size: 14px;
+        line-height:22px;
+        padding:0 8px;
+        border-radius: 2px;
+    }
+    .DetailsTopicEasonBottomTextTwo{
+        /* line-height:40px; */
+        display: inline-flex;
+        margin:40px 0;
+    }
+
+    .praiseNumber{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom:20px;
+    }
+    .praiseNumbermiddle{
+        display: inline-block;
+        background:url(../../static/w/asc.png) no-repeat 15px 10px;
+        background-size:14px auto;
+        width:97px;
+        height:35px;
+        color:#ec704a;
+        border-radius: 18px;
+        border:1px solid #ec704a;
+        text-indent:40px; 
+        box-sizing: border-box;
+        font-size:12px;
+        line-height:35px;
+    }
+    .praiseNumberLeft{
+        display: inline-block;
+        background:url(../../static/w/avc.png) no-repeat 15px 10px;
+        background-size:14px auto;
+        width:97px;
+        height:35px;
+        color:#bababa;
+        border-radius: 18px;
+        border:1px solid #bababa;
+        text-indent:40px; 
+        box-sizing: border-box;
+        font-size:12px;
+        line-height:35px;
+    }
+    /* b5q.9.png */
+    .praiseNumberRight{
+        display: inline-block;
+        background:url(../../static/w/ag4.png) no-repeat 15px 10px;
+        background-size:14px auto;
+        width:97px;
+        height:35px;
+        color:#75de7e;
+        border-radius: 18px;
+        border:1px solid #75de7e;
+        text-indent:32px;
+        box-sizing: border-box;
+        font-size:12px;
+        line-height:35px;
+    }
+    
 </style>
 
 

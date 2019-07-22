@@ -29,6 +29,12 @@ ul,li{
   list-style: none;
 }
 .rout{
-        margin-top:95px;
+        margin-top:85px;
     }
+.Details{
+  margin-bottom:70px;
+}
+.DetailsBody{
+  margin-top:45px;
+}
 </style>
