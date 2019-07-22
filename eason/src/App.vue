@@ -29,10 +29,16 @@ ul,li{
   list-style: none;
 }
 .rout{
-        margin-top:95px;
+        margin-top:85px;
     }
 .router-link-active {
   text-decoration: none;
   color: #111;
+}
+.Details{
+  margin-bottom:70px;
+}
+.DetailsBody{
+  margin-top:45px;
 }
 </style>
