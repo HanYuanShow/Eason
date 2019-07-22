@@ -35,6 +35,9 @@ export default {
     //     return newarr;
     //     },
     // },
+    filters:{
+        
+    }
 }
 </script>
 
