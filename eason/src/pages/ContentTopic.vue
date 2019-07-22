@@ -19,7 +19,7 @@ export default {
     computed:{
         topiclistiddetails(){
             var add = this.arr.filter((v,i)=>{
-                if(this.topicid == v.id){n
+                if(this.topicid == v.id){
                     return v
                 }
             })
