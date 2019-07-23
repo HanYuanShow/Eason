@@ -44,7 +44,7 @@ export default {
             this.$router.go(-1);
         },
         onClickRight(){
-            this.$router.push("/Bbb")
+            this.$router.push("/DoctorList")
         }
     },
     // beforeCreate() {
