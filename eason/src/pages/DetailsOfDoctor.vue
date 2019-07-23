@@ -1,0 +1,364 @@
+<template>
+    <div>
+        <!-- 导航 -->
+        <div class="topbox">
+            <div class="daohang">
+                <van-icon name="arrow-left" class="leftarrow" @click="back()"/>
+                <img src="../../static/images/a/share.png" class="share">
+            </div>
+        </div>
+        <!-- 医生信息绿色 -->
+        <div class="doctorbox" @click="DoctorIntroduce()">
+            <div class="headpic"><img src="../../static/images/w/a3c.png" alt=""></div>
+            <div class="doctorintro">
+                <ul>
+                    <li>
+                        <h4 class="doctorname">李洁</h4>
+                    </li>
+                    <li class="doctorkind">
+                        新生儿科 主治医师
+                    </li>
+                    <li class="doctorlabel">
+                        <span class="label">知名医院</span>
+                        <span class="label">从业14年</span>
+                        <span class="label">北京市</span>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <van-icon name="arrow" class="rightarrow"/>
+            </div>
+        </div>
+        <!-- 咨询信息 -->
+        <div class="doctorconsult">
+            <span>
+                <div>
+                    <p class="num">28296</p>
+                    <span class="per">次</span>
+                </div>
+                <p class="context">咨询人数</p>
+            </span>
+            <span>
+                <div>
+                    <p class="num">96.7</p>
+                    <span class="per">%</span>
+                </div>
+                <p class="context">好评率</p>
+            </span>
+            <span>
+                <div>
+                    <p class="num">100</p>
+                    <span class="per">分</span>
+                </div>
+                <p class="context">同行认可</p>
+            </span>
+        </div>
+        <!-- 轮播图类 -->
+        <div class="lunbox">
+            <div class="lun">
+                <ul>
+                    <li :class="{newlunli:newindex==i}" class="lunli" v-for="(v,i) in consultarr" :key="i" @click="lunli(i,v.title)">
+                        <p class="lunp">{{v.title}}</p>
+                        <img :src="v.imgurl" class="lunpic">
+                        <p class="lunp">111</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <hr/>
+        <!-- 医生擅长 -->
+        <div @click="DoctorIntroduce()">
+            <div class="goodat">
+                <p class="goodatp">医生擅长</p>
+                <van-icon name="arrow" class="right"/>
+            </div>
+            <div class="goodattext">
+                <div class="goodatcontent">
+                    同行业感人的故事大概地方个地方官不让他不会让他发给你合同法混凝土任何表示认同环保法规和别人说不好上投入和别人还不认识g太容易退哦了可以不得分不好闺蜜聚会面积和姐妹们空域结构和南方的风险还不如不放大部分国人大哥不会辅助设备个人素质
+                </div>
+                
+            </div>
+        </div>
+        <hr/>
+        <!-- 热度咨询 -->
+        <div>
+            <div class="goodat">
+                <p class="goodatp">热度咨询</p>
+                <van-icon name="arrow" class="right"/>
+            </div>
+            <div class="goodattext">
+                热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询
+            </div>
+        </div>
+        <hr/>
+        <!-- 执业医院 -->
+        <div>
+            <div class="goodat">
+                <p class="goodatp">执业医院</p>
+            </div>
+            <div class="goodattext">
+                北京大学人民医院
+            </div>
+        </div>
+        <hr/>
+        <!-- 医生话题 -->
+        <div>
+            <div class="goodat">
+                <p class="goodatp">医生话题</p>
+                <van-icon name="arrow" class="right"/>
+            </div>
+            <div class="goodattext">
+                医生话题医生话题医生话题医生话题医生话题医生话题医生话题医生话题医生话题医生话题医生话题医生话题医生话题医生话题
+            </div>
+        </div>
+        <hr/>
+        <!-- 医生寄语 -->
+        <div>
+            <div class="goodat">
+                <p class="goodatp">医生寄语</p>
+            </div>
+            <div class="goodattext">
+                医生寄语医生寄语医生寄语医生寄语医生寄语医生寄语医生寄语医生寄语医生寄语医生寄语医生寄语医生寄语医生寄语医生寄语
+            </div>
+        </div>
+        <hr/>
+        <!-- 底部关注栏 -->
+        <div class="bottomnav">
+            <div class="guanzhu">
+                <div :class="style?'star':'newstar'" @click="guanzhu()"></div>
+                <span class="guanzhutxt">{{style?"关注":"已关注"}}</span>
+            </div>
+            <div class="zixunbtn">{{newtitle}}</div>
+        </div>
+    </div>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            consultarr:[
+                {title:"图文咨询",imgurl:"../../static/images/a/z1.png"},
+                {title:"电话咨询",imgurl:"../../static/images/a/z2.png"},
+                {title:"私人医生",imgurl:"../../static/images/a/z3.png"},
+                {title:"院后指导",imgurl:"../../static/images/a/z4.png"},
+                {title:"预约就诊",imgurl:"../../static/images/a/z5.png"},
+                {title:"视频咨询",imgurl:"../../static/images/a/z6.png"}
+            ],
+            newindex: 0,
+            style:true,
+            newtitle:''
+
+        }
+    },
+    created() {
+        this.newtitle=this.consultarr[0].title;
+    },
+    methods: {
+        lunli(i,title){
+            this.newindex=i;
+            this.newtitle=title;
+        },
+        DoctorIntroduce(){
+            this.$router.push("/DoctorIntroduce")
+        },
+        guanzhu(){
+            this.style=!this.style;
+        },
+        back(){
+            this.$router.go(-1);
+        }
+    }
+}
+</script>
+
+<style scoped>
+.guanzhutxt{
+    display: block;
+    font-size: 12px;
+    color: #666666;
+}
+.star{
+    width: 100%;
+    height:24px;
+    background:url(../../static/images/a/star.png) no-repeat 50% 0;
+    background-size: 24px;
+}
+.newstar{
+    width: 100%;
+    height:24px;
+    background:url(../../static/images/a/star1.png) no-repeat 50% 0;
+    background-size: 24px;
+}
+.bottomnav{
+    display: flex;
+    position: sticky;
+    bottom: 0px;
+}
+.guanzhu{
+    width: 30%;
+    padding: 3px 0 1px;
+    text-align: center;
+    background: #ffffff;
+}
+.zixunbtn{
+    background: #69cc75;
+    flex: auto;
+    padding: 5px 10px;
+    text-align: center;
+    font-size: 16px;
+    color: #ffffff;
+    line-height: 30px;
+}
+hr{
+    height: 8px;
+    background: #f0f0ee;
+    border: none;
+}
+.goodat{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+}
+.goodatp{
+    font-size: 14px;
+    color: #666666;
+}
+.goodattext{
+    font-size: 14px;
+    color: #666666;
+    padding: 0 15px 15px;
+}
+.goodatcontent{
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.right{
+    color: #e0e0e0;
+    /* vertical-align: middle; */
+}
+.lunbox{
+    margin: 15px 15px;
+    overflow: auto;
+}
+.lun{
+    width:700px;
+    text-align: center;
+    /* padding: 10px; */
+}
+.lunli{
+    width: 86px;
+    float: left;
+    padding: 5px 0;
+}
+.newlunli{
+    width: 86px;
+    background: #dbf4e1 url(../../static/images/a/okgreen.png) no-repeat 70px 3px;
+    background-size: 12px;
+    float: left;
+    padding: 5px 0;
+    border-radius: 5px;
+}
+.lunp{
+    font-size: 12px;
+    color: #c1c1c1;
+}
+.lunpic{
+    width: 25px;
+    height: 25px;
+    margin: 5px 0;
+}
+.rightarrow{
+    font-size: 14px;
+    color: #ffffff;
+    padding-top: 30px;
+}
+.num{
+    float: left;
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: 800;
+}
+.context{
+    font-size: 12px;
+    color: #ffffff;
+    margin-top: 5px;
+}
+.per{
+    font-size: 12px;
+    color: #ffffff;
+}
+.doctorconsult{
+    display: flex;
+    justify-content: space-around;
+    background: #69cc75;
+    text-align: center;
+    padding: 10px 0 15px;
+}
+.topbox{
+    background: #69cc75;
+    padding: 10px 15px 10px 10px;
+}
+.daohang{
+    display: flex;
+    justify-content: space-between;
+}
+.leftarrow{
+    font-size: 22px;
+    color: #ffffff;
+}
+.share{
+    width: 22px;
+    height: 22px;
+}
+.doctorlabel{
+    line-height: 30px;
+    padding-bottom: 5px;
+}
+.label{
+    padding: 2px 5px;
+    font-size: 12px;
+    color: #69cc75;
+    background: #ffffff;
+    border-radius: 2px;
+    margin-right: 5px;
+    font-weight: 800;
+}
+
+.okok{
+    font-size: 14px;
+    color: #666666;
+    font-weight: 800;
+}
+.doctorhospital{
+    font-size: 14px;
+    color: #666666;
+}
+.doctorname{
+    margin-right: 20px;
+    font-weight: 800;
+    color: #ffffff;
+}
+.doctorkind{
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: 800;
+}
+.doctorbox{
+    display: flex;
+    background: #69cc75;
+    padding: 0 10px;
+}
+.headpic{
+    width: 25%;
+    border-radius: 0 0 0 5px;
+    text-align: center;
+}
+.doctorintro{
+    line-height: 25px;
+    width: 70%;
+}
+</style>

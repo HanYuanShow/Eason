@@ -76,11 +76,17 @@ import Diagnose from '../pages/Diagnose'
 import DoctorList from '../pages/DoctorList'
 import DoctorIntroduce from '../pages/DoctorIntroduce'
 import DoctorKoubei from '../pages/DoctorKoubei'
+import DetailsOfDoctor from '../pages/DetailsOfDoctor'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path: '/DetailsOfDoctor',
+      name: 'DetailsOfDoctor',
+      component: DetailsOfDoctor
+    },
     {
       path: '/DoctorKoubei',
       name: 'DoctorKoubei',
