@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <div class="buyMedicines">
         <div class="seek-medicine">
-            <Nav></Nav>
+            <Nav1>{{title}}</Nav1>
             <div class="seek-input">
                   <!-- <input type="text" name="search" placeholder="请输入药品名"/> -->
                   <van-search placeholder="请输入药品名" v-model="value" />
@@ -10,34 +10,34 @@
         </div>
         <!-- 科类 -->
         <div class="con">
-            <DrugList  class="cop" v-for="(v,i) in arr.drugList" :key="i" :url="v.url" :title="v.title"></DrugList>
+            <DrugList  class="cop" v-for="(v,i) in itemList" :key="i" :urls="v.urls" :title="v.title"></DrugList>
         </div>
         <!-- 基本药品介绍 -->
-        <div clss="drug-cons">
-              <div class="drug-left" >
+        <div class="drug-cons">
+              <div class="drug-left">
                   <!-- 通过遍历获取数据 -->
-                <Medicine v-for="(v,i) in arr.medicine" :key="i" :url="v.url" :medicineBriefa="v.medicineBrief.name" :medicineBriefb="v.medicineBrief.standards" :price="v.price"></Medicine>
-            </div>
-            <div class="drug-left">
-                <Medicine v-for="(v,i) in arr.medicine" :key="i" :url="v.url" :medicineBriefa="v.medicineBrief.name" :medicineBriefb="v.medicineBrief.standards" :price="v.price"></Medicine>
+                <Medicine class="drugItrm" v-for="(v,i) in medicineList" :key="i" :url="v.url" :medicineBriefa="v.medicineBrief.name" :medicineBriefb="v.medicineBrief.standards" :price="v.price"></Medicine>
             </div>
         </div>
       
     </div>
 </template>
 <script>
-import Nav from "../components/nav"
+import Nav1 from "../components/nav1"
 import DrugList from "../components/drugList"
 import Medicine from "../components/medicine"
 export default {
       data(){
         return{
             value:"",
+            title:"快速购药",
+            itemList:{},
+            medicineList:[],
             arr:[]
         }
     },
     components:{
-        Nav,
+        Nav1,
         DrugList,
         Medicine
 
@@ -47,14 +47,21 @@ export default {
             url:"/link/data",
             method:"get"
         }).then((ok)=>{
-            this.arr=ok.data.buyMedicine[0]
-            console.log(this.arr)
+            this.arr=ok.data.buyMedicine[0];
+            this.itemList = this.arr.drugList[0];
+            this.medicineList=ok.data.medicines;
+            console.log(this.itemList)
         })
-    }
+    },
+    
   
 }
 </script>
 <style scoped>
+.drugItrm{float: left;}
+.buyMedicines{
+    overflow: hidden;
+}
 .seek-input{
     margin-top:26px;
   
@@ -76,21 +83,22 @@ export default {
 /* 八个科室的样式 */
 .cop{
     float: left;
-    /* width: 100%; */
+    margin-bottom: 20px;
 }
 .con{
      border-bottom:6px solid #f1f1f1;
      overflow: hidden;
      padding: 0 21px;
-     margin:0 auto;
+     text-align: center;
+     margin: 8px 0;
 }
 /* 基本药品介绍 */
 .drug-cons{
-   
+   padding:0 13px;
     overflow: hidden;
 }
 .drug-left{
     float:left;
-     overflow: hidden;
+    /* width: 50%; */
 }
 </style>

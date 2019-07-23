@@ -1,15 +1,23 @@
 <template>
     <div>
-        <Bottombar ></Bottombar>
-      
+        <ShopStoreItem ></ShopStoreItem>
     </div>
 </template>
 <script>
-import Bottombar from "../components/bottombar"
+import ShopStoreItem from "../components/shopStoreItem"
+
 export default {
+    data(){
+        return{
+            arr:[]
+        }
+    },
     components:{
-       Bottombar
-    }
+       ShopStoreItem
+      
+    },
+    
+   
 }
 </script>
 <style scoped>

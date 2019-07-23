@@ -4,6 +4,12 @@ Vue.use(Vuex)
 
 export const store= new Vuex.Store({
     state:{
-        axiosdata:[]
+        axiosdata:[],
+        info:""
+    },
+    mutations:{
+        cartMutation(state,value){
+           state = value
+        }
     }
 })

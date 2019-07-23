@@ -1,6 +1,6 @@
 <template>
     <div class="drug-box">
-        <div class="drug-con">
+        <div class="drug-con" @click="funMedicine()">
              <img :src="url" />
              <div class="drugP">
                     <p>{{medicineBriefa}}</p>
@@ -19,6 +19,12 @@ export default {
         medicineBriefa:String,
         medicineBriefb:String,
         price:String
+    },
+    methods:{
+    funMedicine(){
+        this.$router.push("/shopStore");
+    }
+
     }
 }
 </script>
@@ -46,5 +52,23 @@ export default {
     width:130px;
     height:72px;
     display:inline-block;
+    margin-top: 16px;
+    padding-left: 10px
+}
+.drugP{
+     margin-top:14px;
+}
+.drugP p{
+    font-size:16px;
+    color:#1a1a1a;
+   line-height:36px;
+    white-space: nowrap;
+    padding-left: 10px
+}
+.drug-con span{
+    color:#f09a7e;
+    font-size:16px;
+    margin-top:14px;
+    display:block
 }
 </style>

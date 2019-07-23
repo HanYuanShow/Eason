@@ -1,15 +1,21 @@
 <template>
-    <div class="drug-list">
-        <img :src="url" />
+    <div class="drug-list" @click="fundrug(title)"> 
+        <img :src="urls" />
         <span>{{title}}</span>
     </div>
 </template>
 <script>
 export default {
     props:{
-        url:String,
+        urls:String,
         title:String
-    }
+    },
+    methods: {
+        fundrug(i){
+            console.log(i)
+            this.$router.push("/drugDetails?title="+i)
+        }
+    },
 }
 </script>
 <style scoped>

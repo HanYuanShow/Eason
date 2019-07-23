@@ -1,12 +1,12 @@
 <template>
     <div class="drug">
-        <div class="drugLeft">
+        <div class="drugLeft"  @click="clickDrugfun()">
             <div class="left-drug">
                 <img :src="url" />
             </div>
             
         </div>
-        <div class="drugRright">
+        <div class="drugRright"  @click="clickDrugfun()">
             <span class="span1">{{name}} {{standards}}</span>
             <p>{{content}}</p>
             <span class="span2">￥{{price}}</span>
@@ -28,7 +28,11 @@ export default {
         standards:String,
         price:String
     },
-    
+    methods:{
+        clickDrugfun(){
+            this.$router.push("/shopStore")
+        }
+    }
     
 }
 </script>
@@ -40,6 +44,7 @@ export default {
         justify-content: space-between;
         align-items: center;
         margin-top:15px;
+        padding: 0 16px;
 }
 .drug img{
    width:90px;

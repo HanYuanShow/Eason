@@ -1,23 +1,25 @@
 <template>
     <div class="nav">
         <van-nav-bar
-            title="快速购药"
+            title="益丰大药房"
             left-text="返回"
             right-text=""
             left-arrow
             @click-left="onClickLeft"
-            @click-right="onClickRight"
             />
     </div>
 </template>
 <script>
 export default {
+    data(){
+        return{
+            title:""
+        }
+    },
      methods: {
             onClickLeft() {
-            Toast('返回');
-            },
-            onClickRight() {
-            Toast('按钮');
+            // Toast('返回');
+             this.$router.go(-1);
             }
         }
 }
