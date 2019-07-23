@@ -16,15 +16,15 @@ Vue.use(BaiduMap, {
 // import { PasswordInput, NumberKeyboard } from 'vant';
 
 // Vue.use(PasswordInput).use(NumberKeyboard);
+import Vant from 'vant';
+import 'vant/lib/index.css';
+
+Vue.use(Vant);
 
 Vue.prototype.axios = axios
 require('./mock')
 import {store} from './store/store'
 Vue.config.productionTip = false
-
-import Vant from 'vant';
-import 'vant/lib/index.css';
-Vue.use(Vant);
 
 /* eslint-disable no-new */
 new Vue({

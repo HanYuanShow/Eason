@@ -11,3 +11,4 @@ Mock.mock("/reqHospitalData/search","get",require("./json/goodHospital"))
 Mock.mock("/reqHospitalData/hospitalDetail","get",require("./json/hospitalDetail"))
 Mock.mock("/reqHospitalData/hospitalIntro/","get",require("./json/hospitalDetail"))
 
+Mock.mock("/link/data","get",require("./json/data3"))

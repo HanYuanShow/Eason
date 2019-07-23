@@ -1,8 +1,8 @@
 <template>
     <div class="nav">
         <van-nav-bar
-            title="快速购药"
-            left-text="返回 关闭"
+            title="益丰大药房"
+            left-text="返回"
             right-text=""
             left-arrow
             @click-left="onClickLeft"
@@ -11,11 +11,16 @@
 </template>
 <script>
 export default {
+    data(){
+        return{
+            title:""
+        }
+    },
      methods: {
             onClickLeft() {
             // Toast('返回');
-            this.$router.go(-1)
-            },
+             this.$router.go(-1);
+            }
         }
 }
 </script>
