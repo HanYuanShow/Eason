@@ -1,14 +1,10 @@
 <template>
     <div class="onlineDoctor">
-        <div class="online-title">
-            <h3>在线医生</h3>
-            <a href="#">更多</a>
-        </div>
         <ul class="doctorList">
-            <li class="doctorItem" v-for="(v,i) in onlineDoctor" :key="i" @click="toDoctorDetail(v.id)">
+            <li class="doctorItem" v-for="(v,i) in doctorItems" :key="i">
                 <div class="doctorPic"><img :src="v.photo" :alt="v.doctorName"></div>
                 <div class="doctorIntr">
-                    <p class="doctorName"><span>{{v.doctorName}}</span><span>{{v.theTitle}}</span></p>
+                    <p class="doctorName"><span>{{v.doctorName}}</span><span>{{v.inDepartment}}</span><span>{{v.theTitle}}</span></p>
                     <p class="inHospital">{{v.inHospital}}</p>
                     <p class="goodAt">{{v.goodAT|goodAtFilter}}</p>
                 </div>
@@ -19,7 +15,7 @@
 <script>
 export default {
     props:{
-        onlineDoctor:[Object,Array]
+        doctorItems:Array
     },
     filters:{
         goodAtFilter(val){
@@ -29,12 +25,7 @@ export default {
                 return val
             }
         }
-    },
-    methods: {
-        toDoctorDetail(id){
-            this.$router.push("/DoctorDetails?id="+id);
-        }
-    },
+    }
 }
 </script>
 <style scoped>
@@ -43,19 +34,7 @@ export default {
     overflow: hidden;
     margin-bottom: 10px;
 }
-.online-title{
-    padding: 15px;
-    overflow: hidden;
-}
-.online-title h3,.online-title a{
-    font-weight: normal;
-    font-size: 16px;
-    color: #666;
-    float: left;
-}
-.online-title a{
-    float:right;
-}
+
 .doctorList{
     padding: 0 15px;
 }
@@ -82,12 +61,14 @@ export default {
     border-radius: 30px;
 }
 .doctorName span{
+    font-size: 14px;
+    color: #666;
+    margin-right: 15px;
+}
+.doctorName span:first-of-type{
     font-size: 16px;
     color: #323232;
-}
-.doctorName span:last-of-type{
-    font-size: 14px;
-    margin-left: 15px;
+    margin-right: 15px;
 }
 .inHospital,.goodAt{
     font-size: 14px;

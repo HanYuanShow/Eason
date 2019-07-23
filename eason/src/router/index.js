@@ -127,7 +127,7 @@ export default new Router({
       component: Specialist
     },
     {
-      path: '/SpecialistDetails',
+      path: '/SpecialistDetails/:id',
       name: 'SpecialistDetails',
       component: SpecialistDetails
     },
@@ -135,6 +135,11 @@ export default new Router({
       path: '/Home',
       name: 'Home',
       component: Home
+    },
+    {
+      path: '/Question',
+      name: 'Question',
+      component: Question
     },
     {
       path: '/hospitaDetails/:clickId',

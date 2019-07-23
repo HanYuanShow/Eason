@@ -11,7 +11,7 @@
             <Select></Select>
         </div>
         <ul>
-            <li class="hospitalList" v-for="(v,i) in hospitalData" :key="i">{{v.hospitalName}}</li>
+            <li class="hospitalList" @click="hospitalDoctor(v.id)" v-for="(v,i) in hospitalData" :key="i">{{v.hospitalName}}</li>
         </ul>
     </div>
   </div>
@@ -37,13 +37,18 @@ export default {
   
   created() {
     this.axios({
-      url: "/reqHospitalData",
+      url: "/reqHospitalData/search",
       method: "get"
     }).then(ok => {
-      this.hospitalData = ok.data;
+      this.hospitalData = ok.data.hospital;
       console.log(this.hospitalData);
     });
-  }
+  },
+  methods: {
+    hospitalDoctor(id){
+      this.$router.push("/SpecialistDetails/"+id);
+    }
+  },
 };
 </script>
 
