@@ -1,4 +1,5 @@
 <template>
+<!-- 找医生 -->
     <div>
         <!-- 导航 -->
         <van-nav-bar
@@ -21,7 +22,7 @@
                         <span class="more">更准确 更放心</span>
                     </div>
                 </li>
-                <li class="mingyi-li2">
+                <li class="mingyi-li2" @click="Diagnose()">
                     <div class="leftdiv2"></div>
                     <div class="rightdiv">
                         <p class="zixun">今日义诊</p>
@@ -34,7 +35,7 @@
         <!-- 按科室找医生 -->
         <p class="keshi">按科室找医生</p>
         <ul>
-            <li class="perkeshi" v-for="(v,i) in arr" :key="i">
+            <li class="perkeshi" v-for="(v,i) in arr" :key="i" @click="doctorlist(v.keshi,v.id)">
                 <img :src="v.imgurl" class="keshipic">
                 <span class="keshiname">{{v.keshi}}</span>
             </li>
@@ -47,23 +48,23 @@ export default {
     data() {
         return {
             arr:[
-                {imgurl:"../../static/images/a/1.png",keshi:"妇科"},
-                {imgurl:"../../static/images/a/2.png",keshi:"儿科"},
-                {imgurl:"../../static/images/a/3.png",keshi:"皮肤性病科"},
-                {imgurl:"../../static/images/a/4.png",keshi:"内科"},
-                {imgurl:"../../static/images/a/5.png",keshi:"男科"},
-                {imgurl:"../../static/images/a/6.png",keshi:"产科"},
-                {imgurl:"../../static/images/a/7.png",keshi:"外科"},
-                {imgurl:"../../static/images/a/8.png",keshi:"中医科"},
-                {imgurl:"../../static/images/a/9.png",keshi:"骨伤科"},
-                {imgurl:"../../static/images/a/10.png",keshi:"精神心理科"},
-                {imgurl:"../../static/images/a/11.png",keshi:"口腔额面科"},
-                {imgurl:"../../static/images/a/12.png",keshi:"眼科"},
-                {imgurl:"../../static/images/a/13.png",keshi:"耳鼻咽喉科"},
-                {imgurl:"../../static/images/a/14.png",keshi:"肿瘤及防治科"},
-                {imgurl:"../../static/images/a/15.png",keshi:"整形美容科"},
-                {imgurl:"../../static/images/a/16.png",keshi:"报告解读科"},
-                {imgurl:"../../static/images/a/17.png",keshi:"营养科"},
+                {imgurl:"../../static/images/a/1.png",keshi:"妇科",id:1},
+                {imgurl:"../../static/images/a/2.png",keshi:"儿科",id:2},
+                {imgurl:"../../static/images/a/3.png",keshi:"皮肤科",id:3},
+                {imgurl:"../../static/images/a/4.png",keshi:"内科",id:4},
+                {imgurl:"../../static/images/a/5.png",keshi:"男科",id:5},
+                {imgurl:"../../static/images/a/6.png",keshi:"产科",id:6},
+                {imgurl:"../../static/images/a/7.png",keshi:"外科",id:7},
+                {imgurl:"../../static/images/a/8.png",keshi:"中医科",id:8},
+                {imgurl:"../../static/images/a/9.png",keshi:"骨伤科",id:9},
+                {imgurl:"../../static/images/a/10.png",keshi:"精神心理科",id:10},
+                {imgurl:"../../static/images/a/11.png",keshi:"口腔额面科",id:11},
+                {imgurl:"../../static/images/a/12.png",keshi:"眼科",id:12},
+                {imgurl:"../../static/images/a/13.png",keshi:"耳鼻咽喉科",id:13},
+                {imgurl:"../../static/images/a/14.png",keshi:"肿瘤及防治科",id:14},
+                {imgurl:"../../static/images/a/15.png",keshi:"整形美容科",id:15},
+                {imgurl:"../../static/images/a/16.png",keshi:"报告解读科",id:16},
+                {imgurl:"../../static/images/a/17.png",keshi:"营养科",id:17},
             ]
         }
     },
@@ -72,11 +73,20 @@ export default {
         this.$router.go(-1);
     },
     FindDoctor(){
-        this.$router.push("/DoctorConsult")
+        this.$router.push("/DoctorConsult");
+    },
+    Diagnose(){
+        this.$router.push("/Diagnose");
+    },
+    doctorlist(ks,id){
+        this.$router.push({
+            path:"/DoctorList",
+            query:{keshi:ks,id:id}
+        })
     }
   },
   beforeCreate() {
-       document.querySelector('body').setAttribute('style', 'background:#f1f1f1')
+       document.querySelector('body').setAttribute('style', 'background:#f1f1f1');
   }
 }
 </script>

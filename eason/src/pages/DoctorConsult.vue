@@ -1,4 +1,5 @@
 <template>
+<!-- 名医咨询 -->
     <div>
         <!-- 导航 -->
         <van-nav-bar
@@ -103,7 +104,17 @@ export default {
             method:"get"
         }).then((ok)=>{
             this.newarr=ok.data[0].doctor;
-        })
+            // this.sarr=this.newarr;
+            let newdata=[];
+            for(let i=0;i<this.newarr.length;i++){
+                if(this.newarr[i].disease_type=='皮肤科'){
+                    newdata.push(this.newarr[i]);
+                    this.sarr=newdata;
+                } 
+            }
+
+        });
+       
     },
     components:{
         Doctortitle,
@@ -111,8 +122,12 @@ export default {
     },
     methods: {
         doctorlist(ks,i){
+            // 绑定Doctortitle
             this.keshi=ks;
+
+            // 点击时改变li背景样式时的id
             this.newindex=i;
+
             let newdata=[];
             for(let i=0;i<this.newarr.length;i++){
                 if(this.newarr[i].disease_type==ks){
@@ -120,7 +135,6 @@ export default {
                     this.sarr=newdata;
                 } 
             }
-            console.log(this.sarr);
             
         },
         doctorlist1(ks,i){
@@ -174,8 +188,6 @@ export default {
     height: 84px;
     text-align: center;
     list-style: none;
-    /* background: #3a3a41;
-    border-radius: 7px; */
 }
 .newswipesli{
     float: left;
