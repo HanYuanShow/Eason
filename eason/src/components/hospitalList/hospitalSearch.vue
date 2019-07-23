@@ -24,7 +24,7 @@ export default {
                 url:"/reqHospitalData/search"+this.value,
                 method:"get"
             }).then((OK)=>{
-                console.log(OK);
+                console.log(this.value);
             })
         }
     },

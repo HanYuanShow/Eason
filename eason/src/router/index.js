@@ -35,14 +35,6 @@ import changephonenewpass from "../pages/changephonenewpass";
 import setpassword from "../pages/setpassword";
 import HomeTabbar from "../components/HomeTabbar";
 
-
-
-
-
-
-
-
-
 import MyAdvice from "../pages/MyAdvice"
 import NowConsult from "../components/NowConsult"
 import MyDoctor from "../components/MyDoctor"
@@ -75,6 +67,8 @@ import HospitalIntro from '../pages/hospitalIntro'
 import Location from '../pages/location'
 import Specialist from "../pages/Specialist"
 import SpecialistDetails from "../pages/SpecialistDetails"
+import Question from "../pages/Question"
+
 
 Vue.use(Router)
 
@@ -92,7 +86,7 @@ export default new Router({
       component: Specialist
     },
     {
-      path: '/SpecialistDetails',
+      path: '/SpecialistDetails/:id',
       name: 'SpecialistDetails',
       component: SpecialistDetails
     },
@@ -100,6 +94,11 @@ export default new Router({
       path: '/Home',
       name: 'Home',
       component: Home
+    },
+    {
+      path: '/Question',
+      name: 'Question',
+      component: Question
     },
     {
       path: '/hospitaDetails/:clickId',
