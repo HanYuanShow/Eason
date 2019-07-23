@@ -72,11 +72,35 @@ import FindDoctor from "../pages/FindDoctor"
 import DoctorConsult from '../pages/DoctorConsult'
 import Question from '../pages/Question'
 import DiscussContent from '../components/DiscussContent'
+import Diagnose from '../pages/Diagnose'
+import DoctorList from '../pages/DoctorList'
+import DoctorIntroduce from '../pages/DoctorIntroduce'
+import DoctorKoubei from '../pages/DoctorKoubei'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path: '/DoctorKoubei',
+      name: 'DoctorKoubei',
+      component: DoctorKoubei
+    },
+    {
+      path: '/DoctorIntroduce',
+      name: 'DoctorIntroduce',
+      component: DoctorIntroduce
+    },
+    {
+      path: '/DoctorList',
+      name: 'DoctorList',
+      component: DoctorList
+    },
+    {
+      path: '/Diagnose',
+      name: 'Diagnose',
+      component: Diagnose
+    },
     {
       path: '/Question',
       name: 'Question',
