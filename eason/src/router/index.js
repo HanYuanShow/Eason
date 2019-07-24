@@ -314,7 +314,6 @@ export default new Router({
           name:'ManRouter',
           component:()=>import('../components/ScienceBodyRouter/ManRouter')
         },
-
        
       ]
     },

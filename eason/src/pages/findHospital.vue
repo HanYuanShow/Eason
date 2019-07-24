@@ -3,14 +3,23 @@
     <ReturnComp routerTips="找医院" class="returnbar"></ReturnComp>
     <div class="findHospital">
       <div>
-      <HospitalSearch></HospitalSearch>
-    </div>
+        <van-search
+            v-model="value"
+            placeholder="输入地区、医院、科室、疾病"
+            show-action
+            shape="round"
+            @search="onSearch"
+        >
+            <div slot="action" @click="onSearch" style="color: #39D167;">搜索</div>
+        </van-search>
+      </div>
     <div>
       <!-- 医院筛选 -->
       <Select></Select>
     </div>
     <div class="hospitalList">
       <HospitalList :hospitalListData="hospitalData"></HospitalList>
+      <!-- <div v-else class="emptycon">暂无数据。。。</div> -->
     </div>
     <!-- 排名依据 -->
     <div class="rankingBased">
@@ -33,23 +42,32 @@
 <script>
 import HospitalList from "../components/hospitalList/hospitalList";
 import Select from "../components/hospitalList/select";
-import HospitalSearch from "../components/hospitalList/hospitalSearch";
 import ReturnComp from "../components/returnComp/returnComp";
 
 export default {
   data() {
     return {
+      value: "",
       hospitalData: [],
-      rankingBool: false
+      rankingBool: false,
+      isEmpty: false
     };
   },
   components: {
     HospitalList,
     Select,
-    HospitalSearch,
     ReturnComp
   },
   methods: {
+    onSearch() {
+      this.axios({
+        url:"http://47.112.208.93:8181/doctorinfor/findall?string=" + this.value,
+        method: "get"
+      }).then((ok) => {
+        this.hospitalData = ok.data;
+        console.log(this.hospitalData);
+      });
+    },
     rankingBased() {
       this.rankingBool = !this.rankingBool;
     }
@@ -58,15 +76,33 @@ export default {
     this.axios({
       url: "/reqHospitalData",
       method: "get"
-    }).then(ok => {
-      console.log(ok);
+    }).then((ok) => {
+      // console.log(ok);
       this.hospitalData = ok.data;
     });
-  }
+  },
+  // watch: {
+  //   hospitalData(){
+  //     if(this.hospitalData.length<0){
+  //       console.log(this.hospitalData.length)
+  //       this.isEmpty = true;
+  //     }else{
+  //       this.isEmpty = false;
+  //     }
+  //   }
+  // },
 };
 </script>
 
 <style scoped>
+.emptycon {
+  padding: 15px;
+  width: 100%;
+  height: 150px;
+  text-align: center;
+  line-height: 150px;
+  box-sizing: border-box;
+}
 .findHospital {
   margin-top: 50px;
 }

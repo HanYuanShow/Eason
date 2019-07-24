@@ -16,7 +16,6 @@
 
 <script>
 import Select from "../components/hospitalList/select";
-import HospitalSearch from "../components/hospitalList/hospitalSearch";
 import ReturnComp from "../components/returnComp/returnComp";
 import DepartmentCategory from "../components/SpecialistDetails/departmentCategory";
 import SpecialistDoctorItem from "../components/SpecialistDetails/specialistDoctorItem";

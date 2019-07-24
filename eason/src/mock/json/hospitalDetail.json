@@ -16,7 +16,7 @@
         "全国男科排名第10",
         "全国呼吸内科排名第2",
         "全国神经内科排名第1"],
-    "registeredWay":["北京114预约挂号","北京市统一挂号平台","北京协和医院","114或116114（外地010-114）"],
+    "registeredWay":["北京114预约挂号","北京市统一挂号平台"],
     "onlineDoctor":[
         {"doctorName":"张双民","id":"1","theTitle":"主任医师","photo":"../../../static/images/w/doc01.jpg","inHospital":"北京协和医院","isOnline":"true","goodAT":"腹部恶性肿瘤（胃癌、肝癌、胆囊癌、胰腺癌、肠癌等）诊断、外科手术治疗、术后化疗等综合性治疗；甲状腺、乳腺、肝胆良性疾病及恶性疾病的诊断和外科治疗，肛门疾病的研究和外科治疗。"},
         {"doctorName":"梁锦前","id":"2","theTitle":"副主任医师","photo":"../../../static/images/w/doc02.jpg","inHospital":"北京协和医院","isOnline":"true","goodAT":"擅长肝炎、肝硬化、肿瘤等疑难杂症的治疗"}
