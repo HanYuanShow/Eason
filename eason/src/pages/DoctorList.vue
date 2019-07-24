@@ -24,6 +24,7 @@
         :label="v.doctor_label"
         :doctor_price="v.printreferint"
         :consult_num="v.peopleNumint"
+        :doctor_id="v.id"
         ></Doctorlist3>
     </div>
 </template>
@@ -85,7 +86,6 @@ export default {
             this.value1=this.$route.query.id;
             
             this.sarr=ok.data;
-            console.log(this.sarr)
             // var newdata=data.filter((v,i)=>{
             //     if(v.office==this.ks){
             //         return v;

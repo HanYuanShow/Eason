@@ -14,9 +14,9 @@
                 <img src="../../static/images/a/yizhen.png" alt="">
             </div>
             <div class="doctorright">
-                <p class="doctorname">刘芳</p>
-                <p class="doctortype">儿科 主治医师</p>
-                <p class="doctorhospital">武汉大学人民医院</p>
+                <p class="doctorname">{{this.newarr.realaName}}</p>
+                <p class="doctortype">{{this.newarr.office}} {{this.newarr.title}}</p>
+                <p class="doctorhospital">{{this.newarr.hospital}}</p>
             </div>
         </div>
         
@@ -24,22 +24,22 @@
             <!-- 擅长及诊所介绍 -->
             <div>
                 <p>擅长及诊所介绍</p>
-                <span>擅长及诊所介绍擅长及诊所介绍擅长及诊所介绍擅长及诊所介绍擅长及诊所介绍</span>
+                <span>{{this.newarr.adept==null?'暂无':this.newarr.adept}}</span>
             </div>
             <!-- 医学教育背景介绍 -->
-            <div>
+            <!-- <div>
                 <p>医学教育背景介绍</p>
-                <span>医学教育背景介绍医学教育背景介绍医学教育背景介绍医学教育背景介绍医学教育背景介绍</span>
-            </div>
+                <span>{{bool?this.newarr.backyard:'暂无'}}</span>
+            </div> -->
             <!-- 学术研究成果、获奖介绍 -->
             <div>
                 <p>学术研究成果、获奖介绍</p>
-                <span>学术研究成果、获奖介绍学术研究成果、获奖介绍学术研究成果、获奖介绍学术研究成果、获奖介绍</span>
+                <span>{{this.newarr.honor==null?'暂无':this.newarr.honor}}</span>
             </div>
             <!-- 医生寄语 -->
             <div>
                 <p>医生寄语</p>
-                <span>医生寄语医生寄语医生寄语医生寄语医生寄语医生寄语医生寄语医生寄语医生寄语医生寄语医生寄语医生寄语医生寄语</span>
+                <span>{{this.newarr.sendWord==null?'暂无':this.newarr.sendWord}}</span>
             </div>
         </div>
         
@@ -48,6 +48,19 @@
 
 <script>
 export default {
+    data() {
+        return {
+            newid:'',
+            newarr:[],
+            bool:true
+        }
+    },
+    created() {
+        this.newarr=this.$route.query.newarr;
+        if(this.newarr.backyard==null){
+            this.bool=!this.bool
+        }
+    },
     methods: {
         onClickLeft(){
             this.$router.go(-1);

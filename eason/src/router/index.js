@@ -83,7 +83,7 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/DetailsOfDoctor',
+      path: '/DetailsOfDoctor/:id',
       name: 'DetailsOfDoctor',
       component: DetailsOfDoctor
     },

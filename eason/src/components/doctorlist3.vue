@@ -1,6 +1,6 @@
 <template>
         <!-- 医生列表 -->
-        <div class="doctorbox" @click="doctor()">
+        <div class="doctorbox" @click="doctor(doctor_id)">
             <div class="headpic"><img src="../../static/images/w/a3c.png" alt=""></div>
             <div class="doctorintro">
                 <ul>
@@ -28,8 +28,11 @@ export default {
         }
     },
     methods: {
-        doctor(){
-            this.$router.push("/DetailsOfDoctor")
+        doctor(id){
+            this.$router.push({
+                path:"/DetailsOfDoctor/"+id,
+                
+            })
         }
     },
     props:{
@@ -41,7 +44,8 @@ export default {
         doctor_hospital:String,
         good_at:String,
         doctor_price: Number,
-        consult_num: Number
+        consult_num: Number,
+        doctor_id: Number
     }
 }
 </script>
