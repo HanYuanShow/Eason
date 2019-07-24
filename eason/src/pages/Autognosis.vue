@@ -1,16 +1,18 @@
 <template>
     <div>
-      <Barnav></Barnav>
+      <Navbar></Navbar>
       <Tablabel></Tablabel>
     </div>
 </template>
 <script>
-import Barnav from '../components/barnav'
+import Navbar from '../components/navbar'
 import Tablabel from '../components/tablabel'
+
 export default {
     components:{
-        Barnav,
-        Tablabel
+        Navbar,
+        Tablabel,
+    
     }
 }
 </script>

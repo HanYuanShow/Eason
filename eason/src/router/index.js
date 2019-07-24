@@ -1,32 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Seek from '../pages/Seek'
-import Autognosis from '../pages/autognosis'
-import Symptomlist from '../components/symptomlist'
-import Bodypic from '../components/bodypic'
-// import Automenu from '../components/automenu'
-import DrugStore from '../pages/DrugStore'
-import Body from '../components/symptomlist/body'
-import Skin from '../components/symptomlist/skin'
-import Head from '../components/symptomlist/head'
-import Throat from '../components/symptomlist/throat'
-import Breast from '../components/symptomlist/breast'
-import Belly from '../components/symptomlist/belly'
-import Reproduction from '../components/symptomlist/reproduction'
-import Bone from '../components/symptomlist/bone'
-import Arm from '../components/symptomlist/arm'
-import Belt from '../components/symptomlist/belt'
-import Hip from '../components/symptomlist/hip'
-import SelfTest from '../pages/SelfTest'
-import DetailPagebody from '../pages/DetailPagebody'
-import DetailPageskin from '../pages/DetailPageskin'
-import diseaseData from '../pages/diseaseData'
-import typicalPerson from '../components/diseaseData/typicalPerson'
-import Department from '../components/diseaseData/Department'
-import detailDiease from '../pages/detailDiease'
-import detailDepartment from '../pages/detailDepartment'
-
 // import HelloWorld from '@/components/HelloWorld'
 import PersonalCentter from "../pages/PersonalCenter"
 import PersonalInformation from "../pages/PersonalInformation"
@@ -66,8 +40,24 @@ import MyAdvice from "../pages/MyAdvice"
 import NowConsult from "../components/NowConsult"
 import MyDoctor from "../components/MyDoctor"
 import HistoryCode from "../components/HistoryCode"
+import Seek from '../pages/Seek'
+import Autognosis from '../pages/autognosis'
+import Symptomlist from '../components/symptomlist'
+import Bodypic from '../components/bodypic'
 
-
+import DrugStore from '../pages/DrugStore'
+import Body from '../components/symptomlist/body'
+import Skin from '../components/symptomlist/skin'
+import Head from '../components/symptomlist/head'
+import Throat from '../components/symptomlist/throat'
+import Breast from '../components/symptomlist/breast'
+import Belly from '../components/symptomlist/belly'
+import Reproduction from '../components/symptomlist/reproduction'
+import Bone from '../components/symptomlist/bone'
+import Arm from '../components/symptomlist/arm'
+import Belt from '../components/symptomlist/belt'
+import Hip from '../components/symptomlist/hip'
+import SelfTest from '../pages/SelfTest'
 import DetailPage from '../pages/DetailPage'
 import Science from '../pages/Science'
 import ContentNews from '../pages/ContentNews'
@@ -88,93 +78,10 @@ import DoctorIntroduce from '../pages/DoctorIntroduce'
 import DoctorKoubei from '../pages/DoctorKoubei'
 import DetailsOfDoctor from '../pages/DetailsOfDoctor'
 
-import BuyMedicine from '../pages/buyMedicine'
-import DrugDetails from '../pages/drugDetails'
-import ShopStore from '../pages/shopStore'
-import Address from '../pages/address'
-import NewAdress from '../pages/newAdress'
-import Cart from '../pages/cart'
-import Payoff from '../pages/Payoff'
-import Code from '../pages/code'
 Vue.use(Router)
 
 export default new Router({
   routes: [
-    {
-      path: '/seek',
-      name: 'Seek',
-      component: Seek
-    },
-    {
-      path: '/autognosis',
-      name: 'Autognosis',
-      component: Autognosis,
-      children:[
-        {path: '/symptomlist', name:'Symptomlist',component: Symptomlist,
-            children:[
-              {path:'/body',name:"Body",component:Body},
-              {path:'/skin',name:"Skin",component:Skin},
-              {path:'/head',name:"Head",component:Head},
-              {path:'/throat',name:"Throat",component:Throat},
-              {path:'/breast',name:"Breast",component:Breast},
-              {path:'/belly',name:"Belly",component:Belly},
-              {path:'/reproduction',name:"Reproduction",component:Reproduction},
-              {path:'/bone',name:"Bone",component:Bone},
-              {path:'/arm',name:"Arm",component:Arm},
-              {path:'/belt',name:"Belt",component:Belt},
-              {path:'/hip',name:"Hip",component:Hip},
-            ]
-      },
-      
-        {path: '/bodypic', name:'Bodypic',component: Bodypic}
-      ]
-    },
-
-
-    {
-      path: '/DrugStore',
-      name: 'DrugStore',
-      component: DrugStore,
-    },
-    {
-      path: '/SelfTest',
-      name: 'SelfTest',
-      component: SelfTest,
-    },
-    {
-      path: '/DetailPagebody',
-      name: 'DetailPagebody',
-      component: DetailPagebody,
-    },
-    {
-      path: '/DetailPageskin',
-      name: 'DetailPageskin',
-      component: DetailPageskin,
-    },
-    {
-      path: '/diseaseData',
-      name: 'diseaseData',
-      component: diseaseData,
-      children:[
-        {path:"/typicalPerson",name:"typicalPerson",component:typicalPerson}
-      ]
-    },
-    {
-      path: '/detailDiease',
-      name: 'detailDiease',
-      component: detailDiease,
-    },
-    {
-      path: '/Department',
-      name: 'Department',
-      component: Department,
-    },
-    {
-      path: '/detailDepartment',
-      name: 'detailDepartment',
-      component: detailDepartment,
-    },
-
     {
       path: '/DetailsOfDoctor',
       name: 'DetailsOfDoctor',
@@ -226,7 +133,7 @@ export default new Router({
       component: Specialist
     },
     {
-      path: '/SpecialistDetails/:id',
+      path: '/SpecialistDetails',
       name: 'SpecialistDetails',
       component: SpecialistDetails
     },
@@ -428,7 +335,11 @@ export default new Router({
       component: ModifyPersonalInformation
     },
   
-
+	{
+      path: '/DrugStore',
+      name: 'DrugStore',
+      component: DrugStore,
+    },
     {
       path:'/ContentTopic/:id',
       name:'ContentTopic',
@@ -512,46 +423,4 @@ export default new Router({
 
   ]
 
-},
-{
-      path: '/buyMedicine',
-      name: 'BuyMedicine',
-      component: BuyMedicine
-    },
-    {
-      path: '/drugDetails',
-      name: 'DrugDetails',
-      component: DrugDetails
-    },
-    {
-      path: '/shopStore',
-      name: 'ShopStore',
-      component: ShopStore
-    },
-    {
-      path: '/address',
-      name: 'Address',
-      component: Address
-    },
-    {
-      path: '/newAdress',
-      name: 'NewAdress',
-      component: NewAdress
-    },
-    {
-      path: '/cart',
-      name: 'Cart',
-      component: Cart
-    },
-    {
-      path: '/payoff',
-      name: 'Payoff',
-      component: Payoff
-    },
-    {
-      path: '/code',
-      name: 'Code',
-      component: Code
-    },
-  
-)
+})

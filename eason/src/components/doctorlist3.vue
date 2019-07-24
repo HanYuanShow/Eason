@@ -8,13 +8,13 @@
                         <h4 class="doctorname">{{doctor_name}}</h4>
                         <span class="doctorkind">{{disease_type}} {{doctor_job}}</span>
                     </li>
-                    <li class="doctorhospital">陆军军医大学第一附属医院</li>
-                    <li class="detail">湿疹、尿布疹、荨麻疹、痤疮、玫瑰痤疮、脱发、色素斑</li>
+                    <li class="doctorhospital">{{doctor_hospital}}</li>
+                    <li class="detail">{{good_at}}</li>
                     <li class="line">
-                        <span class="label" v-for="(v,i) in label" :key="i">{{v}}</span>
-                        
+                        <span class="label">{{doctor_label}}</span>
+                        <span class="label">{{doctor_label2}}</span>
                     </li>
-                    <li><span class="doctorprice">￥160元起</span><span class="okok">{{consult_num}}人购买</span> </li>
+                    <li><span class="doctorprice">￥{{doctor_price}}元起</span><span class="okok">{{consult_num}}人购买</span> </li>
                 </ul>
             </div>
         </div>
@@ -36,8 +36,12 @@ export default {
         doctor_name:String,
         disease_type:String,
         doctor_job:String,
-        label:Array,
-        consult_num:String
+        doctor_label:String,
+        doctor_label2:String,
+        doctor_hospital:String,
+        good_at:String,
+        doctor_price: Number,
+        consult_num: Number
     }
 }
 </script>

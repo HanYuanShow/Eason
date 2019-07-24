@@ -83,13 +83,10 @@ export default {
     doctorlist(ks,id){
         this.$router.push({
             path:"/DoctorList",
-            query:{keshi:ks,id:id}
+            query:{string:ks,id:id}
         })
     }
-  },
-//   beforeCreate() {
-//        document.querySelector('body').setAttribute('style', 'background:#f1f1f1')
-//   }
+  }
 }
 </script>
 

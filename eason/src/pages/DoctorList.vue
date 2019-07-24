@@ -14,11 +14,16 @@
         <!-- 医生列表 -->
         <Doctorlist3 v-for="(v,i) in sarr" 
         :key="i" 
-        :doctor_name="v.doctor_name" 
-        :disease_type="v.disease_type" 
-        :doctor_job="v.doctor_job"
+        :doctor_name="v.realaName" 
+        :disease_type="v.office" 
+        :doctor_job="v.title"
+        :doctor_hospital="v.hospital"
+        :good_at="v.adept"
+        :doctor_label="v.hospiTaltype"
+        :doctor_label2="v.workTime"
         :label="v.doctor_label"
-        :consult_num="v.consult_num"
+        :doctor_price="v.printreferint"
+        :consult_num="v.peopleNumint"
         ></Doctorlist3>
     </div>
 </template>
@@ -72,23 +77,40 @@ export default {
         }
     },
     created() {
+        this.ks=this.$route.query.string;
         this.axios({
-            url:"/liuxiaojie",
+            url:"http://47.112.208.93:8181/Doctorin/findall?string="+this.ks,
             method:"get"
         }).then((ok)=>{
-            this.newarr=ok.data[0].doctor;
             this.value1=this.$route.query.id;
-            this.ks=this.$route.query.keshi;
-            var data=ok.data[0].doctor;
-            var newdata=data.filter((v,i)=>{
-                if(v.disease_type==this.ks){
-                    return v;
-                }
-            })
-            this.sarr=newdata;
-        })
-        
-    },
+            
+            this.sarr=ok.data;
+            console.log(this.sarr)
+            // var newdata=data.filter((v,i)=>{
+            //     if(v.office==this.ks){
+            //         return v;
+            //     }
+            // })
+            // this.sarr=newdata;
+            
+    
+        },
+    // created() {
+    //     this.axios({
+    //         url:"/liuxiaojie",
+    //         method:"get"
+    //     }).then((ok)=>{
+    //         this.newarr=ok.data[0].doctor;
+    //         this.value1=this.$route.query.id;
+    //         this.ks=this.$route.query.keshi;
+    //         var data=ok.data[0].doctor;
+    //         var newdata=data.filter((v,i)=>{
+    //             if(v.disease_type==this.ks){
+    //                 return v;
+    //             }
+    //         })
+    //         this.sarr=newdata; 
+    )},
     methods: {
         keshi(ks){
             let newdata=[];

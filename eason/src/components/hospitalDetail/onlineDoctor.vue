@@ -5,7 +5,7 @@
             <a href="#">更多</a>
         </div>
         <ul class="doctorList">
-            <li class="doctorItem" v-for="(v,i) in onlineDoctor" :key="i" @click="toDoctorDetail(v.id)">
+            <li class="doctorItem" v-for="(v,i) in onlineDoctor" :key="i">
                 <div class="doctorPic"><img :src="v.photo" :alt="v.doctorName"></div>
                 <div class="doctorIntr">
                     <p class="doctorName"><span>{{v.doctorName}}</span><span>{{v.theTitle}}</span></p>
@@ -29,12 +29,7 @@ export default {
                 return val
             }
         }
-    },
-    methods: {
-        toDoctorDetail(id){
-            this.$router.push("/DoctorDetails?id="+id);
-        }
-    },
+    }
 }
 </script>
 <style scoped>

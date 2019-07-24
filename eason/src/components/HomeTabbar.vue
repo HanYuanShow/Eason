@@ -1,6 +1,6 @@
 <template>
   <div class="Tool-out">
-    <van-tabbar v-model="active"  active-color="#07c160">
+    <van-tabbar v-model="active" active-color="#07c160">
       <van-tabbar-item icon="search"   to="/Home" >
         <span class="Tabbar-text">春雨</span>
         <img slot="icon" slot-scope="props" :src="props.active ? icon.active[0] : icon.normal[0]" fit="contain" width="30"  height="40" />
