@@ -49,6 +49,7 @@ export default {
 .shareTit{
     font-size: 14px;
     text-align: center;
+    padding: 15px;
 }
 .van-button--primary{
     background: none;

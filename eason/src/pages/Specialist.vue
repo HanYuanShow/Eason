@@ -3,7 +3,15 @@
     <ReturnComp routerTips="名院专家" class="returnbar"></ReturnComp>
     <div class="expert">
         <div>
-            <HospitalSearch></HospitalSearch>
+          <van-search
+            v-model="value"
+            placeholder="输入地区、医院、科室、疾病"
+            show-action
+            shape="round"
+            @search="onSearch"
+          >
+            <div slot="action" @click="onSearch" style="color: #39D167;">搜索</div>
+        </van-search>
         </div>
         <div class="expertBanner"><img src="../../static/images/w/akv.jpg" alt=""></div>
         <div>
@@ -19,22 +27,21 @@
 
 <script>
 import Select from "../components/hospitalList/select";
-import HospitalSearch from "../components/hospitalList/hospitalSearch";
 import ReturnComp from "../components/returnComp/returnComp";
 
 export default {
   data() {
     return {
+      value: "",
       hospitalData: [],
-      rankingBool: false,
+      rankingBool: false
     };
   },
   components: {
     Select,
-    HospitalSearch,
     ReturnComp
   },
-  
+
   created() {
     this.axios({
       url: "/reqHospitalData/search",
@@ -45,10 +52,19 @@ export default {
     });
   },
   methods: {
-    hospitalDoctor(id){
-      this.$router.push("/SpecialistDetails/"+id);
+    onSearch() {
+      this.axios({
+        url:
+          "http://47.112.208.93:8181/doctorinfor/findall?string=" + this.value,
+        method: "get"
+      }).then(ok => {
+        console.log(ok);
+      });
+    },
+    hospitalDoctor(id) {
+      this.$router.push("/SpecialistDetails/" + id);
     }
-  },
+  }
 };
 </script>
 
@@ -56,16 +72,16 @@ export default {
 .expert {
   margin-top: 50px;
 }
-.expert ul{
+.expert ul {
   padding: 10px 15px;
 }
-.hospitalList{
+.hospitalList {
   padding: 15px 0;
-  border-bottom: 1px solid #E7E7E7;
+  border-bottom: 1px solid #e7e7e7;
 }
-.expertBanner img{
-    display: block;
-    width: 100%;
+.expertBanner img {
+  display: block;
+  width: 100%;
 }
 .returnbar {
   position: fixed;

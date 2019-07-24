@@ -1,10 +1,10 @@
 <template>
 <div>
-    <div class="hospitalListItem" v-for="(v,i) in hospitalListData" :key="i" @click="toDetail(v.id)">
+    <div class="hospitalListItem"  v-for="(v,i) in hospitalListData" :key="i" @click="toDetail(v.id)">
         <div class="listItem_L">{{v.comprehensive}}</div>
         <div class="listItem_R">
             <div class="hospitalTitles">
-                <h3>{{v.hospitalName}}</h3>
+                <h3>{{v.hospital}}</h3>
                 <p>{{v.address}}</p>
             </div>
             <div class="rank">全国综合排名第{{comprehensive}}</div>
