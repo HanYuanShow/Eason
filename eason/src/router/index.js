@@ -66,24 +66,8 @@ import MyAdvice from "../pages/MyAdvice"
 import NowConsult from "../components/NowConsult"
 import MyDoctor from "../components/MyDoctor"
 import HistoryCode from "../components/HistoryCode"
-import Seek from '../pages/Seek'
-import Autognosis from '../pages/autognosis'
-import Symptomlist from '../components/symptomlist'
-import Bodypic from '../components/bodypic'
 
-import DrugStore from '../pages/DrugStore'
-import Body from '../components/symptomlist/body'
-import Skin from '../components/symptomlist/skin'
-import Head from '../components/symptomlist/head'
-import Throat from '../components/symptomlist/throat'
-import Breast from '../components/symptomlist/breast'
-import Belly from '../components/symptomlist/belly'
-import Reproduction from '../components/symptomlist/reproduction'
-import Bone from '../components/symptomlist/bone'
-import Arm from '../components/symptomlist/arm'
-import Belt from '../components/symptomlist/belt'
-import Hip from '../components/symptomlist/hip'
-import SelfTest from '../pages/SelfTest'
+
 import DetailPage from '../pages/DetailPage'
 import Science from '../pages/Science'
 import ContentNews from '../pages/ContentNews'
@@ -190,7 +174,7 @@ export default new Router({
       name: 'detailDepartment',
       component: detailDepartment,
     },
-    {path:'/*',redirect:'/seek'}
+
     {
       path: '/DetailsOfDoctor',
       name: 'DetailsOfDoctor',
@@ -444,11 +428,7 @@ export default new Router({
       component: ModifyPersonalInformation
     },
   
-	{
-      path: '/DrugStore',
-      name: 'DrugStore',
-      component: DrugStore,
-    },
+
     {
       path:'/ContentTopic/:id',
       name:'ContentTopic',
