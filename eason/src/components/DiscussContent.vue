@@ -96,7 +96,7 @@
     </div>
 
     <div class="talk" v-if="bool">
-      <div v-for="(v,i) in myuser" :key="i">
+      <div v-for="(v,i) in myuser" :key="i" class="text">
         <span class="right">{{v.my}}</span>
         <div class="clear"></div>
         <span class="left">{{v.doctor}}</span>
@@ -106,15 +106,17 @@
 
     <div class="end">
       <van-row type="flex" justify="center">
-        <van-col span="24">
+        <van-col span="24" offset="3">
           <van-cell-group>
-            <van-field v-model="sms" center clearable label="请输入内容">
+            <van-field v-model="sms" center  label="请输入内容"  type="textarea"  autosize  rows="1" size="large">
               <van-button slot="button" size="small" type="primary" @click="send()">发送</van-button>
             </van-field>
           </van-cell-group>
         </van-col>
       </van-row>
     </div>
+
+    
   </div>
 </template>
 <script>
@@ -126,7 +128,7 @@ export default {
       show: false,
       sms: "",
       myuser: [{ my: "", doctor: "" }],
-      bool: true
+      bool:false,
     };
   },
   created() {
@@ -189,13 +191,14 @@ export default {
   // },
   watch: {
     myuser() {
-      if (this.myuser.my !== "" && this.myuser.doctor !== "") {
+      if (this.myuser[0].my!==" " && this.myuser[0].doctor!==" "){
         this.bool = true;
-      } else {
-        this.bool = false;
       }
     }
-  }
+  },
+  // beforeCreate() {
+  //    document.querySelector(".text")[0].setAttribute("style","dispaly:none")
+  // },
 };
 </script>
 
@@ -225,20 +228,22 @@ export default {
 .left {
   float: left;
   margin-left: 20px;
-  padding: 10px;
+  /* padding: 10px; */
   background-color: white;
   color: black;
   margin-top: 20px;
   border-radius: 5px;
+  max-width: 300px;
 }
 .right {
   float: right;
   margin-right: 20px;
-  padding: 10px;
+  /* padding: 10px; */
   background-color: rgb(18, 230, 18);
   color: black;
   margin-top: 20px;
   border-radius: 5px;
+  max-width: 300px;
 }
 .background {
   width: 100%;
