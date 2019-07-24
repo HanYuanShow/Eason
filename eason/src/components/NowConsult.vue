@@ -11,7 +11,7 @@
     <div class="list">
       <div class="content-doctor" v-for="(v,i) in mydoctor" :key="i">
         <div class="have">
-          <van-image fit="fill" height="30" width="30" src="../../static/images/w/aca.png" />
+          <van-image fit="fill" height="40" width="40" src="../../static/images/w/aca.png" />
           <div class="docotor-list">
             <div class="name">
               <span class="black">{{v.doctor.name}}</span>
