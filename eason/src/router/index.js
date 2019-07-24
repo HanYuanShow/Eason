@@ -137,11 +137,6 @@ export default new Router({
       component: Home
     },
     {
-      path: '/Question',
-      name: 'Question',
-      component: Question
-    },
-    {
       path: '/hospitaDetails/:clickId',
       name: 'HospitaDetails',
       component: HospitaDetails
