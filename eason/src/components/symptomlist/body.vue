@@ -1,11 +1,11 @@
 <template>
-    <div>
-        
+    <div>   
        <ul class="sym_ul">
             <li v-for="(v,i) in newarr" :key="i" class="sym_li"> 
-                    <div v-for="(v,i) in v.title" :key="i" @click="fun(v.id)" class="sym_li_li">{{v.title}}</div>
-            </li>
-        </ul> 
+                 <div v-for="(v,i) in v.bodySymptom" :key="i" @click="fun(v.id)" class="sym_li_li">{{v.title}}</div>
+             </li>
+        </ul>
+       
     </div>
 </template>
 <script>
@@ -21,19 +21,19 @@ export default {
    },
    methods: {
        fun(num){
-           this.$router.push({path:"/DetailPage",query:{id:num}})
+           this.$router.push({path:"/DetailPagebody",query:{id:num}})
        }
    },
     created() {
         this.axios({
-            url:'/automenu/eason',
+            url:'/automenu/easonNew',
             method:'get', 
         }).then((ok)=>{
-            var data=ok.data.autognosis[0].symptomList
+            var data=ok.data.autognosis
             var arr1=data.filter((v,i)=>{
-                if(v.id==123456789){
-                     return v.title
-                }  
+                if(v.id=="sl_1"){
+                     return v
+                }   
             })
             this.newarr=arr1;
         })
