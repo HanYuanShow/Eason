@@ -153,6 +153,8 @@ export default {
     },
     created() {
         this.newtitle=this.consultarr[0].title;
+
+
     },
     methods: {
         lunli(i,title){
@@ -164,6 +166,9 @@ export default {
         },
         guanzhu(){
             this.style=!this.style;
+            
+            
+
         },
         back(){
             this.$router.go(-1);

@@ -78,9 +78,9 @@
             src="../../static/images/w/abv.png"
             name="fen"
           />
-          <span class="name">{{discussContent[itemid-1].content.name}}</span>
-          <span>{{discussContent[itemid-1].content.keshi}}</span>
-          <span>{{discussContent[itemid-1].content.work}}</span>
+          <span class="name">{{discussContent[itemid-1].realaName}}</span>
+          <span>{{discussContent[itemid-1].title}}</span>
+          <span>{{discussContent[itemid-1].hospital}}</span>
         </van-col>
       </van-row>
     </div>
@@ -90,7 +90,7 @@
     <div>
       <van-row type="flex" justify="center">
         <van-col span="14">
-          <span class="tacking">{{discussContent[itemid-1].content.name}}医生接受了你的聊天请求，现在可以聊天了</span>
+          <span class="tacking">{{discussContent[itemid-1].realaName}}医生接受了你的聊天请求，现在可以聊天了</span>
         </van-col>
       </van-row>
     </div>
@@ -134,10 +134,10 @@ export default {
   created() {
     this.itemid = this.$route.query.id;
     this.axios({
-      url: "/aaa",
+      url: "http://47.95.140.83:8181/talk/alldoctorinfors",
       method: "get"
-    }).then(ok => {
-      this.new = this.discussContent = ok.data.discuss;
+    }).then((ok) => {
+       this.discussContent = ok.data;
       console.log(ok);
     });
   },

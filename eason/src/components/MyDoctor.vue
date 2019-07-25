@@ -17,13 +17,13 @@
           <van-image fit="fill" height="40" width="40" src="../../static/images/w/aca.png" />
           <div class="docotor-list">
             <div class="name">
-              <span class="black">{{v.doctor.name}}</span>
-              <span>{{v.doctor.keshi}}</span>
-              <span>{{v.doctor.work}}</span>
+              <span class="black">{{v.realaName}}</span>
+              <span>{{v.office}}</span>
+              <span>{{v.title}}</span>
             </div>
 
             <div class="doctor-end">
-              <span>{{v.doctor.hospital}}</span>
+              <span>{{v.hospital}}</span>
             </div>
           </div>
         </div>
@@ -51,17 +51,23 @@ export default {
     };
   },
   created() {
+    //获取本地账户id
+    // let userId = localStorage.getItem("userId");
+
     this.axios({
-      url: "/aaa",
-      method: "get"
+      url: "http://47.112.208.93:8181/doctorTopic/myDoctor/"+1,
+      method: "get",
+      // params:{
+      //     userId=1
+      // }
     }).then(ok => {
-      this.mydoctor = ok.data.topic.slice(0, 2);
+      this.mydoctor = ok.data;
       console.log(this.mydoctor);
     });
   },
   watch: {
     mydoctor() {
-      if (this.mydoctor !== []) {
+      if (this.mydoctor.length !==0) {
         this.bool = false;
       }
     }

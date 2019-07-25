@@ -77,7 +77,7 @@ import DoctorList from '../pages/DoctorList'
 import DoctorIntroduce from '../pages/DoctorIntroduce'
 import DoctorKoubei from '../pages/DoctorKoubei'
 import DetailsOfDoctor from '../pages/DetailsOfDoctor'
-
+import ChooseDoctor from '../pages/ChooseDoctor.vue'
 import BuyMedicine from '../pages/buyMedicine'
 import DrugDetails from '../pages/drugDetails'
 import ShopStore from '../pages/shopStore'
@@ -425,15 +425,7 @@ export default new Router({
       component:DiscussContent
     },
     {
-      path:"/*",
-      redirect:"/Home"
-    }
-
-  ]
-
-},
-{
-      path: '/buyMedicine',
+      path: '/BuyMedicine',
       name: 'BuyMedicine',
       component: BuyMedicine
     },
@@ -472,5 +464,15 @@ export default new Router({
       name: 'Code',
       component: Code
     },
-  
+    {
+      path:'/ChooseDoctor',
+      name:'ChooseDoctor',
+      component:ChooseDoctor
+    },
+    {
+      path:"/*",
+      redirect:"/Home"
+    },
+  ]
+},
 )

@@ -9,18 +9,18 @@
     </div>
 
     <div class="list">
-      <div class="content-doctor" v-for="(v,i) in mydoctor" :key="i">
+      <div class="content-doctor" v-for="(v,i) in mydoctor" :key="i" @click="send(v.id)">
         <div class="have">
           <van-image fit="fill" height="40" width="40" src="../../static/images/w/aca.png" />
           <div class="docotor-list">
             <div class="name">
-              <span class="black">{{v.doctor.name}}</span>
-              <span>{{v.doctor.keshi}}</span>
-              <span>{{v.doctor.work}}</span>
+              <span class="black">{{v.realaName}}</span>
+              <span>{{v.office}}</span>
+              <span>{{v.title}}</span>
             </div>
 
             <div class="doctor-end">
-              <span>{{v.doctor.hospital}}</span>
+              <span>{{v.hospital}}</span>
             </div>
           </div>
         </div>
@@ -48,21 +48,35 @@ export default {
     };
   },
   created() {
+    //获取本地医生id
+    let doctorarr =localStorage.getItem("doctorIdList")
+    console.log(doctorarr)
     this.axios({
-      url: "/aaa",
-      method: "get"
-    }).then(ok => {
-      this.mydoctor = ok.data.topic.slice(0, 2);
-      console.log(this.mydoctor);
+      url: "http://47.95.140.83:8181/talk/showdoctorinfors",
+      method: "get",
+        params:{
+                doctorinforIdlist :doctorarr
+            }
+    }).then((ok) => {
+      this.mydoctor = ok.data;
+      console.log(this.mydoctor);     
     });
+
+
+
   },
   watch: {
-    mydoctor() {
+    mydoctor() { 
       if (this.mydoctor !== []) {
         this.bool = false;
       }
     }
-  }
+  },
+  methods: {
+     send(num){
+            this.$router.push("/DiscussContent?id="+num)
+        }
+  },
 };
 </script>
 

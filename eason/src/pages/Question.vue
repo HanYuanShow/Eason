@@ -14,8 +14,8 @@
                 重要:&nbsp;&nbsp;&nbsp;急重症不适合网上咨询，请立即前往当地医院就诊
             </van-notice-bar>
             
-            <div class="textbox">
-                <textarea name="" id="" rows="10" maxlength="500"  style="width:100%;height:100%;border:none" placeholder="请用10~500字详细描述您的症状、疾病和身体状况，否则可能无法获得医生的详细解答。请勿透露您的真实姓名或联系方式"></textarea>
+            <div class="textbox" >
+                <textarea name="" v-model="content" id="" rows="10" maxlength="500"  style="width:100%;height:100%;border:none" placeholder="请用10~500字详细描述您的症状、疾病和身体状况，否则可能无法获得医生的详细解答。请勿透露您的真实姓名或联系方式"></textarea>
             </div>
 
             <div class="uploadpic">
@@ -33,7 +33,8 @@ export default {
     data() {
         return {
             speed:20,
-            fileList: []
+            fileList:[],
+            content:"",
         }
     },
     components:{
@@ -44,8 +45,11 @@ export default {
             this.$router.go(-1);
         },
         onClickRight(){
-            this.$router.push("/DoctorList")
-        }
+            console.log(this.content)
+            localStorage.setItem("questionCentent",this.content)
+            this.$router.push("/ChooseDoctor")         
+        },
+
     },
     // beforeCreate() {
     //     document.querySelector('body').setAttribute('style', 'background:#f0f0ee')

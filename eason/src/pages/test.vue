@@ -55,6 +55,7 @@ export default {
             this.$router.push({path:"/password"})
         },
     },
+  
 }
 </script>
 <style scoped>

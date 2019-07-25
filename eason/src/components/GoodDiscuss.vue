@@ -23,16 +23,16 @@
        <div>
         <van-row type="flex" justify="center">
         <van-col span="23" offset="1">
-            <div v-for="(v,i) in getcontent" :key="i" class="out" @click="send(v.content.id)">
+            <div v-for="(v,i) in getcontent" :key="i" class="out" @click="send(v.doctorId)">
                 <div class="Good-titel">
                      <van-image fit="fill" height="18" width="18" src="../../static/images/w/abv.png" />
-                     <span class="Good-number">{{v.content.number}}</span>
-                     <span class="Good-discuss">评价{{v.content.name}}医生</span>
+                     <span class="Good-number">{{v.user.userNickname}}</span>
+                     <span class="Good-discuss">评价{{v.doctorinfor.realaName}}医生</span>
                      <van-image fit="fill" height="18" width="18" src="../../static/images/w/a6x.png" />
                      <span class="Good-like">好评</span>
                 </div>
                 <div>
-                    <p>{{v.content.text}}</p>
+                    <p>{{v.userAppraise}}</p>
                 </div>
                 
             </div>
@@ -54,24 +54,25 @@ export default {
     },
         created() {
         this.axios({
-            url:"/aaa",
+            url:"http://47.95.140.83:8181/talk/showall",
             method:"get"
         }).then((ok)=>{
-            this.getcontent=ok.data.discuss.slice(0,4);
+            this.getcontent=ok.data;
+            console.log(ok.data)
         })
     },
     methods: {
         changeText(){
-          let num = 4;
           this.axios({
-            url:"/aaa",
+            url:"http://47.95.140.83:8181/talk/showall",
             method:"get"
         }).then((ok)=>{
-            this.getcontent=ok.data.discuss.slice(0+num,4+num);
+            this.getcontent=ok.data;
+            console.log(ok.data)
         })
         },
         send(num){
-            this.$router.push("DiscussContent?id="+num)
+            this.$router.push("/DiscussContent?id="+num)
         }
 
     },
