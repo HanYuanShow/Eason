@@ -1,20 +1,83 @@
 <template>
-    <div class="out">
-        <div class="inner">
-              <van-image fit="fill" height="92" width="100" src="../../static/images/w/abo.png" />
-              <p>暂无进行中的服务</p>
-              <router-link to="/Question">
-                    <span>快速提问</span>
-              </router-link>
-              
+  <div class="out">
+    <div class="inner" v-if="bool">
+      <van-image fit="fill" height="92" width="100" src="../../static/images/w/abo.png" />
+      <p>暂无进行中的服务</p>
+      <router-link to="/Question">
+        <span>快速提问</span>
+      </router-link>
+    </div>
+
+    <div class="list">
+      <div class="content-doctor" v-for="(v,i) in mydoctor" :key="i" @click="send(v.id)">
+        <div class="have">
+          <van-image fit="fill" height="40" width="40" src="../../static/images/w/aca.png" />
+          <div class="docotor-list">
+            <div class="name">
+              <span class="black">{{v.realaName}}</span>
+              <span>{{v.office}}</span>
+              <span>{{v.title}}</span>
+            </div>
+
+            <div class="doctor-end">
+              <span>{{v.hospital}}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="imges">
+          <van-image
+            fit="fill"
+            height="30"
+            width="30"
+            src="../../static/images/w/arn.png"
+            class="like"
+          />
         </div>
     </div>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-    
-}
+  data() {
+    return {
+      mydoctor: [],
+      bool: true
+    };
+  },
+  created() {
+    //获取本地医生id
+    let doctorarr =localStorage.getItem("doctorIdList")
+    console.log(doctorarr)
+    this.axios({
+      url: "http://47.95.140.83:8181/talk/showdoctorinfors",
+      method: "get",
+        params:{
+                doctorinforIdlist :doctorarr
+            }
+    }).then((ok) => {
+      this.mydoctor = ok.data;
+      console.log(this.mydoctor);     
+    });
+
+
+
+  },
+  watch: {
+    mydoctor() { 
+      if (this.mydoctor !== []) {
+        this.bool = false;
+      }
+    }
+  },
+  methods: {
+     send(num){
+            this.$router.push("/DiscussContent?id="+num)
+        }
+  },
+};
 </script>
 
 <style scoped>

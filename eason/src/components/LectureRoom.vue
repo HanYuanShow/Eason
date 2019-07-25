@@ -24,8 +24,8 @@
       <van-row type="flex" justify="center">
         <van-col span="22">
           <div v-for="(v,i) in getcontent" :key="i">
-            <h4 class="Lectrue-titel">{{v.content.titel}}</h4>
-            <p class="Lectrue-text">{{v.content.text}}</p>
+            <h4 class="Lectrue-titel">{{v.roomName}}</h4>
+            <p class="Lectrue-text">{{v.roomText}}</p>
           </div>
         </van-col>
       </van-row>
@@ -42,22 +42,39 @@ export default {
     };
   },
   created() {
-    this.axios({
-      url: "/aaa",
-      method: "get"
+      //随机数
+
+       function rand(min,max){
+        return Math.round(Math.random() * (max-min)) + min;
+        }
+        let num =rand(1,6)
+        console.log(num);
+        this.axios({
+          url: "http://10.12.156.149:8181/classRoom/findById",
+          method: "get",
+          params:{
+              id:num
+          }
     }).then(ok => {
-      this.getcontent = ok.data.room.slice(0, 1);
+      this.getcontent = ok;
+      console.log(ok)
     });
   },
   methods: {
     getText(){
-      let num =1;
-       num++;
-      this.axios({
-      url: "/aaa",
-      method: "get"
+        function rand(min,max){
+        return Math.round(Math.random() * (max-min)) + min;
+        }
+        let num =rand(1,6)
+         this.axios({
+          url: "http://10.12.156.149:8181/classRoom/findById",
+          method: "get",
+          params:{
+              id:num
+          }
     }).then(ok => {
-      this.getcontent = ok.data.room.slice(0+num, 1+num);
+      this.getcontent = ok;
+      console.log(ok)
     });
 
       

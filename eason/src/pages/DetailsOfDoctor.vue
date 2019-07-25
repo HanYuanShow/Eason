@@ -189,6 +189,9 @@ export default {
         },
         guanzhu(){
             this.style=!this.style;
+            
+            
+
         },
         back(){
             this.$router.go(-1);

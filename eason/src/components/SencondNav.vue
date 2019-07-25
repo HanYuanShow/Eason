@@ -3,6 +3,7 @@
     <van-row type="flex" justify="center">
       <van-col span="22">
         <div class="SencondNav-out">
+          
           <router-link to="/Autognosis">
             <div class="SencondNav-signle">
               <van-image src="../../static/images/w/ao2.png" width="30" height="30" />
@@ -10,8 +11,8 @@
             </div>
           </router-link>
 
-          <router-link to>
-            <div class="SencondNav-signle">
+          <router-link to="/BuyMedicine">
+            <div class="SencondNav-signle"  >
               <van-image src="../../static/images/w/anw.png" width="30" height="30" />
               <p>快速购药</p>
             </div>
