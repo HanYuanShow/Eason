@@ -1,7 +1,7 @@
 <template>
     <div>
         <van-pull-refresh v-model="isLoading" @refresh="onRefresh" pulling-text="松开刷新数据" loading-text="正在加载" success-text="">
-            <ScienceDetailsTopic :arr = topiclistiddetails[0]></ScienceDetailsTopic>
+            <ScienceDetailsTopic :arr = add></ScienceDetailsTopic>
         </van-pull-refresh>
         
     </div>
@@ -16,29 +16,38 @@ export default {
     data(){
         return {
             arr:[],
-            topicid:"",
-            isLoading: false
+            topicidss:"",
+            isLoading: false,
+            add:""
+
         }
     },
     
-    computed:{
-        topiclistiddetails(){
-            var add = this.arr.filter((v,i)=>{
-                if(this.topicid == v.id){
+    // computed: {
+    //     topiclistiddetails(){
+    //         var add = this.arr.filter((v,i)=>{
+    //             if(this.topicid == v.id){
+    //                 return v
+    //             }
+    //         })
+    //         return add
+    //     }
+    // },
+    created(){
+        this.topicidss = this.$route.params.id
+        // 获取所有医生话题
+        this.axios({
+            url:"http://47.112.208.93:8181/doctorTopic/findAllTopic",
+            method:"get",
+        }).then((ok)=>{
+            this.arr = ok.data
+            console.log(this.arr)
+            this.add = this.arr.filter((v,i)=>{
+                if(this.topicidss == v.id){
                     return v
                 }
             })
-            return add
-        }
-    },
-    created(){
-        this.topicid = this.$route.params.id
-        this.axios({
-            url:"/aaazyz",
-            method:"get"
-        }).then((ok)=>{
-            // console.log(ok)
-            this.arr = ok.data.topic.list
+            console.log(this.add)
         })
     },
     methods: {

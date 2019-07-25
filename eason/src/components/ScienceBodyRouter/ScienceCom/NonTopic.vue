@@ -2,19 +2,19 @@
     <div>
         
         <div class="forList">
-            <div v-for="(v,i) in arr.list" :key="i" class="List" @click="details(v.id)">
-                <div>
-                    <img :src="v.imgurl" class="ListImg">
+            <div v-for="(v,i) in arr" :key="i" class="List" @click="details(v.id)" >
+                <div class="titleLeft">
+                    <img :src="v.img" class="ListImg">
                 </div>
                 <div class="titleRigth">
                     <span class="titleFontSize">{{v.title}}</span>
                     <div class="titleFooter">
                         <div>
-                            <span class="nonTitleFontSize">{{v.time}}</span>
+                            <span class="nonTitleFontSize">{{v.date|filtersdate}}</span>
                         </div>
                         <div>
-                            <span class="nonTitleFontSize">阅读{{v.readNumber}}</span>
-                            <span class="nonTitleFontSize">点赞{{v.praiseNumber}}</span>
+                            <span class="nonTitleFontSize">阅读{{v.reading}}</span>
+                            <span class="nonTitleFontSize">点赞{{v.star}}</span>
                         </div>
                     </div>
                 </div>
@@ -28,7 +28,7 @@
 export default {
     data(){
         return {
-
+            newsId:""
         }
     },
     props:{
@@ -36,9 +36,22 @@ export default {
     },
     methods: {
         details(val){
-            this.$router.push("/ContentNews/"+val)
+            this.$router.push("/ContentNews/"+val);
+            this.newsId = val;
+            // 点击新闻增加阅读量接口
+            this.axios({
+                url:"http://47.112.208.93:8181/news/addReading/"+this.newsId,
+                method:"put"
+            }).then((ok)=>{
+                
+            })
         }
     },
+    filters:{
+        filtersdate(val){
+            return val.substring(0,10)
+        }
+    }
 }
 </script>
 
@@ -51,11 +64,13 @@ export default {
         padding-top:20px;
         padding-left:15px;
         padding-right:15px;
+        /* justify-content: space-between; */
     }
     .titleRigth{
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        flex:1;
     }
     .ListImg{
         width:90px;

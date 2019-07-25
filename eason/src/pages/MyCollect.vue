@@ -8,7 +8,10 @@
             animated=true color = "#6bce72" swipeable	=true
             >
             <van-tab title="科普">
-               <kong :kongtext="kongtext" :kongimg="kongimg"></kong>
+               <kong :kongtext="kongtext" :kongimg="kongimg">
+                   
+               </kong>
+               
             </van-tab>
             <van-tab title="问答">
                <kong :kongtext="kongtext" :kongimg="kongimg"></kong>

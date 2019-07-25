@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .red{
+        color:red;
+    }
+    </style>
+<script src="node_modules/vue/dist/vue.min.js"></script>
+
+</head>
+<body>
+    <!-- 1.先把静态页面写出来 -->
+
+        <div id="demodiv">
+
+            <h1>任务列表</h1>
+            <!-- 5。设置总数 得到当前数据的length -->
+            <p>任务总数：{{obj.length}}；还有：{{sheng()}} 未完成；【 <span @click="del()">完成</span> 】</p>
+            <ul>
+                <!-- 2.创建模拟数据并且便利展示 -->
+                <li v-for="(v,i) in obj">
+                    <!--
+                         4.设置修改操纵
+                        在页面中添加一个输入框
+                        在原始数据中添加一个数据edit 用来保存当前是否切换到修改的状态
+                        给展示数据的span设置一个v-if 给input设置一个v-else  用来管理具体是谁显示
+                        给span添加一个点击事件  调用函数并且传入当前的下标
+                        在函数中进行edit属性的取反操作
+                        给input添加一个blur事件在此调用 上面的函数
+                    -->
+                    <!--
+                         6.勾选变色
+                        给原始数据添加一个style属性  用来管理当前的内容是否被选中了
+                        在给页面中加入一个checkbox
+                        给当前的span使用v-bind绑定一个class 在其中使用三元运算符判断当前这条数据的style如果为真那么添加类名否则为空
+                        由于点击复选框要设置span的颜色  所以给复选框绑定当前这条数据的style  已达到勾选切换数据
+                        （有个问题）
+                        被勾选的内容不能进行点击修改
+                        需要给edit这个点击修改的切换函数中使用if进行判断  如果被勾选了那么就不能继续切换
+                    -->
+                    <input type="checkbox" v-model="v.style"/>
+                    <span  :class="v.style?'red':''" v-if="v.edit" @click="edit(i)">  {{v.title}} </span>
+                    <input type="text" v-model="v.title" v-else @blur="edit(i)"/>
+
+                </li>
+               
+            </ul>
+            <!-- 3.设置添加操作 创建一个变量inputText  绑定给input输入框  点击添加调用函数  使用push插入到obj的数据中
+                如果觉得不完善可以使用watch监听判断当前的按钮是否可以点击
+            -->
+            <input type="text" v-model="inputText"/> <button @click="add()">添加</button>
+
+
+        </div>
+        <script>
+            new Vue({
+                el:"#demodiv",
+                data:{
+                    obj:[
+                        {title:"设置",edit:true,style:false},
+                        {title:"圆形设置",edit:true,style:false},
+                        {title:"编写代码",edit:true,style:false},
+                        {title:"测试用例",edit:true,style:false},
+                    ],
+                    inputText:""
+              
+                },
+                methods:{
+                     add(){
+                         this.obj.push({title:this.inputText,edit:true,style:false})
+                         this.inputText=""
+                     },
+                     edit(i){
+
+                        // 判断当前的内容是否被勾选了如果勾选了style属性就是true就不能修改
+                        if(this.obj[i].style){
+                            return;
+                        }
+                        this.obj[i].edit=!this.obj[i].edit
+                     },
+                    //  7。因为勾选了内容跟之后剩余的数量就要变少 那么就判断当前数据中有多少个数据的style为false 
+                    //  如果为false那么就是没有勾选  ++
+                     sheng(){
+                         var i=0;
+                         this.obj.forEach(function(v){
+                             if(v.style==false){
+                                    i++
+                             }
+                         })
+
+                         return i;
+                     },
+                     del(){
+                        //  8.删除操作
+                            // 1.把原始数据重新赋值给一个新变量进行保存
+                            var arr=this.obj;
+                            // 2.把原始数据清空
+                            this.obj=[];
+                            // 3.便利判断当前数据中的style属性是否为false
+                            for(var i=0;i<arr.length;i++){
+                                if(arr[i].style==false){
+                                    this.obj.push(arr[i])
+                                }
+                            }
+
+                     }
+                }
+            })
+        
+        </script>
+</body>
+</html>

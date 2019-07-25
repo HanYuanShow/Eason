@@ -20,11 +20,11 @@ export default {
     },
     created(){
         this.axios({
-            url:"/aaazyz",
+            url:"http://47.112.208.93:8181/news/findNewsByType/%E7%94%9F%E6%B4%BB",
             method:"get",
         }).then((ok)=>{
             console.log(ok)
-            this.arr = ok.data.hot
+            this.arr = ok.data
         })
     }
 }

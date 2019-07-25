@@ -1,30 +1,57 @@
 <template>
     <div class="Details">
         <div class="ScienceDetails"> 
+
             <div @click="routerGo()">
-                <span><img src="../../static/w/a61.png"></span>
+                <span><img src="../../static/w/a61.png" class="ScienceDetailsImg"></span>
             </div>
             <div>
-                <span class="ScienceDetailsRight ScienceDetailsRightone"><img src="../../static/w/asj.png"><span>{{arr.click.collectNumber}}</span></span>
-                <span  class="ScienceDetailsRightone"><img src="../../static/w/a7r.png"><span>{{arr.click.collectNumber}}</span></span>
+                <span><img src="../../static/w/asj.png" class="mid"><span class="mid">{{1}}</span></span>
+                  
+                <span>
+                    <van-button type="primary" @click="showPopup()" class="showPopup"> 
+                        <img src="../../static/w/a7r.png" class="mid">
+                    </van-button>
+                    <span class="mid">{{1}}</span>
+                </span>
             </div>
+
         </div>
-        <div class="DetailsBody">
+                    <!-- <van-button type="primary" @click="showPopup">
+                                    展示弹出层
+                    </van-button> -->
+                    <van-popup v-model="show" position="bottom" :style="{ height: '20%' }">
+                        <div>
+                            <div class="shareTop">
+                                <span>分享</span>
+                            </div>
+                            <div class="shareBottom">
+                                <img src="../../static/w/arp.png">
+                                <img src="../../static/w/arq.png">
+                                <img src="../../static/w/arl.png">
+                                <img src="../../static/w/aro.png">
+                            </div>
+                        </div>
+                    </van-popup>
+        <div v-if="bools">
+            正在加载
+        </div>
+        <div class="DetailsBody" v-else>
             <div class="DetailsTopicBig">
-                <h3 class="DetailsTopicTitle">{{arr.title}}</h3>
+                <h3 class="DetailsTopicTitle">{{arr[0].name}}</h3>
 
                 <div class="DetailsTopicEasonBig">
                     <div>
                         <div class="DetailsTopicEasonTop">
-                            <img :src="arr.imgurl" class="DetailsTopicEasonTopImg">
-                            <span class="DetailsTopicEasonTopName">{{arr.name}}</span>
+                            <img :src="arr[0].img" class="DetailsTopicEasonTopImg">
+                            <span class="DetailsTopicEasonTopName">{{arr[0].doctorinfor.realaName}}</span>
                             <span class="DetailsTopicEasonTopOriginal">原创</span>
-                            <span class="DetailsTopicEasonTopDate">{{arr.time}}</span>
+                            <span class="DetailsTopicEasonTopDate">{{arr[0].date|filtersdate}}</span>
                         </div>
                         <div class="DetailsTopicEasonBottom">
-                            <span class="DetailsTopicEasonBottomText">{{arr.desk}}</span>
-                            <span class="DetailsTopicEasonBottomText">{{arr.position}}</span>
-                            <span class="DetailsTopicEasonBottomText">{{arr.hospital}}</span>
+                            <span class="DetailsTopicEasonBottomText">{{arr[0].doctorinfor.office}}</span>
+                            <span class="DetailsTopicEasonBottomText">{{arr[0].doctorinfor.title}}</span>
+                            <span class="DetailsTopicEasonBottomText">{{arr[0].doctorinfor.hospital}}</span>
                         </div>
                     </div>
                     <div>
@@ -33,10 +60,10 @@
                 </div>
 
                 <div>
-                    <p>{{arr.click.content}}</p>
+                    <p>{{arr[0].text}}</p>
                 </div>
                 <div>
-                    <span class="DetailsTopicEasonBottomText DetailsTopicEasonBottomTextTwo">阅读{{arr.readNumber}}</span>
+                    <span class="DetailsTopicEasonBottomText DetailsTopicEasonBottomTextTwo">阅读{{arr[0].reading}}</span>
                 </div>
                 <!-- <div>
                     
@@ -45,9 +72,9 @@
                     <span>立即咨询</span>
                 </div> -->
                 <div class="praiseNumber">
-                    <span class="praiseNumberLeft">{{arr.praiseNumber}}</span>
+                    <span class="praiseNumberLeft">{{arr[0].star}}</span>
                     <span class="praiseNumbermiddle">送心意</span>
-                    <span  class="praiseNumberRight">立即咨询</span>
+                    <span  class="praiseNumberRight" @click="question()">立即咨询</span>
                 </div>
 
                 
@@ -65,26 +92,57 @@
 export default {
     props:{
         arr:"",
+        show:false,
+        bool:""
+
     },
     methods: {
         routerGo(){
             this.$router.go(-1)
+        },
+        question(){
+            this.$router.push("/Question")
+        },
+        showPopup() {
+            this.show = true;
         }
     },
+    computed: {
+        bools(){
+            if(this.arr == ""){
+                this.bool = true
+            }else{
+                this.bool = false
+            }
+            return this.bool
+        }
+    },
+    filters:{
+        filtersdate(val){
+            return val.substring(0,10)
+        }
+    }
+
+    
 }
 </script>
 
 <style scoped>
+    .showPopup{
+        background:none;
+        border:none;
+        padding:0 0;
+    }
+    .showPopupP{
+        text-align: center;
+    }
     .ScienceDetails{
         display: flex;
         justify-content: space-between;
         padding-left:17px;
         padding-right:25px;
-        padding-top:12px;
-        padding-bottom:12px;
         border-bottom:1px solid #dbdbdb;
         font-size:16px;
-        color:#6bce72;
         position:fixed;
         top:0;
         background: #ffffff;
@@ -95,20 +153,15 @@ export default {
         width:22px;
         height:21px;
     }
-    .ScienceDetailsRight{
-        margin-right:25px;
+    .ScienceDetailsImg{
+        margin-top:12px;
     }
-    .ScienceDetailsRightone{
-        line-height: 21px;
-        color:black;
+    .mid{
         vertical-align: middle;
+        margin-right:5px;
     }
-    .ScienceDetailsRightone span{
-        vertical-align: middle;
-    }
-    .ScienceDetailsRightone img{
-        vertical-align: middle;
-    }
+
+
     .DetailsTopicBig{
         padding:10px 15px 0;
     }
@@ -232,6 +285,19 @@ export default {
         line-height:35px;
     }
     
+
+     .shareTop{
+        text-align: center;
+        margin-bottom:15px;
+    }
+    .shareBottom{
+        display: flex;
+        justify-content: space-around;
+        padding:0 10px;
+    }
+    .shareBottom img{
+        width:45px;
+    }
 </style>
 
 

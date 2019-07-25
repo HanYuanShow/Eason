@@ -17,10 +17,10 @@ export default {
     },
     created(){
         this.axios({
-            url:"/aaazyz",
+            url:"http://47.112.208.93:8181/doctorTopic/findAllTopic",
             method:"get",
         }).then((ok)=>{
-            this.arr = ok.data.topic.list
+            this.arr = ok.data
             console.log(this.arr)
         })
     }
