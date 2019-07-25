@@ -8,23 +8,11 @@
         </div>
         <!-- 筛选 -->
         <van-dropdown-menu active-color="green">
-            <van-dropdown-item v-model="value1" :options="option1"  @change="keshi(option1[value1].text)"/>
-            <van-dropdown-item v-model="value2" :options="option2" />
+            <van-dropdown-item v-model="value1" :options="option1" @change="keshi(option1[value1].text)"/>
+            <van-dropdown-item v-model="value2" :options="option2" @change="region(option2[value2].text)"/>
         </van-dropdown-menu>
         <!-- 医生列表 -->
-        <Doctorlist3 v-for="(v,i) in sarr" 
-        :key="i" 
-        :doctor_name="v.realaName" 
-        :disease_type="v.office" 
-        :doctor_job="v.title"
-        :doctor_hospital="v.hospital"
-        :good_at="v.adept"
-        :doctor_label="v.hospiTaltype"
-        :doctor_label2="v.workTime"
-        :label="v.doctor_label"
-        :doctor_price="v.printreferint"
-        :consult_num="v.peopleNumint"
-        ></Doctorlist3>
+        <Doctorlist3 v-for="(v,i) in sarr" :key="i" :doctor_infor="v"></Doctorlist3>
     </div>
 </template>
                 
@@ -85,16 +73,10 @@ export default {
             this.value1=this.$route.query.id;
             
             this.sarr=ok.data;
-            console.log(this.sarr)
-            // var newdata=data.filter((v,i)=>{
-            //     if(v.office==this.ks){
-            //         return v;
-            //     }
-            // })
-            // this.sarr=newdata;
-            
-    
         },
+
+        // 接收医生详细页返回的id用来选择下拉菜单的选项
+        this.value1=this.$route.query.newid
     // created() {
     //     this.axios({
     //         url:"/liuxiaojie",
@@ -113,15 +95,20 @@ export default {
     )},
     methods: {
         keshi(ks){
-            let newdata=[];
-            for (let i=0; i<this.newarr.length;i++) {
-                if(this.newarr[i].disease_type==ks){
-                    newdata.push(this.newarr[i]);
-                    this.sarr=newdata;
-                }else if(ks=='全部科室'){
-                    this.sarr=this.newarr;
-                }
-            }
+           this.axios({
+                url:"http://10.12.156.39:8181/Doctorin/findall?string="+ks,
+                method:"get"
+            }).then((ok)=>{
+                this.sarr=ok.data;
+            })
+        },
+        region(re){
+           this.axios({
+                url:"http://10.12.156.39:8181/Doctorin/findall?string="+re,
+                method:"get"
+            }).then((ok)=>{
+                this.sarr=ok.data;
+            })
         },
         onClickLeft(){
             this.$router.go(-1);

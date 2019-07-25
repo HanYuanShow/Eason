@@ -68,6 +68,7 @@ export default {
                 {imgurl:"../../static/images/a/16.png",keshi:"报告解读科",id:16},
                 {imgurl:"../../static/images/a/17.png",keshi:"营养科",id:17},
             ]
+            // arr:[]
         }
     },
     methods: {

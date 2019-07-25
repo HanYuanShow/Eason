@@ -1,20 +1,20 @@
 <template>
         <!-- 医生列表 -->
-        <div class="doctorbox" @click="doctor()">
-            <div class="headpic"><img src="../../static/images/w/a3c.png" alt=""></div>
+        <div class="doctorbox" @click="doctor(doctor_infor.id,doctor_infor)">
+            <div class="headpic"><img :src="doctor_infor.impSrc" class="doctorheadpic"></div>
             <div class="doctorintro">
                 <ul>
                     <li>
-                        <h4 class="doctorname">{{doctor_name}}</h4>
-                        <span class="doctorkind">{{disease_type}} {{doctor_job}}</span>
+                        <h4 class="doctorname">{{doctor_infor.realaName}}</h4>
+                        <span class="doctorkind">{{doctor_infor.office}} {{doctor_infor.title}}</span>
                     </li>
-                    <li class="doctorhospital">{{doctor_hospital}}</li>
-                    <li class="detail">{{good_at}}</li>
+                    <li class="doctorhospital">{{doctor_infor.hospital}}</li>
+                    <li class="detail">{{doctor_infor.adept}}</li>
                     <li class="line">
-                        <span class="label">{{doctor_label}}</span>
-                        <span class="label">{{doctor_label2}}</span>
+                        <span class="label">{{doctor_infor.hospiTaltype}}</span>
+                        <span class="label">{{doctor_infor.workTime}}</span>
                     </li>
-                    <li><span class="doctorprice">￥{{doctor_price}}元起</span><span class="okok">{{consult_num}}人购买</span> </li>
+                    <li><span class="doctorprice">￥{{doctor_infor.printreferint}}元起</span><span class="okok">{{doctor_infor.peopleNumint}}人购买</span> </li>
                 </ul>
             </div>
         </div>
@@ -28,25 +28,32 @@ export default {
         }
     },
     methods: {
-        doctor(){
-            this.$router.push("/DetailsOfDoctor")
+        doctor(id){
+            this.$router.push("/DetailsOfDoctor/"+id)
         }
     },
     props:{
-        doctor_name:String,
-        disease_type:String,
-        doctor_job:String,
-        doctor_label:String,
-        doctor_label2:String,
-        doctor_hospital:String,
-        good_at:String,
-        doctor_price: Number,
-        consult_num: Number
+        doctor_infor: Object,
+        // doctor_name:String,
+        // disease_type:String,
+        // doctor_job:String,
+        // doctor_label:String,
+        // doctor_label2:String,
+        // doctor_hospital:String,
+        // good_at:String,
+        // doctor_price: Number,
+        // consult_num: Number,
+        // doctor_id: Number,
+        // imgsrc:String
     }
 }
 </script>
 
 <style scoped>
+.doctorheadpic{
+    width: 75px;
+    height: 75px;
+}
 .line{
     border-bottom: 1px solid #f4f4f4;
     line-height: 30px;
@@ -107,6 +114,7 @@ export default {
     text-align: center;
 }
 .doctorintro{
+    width: 75%;
     line-height: 25px;
     border-radius: 0 0 5px 0;
     padding-right: 10px;
