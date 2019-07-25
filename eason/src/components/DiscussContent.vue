@@ -95,9 +95,29 @@
       </van-row>
     </div>
 
-        <p>{{itemid}}</p>
-
+    <div class="talk" v-if="bool">
+      <div v-for="(v,i) in myuser" :key="i" class="text">
+        <span class="right">{{v.my}}</span>
+        <div class="clear"></div>
+        <span class="left">{{v.doctor}}</span>
+        <div class="clear"></div>
+      </div>
     </div>
+
+    <div class="end">
+      <van-row type="flex" justify="center">
+        <van-col span="24" offset="3">
+          <van-cell-group>
+            <van-field v-model="sms" center  label="请输入内容"  type="textarea"  autosize  rows="1" size="large">
+              <van-button slot="button" size="small" type="primary" @click="send()">发送</van-button>
+            </van-field>
+          </van-cell-group>
+        </van-col>
+      </van-row>
+    </div>
+
+    
+  </div>
 </template>
 <script>
 export default {
@@ -125,31 +145,149 @@ export default {
     back() {
       this.$router.go(-1);
     },
-    created() {
-        this.itemid = this.$route.query.id; 
-        this.axios({
-            url:"/aaa",
-            method:"get"
-            }).then((ok)=>{
-               this.new= this.discussContent=ok.data.discuss;
-          
-            })
+    goAll() {
+      this.$router.push("/AllHistory");
     },
-    // computed: {
-    // //判断过滤 等于id的数据
-    //     content() {
-    //     var newarr = this.discussContent.filter((v, i) => {
-    //         if (v.id == this.itemid) {
-    //         return v;
-    //         }
-    //     });
-    //     return newarr;
-    //     },
-    // },
-  }
-}
+    fen() {
+      this.show = false;
+      console.log(1);
+    },
+    onSelect(item) {
+      // 点击选项时默认不会关闭菜单，可以手动关闭
+      this.show = false;
+      Toast(item.name);
+    },
+    send() {
+      this.myuser.push({ my: "", doctor: "" });
+      this.myuser[this.myuser.length - 1].my = this.sms;
+      this.sms = " ";
+      //请求对话接口
+      this.axios({
+        headers: {
+          "X-Requested-With": "XMLHttpRequest",
+          "Content-Type": "application/json; charset=UTF-8",
+          "Access-Control-Allow-Origin": "*"
+        },
+        url: "/api/api.php?key=free&appid=0&msg=" + this.myuser,
+        method: "get"
+      }).then(ok => {
+        this.myuser[this.myuser.length - 1].doctor = ok.data.content;
+      });
+    },
+    showPopup() {
+      this.show = true;
+    }
+  },
+  // computed: {
+  // //判断过滤 等于id的数据
+  //     content() {
+  //     var newarr = this.discussContent.filter((v, i) => {
+  //         if (v.id == this.itemid) {
+  //         return v;
+  //         }
+  //     });
+  //     return newarr;
+  //     },
+  // },
+  watch: {
+    myuser() {
+      if (this.myuser[0].my!==" " && this.myuser[0].doctor!==" "){
+        this.bool = true;
+      }
+    }
+  },
+  // beforeCreate() {
+  //    document.querySelector(".text")[0].setAttribute("style","dispaly:none")
+  // },
+};
 </script>
 
 <style scoped>
-
+.btn{
+  background: none;
+  border:none;
+}
+.fare {
+  margin-top: 25px;
+}
+.imgs {
+  margin-left: 20px;
+}
+.tacking {
+  padding: 5px;
+  display: block;
+  border-radius: 5px;
+  border: 1px solid gray;
+  margin-top: 20px;
+  background-color: rgb(224, 224, 224);
+}
+.clear {
+  height: 0px;
+  clear: both;
+}
+.left {
+  float: left;
+  margin-left: 20px;
+  /* padding: 10px; */
+  background-color: white;
+  color: black;
+  margin-top: 20px;
+  border-radius: 5px;
+  max-width: 300px;
+}
+.right {
+  float: right;
+  margin-right: 20px;
+  /* padding: 10px; */
+  background-color: rgb(18, 230, 18);
+  color: black;
+  margin-top: 20px;
+  border-radius: 5px;
+  max-width: 300px;
+}
+.background {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  background: rgb(241, 241, 241);
+  z-index: -1;
+}
+.end {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+}
+.titel span {
+  margin-left: 8px;
+}
+.name {
+  font-size: 18px;
+  font-weight: 700;
+}
+.titel {
+  widows: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+.more {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid gainsboro;
+}
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.all {
+  color: rgb(39, 224, 39);
+}
 </style>
