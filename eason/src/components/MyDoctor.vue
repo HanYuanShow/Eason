@@ -76,40 +76,81 @@ export default {
 </script>
 
 <style scoped>
-.out{   
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgb(243, 242, 242);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.imges {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 15px;
 }
-.inner{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.content-doctor {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 60px;
+  background-color: white;
+  border-bottom: 1px solid gainsboro;
 }
-.inner p{
-    font-size: 14px;
-    margin: 15px 0;
-    color: grey;
+.black {
+  font-weight: 700;
+  font-size: 18px;
 }
-.inner span{
-    display: block;
-    width: 250px;
-    height: 30px;
-    text-align: center;
-    line-height: 30px;
-    border-radius: 2px;
-    background-color:  rgb(39, 224, 39);
-    color: white;
+.doctor-end {
+  margin-top: 5px;
+  text-indent: 10px;
 }
-.inner h6{
-    font-weight: 100;
-    margin-bottom: 15px;
-        color: grey;
+.name span {
+  margin-left: 10px;
+  margin-bottom: 5px;
+}
+
+.have {
+  display: flex;
+  align-items: center;
+}
+.list {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(243, 242, 242);
+  z-index: -999;
+  padding-top: 70px;
+}
+
+.out {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(243, 242, 242);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.inner p {
+  font-size: 14px;
+  margin: 15px 0;
+  color: grey;
+}
+.inner span {
+  display: block;
+  width: 250px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 2px;
+  background-color: rgb(39, 224, 39);
+  color: white;
+}
+.inner h6 {
+  font-weight: 100;
+  margin-bottom: 15px;
+  color: grey;
 }
 </style>
