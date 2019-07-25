@@ -48,7 +48,13 @@
         <!-- 医生列表 -->
         <div class="doctorlist">
             <Doctortitle :title="keshi"></Doctortitle>
-            <Doctorlist v-for="(v,i) in sarr" :key="i" :doctor_name="v.doctor_name" :disease_type="v.disease_type" :doctor_job="v.doctor_job"></Doctorlist> 
+            <Doctorlist v-for="(v,i) in sarr" :key="i" 
+            :doctor_name="v.realaName" 
+            :disease_type="v.office" 
+            :doctor_job="v.title"
+            :imgsrc="v.impSrc"
+            :doctor_id="v.id"
+            ></Doctorlist> 
         </div>
            <div class="end"></div>
     </div>
@@ -100,21 +106,7 @@ export default {
     },
     created() {
         this.keshi=this.arr[0].keshi;
-        this.axios({
-            url:"/liuxiaojie",
-            method:"get"
-        }).then((ok)=>{
-            this.newarr=ok.data[0].doctor;
-            // this.sarr=this.newarr;
-            let newdata=[];
-            for(let i=0;i<this.newarr.length;i++){
-                if(this.newarr[i].disease_type=='皮肤科'){
-                    newdata.push(this.newarr[i]);
-                    this.sarr=newdata;
-                } 
-            }
-
-        });
+        
        
     },
     components:{
@@ -125,18 +117,28 @@ export default {
         doctorlist(ks,i){
             // 绑定Doctortitle
             this.keshi=ks;
-
             // 点击时改变li背景样式时的id
             this.newindex=i;
 
-            let newdata=[];
-            for(let i=0;i<this.newarr.length;i++){
-                if(this.newarr[i].disease_type==ks){
-                    newdata.push(this.newarr[i]);
-                    this.sarr=newdata;
-                } 
-            }
+            // let newdata=[];
+            // for(let i=0;i<this.newarr.length;i++){
+            //     if(this.newarr[i].office==ks){
+            //         console.log(this.newarr[i].office)
+            //         newdata.push(this.newarr[i]);
+            //         this.sarr=newdata;
+                    
+            //     } 
+            // }
             
+// ===========================
+        this.axios({
+            url:"http://10.12.156.39:8181/Doctorin/findall?string="+ks,
+            method:"get"
+        }).then((ok)=>{
+            this.sarr=ok.data;
+        });
+
+// ===========================
         },
         doctorlist1(ks,i){
             this.keshi=ks;
@@ -150,9 +152,6 @@ export default {
             this.$router.go(-1);
         }
     },
-//     beforeCreate() {
-//        document.querySelector('body').setAttribute('style', 'background:#2e303d')
-//   }
 }
 </script>
 

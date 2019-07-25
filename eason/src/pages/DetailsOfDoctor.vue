@@ -8,8 +8,8 @@
             </div>
         </div>
         <!-- 医生信息绿色 -->
-        <div class="doctorbox" @click="DoctorIntroduce(newid)">
-            <div class="headpic"><img src="../../static/images/w/a3c.png" alt=""></div>
+        <div class="doctorbox" @click="DoctorIntroduce()">
+            <div class="headpic"><img :src="this.newarr.impSrc" class="doctorheadpic"></div>
             <div class="doctorintro">
                 <ul>
                     <li>
@@ -60,7 +60,7 @@
                     <li :class="{newlunli:newindex==i}" class="lunli" v-for="(v,i) in consultarr" :key="i" @click="lunli(i,v.title,v.price)">
                         <p class="lunp">{{v.title}}</p>
                         <img :src="v.imgurl" class="lunpic">
-                        <p class="lunp">￥{{v.price}}元/次</p>
+                        <p class="lunp">{{v.price==null?'暂未开通':'￥'+v.price+'元/次'}}</p>
                     </li>
                 </ul>
             </div>
@@ -128,7 +128,7 @@
                 <div :class="style?'star':'newstar'" @click="guanzhu()"></div>
                 <span class="guanzhutxt">{{style?"关注":"已关注"}}</span>
             </div>
-            <div class="zixunbtn">{{newtitle}}(￥{{newprice}}元/次)</div>
+            <div class="zixunbtn">{{newprice==null?'暂未开通':newtitle+'(￥'+newprice+'元/次)'}}</div>
         </div>
     </div>
 </template>
@@ -154,9 +154,10 @@ export default {
         }
     },
     created(){
+        // 显示第一个按钮咨询方式title
         this.newtitle=this.consultarr[0].title;
-        // this.newprice=this.consultarr[0].price;
-        
+        // ------------------------------------
+        // 接收各个医生列表传的医生id
         this.newid=this.$route.params.id;
         this.axios({
             url:"http://10.12.156.39:8181/Doctorin/findById?id="+this.newid,
@@ -164,13 +165,15 @@ export default {
         }).then((ok)=>{
             this.newarr=ok.data.Doctorinfor;
             this.consultarr[0].price = this.newarr.printreferint;
-            this.newprice=this.consultarr[0].price;
             this.consultarr[1].price = this.newarr.phonereferint;
             this.consultarr[2].price = this.newarr.privaterferint;
             this.consultarr[3].price = this.newarr.backyardint;
             this.consultarr[4].price = this.newarr.printreferint;
             this.consultarr[5].price = this.newarr.phonereferint;
+            // 显示第一个按钮价格price 位置不能变 一定要在this.consultarr[0]之后
+            this.newprice=this.consultarr[0].price;
         })
+        // -----------------------------------------
     },
     methods: {
         lunli(i,title,price){
@@ -178,10 +181,9 @@ export default {
             this.newtitle=title;
             this.newprice=price;
         },
-        DoctorIntroduce(id){
+        DoctorIntroduce(){
             this.$router.push({
                 path:"/DoctorIntroduce",
-                // query:{id:id}
                 query:{newarr:this.newarr}
                 })
         },
@@ -196,6 +198,10 @@ export default {
 </script>
 
 <style scoped>
+.doctorheadpic{
+    width: 75px;
+    height: 75px;
+}
 .guanzhutxt{
     display: block;
     font-size: 12px;

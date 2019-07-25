@@ -23,8 +23,7 @@
             <van-dropdown-item v-model="value" :options="option" @change="keshi(option[value].text)"/>
         </van-dropdown-menu>
         <!-- 医生列表 -->
-        <Doctorlist2 v-for="(v,i) in sarr" 
-        :key="i" 
+        <Doctorlist2 v-for="(v,i) in newarr" :key="i" :newv="v"
         :doctor_name="v.doctor_name" 
         :disease_type="v.disease_type" 
         :doctor_job="v.doctor_job"
@@ -61,22 +60,33 @@ export default {
         }
     },
     created() {
+        
+        // ----------------------------------
         this.axios({
-            url:"/liuxiaojie",
+            url:"http://10.12.156.39:8181/Doctorin/load",
             method:"get"
         }).then((ok)=>{
-            this.newarr=ok.data[0].doctor;
-
+            this.newarr=ok.data;
             // 页面初始化显示所有科室医生列表
-            this.sarr=this.newarr;
+            // this.sarr=this.newarr;
         })
-        
+        // ----------------------------------
     },
     methods: {
         doctorkoubei(){
             this.$router.push("/DoctorKoubei")
         },
         keshi(ks){
+            this.axios({
+                url:"http://10.12.156.39:8181/Doctorin/findall?string="+ks,
+                method:"get"
+            }).then((ok)=>{
+                this.newarr=ok.data;
+                // 页面初始化显示所有科室医生列表
+                // this.sarr=this.newarr;
+            })
+
+            // -----------------
             let newdata=[];
             for (let i=0; i<this.newarr.length;i++) {
                 if(this.newarr[i].disease_type==ks){
@@ -86,6 +96,7 @@ export default {
                     this.sarr=this.newarr;
                 }
             }
+            // ----------------------
         },
         onClickLeft(){
             this.$router.go(-1);

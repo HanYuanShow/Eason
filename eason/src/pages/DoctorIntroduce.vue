@@ -11,7 +11,7 @@
         <!-- 头像、姓名、科室、所属医院 -->
         <div class="doctor">
             <div class="doctorpic">
-                <img src="../../static/images/a/yizhen.png" alt="">
+                <img :src="this.newarr.impSrc" class="doctorheadpic">
             </div>
             <div class="doctorright">
                 <p class="doctorname">{{this.newarr.realaName}}</p>
@@ -57,9 +57,6 @@ export default {
     },
     created() {
         this.newarr=this.$route.query.newarr;
-        if(this.newarr.backyard==null){
-            this.bool=!this.bool
-        }
     },
     methods: {
         onClickLeft(){
@@ -70,6 +67,10 @@ export default {
 </script>
 
 <style scoped>
+.doctorheadpic{
+    width: 75px;
+    height: 75px;
+}
 .doctorintroduce{
     background: #ffffff;
 }
