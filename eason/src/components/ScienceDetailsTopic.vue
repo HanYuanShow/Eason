@@ -6,13 +6,13 @@
                 <span><img src="../../static/w/a61.png" class="ScienceDetailsImg"></span>
             </div>
             <div>
-                <span><img src="../../static/w/asj.png" class="mid"><span class="mid">{{1}}</span></span>
+                <!-- <span><img src="../../static/w/asj.png" class="mid"><span class="mid">{{1}}</span></span> -->
                   
                 <span>
                     <van-button type="primary" @click="showPopup()" class="showPopup"> 
                         <img src="../../static/w/a7r.png" class="mid">
                     </van-button>
-                    <span class="mid">{{1}}</span>
+                    <!-- <span class="mid">{{1}}</span> -->
                 </span>
             </div>
 
@@ -33,7 +33,7 @@
                             </div>
                         </div>
                     </van-popup>
-        <div v-if="bools">
+        <div v-if="bool">
             正在加载
         </div>
         <div class="DetailsBody" v-else>
@@ -55,7 +55,8 @@
                         </div>
                     </div>
                     <div>
-                        <span class="DetailsTopicEasonBottomConcern">+ 关注</span>
+                        <span class="DetailsTopicEasonBottomConcernTrue" v-if="isFollowDoctor">+ 关注</span>
+                        <span class="DetailsTopicEasonBottomConcern" v-else @click="isFollowDoctorTrue()">+ 关注</span>
                     </div>
                 </div>
 
@@ -72,7 +73,8 @@
                     <span>立即咨询</span>
                 </div> -->
                 <div class="praiseNumber">
-                    <span class="praiseNumberLeft">{{arr[0].star}}</span>
+                    <span class="praiseNumberLeftTrue" v-if="isGiveStar">{{arr[0].star+numtwo}}</span>
+                    <span class="praiseNumberLeft" v-else @click="isGiveStarTrue()">{{arr[0].star}}</span>
                     <span class="praiseNumbermiddle">送心意</span>
                     <span  class="praiseNumberRight" @click="question()">立即咨询</span>
                 </div>
@@ -90,10 +92,25 @@
 
 <script>
 export default {
+    data(){
+        return{
+            numtwo:"",
+            show:false,
+            bool:"",
+        }
+    },
     props:{
         arr:"",
-        show:false,
-        bool:""
+        
+        topicid:"",
+        // 是否已经点赞
+        isGiveStar:"",
+        // 是否已关注医生
+        isFollowDoctor:"",
+        // 医生id
+        doctorid:""
+
+        
 
     },
     methods: {
@@ -105,6 +122,28 @@ export default {
         },
         showPopup() {
             this.show = true;
+        },
+        isGiveStarTrue(){
+            this.isGiveStar = !this.isGiveStar
+            this.numtwo = 1
+            // 点赞话题接口
+            this.axios({
+                url:"http://47.112.208.93:8181/doctorTopic/giveStar/1/"+this.topicid,
+                method:"get"
+            }).then((ok)=>{
+
+            })
+        },
+        isFollowDoctorTrue(){
+            this.isFollowDoctor = !this.isFollowDoctor
+            // 关注医生接口
+            this.axios({
+                url:"http://47.112.208.93:8181/doctorTopic/followDoctor/1/"+this.doctorid,
+                method:"get"
+            }).then((ok)=>{
+
+            })
+
         }
     },
     computed: {
@@ -121,6 +160,11 @@ export default {
         filtersdate(val){
             return val.substring(0,10)
         }
+    },
+    created(){
+        // this.num = 0;
+        this.numtwo = 0;
+
     }
 
     
@@ -230,6 +274,16 @@ export default {
         border-radius: 2px;
         
     }
+    .DetailsTopicEasonBottomConcernTrue{
+        display:inline-block;
+        border:1px solid #6bce72;
+        color:#ffffff;
+        background: #6bce72;
+        font-size: 14px;
+        line-height:22px;
+        padding:0 8px;
+        border-radius: 2px;
+    }
     .DetailsTopicEasonBottomTextTwo{
         /* line-height:40px; */
         display: inline-flex;
@@ -264,6 +318,21 @@ export default {
         color:#bababa;
         border-radius: 18px;
         border:1px solid #bababa;
+        text-indent:40px; 
+        box-sizing: border-box;
+        font-size:12px;
+        line-height:35px;
+    }
+    .praiseNumberLeftTrue{
+        display: inline-block;
+        /* background:url(../../static/w/avc.png) no-repeat 15px 10px; */
+        background:url(../../static/w/au5.png) no-repeat 15px 8px #f08710;
+        background-size:16px auto;
+        width:97px;
+        height:35px;
+        color:#ffffff;
+        border-radius: 18px;
+        border:1px solid #f08710;
         text-indent:40px; 
         box-sizing: border-box;
         font-size:12px;

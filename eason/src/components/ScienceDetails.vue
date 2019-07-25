@@ -10,7 +10,7 @@
                     <img src="../../static/w/ahs.png" class="mid" v-if="isCollect" @click="reverseCollectNews()">
                     <!-- 用户收藏新闻 -->
                     <img src="../../static/w/asj.png" class="mid" v-else @click="collectNews()">
-                    <span class="mid">{{arr.collect+number}}</span>
+                    <span class="mid">{{arr.collect+num}}</span>
                 </span>
                   
                 <span>
@@ -59,8 +59,8 @@
                 <p class="urlmapDepot">图片来源:{{arr.writer}}</p>
                 <img :src="arr.img" class="warrantyUrl">
                 <div class="praiseNumber">
-                    <!-- <span class="praiseNumberLeftTwo" v-if="isGiveStar" @click="isGiveStarTrue">{{arr.star+numtwo}}</span>
-                    <span class="praiseNumberLeft" v-else @click="isGiveStarFalse">{{arr.star}}</span> -->
+                    <span class="praiseNumberLeftTwo" v-if="isGiveStar" >{{arr.star+numtwo}}</span>
+                    <span class="praiseNumberLeft" v-else-if="!isGiveStar" @click="isGiveStarFalse()">{{arr.star}}</span>
                     <span  class="praiseNumberRight" @click="question()">立即咨询</span>
                 </div>
 
@@ -185,7 +185,7 @@ export default {
             
             
             this.isCollect = false
-            this.num = -1;
+            this.num = 0;
             this.axios({    
                                                             // 1预留放用户id
                 url:"http://47.112.208.93:8181/news/reverseCollectNews/1/"+this.newsid,
@@ -214,31 +214,23 @@ export default {
 
     },
     computed:{
-        isCollecttwo(){
-            return this.isCollect
-        },
-        isGiveStartwo(){
-            return this.isGiveStar
-        },
-        number(){
-            return this.num
-        }
+        // isCollecttwo(){
+        //     return this.isCollect
+        // },
+        // isGiveStartwo(){
+        //     return this.isGiveStar
+        // }
 
     },
     filters:{
         filtersdate(val){
             return val.substring(0,10)
-        },
-        filtersdatecollect(val){
-             if(val<0){
-                val = 0
-                return val
-            }
         }
     },
     created(){
         this.num = 0;
         this.numtwo = 0;
+
     }
 }
 </script>

@@ -11,7 +11,7 @@
                     </div>
                     <div>
                         <span class="photoBigRigthbottoma">原创</span>
-                        <span class="photoBigRigthbottomb">{{v.date}}</span>
+                        <span class="photoBigRigthbottomb">{{v.date|filtersdate}}</span>
                     </div>
                 </div>
             </div>
@@ -32,9 +32,14 @@
 
 <script>
 export default {
+    data(){
+        return {
+            topicidaaa:""
+        }
+    },
     props:{
         arr:"",
-        topicidaaa:""
+        
     },
     filters:{
         s(val){
