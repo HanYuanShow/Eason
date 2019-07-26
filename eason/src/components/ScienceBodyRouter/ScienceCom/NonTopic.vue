@@ -40,7 +40,7 @@ export default {
             this.newsId = val;
             // 点击新闻增加阅读量接口
             this.axios({
-                url:"http://47.112.208.93:8181/news/addReading/"+this.newsId,
+                url:"http://47.95.140.83:8181/news/addReading/"+this.newsId,
                 method:"put"
             }).then((ok)=>{
                 

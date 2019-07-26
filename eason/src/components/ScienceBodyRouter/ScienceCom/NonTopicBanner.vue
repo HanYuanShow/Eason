@@ -3,9 +3,9 @@
 <template>
     <div>
         <van-swipe :autoplay="3000" indicator-color="white" class="banner">
-            <van-swipe-item><img src="../../../../static/w/b0i.png"></van-swipe-item>
-            <van-swipe-item><img src="../../../../static/w/b0i.png"></van-swipe-item>
-            <van-swipe-item><img src="../../../../static/w/b0i.png"></van-swipe-item>
+            <van-swipe-item><img src="../../../../static/w/akv.jpg"></van-swipe-item>
+            <van-swipe-item><img src="../../../../static/w/aca.png"></van-swipe-item>
+            <van-swipe-item><img src="../../../../static/w/azd.9.png"></van-swipe-item>
         </van-swipe>
     </div>
 </template>

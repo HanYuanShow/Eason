@@ -1,6 +1,13 @@
 <template>
     <div>
-        <van-pull-refresh v-model="isLoading" @refresh="onRefresh" pulling-text="松开刷新数据" loading-text="正在加载" success-text="">
+        <div v-if="bools" class="boolsText">
+                专业疏通下水道<br>
+                专业开锁,公安备案<br>
+                请联系:1888888888
+            </div>
+        <van-pull-refresh 
+        v-else
+        v-model="isLoading" @refresh="onRefresh" pulling-text="松开刷新数据" loading-text="正在加载" success-text="">
             <ScienceDetailsTopic 
             :arr = add 
             :topicid = topicid
@@ -32,26 +39,29 @@ export default {
             // 发布话题的医生的id
             doctorid:"",
             // 用户是否关注此医生
-            isFollowDoctor:""
+            isFollowDoctor:"",
+
+            userid:"",
+            bool:""
 
         }
     },
     
-    // computed: {
-    //     topiclistiddetails(){
-    //         var add = this.arr.filter((v,i)=>{
-    //             if(this.topicid == v.id){
-    //                 return v
-    //             }
-    //         })
-    //         return add
-    //     }
-    // },
+    computed: {
+        bools(){
+                if(this.arr == ""){
+                    this.bool = true
+                }else{
+                    this.bool = false
+                }
+                return this.bool
+            }
+    },
     created(){
         this.topicid = this.$route.params.id
         // 获取所有医生话题
         this.axios({
-            url:"http://47.112.208.93:8181/doctorTopic/findAllTopic",
+            url:"http://47.95.140.83:8181/doctorTopic/findAllTopic",
             method:"get",
         }).then((ok)=>{
             this.arr = ok.data
@@ -64,9 +74,12 @@ export default {
             // 获取到了此话题的医生id
             this.doctorid = this.add[0].doctorinfor.id
             console.log(this.add)
+
             //用户是否关注医生
+            // this.userid = localStorage.getItem("userId")
             this.axios({
-                url:"http://47.112.208.93:8181/doctorTopic/isFollowDoctor/1/"+this.doctorid,
+                                                                    // 预留用户id
+                url:"http://47.95.140.83:8181/doctorTopic/isFollowDoctor/1/"+this.doctorid,
                 method:"get"
             }).then((ok)=>{
                 this.isFollowDoctor = ok.data
@@ -75,7 +88,8 @@ export default {
 
         // 判断用户是否给话题点赞
         this.axios({
-            url:"http://47.112.208.93:8181/doctorTopic/isGiveStar/1/"+this.topicid,
+                                                        // 预留用户id
+            url:"http://47.95.140.83:8181/doctorTopic/isGiveStar/1/"+this.topicid,
             method:"get",
         }).then((ok)=>{
             this.isGiveStar = ok.data

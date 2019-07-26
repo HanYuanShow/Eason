@@ -41,4 +41,10 @@ ul,li{
 .DetailsBody{
   margin-top:45px;
 }
+.boolsText{
+  text-align: center;
+  margin:80px 0;
+  color: #66aa0d;
+  font-size:28px;
+}
 </style>

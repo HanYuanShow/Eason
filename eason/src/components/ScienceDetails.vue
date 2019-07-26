@@ -1,126 +1,128 @@
 <template>
     <div class="Details">
-        <div class="ScienceDetails"> 
-            <div @click="routerGo()">
-                <span><img src="../../static/w/a61.png" class="ScienceDetailsImg"></span>
-            </div>
-            <div>
-                <span>
-                    <!-- 用户取消收藏新闻 -->
-                    <img src="../../static/w/ahs.png" class="mid" v-if="isCollect" @click="reverseCollectNews()">
-                    <!-- 用户收藏新闻 -->
-                    <img src="../../static/w/asj.png" class="mid" v-else @click="collectNews()">
-                    <span class="mid">{{arr.collect+num}}</span>
-                </span>
-                  
-                <span>
-                    <van-button type="primary" @click="showPopup()" class="showPopup" >  
-                        <img src="../../static/w/a7r.png" class="mid">
-                    </van-button>
-                    <span class="mid">{{arr.forwardNumber}}</span>
-                </span>
-            </div>
-        </div>
-
-            <van-popup v-model="show" position="bottom" :style="{ height: '20%' }">
+            <div class="ScienceDetails"> 
+                <div @click="routerGo()">
+                    <span><img src="../../static/w/a61.png" class="ScienceDetailsImg"></span>
+                </div>
                 <div>
-                    <div class="shareTop">
-                        <span>分享</span>
-                    </div>
-                    <div class="shareBottom">
-                        <img src="../../static/w/arp.png">
-                        <img src="../../static/w/arq.png">
-                        <img src="../../static/w/arl.png">
-                        <img src="../../static/w/aro.png">
-                    </div>
-                </div>
-            </van-popup>
-
-        <div class="DetailsBody">
-            <img class="ScienceDetailsTitleImg" :src="arr.img">
-            <div class="ScienceDetailsBody">
-                
-                <h3>{{arr.title}}</h3>
-
-                <div class="public">
-                    <img :src="arr.img" class="publicLeft">
-                    <div class="publicRigth">
-                        <div class="publicRigthTop">
-                            <span class="publicRigthTopLeft">{{arr.writer}}</span>
-                            <span class="publicRigthTopRight">春雨百家</span>
-                        </div>
-                        <div class="publicRigthBottom">
-                            <span>{{arr.date|filtersdate}}</span>    
-                        </div>
-                    </div>
-                </div>
-
-                <p>{{arr.text}}</p>
-                <p class="urlmapDepot">图片来源:{{arr.writer}}</p>
-                <img :src="arr.img" class="warrantyUrl">
-                <div class="praiseNumber">
-                    <span class="praiseNumberLeftTwo" v-if="isGiveStar" >{{arr.star+numtwo}}</span>
-                    <span class="praiseNumberLeft" v-else-if="!isGiveStar" @click="isGiveStarFalse()">{{arr.star}}</span>
-                    <span  class="praiseNumberRight" @click="question()">立即咨询</span>
-                </div>
-
-                <div>
-                    <div class="shareBig">
-                        <img src="../../static/w/ay2.png" class="share">
-                        <span class="sharetwo">分享到</span>
-                        <img src="../../static/w/ay2.png" class="share">
-                    </div>
+                    <span >
+                        <!-- 用户收藏新闻 -->
+                        <img src="../../static/w/asj.png" class="mid" v-if="!isCollect" @click="collectNews()">
+                        <!-- 用户取消收藏新闻 -->
+                        <img src="../../static/w/ahs.png" class="mid" v-else @click="reverseCollectNews()">
+                        
+                        <!-- <span class="mid">{{arr.collect+num}}</span> -->
+                    </span>
                     
-                    <div class="sharepic">
-                        <img src="../../static/w/arp.png">
-                        <img src="../../static/w/arq.png">
-                        <img src="../../static/w/arl.png">
-                        <img src="../../static/w/aro.png">
-                    </div>
-                    <!-- <span class="sharepiclist" v-for="(v,i) in arr.click.smallLabel" :key="i">{{v.title}}</span> -->
+                    <span>
+                        <van-button type="primary" @click="showPopup()" class="showPopup" >  
+                            <img src="../../static/w/a7r.png" class="mid">
+                        </van-button>
+                        <!-- <span class="mid">{{arr.forwardNumber}}</span> -->
+                    </span>
                 </div>
             </div>
-            <div class="zhandifang">
 
-            </div>
-
-            <div>
-                <p class="ScienceDetailsFootP">猜你还想读</p>
-                <!-- <div class="ScienceDetailsFoot">
+                <van-popup v-model="show" position="bottom" :style="{ height: '20%' }">
                     <div>
-                        <img src="../../static/w/azc.png">
+                        <div class="shareTop">
+                            <span>分享</span>
+                        </div>
+                        <div class="shareBottom">
+                            <img src="../../static/w/arp.png">
+                            <img src="../../static/w/arq.png">
+                            <img src="../../static/w/arl.png">
+                            <img src="../../static/w/aro.png">
+                        </div>
                     </div>
-                    <div class="ScienceDetailsFootRight">
-                        <p>标题啊</p>
-                        <span>2019-07-19</span>
+                </van-popup>
+            
+            <div class="DetailsBody">
+                <img class="ScienceDetailsTitleImg" :src="arr.img">
+                <div class="ScienceDetailsBody">
+                    
+                    <h3>{{arr.title}}</h3>
+
+                    <div class="public">
+                        <img :src="arr.img" class="publicLeft">
+                        <div class="publicRigth">
+                            <div class="publicRigthTop">
+                                <span class="publicRigthTopLeft">{{arr.writer}}</span>
+                                <span class="publicRigthTopRight">春雨百家</span>
+                            </div>
+                            <div class="publicRigthBottom">
+                                <span>{{arr.date|filtersdate}}</span>    
+                            </div>
+                        </div>
+                    </div>
+
+                    <p>{{arr.text}}</p>
+                    <p class="urlmapDepot">图片来源:{{arr.writer}}</p>
+                    <img :src="arr.img" class="warrantyUrl">
+                    <div class="praiseNumber">
+                        <span class="praiseNumberLeftTwo" v-if="isGiveStar" >{{arr.star+numtwo}}</span>
+                        <span class="praiseNumberLeft" v-else @click="isGiveStarFalse()">{{arr.star}}</span>
+                        <span  class="praiseNumberRight" @click="question()">立即咨询</span>
+                    </div>
+
+                    <div>
+                        <div class="shareBig">
+                            <img src="../../static/w/ay2.png" class="share">
+                            <span class="sharetwo">分享到</span>
+                            <img src="../../static/w/ay2.png" class="share">
+                        </div>
+                        
+                        <div class="sharepic">
+                            <img src="../../static/w/arp.png">
+                            <img src="../../static/w/arq.png">
+                            <img src="../../static/w/arl.png">
+                            <img src="../../static/w/aro.png">
+                        </div>
+                        <!-- <span class="sharepiclist" v-for="(v,i) in arr.click.smallLabel" :key="i">{{v.title}}</span> -->
                     </div>
                 </div>
-                <div class="ScienceDetailsFoot">
-                    <div>
-                        <img src="../../static/w/azc.png">
+                <div class="zhandifang">
+
+                </div>
+
+                <div>
+                    <p class="ScienceDetailsFootP">猜你还想读</p>
+                    <div class="ScienceDetailsFoot">
+                        <div>
+                            <img src="../../static/w/b3v.png">
+                        </div>
+                        <div class="ScienceDetailsFootRight">
+                            <p>怎么去痘痘最有效，最快</p>
+                            <span>2019-07-19</span>
+                        </div>
                     </div>
-                    <div class="ScienceDetailsFootRight">
-                        <p>标题啊</p>
-                        <span>2019-07-19</span>
+                    <div class="ScienceDetailsFoot">
+                        <div>
+                            <img src="../../static/w/b3w.png">
+                        </div>
+                        <div class="ScienceDetailsFootRight">
+                            <p>一紧张就想上厕所，该怎么办？</p>
+                            <span>2019-07-19</span>
+                        </div>
+                    </div>
+                    <div class="ScienceDetailsFoot">
+                        <div>
+                            <img src="../../static/w/akv.jpg">
+                        </div>
+                        <div class="ScienceDetailsFootRight">
+                            <p>吃的太多不行啊</p>
+                            <span>2019-07-19</span>
+                        </div>
                     </div>
                 </div>
-                <div class="ScienceDetailsFoot">
-                    <div>
-                        <img src="../../static/w/azc.png">
-                    </div>
-                    <div class="ScienceDetailsFootRight">
-                        <p>标题啊</p>
-                        <span>2019-07-19</span>
-                    </div>
+                <!-- <div class="youzhandifang">
+
                 </div> -->
+                <div class="comment">
+                    <input class="commentInput" type="text" placeholder="评论一下~">
+                </div>
             </div>
-            <!-- <div class="youzhandifang">
-
-            </div> -->
-            <div class="comment">
-                <input class="commentInput" type="text" placeholder="评论一下~">
-            </div>
-        </div>
+        
         
     </div>
 </template>
@@ -134,7 +136,9 @@ export default {
             // 取消收藏是否成功
             reverseCollectTrue:"",
             num:"",
-            numtwo:""
+            numtwo:"",
+            userid:"",
+            bool:""
         }
     },
     props:{
@@ -161,19 +165,20 @@ export default {
         showPopup() {
             this.show = true;
         },
-        collectNews(val){
+        collectNews(){
             // // 用户点击收藏的接口
-            console.log(val)
-            this.isCollect = true
+            // console.log(val)
+            // this.userid = localStorage.getItem("userId")
+            this.isCollect = !this.isCollect
             this.num = 1;
             this.axios({    
-                                                            // 1预留放用户id
-                url:"http://47.112.208.93:8181/news/collectNews/1/"+this.newsid,
+                                                // 1预留放用户id
+                url:"http://47.95.140.83:8181/news/collectNews/1/"+this.newsid,
                 method:"get",
                 // data:param
             }).then((ok)=>{
                 console.log(ok.data)
-                this.isCollectTrue = ok.data
+                // this.isCollectTrue = ok.data
             })
 
             
@@ -181,19 +186,19 @@ export default {
 
         reverseCollectNews(val){
             // 用户取消收藏的接口
-            console.log(val)
+            // console.log(val)
             
             
-            this.isCollect = false
+            this.isCollect = !this.isCollect
             this.num = 0;
             this.axios({    
                                                             // 1预留放用户id
-                url:"http://47.112.208.93:8181/news/reverseCollectNews/1/"+this.newsid,
+                url:"http://47.95.140.83:8181/news/reverseCollectNews/1/"+this.newsid,
                 method:"get",
                 // data:param
             }).then((ok)=>{
                 console.log(ok.data)
-                this.reverseCollectTrue = ok.data
+                // this.reverseCollectTrue = ok.data
             })
         },
 
@@ -203,7 +208,7 @@ export default {
             //用户点赞的接口
             this.axios({    
                                                             // 1预留放用户id
-                url:"http://47.112.208.93:8181/news/giveStar/1/"+this.newsid,
+                url:"http://47.95.140.83:8181/news/giveStar/1/"+this.newsid,
                 method:"get",
                 // data:param
             }).then((ok)=>{
@@ -213,14 +218,15 @@ export default {
         }
 
     },
-    computed:{
-        // isCollecttwo(){
-        //     return this.isCollect
-        // },
-        // isGiveStartwo(){
-        //     return this.isGiveStar
-        // }
-
+    computed: {
+        bools(){
+            if(this.arr == ""){
+                this.bool = true
+            }else{
+                this.bool = false
+            }
+            return this.bool
+        }
     },
     filters:{
         filtersdate(val){

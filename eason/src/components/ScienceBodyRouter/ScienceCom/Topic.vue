@@ -46,7 +46,7 @@ export default {
             return val.slice(0,40)
         },
         filtersdate(val){
-            return val.substring(0,10)
+            return val.slice(0,10)
         }
     },
     methods: {
@@ -55,7 +55,7 @@ export default {
             this.topicidaaa = val
             // 话题阅读量
             this.axios({
-                url:"http://47.112.208.93:8181/doctorTopic/addReading/"+val,
+                url:"http://47.95.140.83:8181/doctorTopic/addReading/"+val,
                 method:"put"
             }).then((ok)=>{
                 

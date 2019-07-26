@@ -33,17 +33,19 @@
                             </div>
                         </div>
                     </van-popup>
-        <div v-if="bool">
-            正在加载
-        </div>
-        <div class="DetailsBody" v-else>
+        <!-- <div v-if="bools" class="boolsText">
+                专业疏通下水道<br>
+                专业开锁,公安备案<br>
+                请联系:1888888888
+            </div> -->
+        <div class="DetailsBody">
             <div class="DetailsTopicBig">
                 <h3 class="DetailsTopicTitle">{{arr[0].name}}</h3>
 
                 <div class="DetailsTopicEasonBig">
                     <div>
                         <div class="DetailsTopicEasonTop">
-                            <img :src="arr[0].img" class="DetailsTopicEasonTopImg">
+                            <img :src="arr[0].img" class="DetailsTopicEasonTopImg" @click="doctoridClick(arr[0].doctorinfor.id)">
                             <span class="DetailsTopicEasonTopName">{{arr[0].doctorinfor.realaName}}</span>
                             <span class="DetailsTopicEasonTopOriginal">原创</span>
                             <span class="DetailsTopicEasonTopDate">{{arr[0].date|filtersdate}}</span>
@@ -55,7 +57,7 @@
                         </div>
                     </div>
                     <div>
-                        <span class="DetailsTopicEasonBottomConcernTrue" v-if="isFollowDoctor">+ 关注</span>
+                        <span class="DetailsTopicEasonBottomConcernTrue" v-if="isFollowDoctor">已关注</span>
                         <span class="DetailsTopicEasonBottomConcern" v-else @click="isFollowDoctorTrue()">+ 关注</span>
                     </div>
                 </div>
@@ -97,6 +99,7 @@ export default {
             numtwo:"",
             show:false,
             bool:"",
+            userid:""
         }
     },
     props:{
@@ -127,8 +130,11 @@ export default {
             this.isGiveStar = !this.isGiveStar
             this.numtwo = 1
             // 点赞话题接口
+            // this.userid = localStorage.getItem("userId")
+            
             this.axios({
-                url:"http://47.112.208.93:8181/doctorTopic/giveStar/1/"+this.topicid,
+                                                                // 预留用户id
+                url:"http://47.95.140.83:8181/doctorTopic/giveStar/1/"+this.topicid,
                 method:"get"
             }).then((ok)=>{
 
@@ -138,12 +144,19 @@ export default {
             this.isFollowDoctor = !this.isFollowDoctor
             // 关注医生接口
             this.axios({
-                url:"http://47.112.208.93:8181/doctorTopic/followDoctor/1/"+this.doctorid,
+                                                                    // 预留用户id
+                url:"http://47.95.140.83:8181/doctorTopic/followDoctor/1/"+this.doctorid,
                 method:"get"
             }).then((ok)=>{
 
             })
 
+        },
+
+        doctoridClick(val){
+            this.$router.push({
+                path:"/DetailsOfDoctor/"+val
+                })
         }
     },
     computed: {
