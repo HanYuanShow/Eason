@@ -9,11 +9,11 @@
         <form action="">
 
             <div class="pass">
-                <input type="text" placeholder="手机号" v-model="phone">
+                <input type="text" placeholder="验证码" v-model="number">
             </div>
-            <input type="button" value="下一步" class="sub"  @click="fund()">
+            <input type="button" value="验证手机号" class="sub"  @click="fund()" />
         </form>
-        <!-- <p @click="fun1">{{forget}}</p> -->
+      
     </div>
 </template>
 <script>
@@ -29,36 +29,43 @@ export default {
     data(){
         return{
             himg:"../../static/images/w/b1a.png",
-            listtitle:"验证手机号",
-            txt:"请输入新手机号",
-            // forget:"忘记密码?"
-            phone:"",
+            listtitle:"忘记密码",
+            txt:"已发送短信到",
+            number:"",
+            // forget:"手机号已停用?"
+            userId:"",
         }
     },
     methods: {
         fun1(){
-
             this.$router.push({path:"/forgetpass"})
         },
         fund(){
-                  this.userId=localStorage.getItem('userId');
-            var regPhone= /^1([38][0-9]|4[579]|5[0-3,5-9]|6[6]|7[0135678]|9[89])\d{8}$/;
-            if(this.phone==''){
-            this.$toast('请输入手机号');
-            }else if(!regPhone.test(this.phone)){
-        
-            this.$toast('手机号格式不正确');
+             this.userId=localStorage.getItem('userId');
+            if(this.number==""){
+                this.$toast("验证码不能为空")
             }
-                this.axios({
-                    url:"http://10.12.156.148:8181/user/updateYZ?num="+this.phone,
-                    method:"get",
-                }).then((ok)=>{
-                   if(ok.data==0){
-                        this.$toast('手机号已存在');
-                   } else{
-                       this.$router.push({path:"/getyanzheng"})
-                   }
-                })              
+               
+              var param=new URLSearchParams();
+        this.axios({
+                    url:"http://10.12.156.148:8181/user/PDcode",
+                    method:"post",
+                    params:{
+                     
+                        newCode:this.number
+                      }
+                    }).then((ok)=>{
+                        if(ok.data==0){
+                          this.$toast("验证码输入错误")   
+                        }else{  
+                            this.$router.push({path:"/Resetpassword"})
+                        }
+                    })
+
+            // else{
+            // this.$router.push({path:"/"})
+            // } 
+            
         }
     },
 }
@@ -93,13 +100,12 @@ export default {
     justify-content: center;
 }
 .pass input{
-    width: 200px;
+    width: 80px;
     height: 25px;
     caret-color:#20c02d;
     text-indent: 20px;
     border: none;
     letter-spacing:3px;
-    text-align: center;
 
 
 }

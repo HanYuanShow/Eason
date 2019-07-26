@@ -6,21 +6,18 @@
         <div class="title">
             {{txt}}
         </div>
-        <form action="">
+        <!-- <form action=""> -->
 
             <div class="pass">
-                <input type="password" placeholder="密码">
+                <input type="password" placeholder="密码" v-model="userPassword">
             </div>
             <input type="submit" value="下一步" class="sub"  @click="fund()">
-        </form>
+        <!-- </form> -->
         <p @click="fun1">{{forget}}</p>
     </div>
 </template>
 <script>
 import Installhead from "../components/Install/Installhead"
-
-
-
 export default {
     components:{
         Installhead,
@@ -31,7 +28,10 @@ export default {
             himg:"../../static/images/w/b1a.png",
             listtitle:"账号验证",
             txt:"请输入密码",
-            forget:"忘记密码?"
+            forget:"忘记密码?",
+            userId:"",
+            userPassword:"",
+
             
         }
     },
@@ -40,8 +40,34 @@ export default {
             this.$router.push({path:"/forgetpass"})
         },
         fund(){
-             this.$router.push({path:"/newphone"})
-        }
+                 this.userId=localStorage.getItem('userId');
+                //  this.userPassword=localStorage.getItem('userPassword');    
+                //  var params=new URLSearchParams();
+        this.axios({
+                    url:"http://10.12.156.148:8181/user/findPassword",
+                    method:"post",
+                    params:{
+                        userId:this.userId,
+                        userPassword:this.userPassword
+                      }
+                    }).then((ok)=>{
+                        if(ok.data==0){
+                              this.$toast('你输入的密码不正确');        
+                        }else{
+                             this.$toast('正确');   
+                           this.$router.push({path:"/newphone"})
+                        }
+                })
+                
+               
+
+        },
+       
+    },
+    created() {
+    
+      
+    
     },
 }
 </script>

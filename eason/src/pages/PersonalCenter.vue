@@ -3,15 +3,18 @@
     <div class="head">
       <div class="firstdiv">
         <div class="header">
-          <img :src="imgs" alt @click="func()" />
+        
+            <img :src="imgs" alt @click="func()"  />
         </div>
         <div class="center">
-          <div class="centerleft" @click="funa()">
-            <div class="toukuang" @click="funh()">
-              <img :src="imgs1" alt />
+          <div class="centerleft" >
+            <div class="toukuang" @click="funa()">
+
+           <img :src="getuserIMG" alt/>
+
             </div>
 
-            <span>登录/注册</span>
+            <span @click="funh()">{{userNickname}}</span>
           </div>
 
           <div class="qiandao">
@@ -19,16 +22,16 @@
           </div>
         </div>
         <div class="foot">
-          <p>
-            <span>0.00</span>
+          <p @click="funm">
+            <span>{{userBalance}}</span>
             <span>账户余额(元)</span>
           </p>
-          <p>
-            <span>0</span>
+          <p @click="funyou()">
+            <span>{{Coupon}}</span>
             <span>优惠券(张)</span>
           </p>
-          <p>
-            <span>0</span>
+          <p @click="funcon()">
+            <span>{{Goldcoin}}</span>
             <span>金币</span>
           </p>
         </div>
@@ -43,22 +46,28 @@
     <div class="content1" @click="funb()">
       <personalcenteritam :arrb="obj[2]"></personalcenteritam>
     </div>
-    <div class="content1">
+    <div class="content1" @click="onSelect(actions)">
       <personalcenteritam :arrb="obj[3]" ></personalcenteritam>
     </div>
+    <van-action-sheet
+      v-model="show"
+      :actions="actions"
+      @select="onSelect"
+    />
+
     <div class="content1" @click="funf()">
       <personalcenteritam :arrb="obj[4]"></personalcenteritam>
     </div>
     <div class="content2" @click="fung()">
       <personalcenteritam :arrb="obj[5]"></personalcenteritam>
+
+
+
     </div>
+    <HomeTabbar></HomeTabbar>
 
-    <!-- <div class="zyc"></div> -->
-  <HomeTabbar></HomeTabbar>
+
 </div>
-  
-
-
 
 </template>
 
@@ -75,7 +84,15 @@ export default {
   data() {
     return {
       imgs: "../../static/images/w/b63.png",
+
+
+
       imgs1: "../../static/images/w/ab7.png",
+      
+
+
+
+
       obj: [
         {
           titleimg1: "../../static/images/w/awp.png",
@@ -123,12 +140,26 @@ export default {
           "../../static/w/b4z.png",
           "../../static/w/b51.png"
         ]
-      }
+      },
+      show: false,
+      actions: [
+        { name: '在线联系客服' },
+        { name: '400-001-8855' },
+        // { name: '', subname: '' }
+      ],
+      getuserIMG:"",
+      userNickname:"",
+      userBalance:"",
+      Goldcoin :"",
+      Coupon:"",
+      bools:true,
+
     };
   },
+  
   methods: {
     funa() {
-      this.$router.push({ path: "/PersonalInformation" });
+      this.$router.push({ path: "/PersonalInformation"});
     },
     funb() {
       this.$router.push({ path: "/Install" });
@@ -137,7 +168,7 @@ export default {
       this.$router.push({ path: "/MessageCenter" });
     },
     fund() {
-      this.$router.push({ path: "/HealthRecord" });
+      this.$router.push({ path: "/HealthRecord"});
     },
     fune() {
       this.$router.push({ path: "/MyCollect" });
@@ -149,18 +180,44 @@ export default {
       this.$router.push({ path: "/InviteSomeOne" });
     },
     funh() {
-      this.$router.push({ path: "/logon" });
+
+      if(localStorage.getItem("userId")){
+           this.$router.push({ path: "/PersonalInformation" });
+      }else{
+          this.$router.push({ path: "/logon" });
+      }
+     
     },
-    // Dialog(){
-    //    Dialog.alert({
-    //   title: '标题',
-    //   message: '弹窗内容'
-    // }).then(() => {
-    //   // on close
-    // });
-    // }
+    funm(){
+      this.$router.push({path:"/accountbalance"})
+    },
+    funyou(){
+      this.$router.push({path:"/discountcoupon"})
+    },
+    funcon(){
+      this.$router.push({path:"/Mycoins"})
+    },
+    onSelect(item){
+      this.show = true;
+      this.$toast(item.name);
+    }
+  
+  },
+  created(){
+    this.getuserIMG=localStorage.getItem('userImg');
+    this.userNickname = localStorage.getItem('userNickname')
+    this.userBalance = localStorage.getItem('userBalance')
+    this.Coupon = localStorage.getItem('Coupon')
+    this.Goldcoin  = localStorage.getItem('Goldcoin ')
+    console.log(this.Coupon)
+
+   
+
+    // console.log( localStorage.getItem('userImg'))
+  },
+
   }
-};
+
 </script>
 <style scoped>
 .Tabbar-text{
@@ -175,10 +232,7 @@ export default {
   border-top: 1px solid gainsboro;
 
 }
-.Tool-out{
-  /* padding-top: 55px; */
-  /* border-top: 1px solid gainsboro; */
-}
+
 
 .head {
   width: 100%;
@@ -192,6 +246,7 @@ export default {
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
+  padding-top: 10px;
 }
 .header img {
   width: 31px;
@@ -218,6 +273,8 @@ export default {
   text-align: center;
   line-height: 60px;
   margin-left: 15px;
+  background: url("../../static/images/w/ab7.png")no-repeat center top;
+  background-size: 70px 70px;
 }
 .toukuang img {
   width: 100%;
@@ -233,8 +290,9 @@ export default {
 
 .foot {
   width: 100%;
-  height: 85px;
+  height: 50px;
   display: flex;
+  margin-top: 15px;
 }
 .foot p {
   width: 33%;
@@ -243,10 +301,16 @@ export default {
   /* height: 100%; */
 }
 p span {
+  /* vertical-align: middle; */
+/* display: flex; */
   display: block;
   width: 100%;
   height: 50%;
   color: white;
+  /* line-height: 30px; */
+  /* margin-top: 10px; */
+  /* align-items: center; */
+  /* line-height: 100%; */
 }
 .content {
   /* margin-bottom: 15px; */

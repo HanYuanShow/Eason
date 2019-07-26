@@ -6,14 +6,17 @@
         <h4>{{title}}</h4>
         <form action="">
                 <div class="input"> 
-                    <input type="text" placeholder="请填写手机号" class="text" v-model="phone" maxlength="11">
-                    </div>
+                    <input type="password" placeholder="密码" class="text" v-model="phone" maxlength="16">
+                </div>
+                <div class="input"> 
+                    <input type="password" placeholder="确认密码" class="text" v-model="phone1" maxlength="16">
+                </div>
                
-                <input type="button" value="获 取 验 证" class="submit" @click="funget()">
+                <input type="button" value="确定重置" class="submit" @click="funget()">
             </form>
 
             <div class="dl" @click="fundev()">
-                       {{txt}}                    
+                         
             </div>
     </div>
 </template>
@@ -29,48 +32,43 @@ export default {
     data(){
         return{
             himg:"../../static/images/w/b1a.png",
-            listtitle:"忘记密码",
-            title:"填写你注册时的手机号",
-            txt:"手机号已停用？",
+            listtitle:"重新设置密码",
+            title:"重新设置你的密码",
             phone:"",
-         show: false,     
+            phone1:"",
+              show: false
+            
         }
     },
     methods: {
         funget(){
-
-             var regPhone= /^1([38][0-9]|4[579]|5[0-3,5-9]|6[6]|7[0135678]|9[89])\d{8}$/;
                 if(this.phone==""){
-                    this.$toast("请输入您注册时的手机号")
-                }else if(!regPhone.test(this.phone)){
-                    this.$toast("你输入的手机号格式不正确")
+                    this.$toast("输入你的新密码")
+                }else if(this.phone1==""){
+                    this.$toast("请确认你的密码")
+                }else if(this.phone!=this.phone1){
+                     this.$toast("你输入的密码不一致")
                 }
-                  var param=new URLSearchParams();
+                    var param=new URLSearchParams();
         this.axios({
-                    url:"http://10.12.156.148:8181/user/ByPhone",
+                    url:"http://10.12.156.148:8181/user/updatePwPhone",
                     method:"post",
                     params:{
-                        userPhone:this.phone
+                        userPassword:this.phone
                       }
                     }).then((ok)=>{
                         if(ok.data==1){
-                            this.$router.push({path:"/Resetpasswordauthentication"})
+                              this.$toast("修改成功请重新登录")
+                            this.$router.push({path:"/denglu"})
                         }
                     })
-               
-         },
-         fundev(){
 
-              this.$dialog.confirm({
-             title: '拨打客服电话',
-            message: '工作时间9:00~19:00'
-            }).then(() => {
-                x
-            }).catch(() => {
-    
-                    }) 
-         }
-        
+
+                // else{
+                //       this.$router.push({path:"/denglu"})
+                // }
+         },
+         
     },
 
     
@@ -90,21 +88,23 @@ h4{
 form{
     width: 100%;
     display: block;
+    margin-top: 30px;
 
 }
 form input{
     display: block;
-    /* text-align:center; */
+    text-align:center;
 }
 .input{
     width:85%;
     height: 40px;
     border: 1px solid #dddcdc;
     margin:0 auto;
-    margin-top: 40px;
+    margin-top: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
 
 }
 .text{

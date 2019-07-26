@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 import PersonalCentter from "../pages/PersonalCenter"
+import accountbalance from '../pages/accountbalance'
 import PersonalInformation from "../pages/PersonalInformation"
 import Install from "../pages/Install.vue"
 import MessageCenter from '../pages/MessageCenter'
@@ -34,6 +35,12 @@ import getyanzheng from "../pages/getyanzheng";
 import changephonenewpass from "../pages/changephonenewpass";
 import setpassword from "../pages/setpassword";
 import HomeTabbar from "../components/HomeTabbar";
+import discountcoupon from "../pages/discountcoupon";
+import Exchangecouponcode from "../pages/Exchangecouponcode";
+
+
+
+
 
 
 
@@ -72,11 +79,51 @@ import FindHospital from '../pages/findHospital'
 import HospitaDetails from '../pages/hospitaDetails'
 import HospitalIntro from '../pages/hospitalIntro'
 import Location from '../pages/location'
+import Mycoins from '../pages/Mycoins'
+import Resetpassword from '../pages/Resetpassword'
+import Resetpasswordauthentication from '../pages/Resetpasswordauthentication'
+
+Resetpasswordauthentication
+
+
+
+
+
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path:"/resetpasswordauthentication",
+      name:"Resetpasswordauthentication",
+      component:Resetpasswordauthentication,
+    },
+    {
+      path:"/resetpassword",
+      name:"Resetpassword",
+      component:Resetpassword,
+    },
+    {
+      path:"/mycoins",
+      name:"Mycoins",
+      component:Mycoins,
+    },
+    {
+      path:"/exchangecouponcode",
+      name:"Exchangecouponcode",
+      component:Exchangecouponcode,
+    },
+    {
+      path:"/discountcoupon",
+      name:"discountcoupon",
+      component:discountcoupon,
+    },
+    {
+      path:"/accountbalance",
+      name:"accountbalance",
+      component:accountbalance,
+    },
     {
       path:"/Home",
       name:"Home",
@@ -163,11 +210,6 @@ export default new Router({
       path: '/personalCentter',
       name: 'PersonalCentter',
       component: PersonalCentter
-    },
-    {
-      path: '/Home',
-      name: 'Home',
-      component: Home
     },
     {
       path: '/personalInformation',
