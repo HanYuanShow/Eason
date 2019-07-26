@@ -97,7 +97,6 @@
 </template>
 
 <script>
-
 export default {
     props:{
         arr:"",
