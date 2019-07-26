@@ -1,6 +1,6 @@
 <template>
   <div id="specialistDetail">
-    <ReturnComp routerTips="名院专家" class="returnbar"></ReturnComp>
+    <ReturnComp :routerTips="hospitalName" class="returnbar"></ReturnComp>
     <div class="specialist">
       <div class="category">
         <DepartmentCategory category="科室" :department="department" :hid="hospitalID" @chiDoctorData="selectDoctor"></DepartmentCategory>
@@ -18,6 +18,7 @@
 import Select from "../components/hospitalList/select";
 import ReturnComp from "../components/returnComp/returnComp";
 import DepartmentCategory from "../components/SpecialistDetails/departmentCategory";
+import SpecialistDoctorItem from "../components/SpecialistDetails/specialistDoctorItem";
 
 export default {
   data() {
@@ -36,9 +37,10 @@ export default {
   },
   components: {
     ReturnComp,
-    DepartmentCategory
+    DepartmentCategory,
+    SpecialistDoctorItem
   },
-  
+
   created() {
     this.hospitalID = this.$route.query.id;
     this.axios({
@@ -63,9 +65,13 @@ export default {
 </script>
 
 <style scoped>
+.returnbar {
+  position: fixed;
+  top: 0;
+  z-index: 999;
+}
 .specialist {
   margin-top: 50px;
 }
-
 </style>
 
