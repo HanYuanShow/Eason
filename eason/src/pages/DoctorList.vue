@@ -4,7 +4,7 @@
         <!-- 导航栏 -->
         <div class="nav">
             <img src="../../static/images/a/a8e.png" alt="" class="leftarrow" @click="onClickLeft()">
-            <input type="text" placeholder="搜医生、症状、疾病、医院、科室" class="navtxt">
+            <input type="text" placeholder="搜医生、症状、疾病、医院、科室" class="navtxt" v-model="value" @keyup.enter="search(value)">
         </div>
         <!-- 筛选 -->
         <van-dropdown-menu active-color="green">
@@ -12,7 +12,10 @@
             <van-dropdown-item v-model="value2" :options="option2" @change="region(option2[value2].text)"/>
         </van-dropdown-menu>
         <!-- 医生列表 -->
-        <Doctorlist3 v-for="(v,i) in sarr" :key="i" :doctor_infor="v"></Doctorlist3>
+        <div v-if="bool" class="loading">
+            <van-loading type="spinner" color="#6bce72" />
+        </div>
+        <Doctorlist3 v-for="(v,i) in sarr" :key="i" :doctor_infor="v" v-else></Doctorlist3>
     </div>
 </template>
                 
@@ -22,7 +25,7 @@ export default {
     data() {
         return {
         value1: 0,
-        value2: 'a',
+        value2: 0,
         option1: [
             { text: '全部科室', value: 0 },
             { text: '妇科', value: 1 },
@@ -42,57 +45,60 @@ export default {
             { text: '营养科', value: 15 }
         ],
         option2: [
-            { text: '全部地区', value: 'a' },
-            { text: '北京', value: 'b' },
-            { text: '上海', value: 'c' },
-            { text: '广东', value: 'd' },
-            { text: '深圳', value: 'e' },
-            { text: '安徽', value: 'f' },
-            { text: '重庆', value: 'g' },
-            { text: '福建', value: 'h' },
-            { text: '甘肃', value: 'i' },
-            { text: '广西', value: 'j' },
-            { text: '陕西', value: 'k' },
-            { text: '河北', value: 'l' },
-            { text: '河南', value: 'm' },
-            { text: '黑龙江', value: 'n' },
-            { text: '内蒙古', value: 'o' },
-            { text: '山西', value: 'p' }
+            { text: '全部地区', value: 0 },
+            { text: '北京', value: 1 },
+            { text: '上海', value: 2 },
+            { text: '广东', value: 3 },
+            { text: '深圳', value: 4 },
+            { text: '安徽', value: 5 },
+            { text: '重庆', value: 6 },
+            { text: '福建', value: 7 },
+            { text: '甘肃', value: 8 },
+            { text: '广西', value: 9 },
+            { text: '陕西', value: 10 },
+            { text: '河北', value: 11 },
+            { text: '河南', value: 12 },
+            { text: '黑龙江', value: 13 },
+            { text: '内蒙古', value: 14 },
+            { text: '山西', value: 15 }
         ],
             newarr:[],
             sarr:[],
-            ks:""
+            ks:"",
+            name:"",
+            value:"",
+            bool:true
         }
     },
     created() {
+        this.value1=this.$route.query.id;
         this.ks=this.$route.query.string;
         this.axios({
-            url:"http://47.112.208.93:8181/Doctorin/findall?string="+this.ks,
+            url:"http://10.12.156.39:8181/Doctorin/findall?string="+this.ks,
             method:"get"
         }).then((ok)=>{
-            this.value1=this.$route.query.id;
-            
             this.sarr=ok.data;
-        },
-
-        // 接收医生详细页返回的id用来选择下拉菜单的选项
-        this.value1=this.$route.query.newid
-    // created() {
-    //     this.axios({
-    //         url:"/liuxiaojie",
-    //         method:"get"
-    //     }).then((ok)=>{
-    //         this.newarr=ok.data[0].doctor;
-    //         this.value1=this.$route.query.id;
-    //         this.ks=this.$route.query.keshi;
-    //         var data=ok.data[0].doctor;
-    //         var newdata=data.filter((v,i)=>{
-    //             if(v.disease_type==this.ks){
-    //                 return v;
-    //             }
-    //         })
-    //         this.sarr=newdata; 
-    )},
+            if(this.sarr==''){
+                this.bool=true
+            }else{
+                this.bool=false
+            }
+        })
+        // ----------------------
+        this.name=this.$route.query.value;
+        this.axios({
+        url:"http://10.12.156.39:8181/Doctorin/findall?string="+this.name,
+        method:"get"
+        }).then((ok)=>{
+            this.sarr=ok.data;
+            if(this.sarr==''){
+                this.bool=true
+            }else{
+                this.bool=false
+            }
+        })
+        // ----------------------
+    },
     methods: {
         keshi(ks){
            this.axios({
@@ -100,7 +106,25 @@ export default {
                 method:"get"
             }).then((ok)=>{
                 this.sarr=ok.data;
+                if(this.sarr==''){
+                    this.bool=true
+                }else{
+                    this.bool=false
+                }
             })
+            if(ks=="全部科室"){
+                this.axios({
+                url:"http://10.12.156.39:8181/Doctorin/load",
+                method:"get"
+                }).then((ok)=>{
+                    this.sarr=ok.data;
+                    if(this.sarr==''){
+                        this.bool=true
+                    }else{
+                        this.bool=false
+                    }
+                })
+            }
         },
         region(re){
            this.axios({
@@ -108,10 +132,41 @@ export default {
                 method:"get"
             }).then((ok)=>{
                 this.sarr=ok.data;
+                if(this.sarr==''){
+                    this.bool=true
+                }else{
+                    this.bool=false
+                }
             })
+            if(re=="全部地区"){
+                this.axios({
+                url:"http://10.12.156.39:8181/Doctorin/load",
+                method:"get"
+                }).then((ok)=>{
+                    this.sarr=ok.data;
+                    if(this.sarr==''){
+                        this.bool=true
+                    }else{
+                        this.bool=false
+                    }
+                })
+            }
         },
         onClickLeft(){
             this.$router.go(-1);
+        },
+        search(value){
+            this.axios({
+            url:"http://10.12.156.39:8181/Doctorin/findall?string="+value,
+            method:"get"
+            }).then((ok)=>{
+                this.sarr=ok.data;
+                if(this.sarr==''){
+                    this.bool=true
+                }else{
+                    this.bool=false
+                }
+            })
         }
     },
     components:{
@@ -122,6 +177,11 @@ export default {
 </script>
 
 <style scoped>
+.loading{
+    height: 100px;
+    text-align: center;
+    padding-top: 50px;
+}
 .van-dropdown-item--down {
     height: 300px;
     border-bottom: 1px solid #e7e7e7;
@@ -163,6 +223,7 @@ input::-webkit-input-placeholder{
     height: 30px;
     background-position: 10px 6px;
     line-height: 30px;
+    font-size: 14px;
 }
 .doctorlist{
     background: #ffffff;
