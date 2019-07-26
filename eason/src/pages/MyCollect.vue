@@ -5,10 +5,12 @@
         </div>
         <div class="section">
             <van-tabs v-model="active" title-active-color="#6bce72" line-width="50%" line-hight="2px"
-            animated=true color = "#6bce72" swipeable	=true
-            >
+            :animated="ceshi" color = "#6bce72">
             <van-tab title="科普">
-               <kong :kongtext="kongtext" :kongimg="kongimg"></kong>
+               <kong :kongtext="kongtext" :kongimg="kongimg">
+                   
+               </kong>
+               
             </van-tab>
             <van-tab title="问答">
                <kong :kongtext="kongtext" :kongimg="kongimg"></kong>
@@ -36,7 +38,9 @@ export default {
               himg:"../../static/images/w/b1a.png",
               img:"../../static/images/w/ant.png",
               kongtext:"暂 无 邀 请 记 录",
-           kongimg:"../../static/images/w/ant.png"
+           kongimg:"../../static/images/w/ant.png",
+           active:"",
+           ceshi:true,
         }
     },
 //     methods: {

@@ -1,11 +1,10 @@
 <template>
     <div>
-        <P>throat</P>
-        <ul>
-            <li v-for="(v,i) in newarr" :key="i">
-                <div v-for="(v,i) in v.throat" :key="i">{{v.title}}</div>
-            </li>
-        </ul> 
+         <ul class="sym_ul">
+            <li v-for="(v,i) in newarr" :key="i" class="sym_li"> 
+                <P class="sym_li_p">{{v.name}}</p>
+             </li>
+        </ul>
     </div>
 </template>
 <script>
@@ -19,18 +18,31 @@ export default {
    },
     created() {
         this.axios({
-            url:'/automenu/infor',
+            url:'http://10.12.156.39:8181/symptom/findByBadyParts',
             method:'get', 
+            params:{badyParts:"咽颈部"}
         }).then((ok)=>{
-            var data=ok.data.autognosis[0].symptomList
-            this.newarr=data
+           this.newarr=ok.data;
         })
     },
 }
 </script>
 
 <style scoped>
-  
+   .sym_ul{
+        height:500px;
+        margin-left:30px; 
+        width: 220px;
+        overflow: auto;
+    }
+  .sym_li{
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid #dedede;  
+  }
+  .sym_li_p{
+      color: #666666;
+  }
 </style>
 
 

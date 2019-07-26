@@ -3,9 +3,9 @@
     <ReturnComp :routerTips="hospitalName" class="returnbar"></ReturnComp>
     <div class="hospitalDetailCon">
       <HospitalDetailHeader :hospitalRankingList="rankingList" :hospitalName="hospitalName"></HospitalDetailHeader>
-      <RegisteredWay :registeredWayData="registeredWay"></RegisteredWay>
-      <OnlineDoctor :onlineDoctor="doctorOnLine"></OnlineDoctor>
-      <HospitalIntroduction :hospitalIntro="hospitalIntroCon" :id="hospitalId"></HospitalIntroduction>  
+      <RegisteredWay></RegisteredWay>
+      <OnlineDoctor :onlineDoctor="filterOnlineDoctor"></OnlineDoctor>
+      <HospitalIntroduction :hospitalIntro="hospitalIntroCon" :hID="hospitalId"></HospitalIntroduction>  
     </div>
   </div>
 </template>
@@ -23,8 +23,8 @@ export default {
       hospitalDetailData:{},
       hospitalIntroCon:"",
       doctorOnLine:[],
-      registeredWay:[],
-      rankingList:[],
+      // registeredWay:[],
+      rankingList:["暂无排名数据"],
       hospitalName:"",
       hospitalId:0
     }
@@ -37,20 +37,27 @@ export default {
     ReturnComp
   },
   created() {
+    // 获取路由传过来的医院id
+    var hospitalID = this.$route.params.clickId
+    console.log("在详情页获取到的id："+hospitalID);
     this.axios({
-      url:"/reqHospitalData/hospitalDetail",
+      url:"http://47.112.208.93:8181/hospital/loadHospitalAndDoctor/"+hospitalID,
       method:"get"
     }).then((ok)=>{
-      this.hospitalDetailData = ok.data;
-      this.rankingList = ok.data.ranking;
-      this.hospitalName = ok.data.hospitalName;
-      this.hospitalId = ok.data.id;
-      this.registeredWay = ok.data.registeredWay;
-      this.doctorOnLine = ok.data.onlineDoctor;
-      this.hospitalIntroCon = ok.data.HospitalIntroduction;  
-      console.log(this.rankingList);
+      this.hospitalDetailData = ok.data[0];
+      this.hospitalName = ok.data[0].name;  
+      this.hospitalId = ok.data[0].id;
+      // this.registeredWay = ok.data.registeredWay;
+      this.doctorOnLine = ok.data[0].doctors;
+      this.hospitalIntroCon = ok.data[0].info;
+      // console.log(this.hospitalId);
     })
-  }
+  },
+  computed: {
+    filterOnlineDoctor(){
+      return this.doctorOnLine.slice(0,2)
+    }
+  },
 }
 
 </script>

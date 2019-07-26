@@ -1,30 +1,30 @@
 <template>
     <div>
-        <div v-for="(v,i) in arr" :key="i" @click="topicid(v.id)" class="easons">
+        <div v-for="(v,i) in arr" :key="i" @click="topicids(v.id)" class="easons">
             <div class="photoBig">
-                <img :src="v.imgurl" class="photo">
+                <img :src="v.img" class="photo">
                 <div class="photoBigRigth">
                     <div>
-                        <span class="photoBigRigthTopa">{{v.name}}</span>
-                        <span class="photoBigRigthTopb">{{v.desk}}</span>
-                        <span class="photoBigRigthTopc">{{v.position}}</span>
+                        <span class="photoBigRigthTopa">{{v.doctorinfor.realaName}}</span>
+                        <span class="photoBigRigthTopb">{{v.doctorinfor.office}}</span>
+                        <span class="photoBigRigthTopc">{{v.doctorinfor.title}}</span>
                     </div>
                     <div>
                         <span class="photoBigRigthbottoma">原创</span>
-                        <span class="photoBigRigthbottomb">{{v.time}}</span>
+                        <span class="photoBigRigthbottomb">{{v.date|filtersdate}}</span>
                     </div>
                 </div>
             </div>
 
             <div>
-                <p class="photoTitle">{{v.title}}</p>
+                <p class="photoTitle">{{v.name}}</p>
             </div>
             <div>
-                <span class="photoContent">{{v.click.content|s}}...</span>
+                <span class="photoContent">{{v.text|s}}...</span>
             </div>
             <div>
-                <span class="photoreadNumber">阅读{{v.readNumber}}</span>
-                <span class="photopraiseNumber">赞{{v.praiseNumber}}</span>
+                <span class="photoreadNumber">阅读{{v.reading}}</span>
+                <span class="photopraiseNumber">赞{{v.star}}</span>
             </div>
         </div>
     </div>
@@ -32,17 +32,35 @@
 
 <script>
 export default {
+    data(){
+        return {
+            topicidaaa:""
+        }
+    },
     props:{
         arr:"",
+        
     },
     filters:{
         s(val){
             return val.slice(0,40)
+        },
+        filtersdate(val){
+            return val.slice(0,10)
         }
     },
     methods: {
-        topicid(val){
+        topicids(val){
             this.$router.push("/ContentTopic/"+val)
+            this.topicidaaa = val
+            // 话题阅读量
+            this.axios({
+                url:"http://47.95.140.83:8181/doctorTopic/addReading/"+val,
+                method:"put"
+            }).then((ok)=>{
+                
+            })
+            
         }
     },
 }

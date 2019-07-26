@@ -6,19 +6,18 @@
         <h4>{{title}}</h4>
 
             <form action="" >
-                <div class="input"> 
-                    <input type="text" placeholder="请填写邮箱" class="text" v-model="email"/>
-                </div>
-                <span>{{ags}}</span>
-               <div @click="funtest()">
-                <input type="button"  value="获 取 验 证" class="submit"  
-                :disabled="disabled" @click="sendcode" >
-                </div>
-            </form>
 
-            <div class="dl"  @click="fun1()">
-                {{txt}}
-            </div>
+
+                    <div class="ipt">
+                        <input name="phone"  type="phone" placeholder="手机号" v-model="phone"/>
+                    </div>
+           
+                    <button type="button" @click="sendcode()"  class="btns">{{btntxt}}</button>
+                  
+             
+            
+            </form>
+            <div class="dl"  @click="fun1()">{{txt}}</div>
           <div class="footer">
               <footbar></footbar>
           </div>
@@ -30,6 +29,7 @@ import footbar from "../components/logon/footbar"
 
 
 export default {
+   
     components:{
       Installhead ,
       footbar 
@@ -52,33 +52,46 @@ export default {
                 
           
            
+            mgs:"",
+            disabled:false,
+            time:0,
+            btntxt:"获取验证码",
+            phone:'',
+            bool:"",
+            
         }
     },
     methods: {
        fun1(){
             this.$router.push({path:"/denglu"})
         },
-         funtest(){
-            this.$router.push({path:"/test"})
-        },
-         sendcode(){
-               var regEmail= /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
-                if(this.email==''){
-                   this.alert("请输入邮箱");
-                }else if(!reg.test(this.phone)){
-                    this.alert("邮箱格式不正确");
-                }else{
-                    // this.time=60;
-                    // this.disabled=true;
-                    // this.timer();
-                    /*axios.post(url).then(
-                        res=>{
-                        this.phonedata=res.data;
-                    })*/
-               }
-            },
-            
-    },
+          //验证邮箱号码部分
+   sendcode(){
+   var regPhone= /^1([38][0-9]|4[579]|5[0-3,5-9]|6[6]|7[0135678]|9[89])\d{8}$/;
+    if(this.phone==''){
+    this.$toast('请输入手机号');
+    }else if(!regPhone.test(this.phone)){
+   
+     this.$toast('手机号格式不正确');
+    }else{
+        
+          this.axios({
+                    url:"http://10.12.156.148:8181/user/registerYZ?num="+this.phone,
+                    method: "get",  
+                    }).then((ok)=>{
+                        console.log(ok)
+                        if(ok.data == 0){
+                            this.$toast('手机号已经注册');
+                        }else{
+                            this.$router.push("/test")
+                        }
+                    
+                    })
+                
+                 }
+            },        
+      },
+
 }
 </script>
 <style scoped>
@@ -95,48 +108,54 @@ h4{
     letter-spacing:3px;
     
 }
+
+.ipt{
+    /* margin-top: 30px; */
+    width: 88%;
+    height: 40px;
+    background: white;
+    display: block;
+    border: 1px solid #dad9d9;
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ipt input{
+    width: 170px;
+    height: 25px;
+    display: block;
+    margin: 0 auto;
+    caret-color:#20c02d;
+    border: none;
+    background: white;
+    text-align: center;
+}
+
+.btns{
+    width: 88%;
+    height: 40px;
+    background: white;
+    display: block;
+    border: 1px solid #dad9d9;
+    margin: 0 auto;
+    margin-top: 15px;
+    background: #20c02d;
+    color: white;
+    font-size: 17px;
+       letter-spacing:2px;
+
+}
+
 form{
     width: 100%;
     display: block;
 
 }
-form input{
-    display: block;
-caret-color:#20c02d;
 
-    /* text-align:center; */
-}
-.input{
-    width:85%;
-    height: 40px;
-    border: 1px solid #dddcdc;
-    margin:0 auto;
-    margin-top: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-}
-.text{
-    width: 120px;
-    height:30px;
-    text-indent: 20px;
-    border: none;
-    caret-color:#20c02d;
-}
-.submit{
-   width:86%;
-    height: 40px;
-    border: none;
-    margin:0 auto;
-    background: #20c02d; 
-    margin-top: 20px; 
-    color: white;
-    font-size: 16px;
-}
 .dl{
     width: 100px;
-    margin:40px auto;
+    margin:20px auto;
     color: #20c02d;
     font-size: 15px;
 }

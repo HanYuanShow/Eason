@@ -2,15 +2,15 @@
     <div class="onlineDoctor">
         <div class="online-title">
             <h3>在线医生</h3>
-            <a href="#">更多</a>
+            <a href="#" @click="toDoctorList(onlineDoctor[0].hospital)">更多</a>
         </div>
         <ul class="doctorList">
-            <li class="doctorItem" v-for="(v,i) in onlineDoctor" :key="i">
-                <div class="doctorPic"><img :src="v.photo" :alt="v.doctorName"></div>
+            <li class="doctorItem" v-for="(v,i) in onlineDoctor" :key="i" @click="toDoctorDetail(v.id)">
+                <div class="doctorPic"><img :src="v.impSrc" :alt="v.realaName"></div>
                 <div class="doctorIntr">
-                    <p class="doctorName"><span>{{v.doctorName}}</span><span>{{v.theTitle}}</span></p>
-                    <p class="inHospital">{{v.inHospital}}</p>
-                    <p class="goodAt">{{v.goodAT|goodAtFilter}}</p>
+                    <p class="doctorName"><span>{{v.realaName}}</span><span>{{v.title}}</span></p>
+                    <p class="inHospital">{{v.hospital}}</p>
+                    <p class="goodAt">{{v.adept|goodAtFilter}}</p>
                 </div>
             </li>
         </ul>
@@ -19,7 +19,7 @@
 <script>
 export default {
     props:{
-        onlineDoctor:[Object,Array]
+        onlineDoctor:Array
     },
     filters:{
         goodAtFilter(val){
@@ -29,7 +29,19 @@ export default {
                 return val
             }
         }
-    }
+    },
+    methods: {
+        toDoctorDetail(id){
+            this.$router.push("/DetailsOfDoctor/"+id);
+        },
+        toDoctorList(hospital){
+            console.log(hospital)
+          
+            this.$router.push({path:"/DoctorList",query:{value:hospital}
+        })
+
+        }
+    },
 }
 </script>
 <style scoped>

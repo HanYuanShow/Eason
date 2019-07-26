@@ -2,10 +2,16 @@
   <div class="registeredWay">
       <div class="regTitle">挂号方式</div>
       <ul>
-          <li class="regWay" v-for="(v,i) in registeredWayData" :key="i">
-            <div>挂号方式{{i+1}}</div>
+          <li class="regWay">
+            <div>挂号方式1</div>
             <div>
-                <span>可以通过 </span><span class="ways">{{v}} </span>挂号
+                <span>可以通过 </span><span class="ways">北京114预约挂号 </span>挂号
+            </div>
+          </li>
+          <li class="regWay">
+            <div>挂号方式1</div>
+            <div>
+                <span>可以通过 </span><span class="ways">北京市统一挂号平台 </span>挂号
             </div>
           </li>
       </ul>
@@ -17,7 +23,7 @@
 import PromptingMessage from './PromptingMessage'
 export default {   
     props:{
-        registeredWayData:[Object,Array]
+        registeredWayData:Array
     },
     components:{
         PromptingMessage

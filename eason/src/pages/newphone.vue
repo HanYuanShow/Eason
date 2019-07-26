@@ -9,9 +9,9 @@
         <form action="">
 
             <div class="pass">
-                <input type="text" placeholder="邮箱号">
+                <input type="text" placeholder="手机号" v-model="phone">
             </div>
-            <input type="submit" value="下一步" class="sub"  @click="fund()">
+            <input type="button" value="下一步" class="sub"  @click="fund()">
         </form>
         <!-- <p @click="fun1">{{forget}}</p> -->
     </div>
@@ -29,18 +29,36 @@ export default {
     data(){
         return{
             himg:"../../static/images/w/b1a.png",
-            listtitle:"验证邮箱号",
-            txt:"请输入新邮箱号",
+            listtitle:"验证手机号",
+            txt:"请输入新手机号",
             // forget:"忘记密码?"
-            
+            phone:"",
         }
     },
     methods: {
         fun1(){
+
             this.$router.push({path:"/forgetpass"})
         },
         fund(){
-             this.$router.push({path:"/getyanzheng"})
+                  this.userId=localStorage.getItem('userId');
+            var regPhone= /^1([38][0-9]|4[579]|5[0-3,5-9]|6[6]|7[0135678]|9[89])\d{8}$/;
+            if(this.phone==''){
+            this.$toast('请输入手机号');
+            }else if(!regPhone.test(this.phone)){
+        
+            this.$toast('手机号格式不正确');
+            }
+                this.axios({
+                    url:"http://10.12.156.148:8181/user/updateYZ?num="+this.phone,
+                    method:"get",
+                }).then((ok)=>{
+                   if(ok.data==0){
+                        this.$toast('手机号已存在');
+                   } else{
+                       this.$router.push({path:"/getyanzheng"})
+                   }
+                })              
         }
     },
 }
@@ -75,12 +93,13 @@ export default {
     justify-content: center;
 }
 .pass input{
-    width: 80px;
+    width: 200px;
     height: 25px;
     caret-color:#20c02d;
     text-indent: 20px;
     border: none;
     letter-spacing:3px;
+    text-align: center;
 
 
 }

@@ -6,41 +6,75 @@
         <h4>{{title}}</h4>
         <form action="">
                 <div class="input"> 
-                    <input type="text" placeholder="请填写邮箱" class="text">
+                    <input type="text" placeholder="请填写手机号" class="text" v-model="phone" maxlength="11">
                     </div>
                
-                <input type="submit" value="获 取 验 证" class="submit" @click="funget()">
+                <input type="button" value="获 取 验 证" class="submit" @click="funget()">
             </form>
 
-            <div class="dl" @click="funstop()">
-                {{txt}}
-                       
+            <div class="dl" @click="fundev()">
+                       {{txt}}                    
             </div>
     </div>
 </template>
 <script>
 import Installhead from "../components/Install/Installhead"
-// import { Dialog } from 'vant'
+
 export default {
     components:{
         Installhead,
-        //  [Dialog.Component.name]: Dialog.Component,
+       
 
     },
     data(){
         return{
             himg:"../../static/images/w/b1a.png",
             listtitle:"忘记密码",
-            title:"填写你注册时的邮箱",
-            txt:"手机号已停用？"
+            title:"填写你注册时的手机号",
+            txt:"手机号已停用？",
+            phone:"",
+         show: false,     
         }
     },
     methods: {
         funget(){
-            this.$router.push({path:"/getyanzheng"})
-        }
-         
+
+             var regPhone= /^1([38][0-9]|4[579]|5[0-3,5-9]|6[6]|7[0135678]|9[89])\d{8}$/;
+                if(this.phone==""){
+                    this.$toast("请输入您注册时的手机号")
+                }else if(!regPhone.test(this.phone)){
+                    this.$toast("你输入的手机号格式不正确")
+                }
+                  var param=new URLSearchParams();
+        this.axios({
+                    url:"http://10.12.156.148:8181/user/ByPhone",
+                    method:"post",
+                    params:{
+                        userPhone:this.phone
+                      }
+                    }).then((ok)=>{
+                        if(ok.data==1){
+                            this.$router.push({path:"/Resetpasswordauthentication"})
+                        }
+                    })
+               
+         },
+         fundev(){
+
+              this.$dialog.confirm({
+             title: '拨打客服电话',
+            message: '工作时间9:00~19:00'
+            }).then(() => {
+                x
+            }).catch(() => {
+    
+                    }) 
+         }
+        
     },
+
+    
+
 }
 </script>
 <style scoped>
