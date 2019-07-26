@@ -57,6 +57,9 @@
             :doctor_job="v.title"
             :imgsrc="v.impSrc"
             :doctor_id="v.id"
+            :doctor_hospital="v.hospital"
+            :doctor_adept="v.adept"
+            :doctor_printreferint="v.printreferint"
             ></Doctorlist> 
         </div>
            <div class="end"></div>
@@ -153,6 +156,7 @@ export default {
                 method:"get"
             }).then((ok)=>{
                 this.sarr=ok.data;
+            console.log(this.sarr)
             });
         },
         doctorlist2(ks,i){

@@ -8,9 +8,9 @@
                         <h4 class="doctorname">{{doctor_name}}</h4>
                         <span class="doctorkind">{{disease_type}} {{doctor_job}}</span>
                     </li>
-                    <li class="doctorhospital">陆军军医大学第一附属医院</li>
-                    <li class="line">湿疹、尿布疹、荨麻疹、痤疮、玫瑰痤疮、脱发、色素斑</li>
-                    <li><span class="doctorprice">￥160元起</span><span class="okok">可咨询</span> </li>
+                    <li class="doctorhospital">{{doctor_hospital}}</li>
+                    <li class="line">{{doctor_adept}}</li>
+                    <li><span class="doctorprice">￥{{doctor_printreferint}}元起</span><span class="okok">可咨询</span> </li>
                 </ul>
             </div>
         </div>
@@ -33,7 +33,10 @@ export default {
         disease_type:String,
         doctor_job:String,
         imgsrc:String,
-        doctor_id: Number
+        doctor_id: Number,
+        doctor_hospital:String,
+        doctor_adept:String,
+        doctor_printreferint:Number
     }
 }
 </script>
@@ -71,6 +74,11 @@ export default {
     border-bottom: 1px solid #f4f4f4;
     font-size: 14px;
     color: #999999;
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 .doctorbox{
     display: flex;

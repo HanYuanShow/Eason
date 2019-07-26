@@ -113,15 +113,6 @@
             </div>
         </div>
         <hr/>
-        <!-- 底部关注栏 -->
-        <!-- <div class="bottomnav">
-            <div class="guanzhu">
-                <div :class="style?'star':'newstar'" @click="guanzhu()" v-if="bool"></div>
-                <div :class="style?'star':'newstar'" @click="Closeguanzhu()" v-else></div>
-                <span class="guanzhutxt">{{style?"关注":"已关注"}}</span>
-            </div>
-            <div class="zixunbtn">{{newprice==null?'暂未开通':newtitle+'(￥'+newprice+'元/次)'}}</div>
-        </div> -->
          <!-- 底部关注栏 -->
         <div class="bottomnav">
             <div class="guanzhu">
