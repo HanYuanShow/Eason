@@ -14,7 +14,7 @@
 export default {
     methods: {
         toQuestion(){
-            this.$router.push("/Question")
+            this.$router.push("/question")
         }
     },
 }

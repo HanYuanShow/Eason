@@ -1,16 +1,16 @@
 <template>
         <!-- 医生列表 -->
-        <div class="doctorbox" @click="doctor()">
-            <div class="headpic"><img src="../../static/images/w/a3c.png" alt=""></div>
+        <div class="doctorbox" @click="doctor(newv.id)">
+            <div class="headpic"><img :src="newv.impSrc" class="doctorheadpic"></div>
             <div class="doctorintro">
                 <ul>
                     <li>
-                        <h4 class="doctorname">{{doctor_name}}</h4>
-                        <span class="doctorkind">{{disease_type}} {{doctor_job}}</span>
+                        <h4 class="doctorname">{{newv.realaName}}</h4>
+                        <span class="doctorkind">{{newv.office}} {{newv.title}}</span>
                     </li>
-                    <li class="doctorhospital">陆军军医大学第一附属医院</li>
-                    <li class="line">湿疹、尿布疹、荨麻疹、痤疮、玫瑰痤疮、脱发、色素斑</li>
-                    <li><span class="doctorprice">￥160元起</span><span class="okok">可咨询</span> </li>
+                    <li class="doctorhospital">{{newv.hospital}}</li>
+                    <li class="line">{{newv.adept}}</li>
+                    <li><span class="doctorprice">￥{{newv.printreferint}}元起</span><span class="okok">可咨询</span> </li>
                 </ul>
             </div>
         </div>
@@ -24,19 +24,23 @@ export default {
         }
     },
     methods: {
-        doctor(){
-            this.$router.push("/DetailsOfDoctor")
+        doctor(id){
+            this.$router.push("/DetailsOfDoctor/"+id)
         }
     },
     props:{
-        doctor_name:String,
-        disease_type:String,
-        doctor_job:String
+        newv:Object
     }
 }
 </script>
 
 <style scoped>
+.doctorheadpic{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 1px solid #cdcdcd;
+}
 .doctorprice{
     font-size: 14px;
     color: #ec6b43;
@@ -83,6 +87,7 @@ export default {
     line-height: 25px;
     border-radius: 0 0 5px 0;
     padding-right: 10px;
+    width: 75%;
 }
 
 </style>

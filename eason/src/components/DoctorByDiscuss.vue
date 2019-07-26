@@ -1,26 +1,6 @@
 <template>
   <div>
-    <div class="HotSale-div">
-      <van-row type="flex" justify="center">
-        <van-col span="14" offset="5">
-          <div class="HotSale-out">
-            <van-image fit="contain" height="18" width="18" src="../../static/images/w/amt.png" />
-            <span class="HotSale-tital">患者好评</span>
-            <van-image fit="contain" height="18" width="18" src="../../static/images/w/amu.png" />
-          </div>
-        </van-col>
 
-        <van-col span="5">
-          <div>
-            <div class="HotSale-more" @click="changeText()">
-              <van-image fit="fill" height="18" width="18" src="../../static/images/w/amx.png" />
-            </div>
-          </div>
-        </van-col>
-      </van-row>
-    </div>
-
-       <div>
         <van-row type="flex" justify="center">
         <van-col span="23" offset="1">
             <div v-for="(v,i) in getcontent" :key="i" class="out" @click="send(v.doctorId)">
@@ -39,11 +19,11 @@
         </van-col>
         
         </van-row>
-    </div>
 
-            <div class="HotSale-end"></div>
   </div>
 </template>
+
+
 
 <script>
 export default {
@@ -77,7 +57,7 @@ export default {
 
     },
 
-};
+}
 </script>
 
 <style scoped>

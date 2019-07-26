@@ -1,39 +1,41 @@
 <template>
-    <div class="nav">
-        <van-nav-bar
-            title="快速购药"
-            left-text="返回 关闭"
-            right-text=""
-            left-arrow
-            @click-left="onClickLeft"
-            />
+    <div>
+        <van-nav-bar title="症状自诊" left-text="" left-arrow @click-left="back()" @click-right="search()">
+            <van-icon name="search" slot="right"/>
+        </van-nav-bar>            
     </div>
-</template>
+    </template>
 <script>
 export default {
-     methods: {
-            onClickLeft() {
-            // Toast('返回');
-            this.$router.go(-1)
-            },
+    data() {
+        return {
+         
         }
+    },
+    methods: {
+        back(){
+            this.$router.push('/seek')
+        },
+        search(){
+            this.$router.push("/seek")
+        }
+    },
+     
 }
 </script>
+
 <style scoped>
-    .van-nav-bar {
-    background-color:#fbfbfb;
-    }
-    .van-nav-bar .van-icon {
-        color:#6bce72;
-        font-weight: 600;
-    }
-    .van-nav-bar__text{
-       color:#6bce72;
-         font-weight: 600;
-         font-size: 16px;
+    .van-nav-bar .van-icon{
+        color: #67c65f;
+        font-size: 22px;
     }
     .van-nav-bar__title{
-        color: #343434;
-        font-weight: 600
+        color: #5c5c5c;
+        font-size: 16px;
+    }
+    .van-tab--active{
+        border-right: 1px solid red;
     }
 </style>
+
+

@@ -1,27 +1,5 @@
 <template>
   <div>
-    <div class="HotSale-div">
-      <van-row type="flex" justify="center">
-        <van-col span="14" offset="5">
-          <div class="HotSale-out">
-            <van-image fit="contain" height="18" width="18" src="../../static/w/amq.png" />
-            <span class="HotSale-tital">医生话题</span>
-            <van-image fit="contain" height="18" width="18" src="../../static/images/w/ams.png" />
-          </div>
-        </van-col>
-
-        <van-col span="5">
-          <div @click="goMore()">
-            <div class="HotSale-more">
-              <span class="HotSale-text">更多</span>
-              <van-image fit="fill" height="18" width="18" src="../../static/images/w/amr.png" />
-            </div>
-          </div>
-        </van-col>
-      </van-row>
-    </div>
-
-    <div>
         <van-row type="flex" justify="center">
         <van-col span="23" offset="1">
             <div v-for="(v,i) in getcontent" :key="i" class="out" @click="topicContent(v.id)">
@@ -42,9 +20,6 @@
         </van-col>
         
         </van-row>
-    </div>
-
-        <div class="HotSale-end"></div>
 
   </div>
 </template>

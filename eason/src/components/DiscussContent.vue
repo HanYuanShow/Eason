@@ -68,29 +68,32 @@
       </van-row>
     </van-popup>
 
-    <div class="titel">
+    <van-loading type="spinner" color="red" v-if="booltext" class="loading"/>
+    <div v-else>
+        <div class="titel" >
       <van-row type="flex" justify="center">
         <van-col span="24">
           <van-image
             fit="fill"
             height="25"
             width="25"
-            src="../../static/images/w/abv.png"
+            :src="discussContent[itemid-1].impSrc"
             name="fen"
           />
-          <span class="name">{{discussContent[itemid-1].content.name}}</span>
-          <span>{{discussContent[itemid-1].content.keshi}}</span>
-          <span>{{discussContent[itemid-1].content.work}}</span>
+          <span class="name">{{discussContent[itemid-1].realaName}}</span>
+          <span>{{discussContent[itemid-1].office}}</span>
+          <span>{{discussContent[itemid-1].title}}</span>
         </van-col>
       </van-row>
     </div>
+    
 
     <div class="background"></div>
 
-    <div>
+    <div v->
       <van-row type="flex" justify="center">
         <van-col span="14">
-          <span class="tacking">{{discussContent[itemid-1].content.name}}医生接受了你的聊天请求，现在可以聊天了</span>
+          <span class="tacking">{{discussContent[itemid-1].realaName}}医生接受了你的聊天请求，现在可以聊天了</span>
         </van-col>
       </van-row>
     </div>
@@ -115,6 +118,8 @@
         </van-col>
       </van-row>
     </div>
+    </div>
+    
 
     
   </div>
@@ -129,17 +134,23 @@ export default {
       sms: "",
       myuser: [{ my: "", doctor: "" }],
       bool:false,
+      booltext:true,
     };
   },
-  created() {
+ created() {
     this.itemid = this.$route.query.id;
     this.axios({
-      url: "/aaa",
+      url: "http://47.95.140.83:8181/talk/alldoctorinfors",
       method: "get"
-    }).then(ok => {
-      this.new = this.discussContent = ok.data.discuss;
+    }).then((ok) => {
+       this.discussContent = ok.data;
+       if(  this.discussContent.length!==0){
+           this.booltext=false;
+       }else{
+         this.booltext=true;
+       }
       console.log(ok);
-    });
+    });  
   },
   methods: {
     back() {
@@ -203,6 +214,9 @@ export default {
 </script>
 
 <style scoped>
+.loading{
+  text-align: center;
+}
 .btn{
   background: none;
   border:none;

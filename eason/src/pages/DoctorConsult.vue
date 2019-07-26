@@ -46,9 +46,18 @@
         </div>
 
         <!-- 医生列表 -->
-        <div class="doctorlist">
+        <div v-if="bool" class="loading">
+            <van-loading type="spinner" color="#6bce72" />
+        </div>
+        <div class="doctorlist" v-else>
             <Doctortitle :title="keshi"></Doctortitle>
-            <Doctorlist v-for="(v,i) in sarr" :key="i" :doctor_name="v.doctor_name" :disease_type="v.disease_type" :doctor_job="v.doctor_job"></Doctorlist> 
+            <Doctorlist v-for="(v,i) in sarr" :key="i" 
+            :doctor_name="v.realaName" 
+            :disease_type="v.office" 
+            :doctor_job="v.title"
+            :imgsrc="v.impSrc"
+            :doctor_id="v.id"
+            ></Doctorlist> 
         </div>
            <div class="end"></div>
     </div>
@@ -93,27 +102,25 @@ export default {
                 {imgurl:"../../static/images/a/s24.png",keshi:"营养科"}
                 ],
             keshi:"",
-            newindex: 0,
+            newindex: '',
             newarr:[],
-            sarr:[]
+            sarr:[],
+            bool:true
         }
     },
     created() {
         this.keshi=this.arr[0].keshi;
+        // 加载页面后直接显示内科
         this.axios({
-            url:"/liuxiaojie",
+            url:"http://10.12.156.39:8181/Doctorin/findall?string=内科",
             method:"get"
         }).then((ok)=>{
-            this.newarr=ok.data[0].doctor;
-            // this.sarr=this.newarr;
-            let newdata=[];
-            for(let i=0;i<this.newarr.length;i++){
-                if(this.newarr[i].disease_type=='皮肤科'){
-                    newdata.push(this.newarr[i]);
-                    this.sarr=newdata;
-                } 
+            this.sarr=ok.data;
+            if(this.sarr==''){
+                this.bool=true
+            }else{
+                this.bool=false
             }
-
         });
        
     },
@@ -125,38 +132,53 @@ export default {
         doctorlist(ks,i){
             // 绑定Doctortitle
             this.keshi=ks;
-
             // 点击时改变li背景样式时的id
-            this.newindex=i;
+            this.newindex=i;   
+// ===========================
+        this.axios({
+            url:"http://10.12.156.39:8181/Doctorin/findall?string="+ks,
+            method:"get"
+        }).then((ok)=>{
+            this.sarr=ok.data;
+        });
 
-            let newdata=[];
-            for(let i=0;i<this.newarr.length;i++){
-                if(this.newarr[i].disease_type==ks){
-                    newdata.push(this.newarr[i]);
-                    this.sarr=newdata;
-                } 
-            }
-            
+// ===========================
         },
         doctorlist1(ks,i){
             this.keshi=ks;
             this.newindex=i;
+
+            this.axios({
+                url:"http://10.12.156.39:8181/Doctorin/findall?string="+ks,
+                method:"get"
+            }).then((ok)=>{
+                this.sarr=ok.data;
+            });
         },
         doctorlist2(ks,i){
             this.keshi=ks;
             this.newindex=i;
+
+            this.axios({
+                url:"http://10.12.156.39:8181/Doctorin/findall?string="+ks,
+                method:"get"
+            }).then((ok)=>{
+                this.sarr=ok.data;
+            });
         },
         onClickLeft(){
             this.$router.go(-1);
         }
     },
-//     beforeCreate() {
-//        document.querySelector('body').setAttribute('style', 'background:#2e303d')
-//   }
 }
 </script>
 
 <style scoped>
+.loading{
+    height: 100px;
+    text-align: center;
+    padding-top: 50px;
+}
 .end{
     position: fixed;
     width: 100%;

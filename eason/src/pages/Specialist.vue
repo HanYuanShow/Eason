@@ -19,7 +19,7 @@
             <Select></Select>
         </div>
         <ul>
-            <li class="hospitalList" @click="hospitalDoctor(v.id)" v-for="(v,i) in hospitalData" :key="i">{{v.hospitalName}}</li>
+            <li class="hospitalList" v-for="(v,i) in hospitalData" :key="i">{{v.hospitalName}}</li>
         </ul>
     </div>
   </div>
@@ -44,10 +44,10 @@ export default {
 
   created() {
     this.axios({
-      url: "/reqHospitalData/search",
+      url: "/reqHospitalData",
       method: "get"
     }).then(ok => {
-      this.hospitalData = ok.data.hospital;
+      this.hospitalData = ok.data;
       console.log(this.hospitalData);
     });
   },

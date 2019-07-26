@@ -30,6 +30,7 @@ export default {
   components:{
     ReturnComp
   },
+  methods: {},
   created() {
       this.location = this.$route.params.city;
       this.keyword = this.$route.params.keyword;

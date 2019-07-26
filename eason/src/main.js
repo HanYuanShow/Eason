@@ -4,7 +4,8 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import axios from 'axios'
-  
+
+
 
 import BaiduMap from 'vue-baidu-map'
 Vue.use(BaiduMap, {
@@ -16,15 +17,15 @@ Vue.use(BaiduMap, {
 // import { PasswordInput, NumberKeyboard } from 'vant';
 
 // Vue.use(PasswordInput).use(NumberKeyboard);
-import Vant from 'vant';
-import 'vant/lib/index.css';
-
-Vue.use(Vant);
 
 Vue.prototype.axios = axios
 require('./mock')
 import {store} from './store/store'
 Vue.config.productionTip = false
+
+import Vant from 'vant';
+import 'vant/lib/index.css';
+Vue.use(Vant);
 
 /* eslint-disable no-new */
 new Vue({

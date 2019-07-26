@@ -11,6 +11,8 @@
         <van-search
             placeholder="输入症状、疾病、医院、科室、医生名"
             background="#f1f1f1"
+            v-model="value"
+            @search="search(value)"
         />
         <!-- 名医咨询&今日义诊 -->
         <div class="mingyi">
@@ -67,7 +69,9 @@ export default {
                 {imgurl:"../../static/images/a/15.png",keshi:"整形美容科",id:15},
                 {imgurl:"../../static/images/a/16.png",keshi:"报告解读科",id:16},
                 {imgurl:"../../static/images/a/17.png",keshi:"营养科",id:17},
-            ]
+            ],
+            value:''
+            
         }
     },
     methods: {
@@ -83,13 +87,17 @@ export default {
     doctorlist(ks,id){
         this.$router.push({
             path:"/DoctorList",
-            query:{keshi:ks,id:id}
+            query:{string:ks,id:id}
         })
+    },
+    search(value){
+        this.$router.push({
+            path:"/DoctorList",
+            query:{value:value}
+        })
+        
     }
-  },
-//   beforeCreate() {
-//        document.querySelector('body').setAttribute('style', 'background:#f1f1f1')
-//   }
+  }
 }
 </script>
 
