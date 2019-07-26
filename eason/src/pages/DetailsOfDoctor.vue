@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-if="bool" class="loading">
+        <div v-if="bool1" class="loading">
             <van-loading type="spinner" color="#6bce72" />
         </div>
         <div v-else>
@@ -114,13 +114,24 @@
         </div>
         <hr/>
         <!-- 底部关注栏 -->
+        <!-- <div class="bottomnav">
+            <div class="guanzhu">
+                <div :class="style?'star':'newstar'" @click="guanzhu()" v-if="bool"></div>
+                <div :class="style?'star':'newstar'" @click="Closeguanzhu()" v-else></div>
+                <span class="guanzhutxt">{{style?"关注":"已关注"}}</span>
+            </div>
+            <div class="zixunbtn">{{newprice==null?'暂未开通':newtitle+'(￥'+newprice+'元/次)'}}</div>
+        </div> -->
+         <!-- 底部关注栏 -->
         <div class="bottomnav">
             <div class="guanzhu">
                 <div :class="style?'star':'newstar'" @click="guanzhu()" v-if="bool"></div>
                 <div :class="style?'star':'newstar'" @click="Closeguanzhu()" v-else></div>
                 <span class="guanzhutxt">{{style?"关注":"已关注"}}</span>
             </div>
+            <div class="zixunbtn">{{newprice==null?'暂未开通':newtitle+'(￥'+newprice+'元/次)'}}</div>
         </div>
+
     </div>  
 </template>
 
@@ -145,7 +156,8 @@ export default {
             newid:'',
             newarr:[],
             userid:0,  //用户id
-            bool:true
+            bool:true,
+            bool1:true
         }
     },
     created(){
@@ -160,9 +172,9 @@ export default {
         }).then((ok)=>{
             this.newarr=ok.data.Doctorinfor;
             if(this.newarr==''){
-                this.bool=true
+                this.bool1=true
             }else{
-                this.bool=false
+                this.bool1=false
             }
             this.consultarr[0].price = this.newarr.printreferint;
             this.consultarr[1].price = this.newarr.phonereferint;
@@ -441,5 +453,4 @@ hr{
     line-height: 25px;
     width: 70%;
 }
-/* hahah */
 </style>
