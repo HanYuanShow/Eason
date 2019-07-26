@@ -1,7 +1,12 @@
 <template>
     <div class="rout">
         <NonTopicBanner></NonTopicBanner>
-        <NonTopic :arr="arr"></NonTopic>
+        <div v-if="bools" class="boolsText">
+                专业疏通下水道<br>
+                专业开锁,公安备案<br>
+                请联系:1888888888
+            </div>
+        <NonTopic :arr="arr" v-else></NonTopic>
     </div>
 </template>
 
@@ -11,7 +16,8 @@ import NonTopicBanner from "./ScienceCom/NonTopicBanner"
 export default {
     data(){
         return {
-            arr:""
+            arr:"",
+            bool:""
         }
     },
     components:{
@@ -20,12 +26,22 @@ export default {
     },
     created(){
         this.axios({
-            url:"/aaazyz",
+            url:"http://47.112.208.93:8181/news/findNewsByType/%E6%AF%8D%E5%A9%B4",
             method:"get",
         }).then((ok)=>{
             console.log(ok)
-            this.arr = ok.data.hot
+            this.arr = ok.data
         })
+    },
+    computed:{
+        bools(){
+            if(this.arr == ""){
+                this.bool = true
+            }else{
+                this.bool = false
+            }
+            return this.bool
+        }
     }
 }
 </script>

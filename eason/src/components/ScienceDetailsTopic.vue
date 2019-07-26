@@ -1,42 +1,72 @@
 <template>
     <div class="Details">
         <div class="ScienceDetails"> 
+
             <div @click="routerGo()">
-                <span><img src="../../static/w/a61.png"></span>
+                <span><img src="../../static/w/a61.png" class="ScienceDetailsImg"></span>
             </div>
             <div>
-                <span class="ScienceDetailsRight ScienceDetailsRightone"><img src="../../static/w/asj.png"><span>{{arr.click.collectNumber}}</span></span>
-                <span  class="ScienceDetailsRightone"><img src="../../static/w/a7r.png"><span>{{arr.click.collectNumber}}</span></span>
+                <!-- <span><img src="../../static/w/asj.png" class="mid"><span class="mid">{{1}}</span></span> -->
+                  
+                <span>
+                    <van-button type="primary" @click="showPopup()" class="showPopup"> 
+                        <img src="../../static/w/a7r.png" class="mid">
+                    </van-button>
+                    <!-- <span class="mid">{{1}}</span> -->
+                </span>
             </div>
+
         </div>
+                    <!-- <van-button type="primary" @click="showPopup">
+                                    展示弹出层
+                    </van-button> -->
+                    <van-popup v-model="show" position="bottom" :style="{ height: '20%' }">
+                        <div>
+                            <div class="shareTop">
+                                <span>分享</span>
+                            </div>
+                            <div class="shareBottom">
+                                <img src="../../static/w/arp.png">
+                                <img src="../../static/w/arq.png">
+                                <img src="../../static/w/arl.png">
+                                <img src="../../static/w/aro.png">
+                            </div>
+                        </div>
+                    </van-popup>
+        <!-- <div v-if="bools" class="boolsText">
+                专业疏通下水道<br>
+                专业开锁,公安备案<br>
+                请联系:1888888888
+            </div> -->
         <div class="DetailsBody">
             <div class="DetailsTopicBig">
-                <h3 class="DetailsTopicTitle">{{arr.title}}</h3>
+                <h3 class="DetailsTopicTitle">{{arr[0].name}}</h3>
 
                 <div class="DetailsTopicEasonBig">
                     <div>
                         <div class="DetailsTopicEasonTop">
-                            <img :src="arr.imgurl" class="DetailsTopicEasonTopImg">
-                            <span class="DetailsTopicEasonTopName">{{arr.name}}</span>
+                            <img :src="arr[0].img" class="DetailsTopicEasonTopImg" @click="doctoridClick(arr[0].doctorinfor.id)">
+                            <span class="DetailsTopicEasonTopName">{{arr[0].doctorinfor.realaName}}</span>
                             <span class="DetailsTopicEasonTopOriginal">原创</span>
-                            <span class="DetailsTopicEasonTopDate">{{arr.time}}</span>
+                            <span class="DetailsTopicEasonTopDate">{{arr[0].date|filtersdate}}</span>
                         </div>
                         <div class="DetailsTopicEasonBottom">
-                            <span class="DetailsTopicEasonBottomText">{{arr.desk}}</span>
-                            <span class="DetailsTopicEasonBottomText">{{arr.position}}</span>
-                            <span class="DetailsTopicEasonBottomText">{{arr.hospital}}</span>
+                            <span class="DetailsTopicEasonBottomText">{{arr[0].doctorinfor.office}}</span>
+                            <span class="DetailsTopicEasonBottomText">{{arr[0].doctorinfor.title}}</span>
+                            <span class="DetailsTopicEasonBottomText">{{arr[0].doctorinfor.hospital}}</span>
                         </div>
                     </div>
                     <div>
-                        <span class="DetailsTopicEasonBottomConcern">+ 关注</span>
+                        <span class="DetailsTopicEasonBottomConcernTrue" v-if="isFollowDoctor">已关注</span>
+                        <span class="DetailsTopicEasonBottomConcern" v-else @click="isFollowDoctorTrue()">+ 关注</span>
                     </div>
                 </div>
 
                 <div>
-                    <p>{{arr.click.content}}</p>
+                    <p>{{arr[0].text}}</p>
                 </div>
                 <div>
-                    <span class="DetailsTopicEasonBottomText DetailsTopicEasonBottomTextTwo">阅读{{arr.readNumber}}</span>
+                    <span class="DetailsTopicEasonBottomText DetailsTopicEasonBottomTextTwo">阅读{{arr[0].reading}}</span>
                 </div>
                 <!-- <div>
                     
@@ -45,9 +75,10 @@
                     <span>立即咨询</span>
                 </div> -->
                 <div class="praiseNumber">
-                    <span class="praiseNumberLeft">{{arr.praiseNumber}}</span>
+                    <span class="praiseNumberLeftTrue" v-if="isGiveStar">{{arr[0].star+numtwo}}</span>
+                    <span class="praiseNumberLeft" v-else @click="isGiveStarTrue()">{{arr[0].star}}</span>
                     <span class="praiseNumbermiddle">送心意</span>
-                    <span  class="praiseNumberRight">立即咨询</span>
+                    <span  class="praiseNumberRight" @click="question()">立即咨询</span>
                 </div>
 
                 
@@ -63,28 +94,112 @@
 
 <script>
 export default {
+    data(){
+        return{
+            numtwo:"",
+            show:false,
+            bool:"",
+            userid:""
+        }
+    },
     props:{
         arr:"",
+        
+        topicid:"",
+        // 是否已经点赞
+        isGiveStar:"",
+        // 是否已关注医生
+        isFollowDoctor:"",
+        // 医生id
+        doctorid:""
+
+        
+
     },
     methods: {
         routerGo(){
             this.$router.go(-1)
+        },
+        question(){
+            this.$router.push("/Question")
+        },
+        showPopup() {
+            this.show = true;
+        },
+        isGiveStarTrue(){
+            this.isGiveStar = !this.isGiveStar
+            this.numtwo = 1
+            // 点赞话题接口
+            // this.userid = localStorage.getItem("userId")
+            
+            this.axios({
+                                                                // 预留用户id
+                url:"http://47.95.140.83:8181/doctorTopic/giveStar/1/"+this.topicid,
+                method:"get"
+            }).then((ok)=>{
+
+            })
+        },
+        isFollowDoctorTrue(){
+            this.isFollowDoctor = !this.isFollowDoctor
+            // 关注医生接口
+            this.axios({
+                                                                    // 预留用户id
+                url:"http://47.95.140.83:8181/doctorTopic/followDoctor/1/"+this.doctorid,
+                method:"get"
+            }).then((ok)=>{
+
+            })
+
+        },
+
+        doctoridClick(val){
+            this.$router.push({
+                path:"/DetailsOfDoctor/"+val
+                })
         }
     },
+    computed: {
+        bools(){
+            if(this.arr == ""){
+                this.bool = true
+            }else{
+                this.bool = false
+            }
+            return this.bool
+        }
+    },
+    filters:{
+        filtersdate(val){
+            return val.substring(0,10)
+        }
+    },
+    created(){
+        // this.num = 0;
+        this.numtwo = 0;
+
+    }
+
+    
 }
 </script>
 
 <style scoped>
+    .showPopup{
+        background:none;
+        border:none;
+        padding:0 0;
+    }
+    .showPopupP{
+        text-align: center;
+    }
     .ScienceDetails{
         display: flex;
         justify-content: space-between;
         padding-left:17px;
         padding-right:25px;
-        padding-top:12px;
-        padding-bottom:12px;
         border-bottom:1px solid #dbdbdb;
         font-size:16px;
-        color:#6bce72;
         position:fixed;
         top:0;
         background: #ffffff;
@@ -95,20 +210,15 @@ export default {
         width:22px;
         height:21px;
     }
-    .ScienceDetailsRight{
-        margin-right:25px;
+    .ScienceDetailsImg{
+        margin-top:12px;
     }
-    .ScienceDetailsRightone{
-        line-height: 21px;
-        color:black;
+    .mid{
         vertical-align: middle;
+        margin-right:5px;
     }
-    .ScienceDetailsRightone span{
-        vertical-align: middle;
-    }
-    .ScienceDetailsRightone img{
-        vertical-align: middle;
-    }
+
+
     .DetailsTopicBig{
         padding:10px 15px 0;
     }
@@ -177,6 +287,16 @@ export default {
         border-radius: 2px;
         
     }
+    .DetailsTopicEasonBottomConcernTrue{
+        display:inline-block;
+        border:1px solid #6bce72;
+        color:#ffffff;
+        background: #6bce72;
+        font-size: 14px;
+        line-height:22px;
+        padding:0 8px;
+        border-radius: 2px;
+    }
     .DetailsTopicEasonBottomTextTwo{
         /* line-height:40px; */
         display: inline-flex;
@@ -216,6 +336,21 @@ export default {
         font-size:12px;
         line-height:35px;
     }
+    .praiseNumberLeftTrue{
+        display: inline-block;
+        /* background:url(../../static/w/avc.png) no-repeat 15px 10px; */
+        background:url(../../static/w/au5.png) no-repeat 15px 8px #f08710;
+        background-size:16px auto;
+        width:97px;
+        height:35px;
+        color:#ffffff;
+        border-radius: 18px;
+        border:1px solid #f08710;
+        text-indent:40px; 
+        box-sizing: border-box;
+        font-size:12px;
+        line-height:35px;
+    }
     /* b5q.9.png */
     .praiseNumberRight{
         display: inline-block;
@@ -232,6 +367,19 @@ export default {
         line-height:35px;
     }
     
+
+     .shareTop{
+        text-align: center;
+        margin-bottom:15px;
+    }
+    .shareBottom{
+        display: flex;
+        justify-content: space-around;
+        padding:0 10px;
+    }
+    .shareBottom img{
+        width:45px;
+    }
 </style>
 
 

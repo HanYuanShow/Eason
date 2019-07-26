@@ -1,7 +1,16 @@
 <template>
     <div class="rout">
-        <NonTopicBanner></NonTopicBanner>
-        <NonTopic :arr="arr"></NonTopic>
+        
+        
+            <NonTopicBanner></NonTopicBanner>
+            <div v-if="bools" class="boolsText">
+                专业疏通下水道<br>
+                专业开锁,公安备案<br>
+                请联系:1888888888
+            </div>
+            <NonTopic :arr="arr" v-else></NonTopic>
+        
+        
     </div>
 </template>
 
@@ -11,7 +20,8 @@ import NonTopicBanner from "./ScienceCom/NonTopicBanner"
 export default {
     data(){
         return {
-            arr:""
+            arr:"",
+            bool:""
         }
     },
     components:{
@@ -19,13 +29,24 @@ export default {
         NonTopicBanner
     },
     created(){
+        //请求热点内的所有新闻接口
         this.axios({
-            url:"/aaazyz",
+            url:"http://47.112.208.93:8181/news/findHotNews",
             method:"get",
         }).then((ok)=>{
             console.log(ok)
-            this.arr = ok.data.hot
+            this.arr = ok.data
         })
+    },
+    computed:{
+        bools(){
+            if(this.arr == ""){
+                this.bool = true
+            }else{
+                this.bool = false
+            }
+            return this.bool
+        }
     }
 }
 </script>
