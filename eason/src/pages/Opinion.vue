@@ -15,7 +15,7 @@
                           <span>添加图片</span>              
                     </div>
                     <p>{{text}}</p>
-                    <input type="search">
+                    <input type="search" class="search">
 
                     <input type="submit" class="sbmit">
                 </form>
@@ -61,6 +61,7 @@ export default {
     font-size: 15px;
     padding-left: 15px;
     color: #a0a0a0;
+    line-height: 40px;
 }
 form{
     width: 100%;
@@ -69,9 +70,10 @@ textarea{
     display: block;
     margin: 0 auto;
     border: none;
-    /* color: #d8d4d4; */
+    color: #5f5d5d;
     padding-left: 15px;
-    padding-top: 15px;
+    padding: 15px;
+    /* margin: 15px; */
 
     /* font-size: 14px; */
 }
@@ -80,6 +82,12 @@ textarea{
     background: white;
     margin-top: 0px;
     padding-left: 15px;
+}
+.search{
+    /* text-indent: 40%; */
+    text-align: center;
+caret-color:#20c02d;
+    
 }
 .images span{
     color: #a0a0a0;

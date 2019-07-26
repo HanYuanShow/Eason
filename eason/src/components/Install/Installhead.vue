@@ -55,8 +55,8 @@ export default {
     font-size: 25px;
 }
 .home img{
-width:12px ;
-height: 24px;
+width:15px ;
+height: 26px;
 margin-left:15px;
 }
 .home span{
@@ -72,7 +72,7 @@ text-align: center;
 }
 .reght{
      margin-right:10px;
-      font-size: 15px;
+      font-size: 16px;
       color: #6bce72;
       width: 65px;
 }

@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 // import HelloWorld from '@/components/HelloWorld'
 import PersonalCentter from "../pages/PersonalCenter"
+import accountbalance from '../pages/accountbalance'
 import PersonalInformation from "../pages/PersonalInformation"
 import Install from "../pages/Install.vue"
 import MessageCenter from '../pages/MessageCenter'
@@ -35,6 +36,12 @@ import getyanzheng from "../pages/getyanzheng";
 import changephonenewpass from "../pages/changephonenewpass";
 import setpassword from "../pages/setpassword";
 import HomeTabbar from "../components/HomeTabbar";
+import discountcoupon from "../pages/discountcoupon";
+import Exchangecouponcode from "../pages/Exchangecouponcode";
+
+
+
+
 
 import MyAdvice from "../pages/MyAdvice"
 import NowConsult from "../components/NowConsult"
@@ -86,12 +93,23 @@ import ChooseDoctor from '../pages/ChooseDoctor'
 // import Cart from '../pages/cart'
 // import Payoff from '../pages/Payoff'
 // import Code from '../pages/code'
+import Mycoins from '../pages/Mycoins'
+import Resetpassword from '../pages/Resetpassword'
+import Resetpasswordauthentication from '../pages/Resetpasswordauthentication'
+
+
+
+
+
+
+
+
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
-      path: '/DetailsOfDoctor/:id',
+      path:"/DetailsOfDoctor/:id",
       name: 'DetailsOfDoctor',
       component: DetailsOfDoctor
     },
@@ -131,7 +149,41 @@ export default new Router({
       component: FindDoctor
     },
     {
-      path: '/findHospital',
+      path:"/resetpasswordauthentication",
+      component:Resetpasswordauthentication,
+    },
+    {
+      path:"/resetpassword",
+      name:"Resetpassword",
+      component:Resetpassword,
+    },
+    {
+      path:"/mycoins",
+      name:"Mycoins",
+      component:Mycoins,
+    },
+    {
+      path:"/exchangecouponcode",
+      name:"Exchangecouponcode",
+      component:Exchangecouponcode,
+    },
+    {
+      path:"/discountcoupon",
+      name:"discountcoupon",
+      component:discountcoupon,
+    },
+    {
+      path:"/accountbalance",
+      name:"accountbalance",
+      component:accountbalance,
+    },
+    {
+      path:"/Home",
+      name:"Home",
+      component:Home,
+    },
+    {
+      path:'/findHospital',
       name: 'FindHospital',
       component: FindHospital
     },
@@ -145,11 +197,7 @@ export default new Router({
       name: 'SpecialistDetails',
       component: SpecialistDetails
     },
-    {
-      path: '/Home',
-      name: 'Home',
-      component: Home
-    },
+ 
     {
       path: '/hospitaDetails/:clickId',
       name: 'HospitaDetails',
@@ -227,7 +275,6 @@ export default new Router({
       name: 'PersonalCentter',
       component: PersonalCentter
     },
-
     {
       path: '/personalInformation',
       name: 'PersonalInformation',

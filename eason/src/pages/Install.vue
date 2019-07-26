@@ -19,13 +19,13 @@
         <div class="content1" @click="fund()">
             <Installnav :arrb="obj[3]"></Installnav>
         </div>
-        <div class="content2">
+        <div class="content2" @click="cleal()">
             <Installnav :arrb="obj[4]"></Installnav>
         </div>
-        <div class="content">
+        <div class="content"  @click="dafen()">
             <Installnav :arrb="obj[5]"></Installnav>
         </div>
-        <div class="content1">
+        <div class="content1"  @click="gengxing()">
             <Installnav :arrb="obj[6]"></Installnav>
         </div>
         <div class="content4" @click="fune()">
@@ -35,7 +35,7 @@
             <Installnav :arrb="obj[8]"></Installnav>
         </div>
 
-        <input type="button" value="退 出 登 录">
+        <input type="button" value="退 出 登 录" @click="quit()">
     </div>
 </template>
 <script>
@@ -88,6 +88,52 @@ export default {
         funf(){
             this.$router.push({path:"/declaraction"})
         },
+        cleal(){
+            this.$dialog.confirm({
+             title: '',
+            message: '确认清除所有缓存？'
+            }).then(() => {
+                x
+            }).catch(() => {
+    
+                    })    
+        },
+        dafen(){
+            
+             this.$dialog.confirm({
+             title: '',
+            message: '感谢你对春雨的支持，快去为春雨打分吧！'
+            }).then(() => {
+                x
+            }).catch(() => {
+    
+                    })   
+        },
+        gengxing(){
+             this.$dialog.confirm({
+             title: '升级提示',
+            message: '我们推出8.7.1新版本，进行更新优化处理，赶快来体验吧'
+            }).then(() => {
+                x
+            }).catch(() => {
+    
+                    })   
+        },
+        quit(){
+            localStorage.removeItem("userPassword")
+            localStorage.setItem("userBalance","0.00")
+            localStorage.removeItem("userPhone")
+            localStorage.getItem("Goldcoin ","0.00")
+             localStorage.removeItem("userId")
+             localStorage.setItem("Coupon","0.00")
+             localStorage.setItem("userNickname","登录/注册")
+             localStorage.removeItem("userImg")
+             localStorage.removeItem("loglevel:webpack-dev-server")
+        
+
+
+        this.$router.push({path:"/personalCentter"})
+        }
        
     },
 }

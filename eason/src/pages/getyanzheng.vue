@@ -9,11 +9,11 @@
         <form action="">
 
             <div class="pass">
-                <input type="text" placeholder="验证码">
+                <input type="text" placeholder="验证码" v-model="number">
             </div>
-            <input type="submit" value="验证邮箱号" class="sub"  @click="fund()">
+            <input type="button" value="验证手机号" class="sub"  @click="fund()" />
         </form>
-        <!-- <p @click="fun1">{{forget}}</p> -->
+      
     </div>
 </template>
 <script>
@@ -30,9 +30,10 @@ export default {
         return{
             himg:"../../static/images/w/b1a.png",
             listtitle:"忘记密码",
-            txt:"已发送短信到@",
+            txt:"已发送短信到",
+            number:"",
             // forget:"手机号已停用?"
-            
+            userId:"",
         }
     },
     methods: {
@@ -40,7 +41,32 @@ export default {
             this.$router.push({path:"/forgetpass"})
         },
         fund(){
-             this.$router.push({path:"/personalCentter"})
+             this.userId=localStorage.getItem('userId');
+            if(this.number==""){
+                this.$toast("验证码不能为空")
+            }
+               
+              var param=new URLSearchParams();
+        this.axios({
+                    url:"http://10.12.156.148:8181/user/updatePhone",
+                    method:"post",
+                    params:{
+                        userId:this.userId,
+                        newcode:this.number
+                      }
+                    }).then((ok)=>{
+                        if(ok.data==0){
+                          this.$toast("验证码输入错误")   
+                        }else{
+                             this.$toast("修改成功请重新登录")
+                            this.$router.push({path:"/denglu"})
+                        }
+                    })
+
+            // else{
+            // this.$router.push({path:"/personalCentter"})
+            // } 
+            
         }
     },
 }

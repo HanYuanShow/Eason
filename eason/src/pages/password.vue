@@ -6,10 +6,10 @@
         <h4>{{title}}</h4>
         <form action="">
                 <div class="input"> 
-                    <input type="password" placeholder="密码" class="text">
+                    <input type="password" placeholder="密码" class="text" v-model="pass">
                     </div>
 
-                <input type="submit" value="开始使用" class="submit"  @click="fun3()">
+                <input type="button" value="开始使用" class="submit"  @click="fun3()">
             </form>
 
     </div>
@@ -28,13 +28,30 @@ export default {
             himg:"../../static/images/w/b1a.png",
             listtitle:"完善账户",
             title:"继续完善账户",
+            pass:"",
             // txt:"点击重新发送验证"
         }
     },
     methods: {
         
          fun3(){
-              this.$router.push({ path:"/PersonalCentter"});
+             var regex=/^[A-Za-z]+[0-9]+[A-Za-z0-9]*|[0-9]+[A-Za-z]+[A-Za-z0-9]*$/g;
+            if(this.pass==""){
+                 this.$toast("请设置您的密码")
+             }else if(!regex.test(this.pass)){
+                 this.$toast("你的密码必须是6-16位数字，字母组成")
+             }
+                 var param=new URLSearchParams();
+                    param.append("password",this.pass);
+                    this.axios({
+                        url:"http://10.12.156.148:8181/user/szPassword",
+                        method:"post",
+                        data:param,
+                    }).then((ok)=>{
+                            console.log(ok)
+                             this.$toast("注册成功请登录")
+                             this.$router.push({path:"/denglu"})
+                    })      
         },
     },
 }
@@ -70,11 +87,12 @@ form input{
 
 }
 .text{
-    width: 80px;
+    width: 150px;
     height:30px;
     text-indent: 20px;
     border: none;
     caret-color:#20c02d;
+    text-align: center;
 }
 .submit{
    width:86%;

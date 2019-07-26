@@ -74,10 +74,12 @@ li img{
     justify-content: center;
     align-items: center;
     height: 70px;
-    margin-top: PX;
     height: 20px;
     display: flex;
-    /* padding-top: 50px; */
+    position: fixed;
+    bottom: 20px;
+    left: 25px;
+    
 }
 .book{
     color: #20c02d;
