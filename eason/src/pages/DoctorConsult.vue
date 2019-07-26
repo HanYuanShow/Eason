@@ -46,7 +46,10 @@
         </div>
 
         <!-- 医生列表 -->
-        <div class="doctorlist">
+        <div v-if="bool" class="loading">
+            <van-loading type="spinner" color="#6bce72" />
+        </div>
+        <div class="doctorlist" v-else>
             <Doctortitle :title="keshi"></Doctortitle>
             <Doctorlist v-for="(v,i) in sarr" :key="i" 
             :doctor_name="v.realaName" 
@@ -99,14 +102,26 @@ export default {
                 {imgurl:"../../static/images/a/s24.png",keshi:"营养科"}
                 ],
             keshi:"",
-            newindex: 0,
+            newindex: '',
             newarr:[],
-            sarr:[]
+            sarr:[],
+            bool:true
         }
     },
     created() {
         this.keshi=this.arr[0].keshi;
-        
+        // 加载页面后直接显示内科
+        this.axios({
+            url:"http://10.12.156.39:8181/Doctorin/findall?string=内科",
+            method:"get"
+        }).then((ok)=>{
+            this.sarr=ok.data;
+            if(this.sarr==''){
+                this.bool=true
+            }else{
+                this.bool=false
+            }
+        });
        
     },
     components:{
@@ -118,18 +133,7 @@ export default {
             // 绑定Doctortitle
             this.keshi=ks;
             // 点击时改变li背景样式时的id
-            this.newindex=i;
-
-            // let newdata=[];
-            // for(let i=0;i<this.newarr.length;i++){
-            //     if(this.newarr[i].office==ks){
-            //         console.log(this.newarr[i].office)
-            //         newdata.push(this.newarr[i]);
-            //         this.sarr=newdata;
-                    
-            //     } 
-            // }
-            
+            this.newindex=i;   
 // ===========================
         this.axios({
             url:"http://10.12.156.39:8181/Doctorin/findall?string="+ks,
@@ -143,10 +147,24 @@ export default {
         doctorlist1(ks,i){
             this.keshi=ks;
             this.newindex=i;
+
+            this.axios({
+                url:"http://10.12.156.39:8181/Doctorin/findall?string="+ks,
+                method:"get"
+            }).then((ok)=>{
+                this.sarr=ok.data;
+            });
         },
         doctorlist2(ks,i){
             this.keshi=ks;
             this.newindex=i;
+
+            this.axios({
+                url:"http://10.12.156.39:8181/Doctorin/findall?string="+ks,
+                method:"get"
+            }).then((ok)=>{
+                this.sarr=ok.data;
+            });
         },
         onClickLeft(){
             this.$router.go(-1);
@@ -156,6 +174,11 @@ export default {
 </script>
 
 <style scoped>
+.loading{
+    height: 100px;
+    text-align: center;
+    padding-top: 50px;
+}
 .end{
     position: fixed;
     width: 100%;

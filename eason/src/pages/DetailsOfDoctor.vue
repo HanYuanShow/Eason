@@ -1,136 +1,141 @@
 <template>
     <div>
-        <!-- 导航 -->
-        <div class="topbox">
-            <div class="daohang">
-                <van-icon name="arrow-left" class="leftarrow" @click="back()"/>
-                <img src="../../static/images/a/share.png" class="share">
-            </div>
+        <div v-if="bool" class="loading">
+            <van-loading type="spinner" color="#6bce72" />
         </div>
-        <!-- 医生信息绿色 -->
-        <div class="doctorbox" @click="DoctorIntroduce()">
-            <div class="headpic"><img :src="this.newarr.impSrc" class="doctorheadpic"></div>
-            <div class="doctorintro">
-                <ul>
-                    <li>
-                        <h4 class="doctorname">{{this.newarr.realaName}}</h4>
-                    </li>
-                    <li class="doctorkind">
-                        {{this.newarr.office}} {{this.newarr.title}}
-                    </li>
-                    <li class="doctorlabel">
-                        <span class="label">知名医院</span>
-                        <span class="label">从业14年</span>
-                        <span class="label">北京市</span>
-                    </li>
-                </ul>
+        <div v-else>
+            <!-- 导航 -->
+            <div class="topbox">
+                <div class="daohang">
+                    <van-icon name="arrow-left" class="leftarrow" @click="back()"/>
+                    <img src="../../static/images/a/share.png" class="share">
+                </div>
             </div>
+            <!-- 医生信息绿色 -->
+            <div class="doctorbox" @click="DoctorIntroduce()">
+                <div class="headpic"><img :src="this.newarr.impSrc" class="doctorheadpic"></div>
+                <div class="doctorintro">
+                    <ul>
+                        <li>
+                            <h4 class="doctorname">{{this.newarr.realaName}}</h4>
+                        </li>
+                        <li class="doctorkind">
+                            {{this.newarr.office}} {{this.newarr.title}}
+                        </li>
+                        <li class="doctorlabel">
+                            <span class="label">知名医院</span>
+                            <span class="label">从业14年</span>
+                            <span class="label">北京市</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <van-icon name="arrow" class="rightarrow"/>
+                </div>
+            </div>
+            <!-- 咨询信息 -->
+            <div class="doctorconsult">
+                <span>
+                    <div>
+                        <p class="num">{{this.newarr.peopleNumint}}</p>
+                        <span class="per">次</span>
+                    </div>
+                    <p class="context">咨询人数</p>
+                </span>
+                <span>
+                    <div>
+                        <p class="num">{{this.newarr.goodRateint}}</p>
+                        <span class="per">%</span>
+                    </div>
+                    <p class="context">好评率</p>
+                </span>
+                <span>
+                    <div>
+                        <p class="num">{{this.newarr.degreeint}}</p>
+                        <span class="per">分</span>
+                    </div>
+                    <p class="context">同行认可</p>
+                </span>
+            </div>
+            <!-- 轮播图类 -->
+            <div class="lunbox">
+                <div class="lun">
+                    <ul>
+                        <li :class="{newlunli:newindex==i}" class="lunli" v-for="(v,i) in consultarr" :key="i" @click="lunli(i,v.title,v.price)">
+                            <p class="lunp">{{v.title}}</p>
+                            <img :src="v.imgurl" class="lunpic">
+                            <p class="lunp">{{v.price==null?'暂未开通':'￥'+v.price+'元/次'}}</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr/>
+            <!-- 医生擅长 -->
+            <div @click="DoctorIntroduce()">
+                <div class="goodat">
+                    <p class="goodatp">医生擅长</p>
+                    <van-icon name="arrow" class="right"/>
+                </div>
+                <div class="goodattext">
+                    <div class="goodatcontent">
+                        {{this.newarr.adept}}
+                    </div>
+                    
+                </div>
+            </div>
+            <hr/>
+            <!-- 热度咨询 -->
             <div>
-                <van-icon name="arrow" class="rightarrow"/>
-            </div>
-        </div>
-        <!-- 咨询信息 -->
-        <div class="doctorconsult">
-            <span>
-                <div>
-                    <p class="num">{{this.newarr.peopleNumint}}</p>
-                    <span class="per">次</span>
+                <div class="goodat">
+                    <p class="goodatp">热度咨询</p>
+                    <van-icon name="arrow" class="right"/>
                 </div>
-                <p class="context">咨询人数</p>
-            </span>
-            <span>
-                <div>
-                    <p class="num">{{this.newarr.goodRateint}}</p>
-                    <span class="per">%</span>
+                <div class="goodattext">
+                    热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询
                 </div>
-                <p class="context">好评率</p>
-            </span>
-            <span>
-                <div>
-                    <p class="num">{{this.newarr.degreeint}}</p>
-                    <span class="per">分</span>
+            </div>
+            <hr/>
+            <!-- 执业医院 -->
+            <div>
+                <div class="goodat">
+                    <p class="goodatp">执业医院</p>
                 </div>
-                <p class="context">同行认可</p>
-            </span>
-        </div>
-        <!-- 轮播图类 -->
-        <div class="lunbox">
-            <div class="lun">
-                <ul>
-                    <li :class="{newlunli:newindex==i}" class="lunli" v-for="(v,i) in consultarr" :key="i" @click="lunli(i,v.title,v.price)">
-                        <p class="lunp">{{v.title}}</p>
-                        <img :src="v.imgurl" class="lunpic">
-                        <p class="lunp">{{v.price==null?'暂未开通':'￥'+v.price+'元/次'}}</p>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <hr/>
-        <!-- 医生擅长 -->
-        <div @click="DoctorIntroduce()">
-            <div class="goodat">
-                <p class="goodatp">医生擅长</p>
-                <van-icon name="arrow" class="right"/>
-            </div>
-            <div class="goodattext">
-                <div class="goodatcontent">
-                    {{this.newarr.adept}}
+                <div class="goodattext">
+                    {{this.newarr.hospital}}
                 </div>
-                
+            </div>
+            <hr/>
+            <!-- 医生话题 -->
+            <div>
+                <div class="goodat">
+                    <p class="goodatp">医生话题</p>
+                    <van-icon name="arrow" class="right"/>
+                </div>
+                <div class="goodattext huati">
+                    医生话题医生话题医生话题医生话题医生话题医生话题医生话题医生话题医生话题医生话题医生话题医生话题医生话题医生话题
+                </div>
+            </div>
+            <hr/>
+            <!-- 医生寄语 -->
+            <div>
+                <div class="goodat">
+                    <p class="goodatp">医生寄语</p>
+                </div>
+                <div class="goodattext jiyu">
+                    {{this.newarr.sendWord}}
+                </div>
+            </div>
+            <hr/>
+            <!-- 底部关注栏 -->
+            <div class="bottomnav">
+                <div class="guanzhu">
+                    <div :class="style?'star':'newstar'" @click="guanzhu()"></div>
+                    <span class="guanzhutxt">{{style?"关注":"已关注"}}</span>
+                </div>
+                <div class="zixunbtn">{{newprice==null?'暂未开通':newtitle+'(￥'+newprice+'元/次)'}}</div>
             </div>
         </div>
-        <hr/>
-        <!-- 热度咨询 -->
-        <div>
-            <div class="goodat">
-                <p class="goodatp">热度咨询</p>
-                <van-icon name="arrow" class="right"/>
-            </div>
-            <div class="goodattext">
-                热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询
-            </div>
-        </div>
-        <hr/>
-        <!-- 执业医院 -->
-        <div>
-            <div class="goodat">
-                <p class="goodatp">执业医院</p>
-            </div>
-            <div class="goodattext">
-                {{this.newarr.hospital}}
-            </div>
-        </div>
-        <hr/>
-        <!-- 医生话题 -->
-        <div>
-            <div class="goodat">
-                <p class="goodatp">医生话题</p>
-                <van-icon name="arrow" class="right"/>
-            </div>
-            <div class="goodattext huati">
-                医生话题医生话题医生话题医生话题医生话题医生话题医生话题医生话题医生话题医生话题医生话题医生话题医生话题医生话题
-            </div>
-        </div>
-        <hr/>
-        <!-- 医生寄语 -->
-        <div>
-            <div class="goodat">
-                <p class="goodatp">医生寄语</p>
-            </div>
-            <div class="goodattext jiyu">
-                {{this.newarr.sendWord}}
-            </div>
-        </div>
-        <hr/>
-        <!-- 底部关注栏 -->
-        <div class="bottomnav">
-            <div class="guanzhu">
-                <div :class="style?'star':'newstar'" @click="guanzhu()"></div>
-                <span class="guanzhutxt">{{style?"关注":"已关注"}}</span>
-            </div>
-            <div class="zixunbtn">{{newprice==null?'暂未开通':newtitle+'(￥'+newprice+'元/次)'}}</div>
-        </div>
-    </div>
+    </div>  
 </template>
 
 <script>
@@ -150,7 +155,8 @@ export default {
             newtitle:'',
             newprice:'',
             newid:'',
-            newarr:[]
+            newarr:[],
+            bool:true
         }
     },
     created(){
@@ -164,6 +170,11 @@ export default {
             method:"get"
         }).then((ok)=>{
             this.newarr=ok.data.Doctorinfor;
+            if(this.newarr==''){
+                this.bool=true
+            }else{
+                this.bool=false
+            }
             this.consultarr[0].price = this.newarr.printreferint;
             this.consultarr[1].price = this.newarr.phonereferint;
             this.consultarr[2].price = this.newarr.privaterferint;
@@ -189,9 +200,6 @@ export default {
         },
         guanzhu(){
             this.style=!this.style;
-            
-            
-
         },
         back(){
             this.$router.go(-1);
@@ -201,9 +209,16 @@ export default {
 </script>
 
 <style scoped>
+.loading{
+    height: 100px;
+    text-align: center;
+    padding-top: 50px;
+}
 .doctorheadpic{
-    width: 75px;
-    height: 75px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 1px solid #cdcdcd;
 }
 .guanzhutxt{
     display: block;
@@ -267,7 +282,6 @@ hr{
 }
 .jiyu{
     color: #323232;
-    font-weight: 800;
     font-size: 15px;
 }
 .goodatcontent{

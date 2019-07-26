@@ -1,4 +1,5 @@
 <template>
+
         <!-- 医生列表 -->
         <div class="doctorbox" @click="doctor(doctor_infor.id,doctor_infor)">
             <div class="headpic"><img :src="doctor_infor.impSrc" class="doctorheadpic"></div>
@@ -8,13 +9,17 @@
                         <h4 class="doctorname">{{doctor_infor.realaName}}</h4>
                         <span class="doctorkind">{{doctor_infor.office}} {{doctor_infor.title}}</span>
                     </li>
-                    <li class="doctorhospital">{{doctor_infor.hospital}}</li>
-                    <li class="detail">{{doctor_infor.adept}}</li>
                     <li class="line">
                         <span class="label">{{doctor_infor.hospiTaltype}}</span>
                         <span class="label">{{doctor_infor.workTime}}</span>
                     </li>
-                    <li><span class="doctorprice">￥{{doctor_infor.printreferint}}元起</span><span class="okok">{{doctor_infor.peopleNumint}}人购买</span> </li>
+                    <li class="detail">{{doctor_infor.adept}}</li>
+                    <li class="jiage">
+                        <span class="doctorprice">￥{{doctor_infor.printreferint}}元起</span>
+                        <span class="yuanjia">原价:{{doctor_infor.phonereferint}}元</span>
+                        <span class="okok">还剩{{doctor_infor.degreeint}}个机会</span>
+
+                    </li>
                 </ul>
             </div>
         </div>
@@ -39,6 +44,7 @@ export default {
 </script>
 
 <style scoped>
+
 .doctorheadpic{
     width: 70px;
     height: 70px;
@@ -46,7 +52,6 @@ export default {
     border: 1px solid #cdcdcd;
 }
 .line{
-    border-bottom: 1px solid #f4f4f4;
     line-height: 30px;
     padding-bottom: 5px;
 }
@@ -59,17 +64,33 @@ export default {
     margin-right: 5px;
     font-weight: 800;
 }
+.jiage{
+    position: relative;
+    display: block;
+}
 .doctorprice{
     font-size: 14px;
     color: #ec6b43;
     line-height: 45px;
-    margin-right: 20px;
+    margin-right: 5px;
     font-weight: 800;
 }
+.yuanjia{
+    font-size: 12px;
+    color: #999999;
+    text-decoration-line: line-through;
+}
 .okok{
-    font-size: 14px;
-    color: #666666;
-    font-weight: 800;
+    font-size: 12px;
+    line-height: 12px;
+    color: #ffffff;
+    background: #6bce72;
+    padding: 3px 5px;
+    border-radius: 2px;
+    position: absolute;
+    right: 0;
+    top: 30%;
+
 }
 .doctorhospital{
     font-size: 14px;
@@ -88,6 +109,13 @@ export default {
 .detail{
     font-size: 14px;
     color: #999999;
+    border-bottom: 1px solid #f4f4f4;
+    width: 100%;
+    height: 24px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-bottom: 5px;
 }
 .doctorbox{
     display: flex;

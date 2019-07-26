@@ -68,8 +68,10 @@ export default {
 
 <style scoped>
 .doctorheadpic{
-    width: 75px;
-    height: 75px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 1px solid #cdcdcd;
 }
 .doctorintroduce{
     background: #ffffff;

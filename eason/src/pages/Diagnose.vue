@@ -23,11 +23,10 @@
             <van-dropdown-item v-model="value" :options="option" @change="keshi(option[value].text)"/>
         </van-dropdown-menu>
         <!-- 医生列表 -->
-        <Doctorlist2 v-for="(v,i) in newarr" :key="i" :newv="v"
-        :doctor_name="v.doctor_name" 
-        :disease_type="v.disease_type" 
-        :doctor_job="v.doctor_job"
-        ></Doctorlist2>
+        <div v-if="bool" class="loading">
+            <van-loading type="spinner" color="#6bce72" />
+        </div>
+        <Doctorlist2 v-for="(v,i) in newarr" :key="i" :newv="v" v-else></Doctorlist2>
     </div>
 </template>
 
@@ -56,21 +55,21 @@ export default {
                 { text: '营养科', value: 15 }
             ],
             newarr:[],
-            sarr:[]
+            bool:true
         }
     },
     created() {
-        
-        // ----------------------------------
         this.axios({
             url:"http://10.12.156.39:8181/Doctorin/load",
             method:"get"
         }).then((ok)=>{
             this.newarr=ok.data;
-            // 页面初始化显示所有科室医生列表
-            // this.sarr=this.newarr;
+            if(this.newarr==''){
+                this.bool=true
+            }else{
+                this.bool=false
+            }
         })
-        // ----------------------------------
     },
     methods: {
         doctorkoubei(){
@@ -82,21 +81,27 @@ export default {
                 method:"get"
             }).then((ok)=>{
                 this.newarr=ok.data;
-                // 页面初始化显示所有科室医生列表
-                // this.sarr=this.newarr;
+                if(this.newarr==''){
+                    this.bool=true
+                }else{
+                    this.bool=false
+                }
             })
 
-            // -----------------
-            let newdata=[];
-            for (let i=0; i<this.newarr.length;i++) {
-                if(this.newarr[i].disease_type==ks){
-                    newdata.push(this.newarr[i]);
-                    this.sarr=newdata;
-                }else if(ks=='全部科室'){
-                    this.sarr=this.newarr;
-                }
+            if(ks=="全部科室"){
+                this.axios({
+                url:"http://10.12.156.39:8181/Doctorin/load",
+                method:"get"
+                }).then((ok)=>{
+                    this.newarr=ok.data;
+                    if(this.newarr==''){
+                        this.bool=true
+                    }else{
+                        this.bool=false
+                    }
+                })
             }
-            // ----------------------
+
         },
         onClickLeft(){
             this.$router.go(-1);
@@ -110,6 +115,11 @@ export default {
 </script>
 
 <style scoped>
+.loading{
+    height: 100px;
+    text-align: center;
+    padding-top: 50px;
+}
 .van-dropdown-item--down {
     height: 300px;
     border-bottom: 1px solid #e7e7e7;
