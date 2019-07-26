@@ -1,4 +1,4 @@
-<template>
+﻿<template>
     <div>
         <div v-if="bool1" class="loading">
             <van-loading type="spinner" color="#6bce72" />
@@ -68,6 +68,20 @@
                         </li>
                     </ul>
                 </div>
+            </div>
+        </div>
+        <hr/>
+	<!-- 医生擅长 -->
+        <div @click="DoctorIntroduce()">
+            <div class="goodat">
+                <p class="goodatp">医生擅长</p>
+                <van-icon name="arrow" class="right"/>
+            </div>
+            <div class="goodattext">
+                <div class="goodatcontent">
+                    {{this.newarr.adept}}
+                </div>
+                
             </div>
         </div>
         <hr/>
