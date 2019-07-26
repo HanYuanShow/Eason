@@ -1,7 +1,5 @@
 <template>
     <div>
-         <div v-if="booleans" class="load">加载中</div>
-        <div v-else>
         <div class="top_bar">
             <img src="../../static/images/w/b1a.png" class="img1"  @click="fun()"/>
             <form class="form" v-for="(v,i) in newarr2.typeList" :key="i">
@@ -43,12 +41,11 @@
             <div class="redommandDoc"> 
                 <P>
                     <span class="relConsult_span1">医生推荐</span>
-                    <span class="relConsult_span2">更多></span>
+                    <router-link to="/DoctorList"><span class="relConsult_span2">更多></span></router-link>
                 </P>
                 <div v-for="(v,i) in newarr2.all" :key="i">
                     <div class="redommand_img">
                          <img :src="v.impSrc"/>
-                         <!-- <img src="../../static/images/w/b00.png"/>  -->
                          <div class="recommand_infor">
                                 <P>
                                     <span class="p_span1">{{v.realaName}}</span>
@@ -92,8 +89,7 @@
                 
             </div>
         </div>
-    </div>
-   
+
 
     </div>
 </template>
@@ -102,8 +98,7 @@ export default {
     data() {
         return {
             newarr1:[],
-            newarr2:[],
-            boolean:''
+            newarr2:[]
         }
     },
     created() {
@@ -139,16 +134,6 @@ export default {
             this.$router.go(-1) 
          }
    },
-    computed: {
-             booleans(){
-                 if(this.newarr2==''){
-                     this.boolean=true
-                 }else{
-                     this.boolean=false
-                 }
-                 return this.boolean
-             }
-         },
 }
 </script>
 <style scoped>
@@ -334,10 +319,6 @@ export default {
      .topic .span1{
          float: right;
          color: #666666;
-     }
-     .load{
-         font-size: 30px;
-         text-align: center;
      }
 </style>
 

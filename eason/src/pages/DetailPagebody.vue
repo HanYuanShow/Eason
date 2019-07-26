@@ -1,9 +1,5 @@
 <template>
     <div>
-         <div v-if="booleans" class="load">
-             加载中
-         </div>
-        <div v-else>
         <div v-for="(v,i) in newarr2.symptom" :key="i">
             <div class="sym_top">
                 <van-nav-bar :title="v.name" fixed="" left-text="" left-arrow @click-left="back()" @click-right="search()">
@@ -104,7 +100,6 @@
                 </div>
             </div>
         </div>
-        </div>
     </div>
 </template>
 <script>
@@ -171,16 +166,6 @@ export default {
             this.$router.go(-1)
         },
     },
-    computed: {
-             booleans(){
-                 if(this.newarr2==''){
-                     this.boolean=true
-                 }else{
-                     this.boolean=false
-                 }
-                 return this.boolean
-             }
-         },
 }
 </script>
 
@@ -309,10 +294,6 @@ export default {
         color: #666666;
         font-size: 14px;
     }
-     .load{
-         font-size: 30px;
-         text-align: center;
-     }
 </style>
 
 

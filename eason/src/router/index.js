@@ -5,13 +5,38 @@ import Seek from '../pages/Seek'
 import Autognosis from '../pages/autognosis'
 import Symptomlist from '../components/symptomlist'
 import Bodypic from '../components/bodypic'
-// import Automenu from '../components/automenu'
-// import diseaseData from '../pages/diseaseData'
+
+
 
 import typicalPerson from '../components/diseaseData/typicalPerson'
-import Department from '../components/diseaseData/Department'
+import DrugStore from '../pages/DrugStore'
+
+import Body from '../components/symptomlist/body'
+import Skin from '../components/symptomlist/skin'
+import Head from '../components/symptomlist/head'
+import Throat from '../components/symptomlist/throat'
+import Breast from '../components/symptomlist/breast'
+import Belly from '../components/symptomlist/belly'
+import Reproduction from '../components/symptomlist/reproduction'
+import Bone from '../components/symptomlist/bone'
+import Arm from '../components/symptomlist/arm'
+import Belt from '../components/symptomlist/belt'
+import Hip from '../components/symptomlist/hip'
+
+import SelfTest from '../pages/SelfTest'
+import DetailPagebody from '../pages/DetailPagebody'
+import DetailPageskin from '../pages/DetailPageskin'
+
+
+
+import diseaseData from '../pages/diseaseData'
+
+
 import detailDiease from '../pages/detailDiease'
+import Department from '../components/diseaseData/Department'
+
 import detailDepartment from '../pages/detailDepartment'
+
 // import HelloWorld from '@/components/HelloWorld' 
 import PersonalCentter from "../pages/PersonalCenter"
 import PersonalInformation from "../pages/PersonalInformation"
@@ -52,18 +77,9 @@ import NowConsult from "../components/NowConsult"
 import MyDoctor from "../components/MyDoctor"
 import HistoryCode from "../components/HistoryCode"
 
-import Body from '../components/symptomlist/body'
-import Skin from '../components/symptomlist/skin'
-import Head from '../components/symptomlist/head'
-import Throat from '../components/symptomlist/throat'
-import Breast from '../components/symptomlist/breast'
-import Belly from '../components/symptomlist/belly'
-import Reproduction from '../components/symptomlist/reproduction'
-import Bone from '../components/symptomlist/bone'
-import Arm from '../components/symptomlist/arm'
-import Belt from '../components/symptomlist/belt'
-import Hip from '../components/symptomlist/hip'
-import SelfTest from '../pages/SelfTest'
+
+
+
 import DetailPage from '../pages/DetailPage'
 import Science from '../pages/Science'
 import ContentNews from '../pages/ContentNews'
@@ -92,9 +108,10 @@ import ChooseDoctor from '../pages/ChooseDoctor'
 // import Cart from '../pages/cart'
 // import Payoff from '../pages/Payoff'
 // import Code from '../pages/code'
+
 import DrugStoreDetail from '../pages/DrugStoreDetail'
-import DetailPagebody from '../pages/DetailPagebody'
-import DetailPageskin from '../pages/DetailPageskin'
+
+
 import DetailPagearm from '../pages/DetailPagearm'
 import DetailPagebreast from '../pages/DetailPagebreast'
 import DetailPagethroat from '../pages/DetailPagethroat'
@@ -102,6 +119,7 @@ import DetailPagereproduction from '../pages/DetailPagereproduction'
 import DetailPagehip from '../pages/DetailPagehip'
 import DetailPagebone from '../pages/DetailPagebone'
 import DetailPagehead from '../pages/DetailPagehead'
+
 Vue.use(Router)
 
 export default new Router({
@@ -183,14 +201,14 @@ export default new Router({
       name: 'DetailPagereproduction',
       component: DetailPagereproduction,
     },
-    // {
-    //   path: '/diseaseData',
-    //   name: 'diseaseData',
-    //   component: diseaseData,
-    //   children:[
-    //     {path:"/typicalPerson",name:"typicalPerson",component:typicalPerson}
-    //   ]
-    // },
+    {
+      path: '/diseaseData',
+      name: 'diseaseData',
+      component: diseaseData,
+      children:[
+        {path:"/typicalPerson",name:"typicalPerson",component:typicalPerson}
+      ]
+    },
     {
       path: '/detailDiease',
       name: 'detailDiease',
@@ -208,7 +226,7 @@ export default new Router({
     },
 
     {
-      path: '/DetailsOfDoctor',
+      path: '/DetailsOfDoctor/:id',
       name: 'DetailsOfDoctor',
       component: DetailsOfDoctor
     },
@@ -608,12 +626,16 @@ export default new Router({
     //   name: 'Code',
     //   component: Code
     // },
-    // {
-    //   path: '/DrugStoreDetail',
-    //   name: 'DrugStoreDetail',
-    //   component: DrugStoreDetail
-    // },
-
+    {
+      path: '/DrugStoreDetail',
+      name: 'DrugStoreDetail',
+      component: DrugStoreDetail
+    },
+    {
+      path: '/DrugStore',
+      name: 'DrugStore',
+      component: DrugStore
+    },
     {
       path: "/*",
       redirect: "/Home"

@@ -1,7 +1,5 @@
 <template>
     <div>
-         <div v-if="booleans" class="load">加载中</div>
-        <div v-else>
         <div class="top_bar">
             <img src="../../static/images/w/b1a.png" class="img1"  @click="fun()"/>
             <form class="form" v-for="(v,i) in newarr2.detailsList" :key="i">
@@ -91,7 +89,6 @@
                 
             </div> 
         </div>
-        </div>
     </div>
 </template>
 <script>
@@ -99,8 +96,7 @@ export default {
     data() {
         return {
             newarr1:[],
-            newarr2:[],
-             boolean:''
+            newarr2:[]
         }
     },
     created() {
@@ -134,16 +130,6 @@ export default {
             this.$router.go(-1) 
          }
    },
-    computed: {
-             booleans(){
-                 if(this.newarr2==''){
-                     this.boolean=true
-                 }else{
-                     this.boolean=false
-                 }
-                 return this.boolean
-             }
-         },
 }
 </script>
 <style scoped>
@@ -329,10 +315,6 @@ export default {
      .topic .span1{
          float: right;
          color: #666666;
-     }
-      .load{
-         font-size: 30px;
-         text-align: center;
      }
 </style>
 

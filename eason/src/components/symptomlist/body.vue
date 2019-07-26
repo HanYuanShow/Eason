@@ -1,13 +1,7 @@
 <template>
-    <div>
-        
+    <div>   
        <ul class="sym_ul">
             <li v-for="(v,i) in newarr" :key="i" class="sym_li"> 
-                    <div v-for="(v,i) in v.title" :key="i" @click="fun(v.id)" class="sym_li_li">{{v.title}}</div>
-            </li>
-        </ul> 
-        <ul>
-            <li>
                 <P class="sym_li_p" @click="fun(v.name)">{{v.name}}</p>
              </li>
         </ul>
@@ -25,9 +19,6 @@ export default {
        }
    },
    methods: {
-       fun(num){
-           this.$router.push({path:"/DetailPage",query:{id:num}})
-       },
        fun(n){
            //传参到详情页
            this.$router.push({path:"/DetailPagebody",query:{hehe:n}})

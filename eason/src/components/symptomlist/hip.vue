@@ -1,57 +1,34 @@
 <template>
-    <div>   
-       <ul class="sym_ul">
-            <li v-for="(v,i) in newarr" :key="i" class="sym_li"> 
-                <P class="sym_li_p" @click="fun(v.name)">{{v.name}}</p>
-             </li>
-        </ul>
+    <div>
+        <P>hip</P>
+        <ul>
+            <li v-for="(v,i) in newarr" :key="i">
+                <div v-for="(v,i) in v.hip" :key="i">{{v.title}}</div>
+            </li>
+        </ul> 
     </div>
 </template>
 <script>
-
-
 export default {
-    components:{     
-    },
-   data() {
+     data() {
        return {
            newarr:[]
        }
    },
-   methods: {
-       fun(n){
-           //传参到详情页
-           this.$router.push({path:"/DetailPagehip",query:{hehe:n}})
-       }
-   },
     created() {
         this.axios({
-            url:'http://10.12.156.39:8181/symptom/findByBadyParts',
-            method:'get',
-            params:{badyParts:"臀部及肛门"}
+            url:'/automenu/infor',
+            method:'get', 
         }).then((ok)=>{
-             this.newarr=ok.data;
+            var data=ok.data.autognosis[0].symptomList
+            this.newarr=data
         })
     },
 }
 </script>
 
 <style scoped>
-
- .sym_ul{
-        height:500px;
-        margin-left:30px; 
-        width: 220px;
-        overflow: auto;
-    }
-  .sym_li{
-    height: 50px;
-    line-height: 50px;
-    border-bottom: 1px solid #dedede;  
-  }
-  .sym_li_p{
-      color: #666666;
-  }
+  
 </style>
 
 
