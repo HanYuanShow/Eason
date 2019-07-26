@@ -190,7 +190,7 @@ export default {
 
         //判断用户是否已经关注医生
         //发送 用户id  userid 医生id  newid
-        thix.axios({
+        this.axios({
             url:"http://10.12.156.83:8181/doctorTopic/isFollowDoctor/"+this.userid +"/"+this.newid,
             method:"get"
         }).then((ok)=>{
