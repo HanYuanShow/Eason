@@ -36,6 +36,7 @@ export default {
         },
         toDoctorList(hospital){
             console.log(hospital)
+          
             this.$router.push({path:"/DoctorList",query:{value:hospital}
         })
 

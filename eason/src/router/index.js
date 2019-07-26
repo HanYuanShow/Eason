@@ -39,7 +39,7 @@ import HomeTabbar from "../components/HomeTabbar";
 import MyAdvice from "../pages/MyAdvice"
 import NowConsult from "../components/NowConsult"
 import MyDoctor from "../components/MyDoctor"
-// import HistoryCode from "../components/HistoryCode"
+import HistoryCode from "../components/HistoryCode"
 import Seek from '../pages/Seek'
 import Autognosis from '../pages/autognosis'
 import Symptomlist from '../components/symptomlist'
@@ -155,11 +155,11 @@ export default new Router({
       name: 'HospitaDetails',
       component: HospitaDetails
     },
-    // {
-    //   path:"/HistoryCode",
-    //   name:"HistoryCode",
-    //   component:HistoryCode
-    // },
+    {
+      path:"/HistoryCode",
+      name:"HistoryCode",
+      component:HistoryCode
+    },
     {
       path:"/AllHistory",
       name:"AllHistory",
@@ -473,5 +473,5 @@ export default new Router({
       redirect:"/Home"
     },
   ]
-},
+}
 )
