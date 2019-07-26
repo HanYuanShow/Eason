@@ -1,12 +1,12 @@
 <template>
     <div class="onlineDoctor">
         <ul class="doctorList">
-            <li class="doctorItem" v-for="(v,i) in doctorItems" :key="i">
-                <div class="doctorPic"><img :src="v.photo" :alt="v.doctorName"></div>
+            <li class="doctorItem" v-for="(v,i) in doctorItems" :key="i" @click="toDoctorDetail(v.id)">
+                <div class="doctorPic"><img :src="v.impSrc" :alt="v.doctorName"></div>
                 <div class="doctorIntr">
-                    <p class="doctorName"><span>{{v.doctorName}}</span><span>{{v.inDepartment}}</span><span>{{v.theTitle}}</span></p>
-                    <p class="inHospital">{{v.inHospital}}</p>
-                    <p class="goodAt">{{v.goodAT|goodAtFilter}}</p>
+                    <p class="doctorName"><span>{{v.realaName}}</span><span>{{v.office}}</span><span>{{v.title}}</span></p>
+                    <p class="inHospital">{{v.hospital}}</p>
+                    <p class="goodAt">{{v.adept|goodAtFilter}}</p>
                 </div>
             </li>
         </ul>
@@ -25,7 +25,12 @@ export default {
                 return val
             }
         }
-    }
+    },
+    methods: {
+        toDoctorDetail(id){
+           this.$router.push("/DetailsOfDoctor/"+id);
+        }
+    },
 }
 </script>
 <style scoped>
@@ -67,6 +72,7 @@ export default {
 }
 .doctorName span:first-of-type{
     font-size: 16px;
+    font-weight: bold;
     color: #323232;
     margin-right: 15px;
 }

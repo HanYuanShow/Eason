@@ -91,7 +91,7 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/DetailsOfDoctor',
+      path: '/DetailsOfDoctor/:id',
       name: 'DetailsOfDoctor',
       component: DetailsOfDoctor
     },
@@ -141,7 +141,7 @@ export default new Router({
       component: Specialist
     },
     {
-      path: '/SpecialistDetails/:id',
+      path: '/SpecialistDetails',
       name: 'SpecialistDetails',
       component: SpecialistDetails
     },

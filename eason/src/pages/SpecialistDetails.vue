@@ -3,12 +3,12 @@
     <ReturnComp :routerTips="hospitalName" class="returnbar"></ReturnComp>
     <div class="specialist">
       <div class="category">
-        <DepartmentCategory category="内科" :department="getMedicineTitle" @departmentType="getDepartmentType"></DepartmentCategory>
-        <DepartmentCategory category="外科" :department="getSurgicalTitle" @departmentType="getDepartmentType"></DepartmentCategory>
-        <DepartmentCategory category="其他" :department="getOtherDepartment" @departmentType="getDepartmentType"></DepartmentCategory>
+        <DepartmentCategory category="科室" :department="department" :hid="hospitalID" @chiDoctorData="selectDoctor"></DepartmentCategory>
+        <!-- <DepartmentCategory category="外科" :department="getSurgicalTitle" @departmentType="getDepartmentType"></DepartmentCategory>
+        <DepartmentCategory category="其他" :department="getOtherDepartment" @departmentType="getDepartmentType"></DepartmentCategory> -->
       </div>
       <div>
-        <SpecialistDoctorItem :doctorItems="getAllDoctorData"></SpecialistDoctorItem>
+        <SpecialistDoctorItem :doctorItems="doctorItemsData"></SpecialistDoctorItem>
       </div>  
     </div>
   </div>
@@ -25,12 +25,13 @@ export default {
     return {
       hospitalData: [],
       hospitalName:"",
+      hospitalID:0,
       rankingBool: false,
-      medicine: [],
-      surgical: [],
-      otherDepartment: [],
-      department: {},
-      doctorItemsData: {},
+      // medicine: [],
+      // surgical: [],
+      // otherDepartment: [],
+      department: [],
+      doctorItemsData: [],
       depType: ""
     };
   },
@@ -41,91 +42,23 @@ export default {
   },
 
   created() {
+    this.hospitalID = this.$route.query.id;
     this.axios({
-      url: "/reqHospitalData/search",
+      url: "http://47.112.208.93:8181/hospital/loadOfficeAndDoctor/"+this.hospitalID,
       method: "get"
     }).then((ok) => {
-      let hID = this.$route.params.id;
-      this.hospitalData = ok.data.hospital;
-      console.log(this.hospitalData);
-      for(let i in this.hospitalData){
-        // console.log(this.hospitalData[i])
-        if(this.hospitalData[i].id==hID){
-          this.hospitalName = this.hospitalData[i].hospitalName;
-          this.medicine = this.hospitalData[i].administrativeOffice.medicine;
-          this.surgical = this.hospitalData[i].administrativeOffice.surgeon;
-          this.otherDepartment = this.hospitalData[i].administrativeOffice.otherDepartment;
-          this.department = this.hospitalData[i].administrativeOffice;
-        }
-      } 
+      console.log(ok.data);
+      this.hospitalData = ok.data;
+      this.doctorItemsData = this.hospitalData.docs;
+      this.hospitalName = this.hospitalData.docs[0].hospital;
+      this.department = this.hospitalData.offs;
+      console.log(this.department);
     });
   },
   methods: {
-    getDepartmentType(val) {
-      this.depType = val;
-    }
-  },
-  computed: {
-    getMedicineTitle() {
-      let medicineTitle = [];
-      for (let i in this.medicine) {
-        medicineTitle.push(this.medicine[i].title);
-      }
-      // console.log(medicineTitle);
-      return medicineTitle;
-    },
-    getSurgicalTitle() {
-      let medicineTitle = [];
-      for (let i in this.surgical) {
-        medicineTitle.push(this.surgical[i].title);
-      }
-      return medicineTitle;
-    },
-    getOtherDepartment() {
-      let medicineTitle = [];
-      for (let i in this.otherDepartment) {
-        medicineTitle.push(this.otherDepartment[i].title);
-      }
-      return medicineTitle;
-    },
-    getAllDoctorData() {
-      if (this.depType == "") {
-        // 遍历出所有的医生，是个二维数组
-        let getDoctor = [];
-        for (let i in this.department) {
-          for (let j in this.department[i]) {  
-            getDoctor.push(this.department[i][j].doctor); 
-          }
-        }
-        // 遍历二维数组，使之变成简单的数组对象
-        let allDoctor = [];
-        for (let i in getDoctor) {
-          for (let j in getDoctor[i]) {
-            allDoctor.push(getDoctor[i][j]);
-          }
-        }
-        // console.log(allDoctor);
-        return allDoctor;
-      } else {
-        // 遍历出所有的医生，是个二维数组
-        let getDoctor = [];
-        for (let i in this.department) {
-          for (let j in this.department[i]) {
-            if (this.depType == this.department[i][j].title) {
-              getDoctor.push(this.department[i][j].doctor);
-            }
-          }
-        }
-        // 遍历二维数组，使之变成简单的数组对象
-        let allDoctor = [];
-        for (let i in getDoctor) {
-          for (let j in getDoctor[i]) {
-            allDoctor.push(getDoctor[i][j]);
-          }
-        }
-        // console.log(allDoctor);
-        return allDoctor;
-      }
+    selectDoctor(val) {
+      this.doctorItemsData = val;
+      // console.log("接收子组件的传值"+this.doctorItemsData);
     }
   }
 };

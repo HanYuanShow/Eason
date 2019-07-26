@@ -160,7 +160,7 @@ export default {
             this.newtitle=title;
         },
         DoctorIntroduce(){
-            this.$router.push("/DoctorIntroduce")
+            this.$router.push("/DoctorIntroduce/")
         },
         guanzhu(){
             this.style=!this.style;

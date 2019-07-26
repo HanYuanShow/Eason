@@ -9,17 +9,29 @@
 
 <script>
 export default {
+    data() {
+        return {
+            doctorData:[]
+        }
+    },
     props:{
         category:String,
-        department:Array
+        department:Array,
+        hid:0,
     },
     methods: {
         // 定义函数抛出要传给父元素的值
-        selectDepartment(val){
-            this.$emit("departmentType",val)
-            console.log(val)
+        selectDepartment(val){    
+            this.axios({
+                url: "http://10.12.156.83:8181/hospital/findDoctorsByOffice/"+this.hid+"/"+val,
+                method: "get"
+            }).then((ok) => {
+                this.doctorData = ok.data;
+                console.log(this.doctorData);
+            })
+            this.$emit("chiDoctorData",this.doctorData);   
         }
-    },
+    }
 }
 </script>
 
