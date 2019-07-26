@@ -11,7 +11,7 @@
     <div class="list">
       <div class="content-doctor" v-for="(v,i) in mydoctor" :key="i" @click="send(v.id)">
         <div class="have">
-          <van-image fit="fill" height="40" width="40" src="../../static/images/w/aca.png" />
+          <van-image fit="fill" height="40" width="40" :src="v.impSrc" />
           <div class="docotor-list">
             <div class="name">
               <span class="black">{{v.realaName}}</span>
@@ -48,22 +48,26 @@ export default {
     };
   },
   created() {
-    //获取本地医生id
-    let doctorarr =localStorage.getItem("doctorIdList")
-    console.log(doctorarr)
-    this.axios({
-      url: "http://47.95.140.83:8181/talk/showdoctorinfors",
-      method: "get",
-        params:{
-                doctorinforIdlist :doctorarr
-            }
-    }).then((ok) => {
-      this.mydoctor = ok.data;
-      console.log(this.mydoctor);     
-    });
-
-
-
+    //判断回踢 效果
+    // let userid = localStorage.setItem("userId");
+    let userid=2;
+    if(userid!=0){
+                     //获取本地医生id
+        let doctorarr =localStorage.getItem("doctorIdList")
+        console.log(doctorarr)
+        this.axios({
+          url: "http://47.95.140.83:8181/talk/showdoctorinfors",
+          method: "get",
+            params:{
+                    doctorinforIdlist :doctorarr
+                }
+        }).then((ok) => {
+          this.mydoctor = ok.data;
+          console.log(this.mydoctor);     
+        });
+        }else{
+            this.$router.push("/logon")
+    }
   },
   watch: {
     mydoctor() { 

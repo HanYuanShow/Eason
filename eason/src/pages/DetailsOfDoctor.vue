@@ -87,7 +87,7 @@
                 <van-icon name="arrow" class="right"/>
             </div>
             <div class="goodattext">
-                热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询热度咨询
+                <DoctorByDiscuss></DoctorByDiscuss>
             </div>
         </div>
         <hr/>
@@ -108,7 +108,7 @@
                 <van-icon name="arrow" class="right"/>
             </div>
             <div class="goodattext huati">
-                医生话题医生话题医生话题医生话题医生话题医生话题医生话题医生话题医生话题医生话题医生话题医生话题医生话题医生话题
+               <DoctorByTopic></DoctorByTopic>
             </div>
         </div>
         <hr/>
@@ -125,15 +125,19 @@
         <!-- 底部关注栏 -->
         <div class="bottomnav">
             <div class="guanzhu">
-                <div :class="style?'star':'newstar'" @click="guanzhu()"></div>
+                <div :class="style?'star':'newstar'" @click="guanzhu()" v-if="bool"></div>
+                <div :class="style?'star':'newstar'" @click="Closeguanzhu()" v-else></div>
                 <span class="guanzhutxt">{{style?"关注":"已关注"}}</span>
             </div>
             <div class="zixunbtn">{{newprice==null?'暂未开通':newtitle+'(￥'+newprice+'元/次)'}}</div>
         </div>
+    
     </div>
 </template>
 
 <script>
+import DoctorByTopic from "../components/DoctorByTopic"
+import DoctorByDiscuss from "../components/DoctorByDiscuss"
 export default {
     data() {
         return {
@@ -150,7 +154,9 @@ export default {
             newtitle:'',
             newprice:'',
             newid:'',
-            newarr:[]
+            newarr:[],
+            userid:0,  //用户id
+            bool:true
         }
     },
     created(){
@@ -174,6 +180,21 @@ export default {
             this.newprice=this.consultarr[0].price;
         })
         // -----------------------------------------
+        this.userid = localStorage.getItem("userID");
+
+        //判断用户是否已经关注医生
+        //发送 用户id  userid 医生id  newid
+        thix.axios({
+            url:"http://10.12.156.83:8181/doctorTopic/isFollowDoctor/"+this.userid +"/"+this.newid,
+            method:"get"
+        }).then((ok)=>{
+            if(ok.data==true){
+                //关注 style = true
+                this.style=false;
+            }else if(ok.data==false){
+                this.style=true;
+            }
+        })
     },
     methods: {
         lunli(i,title,price){
@@ -188,14 +209,32 @@ export default {
                 })
         },
         guanzhu(){
+            //关注 用户id 医生id
             this.style=!this.style;
-            
-            
 
+            this.axios({
+                url:"http://10.12.156.83:8181/doctorTopic/followDoctor/"+this.userid +"/"+this.newid,
+                method:"get",
+            })
+            this.bool=false;
+            
+        },
+        Closeguanzhu(){
+            //取消关注
+                 this.style=!this.style;
+             this.axios({
+                url:"http://10.12.156.83:8181/doctorTopic/reverseFollowDoctor/"+this.userid +"/"+this.newid,
+                method:"get",
+            })
+            this.bool=true;
         },
         back(){
             this.$router.go(-1);
         }
+    },
+    components:{
+        DoctorByTopic,
+        DoctorByDiscuss
     }
 }
 </script>

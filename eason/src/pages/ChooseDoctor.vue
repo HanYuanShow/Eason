@@ -28,7 +28,7 @@
     <div>
       <div v-for="(v,i) in history" :key="i">
         <div class="have">
-          <van-image fit="fill" height="40" width="40" src="../../static/images/w/aca.png" />
+          <van-image fit="fill" height="40" width="40" :src="v.impSrc" />
           <div class="docotor-list">
             <div class="name">
               <span class="black">{{v.realaName}}</span>

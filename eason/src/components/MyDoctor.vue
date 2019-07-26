@@ -12,9 +12,9 @@
     </div>
 
     <div class="list">
-      <div class="content-doctor" v-for="(v,i) in mydoctor" :key="i">
+      <div class="content-doctor" v-for="(v,i) in mydoctor" :key="i" @click="sendDoctorid(v.id)">
         <div class="have">
-          <van-image fit="fill" height="40" width="40" src="../../static/images/w/aca.png" />
+          <van-image fit="fill" height="40" width="40" :src="v.impSrc" />
           <div class="docotor-list">
             <div class="name">
               <span class="black">{{v.realaName}}</span>
@@ -71,7 +71,13 @@ export default {
         this.bool = false;
       }
     }
-  }
+  },
+  methods: {
+    sendDoctorid(num){
+      console.log(num)
+      this.$router.push("/DetailsOfDoctor/"+num)
+    }
+  },
 };
 </script>
 
@@ -89,6 +95,7 @@ export default {
   height: 60px;
   background-color: white;
   border-bottom: 1px solid gainsboro;
+  z-index: 2;
 }
 .black {
   font-weight: 700;
