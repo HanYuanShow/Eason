@@ -21,12 +21,19 @@ import Hip from '../components/symptomlist/hip'
 import SelfTest from '../pages/SelfTest'
 import DetailPagebody from '../pages/DetailPagebody'
 import DetailPageskin from '../pages/DetailPageskin'
+import DetailPagehead from '../pages/DetailPagehead'
+import DetailPagethroat from '../pages/DetailPagethroat'
+import DetailPagearm from '../pages/DetailPagearm'
+import DetailPagebreast from '../pages/DetailPagebreast'
+import DetailPagebone from '../pages/DetailPagebone'
+import DetailPagehip from '../pages/DetailPagehip'
+import DetailPagereproduction from '../pages/DetailPagereproduction'
+
 import diseaseData from '../pages/diseaseData'
 import typicalPerson from '../components/diseaseData/typicalPerson'
 import Department from '../components/diseaseData/Department'
 import detailDiease from '../pages/detailDiease'
 import detailDepartment from '../pages/detailDepartment'
-
 // import HelloWorld from '@/components/HelloWorld'
 import PersonalCentter from "../pages/PersonalCenter"
 import PersonalInformation from "../pages/PersonalInformation"
@@ -96,6 +103,8 @@ import NewAdress from '../pages/newAdress'
 import Cart from '../pages/cart'
 import Payoff from '../pages/Payoff'
 import Code from '../pages/code'
+import DrugStoreDetail from '../pages/DrugStoreDetail'
+
 Vue.use(Router)
 
 export default new Router({
@@ -150,6 +159,41 @@ export default new Router({
       path: '/DetailPageskin',
       name: 'DetailPageskin',
       component: DetailPageskin,
+    },
+    {
+      path: '/DetailPagearm',
+      name: 'DetailPagearm',
+      component: DetailPagearm,
+    },
+    {
+      path: '/DetailPagehead',
+      name: 'DetailPagshead',
+      component: DetailPagehead,
+    },
+    {
+      path: '/DetailPagethroat',
+      name: 'DetailPagethroat',
+      component: DetailPagethroat,
+    },
+    {
+      path: '/DetailPagebreast',
+      name: 'DetailPagebreast',
+      component: DetailPagebreast,
+    },
+    {
+      path: '/DetailPagebone',
+      name: 'DetailPagebone',
+      component: DetailPagebone,
+    },
+    {
+      path: '/DetailPagehip',
+      name: 'DetailPagehip',
+      component: DetailPagehip,
+    },
+    {
+      path: '/DetailPagereproduction',
+      name: 'DetailPagereproduction',
+      component: DetailPagereproduction,
     },
     {
       path: '/diseaseData',
@@ -271,6 +315,8 @@ export default new Router({
           component:MyDoctor
         },
       ]},
+
+
       {
       path: '/setpassword',
       name: 'setpassword',
@@ -412,6 +458,7 @@ export default new Router({
        
       ]
     },
+
     {
       path: '/test',
       name: 'test',
@@ -506,14 +553,6 @@ export default new Router({
       component:DiscussContent
     },
     {
-      path:"/*",
-      redirect:"/Home"
-    }
-
-  ]
-
-},
-{
       path: '/buyMedicine',
       name: 'BuyMedicine',
       component: BuyMedicine
@@ -553,5 +592,17 @@ export default new Router({
       name: 'Code',
       component: Code
     },
-  
-)
+    {
+      path: '/DrugStoreDetail',
+      name: 'DrugStoreDetail',
+      component: DrugStoreDetail
+    },
+
+    {
+      path:"/*",
+      redirect:"/Home"
+    }
+
+  ]
+
+  } )

@@ -1,5 +1,9 @@
 <template>
     <div>
+         <div v-if="booleans" class="load">
+             加载中
+         </div>
+        <div v-else>
         <div v-for="(v,i) in newarr2.symptom" :key="i">
             <div class="sym_top">
                 <van-nav-bar :title="v.name" fixed="" left-text="" left-arrow @click-left="back()" @click-right="search()">
@@ -21,25 +25,34 @@
                     </div>
                     <div class="rate">
                         <div class="rate_list1">
-                            <span>疣(所有部位)</span>
-                            <span class="rate_list1_span">80.0%相似病例</span>
+                            <span>多食症</span>
+                            <span class="rate_list1_span">38.0%相似病例</span>
                             <van-progress
                                 pivot-text=""
                                 color="#76d138"
-                                :percentage="80.0"
+                                :percentage="38.0"
                             />
                         </div>
                         <div class="rate_list1">
-                            <span>痤疮</span>
-                            <span class="rate_list1_span">10.0%相似病例</span>
+                            <span>肥胖症及营养过度</span>
+                            <span class="rate_list1_span">36.0%相似病例</span>
                             <van-progress
                                 pivot-text=""
                                 color="#76d138"
-                                :percentage="10.0"
+                                :percentage="36.0"
                             />
                         </div>
                          <div class="rate_list1">
-                            <span>后天性角皮质</span>
+                            <span>心境障碍（情感障碍）</span>
+                            <span class="rate_list1_span">14.0%相似病例</span>
+                            <van-progress
+                                pivot-text=""
+                                color="#76d138"
+                                :percentage="14.0"
+                            />
+                        </div>
+                         <div class="rate_list1">
+                            <span>糖尿病</span>
                             <span class="rate_list1_span">9.0%相似病例</span>
                             <van-progress
                                 pivot-text=""
@@ -48,21 +61,12 @@
                             />
                         </div>
                          <div class="rate_list1">
-                            <span>袥疣</span>
-                            <span class="rate_list1_span">1.0%相似病例</span>
+                            <span>精神分裂症</span>
+                            <span class="rate_list1_span">4.0%相似病例</span>
                             <van-progress
                                 pivot-text=""
                                 color="#76d138"
-                                :percentage="1.0"
-                            />
-                        </div>
-                         <div class="rate_list1">
-                            <span>传染性软疣</span>
-                            <span class="rate_list1_span">40.0%相似病例</span>
-                            <van-progress
-                                pivot-text=""
-                                color="#76d138"
-                                :percentage="40.0"
+                                :percentage="4.0"
                             />
                         </div>
                     </div>
@@ -100,6 +104,7 @@
                 </div>
             </div>
         </div>
+        </div>
     </div>
 </template>
 <script>
@@ -129,7 +134,22 @@ export default {
                }
              })
            this.newarr =arr1;
-        }),     
+        }),
+        
+        // 这个是页面打开后要默认的列表里的数据
+          this.axios({
+            url:"http://10.12.156.149:8181/officeType/loadAll",
+            methods:"get"
+        }).then((ok)=>{
+            var newdata1=[],
+            newdata1=ok.data
+            this.arr3=[]
+            for(var i=0;i<newdata1.length;i++){
+                if(newdata1[i].nesCrowd=='四肢'){
+                    this.arr3.push(newdata1[i])
+                } 
+            }
+        }),
 
         //接收前面发过来的参数
         this.data10=this.$route.query.hehe
@@ -151,6 +171,16 @@ export default {
             this.$router.go(-1)
         },
     },
+    computed: {
+             booleans(){
+                 if(this.newarr2==''){
+                     this.boolean=true
+                 }else{
+                     this.boolean=false
+                 }
+                 return this.boolean
+             }
+         },
 }
 </script>
 
@@ -279,6 +309,10 @@ export default {
         color: #666666;
         font-size: 14px;
     }
+     .load{
+         font-size: 30px;
+         text-align: center;
+     }
 </style>
 
 

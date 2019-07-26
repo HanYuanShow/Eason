@@ -1,22 +1,17 @@
 <template>
       <div class="treeselct">
              <div class="symptom">
-                <!-- <router-link to="/automenu">
-                    <div class="symptom_list" v-for="(v,i) in arr" :key="i"  @click="fun(i)" :class="v.style?'red':''">
-                        <Treeselectitem :imgurl="v.url" :imgurldick="v.urldick" :autognosisTitle="v.title"></Treeselectitem>
-                    </div>
-                </router-link> -->
+             
                 <router-link to="/body">
                     <div class="symptom_list">
-                        <img src="../../static/images/w/aqd.png" class="tree_img"/>
-                        <!-- <img src="../../static/images/w/aqe.png" class="tree_img"/> -->
+                        <img src="../../static/images/w/aqe.png" class="tree_img"/>
                         <p class="diagnosis_p">全身症状</p>
                     </div>
                 </router-link>
                 <router-link to="/skin">
                     <div class="symptom_list">
                          <img src="../../static/images/w/ar2.png" class="tree_img"/>
-                         <!-- <img src="../../static/images/w/ar1.png" class="tree_img"/> -->
+                       
                          <p class="diagnosis_p">皮肤症状</p>
                     </div>
                 </router-link>

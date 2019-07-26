@@ -1,16 +1,20 @@
 <template>
     <div>
-        <div v-for="(v,i) in newarr" :key="i">
+         <div v-if="booleans" class="load">
+             加载中
+         </div>
+        <div v-else>
+        <div v-for="(v,i) in newarr2.symptom" :key="i">
             <div class="sym_top">
-                <van-nav-bar :title="v.title" fixed="" left-text="" left-arrow @click-left="back()" @click-right="search()">
+                <van-nav-bar :title="v.name" fixed="" left-text="" left-arrow @click-left="back()" @click-right="search()">
                 </van-nav-bar>
             </div>
             <div>
                 <div class="sym_per">
                     <div class="sym_per_tit">
                         <span>自己</span>，
-                        <span>{{v.personInfor.gender}}</span>,
-                        <span>{{v.personInfor.age}}</span>
+                        <span>{{'男'}}</span>,
+                        <span>{{'25'}}</span>
                     </div>
                 </div>
 
@@ -70,55 +74,36 @@
 
                 <div class="relConsult" >
                     <P class="relConsult_p">
-                        <span>相关资讯记录</span>
+                        <span>相关科普资讯</span>
                         <span class="relConsult_p_span">更多></span>
                     </P>
-                    <ul v-for="(v,i) in v.relConsult" :key="i" class="relConsult_ul">
+                    <ul v-for="(v,i) in newarr2.news" :key="i" class="relConsult_ul">
                         <li class="relConsult_ul_li">
-                            <img src="../../static/images/w/b2w.png" class="relConsult_ul_li_img">
-                            <p>{{v.q}}</p>
+                            <img :src=v.img class="relConsult_ul_li_img">
+                            <div>
+                                <P>{{v.title}}</p>
+                                <p class="p_tit">{{v.type}}</p>
+                            </div>
+                             
                         </li>
                     </ul>
                 </div>
 
-                <div class="docRecommand">
-                     <P class="relConsult_p">
-                        <span>医生推荐</span>
-                        <span class="relConsult_p_span">更多></span>
-                    </P>
-                    <div v-for="(v,i) in v.docRecommand" :key="i">
-                        <div class="docInfor">
-                             <img src="../../static/images/w/a__.png"/>
-                             <div class="docInfor_detail">
-                                    <p class="p1">
-                                        <span class="p_span">{{v.name}}</span>
-                                        <span>{{v.department}}</span>
-                                        <span>{{v.position}}</span>
-                                    </p>
-                                    <p class="p2">春雨公众营养专家团<span class="respond">回复快</span></p>
-                                    <p class="p3">{{v.specialize}}</p>
-                             </div>
-                        </div>
-                      <P class="price_p">
-                          <span class="span1">{{v.price}}</span>
-                          <span>{{v.buy}}</span>
-                      </P>
-
-                    </div>
-                </div>
+    
 
                 <div class="healTopic">
                       <P class="relConsult_p">
                         <span>健康话题</span>
                         <span class="relConsult_p_span">更多></span>
                     </P>
-                    <ul v-for="(v,i) in v.healTopic" :key="i">
-                        <li v-for="(v,i) in v.title" :key="i" class="heal_li">{{v}}
+                    <ul v-for="(v,i) in newarr2.doctorTopic" :key="i">
+                        <li class="heal_li">{{v.name}}
                             <span class="heal_span">></span>
                         </li>
                     </ul>
                 </div>
             </div>
+        </div>
         </div>
     </div>
 </template>
@@ -130,10 +115,14 @@ export default {
     },
    data() {
        return {
-           newarr:[]
+           newarr:[],
+           newarr1:[],
+           newarr2:[],
+           data10:[]
        }
    },
     created() {
+        //这个暂时没用
         this.axios({
             url:'/automenu/easonNew',
             method:'get', 
@@ -145,13 +134,53 @@ export default {
                }
              })
            this.newarr =arr1;
+        }),
+        
+        // 这个是页面打开后要默认的列表里的数据
+          this.axios({
+            url:"http://10.12.156.149:8181/officeType/loadAll",
+            methods:"get"
+        }).then((ok)=>{
+            var newdata1=[],
+            newdata1=ok.data
+            this.arr3=[]
+            for(var i=0;i<newdata1.length;i++){
+                if(newdata1[i].nesCrowd=='全身症状'){
+                    this.arr3.push(newdata1[i])
+                } 
+            }
+        }),
+
+        //接收前面发过来的参数
+        this.data10=this.$route.query.hehe
+          this.axios({
+            // url:"http://10.12.156.39:8181/symptom/findById",
+            url:"http://10.12.156.39:8181/symptom/findById?tiaoJian="+this.data10,
+            //这步是通过接受到的关键字来请求数据'
+            // params:{tiaoJian:this.$route.query.hehe},
+            //  params:{tiaojian:'吃的太多'},
+             method:"get" 
+        }).then((ok)=>{
+            this.newarr2=ok.data
+            console.log(ok.data)
         })
+
     },
     methods: {
          back(){
             this.$router.go(-1)
         },
     },
+    computed: {
+             booleans(){
+                 if(this.newarr2==''){
+                     this.boolean=true
+                 }else{
+                     this.boolean=false
+                 }
+                 return this.boolean
+             }
+         },
 }
 </script>
 
@@ -206,17 +235,23 @@ export default {
         padding: 0px 15px;
         border-bottom:  6px solid #f1f0ee;
     }
+    .relConsult_p{
+        margin: 10px 0px;
+    }
     .relConsult_p_span{
         float: right;
     }
+    .relConsult_ul{
+        margin-bottom: 10px
+    }
     .relConsult_ul_li{
         display: flex;
-        border-bottom: 1px solid #e7e7e7;
+        margin-bottom: 5px;
     }
     .relConsult_ul_li_img{
-        width: 20px;
-        height:20px;
-        margin-top: 15px;
+        width: 80px;
+        height:80px;
+        /* margin-top: 15px; */
         margin-right: 10px;
     }
     .docRecommand{
@@ -269,6 +304,15 @@ export default {
         padding: 5px 0px;
         border-bottom: 1px solid #efefef;
     }
+    .p_tit{
+        margin-top:38px;
+        color: #666666;
+        font-size: 14px;
+    }
+     .load{
+         font-size: 30px;
+         text-align: center;
+     }
 </style>
 
 

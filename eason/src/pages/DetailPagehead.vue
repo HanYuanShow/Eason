@@ -21,25 +21,34 @@
                     </div>
                     <div class="rate">
                         <div class="rate_list1">
-                            <span>疣(所有部位)</span>
-                            <span class="rate_list1_span">80.0%相似病例</span>
+                            <span>心律失常</span>
+                            <span class="rate_list1_span">38.0%相似病例</span>
                             <van-progress
                                 pivot-text=""
                                 color="#76d138"
-                                :percentage="80.0"
+                                :percentage="38.0"
                             />
                         </div>
                         <div class="rate_list1">
-                            <span>痤疮</span>
-                            <span class="rate_list1_span">10.0%相似病例</span>
+                            <span>焦虑症(焦虑状态)</span>
+                            <span class="rate_list1_span">36.0%相似病例</span>
                             <van-progress
                                 pivot-text=""
                                 color="#76d138"
-                                :percentage="10.0"
+                                :percentage="36.0"
                             />
                         </div>
                          <div class="rate_list1">
-                            <span>后天性角皮质</span>
+                            <span>外周性眩晕（前庭性眩晕）</span>
+                            <span class="rate_list1_span">14.0%相似病例</span>
+                            <van-progress
+                                pivot-text=""
+                                color="#76d138"
+                                :percentage="14.0"
+                            />
+                        </div>
+                         <div class="rate_list1">
+                            <span>低血糖症</span>
                             <span class="rate_list1_span">9.0%相似病例</span>
                             <van-progress
                                 pivot-text=""
@@ -48,21 +57,12 @@
                             />
                         </div>
                          <div class="rate_list1">
-                            <span>袥疣</span>
-                            <span class="rate_list1_span">1.0%相似病例</span>
+                            <span>原发性高血压</span>
+                            <span class="rate_list1_span">4.0%相似病例</span>
                             <van-progress
                                 pivot-text=""
                                 color="#76d138"
-                                :percentage="1.0"
-                            />
-                        </div>
-                         <div class="rate_list1">
-                            <span>传染性软疣</span>
-                            <span class="rate_list1_span">40.0%相似病例</span>
-                            <van-progress
-                                pivot-text=""
-                                color="#76d138"
-                                :percentage="40.0"
+                                :percentage="4.0"
                             />
                         </div>
                     </div>
@@ -129,12 +129,14 @@ export default {
                }
              })
            this.newarr =arr1;
-        }),     
+        }),
+        
+    
 
         //接收前面发过来的参数
         this.data10=this.$route.query.hehe
           this.axios({
-            // url:"http://10.12.156.39:8181/symptom/findById",
+           
             url:"http://10.12.156.39:8181/symptom/findById?tiaoJian="+this.data10,
             //这步是通过接受到的关键字来请求数据'
             // params:{tiaoJian:this.$route.query.hehe},

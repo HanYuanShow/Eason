@@ -1,58 +1,55 @@
 <template>
-    <div>
-         <ul class="sym_ul">
-            <li v-for="(v,i) in newarr" :key="i" class="sym_li">
-                <div v-for="(v,i) in v.skinSymptom" :key="i" @click="fun(v.id)" class="sym_li_li">{{v.title}}</div>
-            </li>
-        </ul> 
-        <P></P>
+    <div>   
+       <ul class="sym_ul">
+            <li v-for="(v,i) in newarr" :key="i" class="sym_li"> 
+                <P class="sym_li_p" @click="fun(v.name)">{{v.name}}</p>
+             </li>
+        </ul>
     </div>
 </template>
 <script>
 
 
 export default {
-    data() {
+    components:{     
+    },
+   data() {
        return {
            newarr:[]
        }
    },
-    methods: {
-       fun(num){
-           this.$router.push({path:"/DetailPageskin",query:{id:num}})
+   methods: {
+       fun(n){
+           //传参到详情页
+           this.$router.push({path:"/DetailPageskin",query:{hehe:n}})
        }
    },
     created() {
         this.axios({
-            url:'/automenu/easonNew',
-            // url:'http://47.95.140.83:8181/illness/findByNesCrowd',
-            method:'get', 
-            // params:{nesCrowd:"上班族"}
+            url:'http://10.12.156.39:8181/symptom/findByBadyParts',
+            method:'get',
+            params:{badyParts:"皮肤症状"}
         }).then((ok)=>{
-            // console.log(ok.data)
-           var data=ok.data.autognosis
-           var arr1=data.filter((v,i)=>{
-                if(v.id=="bp_1"){
-                     return v
-                }   
-            })
-            this.newarr=arr1;
+             this.newarr=ok.data;
         })
     },
 }
 </script>
 
 <style scoped>
-   .sym_ul{
+
+ .sym_ul{
+        height:500px;
         margin-left:30px; 
-        width: 200px;
+        width: 220px;
+        overflow: auto;
     }
   .sym_li{
     height: 50px;
     line-height: 50px;
+    border-bottom: 1px solid #dedede;  
   }
-  .sym_li_li{
-      border-bottom: 1px solid #dedede;  
+  .sym_li_p{
       color: #666666;
   }
 </style>

@@ -6,7 +6,7 @@
                 v-model="value"
                 placeholder="输入疾病 | 药品 | 症状 | 医生 | 检查"
                 show-action
-                @search="onSearch"
+                @search="onSearch(value)"
                 @cancel="onCancel"
             />
         </form>
@@ -19,7 +19,7 @@
         padding: 0px 10px;
     }
     .search .img1{
-        width:20px;
+        width:13px;
         height: 20px;
         margin:18px 6px 0px
     }
@@ -49,10 +49,12 @@ export default {
        }
    },
    methods: {
-       onSearch(){},
+       onSearch(value){
+           this.$router.push({path:'/detailDepartment',query:{officeTypeName:value}})
+       },
        onCancel(){},
        fun(){
-            this.$router.go(-1) 
+            this.$router.push('/home') 
        }
    },
 }

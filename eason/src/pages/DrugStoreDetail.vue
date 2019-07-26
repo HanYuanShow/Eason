@@ -1,19 +1,19 @@
 <template>
     <div>
-         <div v-if="booleans" class="load">加载中</div>
-        <div v-else>
-        <div class="top_bar">
+        <div v-if="booleans" class="load">加载中</div>
+            <div v-else>
+       <div class="top_bar">
             <img src="../../static/images/w/b1a.png" class="img1"  @click="fun()"/>
-            <form class="form" v-for="(v,i) in newarr2.typeList" :key="i">
+            <form class="form" v-for="(v,i) in arr.druginfor" :key="i">
                 <img src="../../static/images/w/ard.png" class="img2"/>
-                <router-link to="/seek"><input type="search" :placeholder="v.officeTypeName" class="input"/></router-link>
+                <router-link to="/seek"><input type="search" :placeholder="v.drugName" class="input"/></router-link>
             </form>
         </div>
         <div>
             <P class="tip_p">疾病确诊因人而异，请勿根据搜索结果擅自治疗，如需获取治疗方案和用药指导请向专业医生咨询</P>
-            <div v-for="(v,i) in newarr2.typeList" :key="i" class="title">
-                <P>{{v.officeTypeName}}</P>
-                <P class="detail">{{v.officeTypeDetails}}</P>
+            <div v-for="(v,i) in arr.druginfor" :key="i" class="title">
+                <P>{{v.drugName}}</P>
+                <P class="detail">{{v.drugIntro}}</P>
                 <div class="title_list">
                      <P>|</P> 
                      <p>就诊科室</p>
@@ -27,28 +27,27 @@
                 </div>
             </div>
 
-            <div class="relConsult">
-                <P>
+             <div class="relConsult">
+                <P class="relConsult_pp">
                     <span class="relConsult_span1">相关资讯记录</span>
                     <span class="relConsult_span2">更多></span>
                 </P>
-                <div v-for="(v,i) in newarr2.talks" :key="i">
-                   <P class="relConsult_p">
+                <div v-for="(v,i) in arr.doctorTopic" :key="i">
+                   <P  class="relConsult_p">
                         <img src="../../static/images/w/b2w.png" class="relConsult_ul_li_img">
-                        {{v.userProblem}}
+                        {{v.name}}
                    </P>
                 </div>
             </div>
 
-            <div class="redommandDoc"> 
-                <P>
+             <div class="redommandDoc"> 
+                <P class="relConsult_pp">
                     <span class="relConsult_span1">医生推荐</span>
                     <span class="relConsult_span2">更多></span>
                 </P>
-                <div v-for="(v,i) in newarr2.all" :key="i">
-                    <div class="redommand_img">
-                         <img :src="v.impSrc"/>
-                         <!-- <img src="../../static/images/w/b00.png"/>  -->
+                <div v-for="(v,i) in arr.doctorinfor" :key="i">
+                    <div  class="redommand_img">
+                         <img :src="v.impSrc"/> 
                          <div class="recommand_infor">
                                 <P>
                                     <span class="p_span1">{{v.realaName}}</span>
@@ -57,91 +56,62 @@
                                 </P>
                                 <P>
                                     <span>{{v.hospital}} </span>
-                                    <span class="fame">{{'知名医院'}}</span>
+                                    <span class="fame">{{知名医院}}</span>
                                 </P>
                                 <P class="specialize">{{v.adept}}</P>   
                                 <P>
-                                    <span class="price">{{'￥106起'}}</span>
-                                    <span>{{'323人购买'}}</span>
+                                    <span class="price">{{'39'+'元起'}}</span>
+                                    <span>{{'520人购买'}}</span>
                                 </P>
                          </div>      
                     </div>
                 </div>  
             </div>
 
-            <div v-for="(v,i) in newarr1" :key="i" class="cure">
-                <P>可能的治疗方法</P>
-                <ul v-for="(v,i) in v.mayMethod" :key="i">
-                    <li>
-                        <span>{{v.list}}</span>
-                        <span class="mention">{{v.mention}}</span>
-                    </li>
-                </ul>
-            </div>
-
+             
             <div class="topic">
-                 <P class="relConsult_pp">
+                <P class="relConsult_pp">
                     <span class="relConsult_span1">医生话题</span>
                     <span class="relConsult_span2">更多></span>
                 </P>
-                <ul>
-                    <li v-for="(v,i) in newarr2.topicBydoctorName" :key="i">{{v.name}}
+                <ul v-for="(v,i) in arr.talkList" :key="i">
+                    <li>
+                        {{v.userProblem}}
                         <span class="span1">></span>
                     </li>
                 </ul>
                 
             </div>
-        </div>
-    </div>
-   
 
+        </div>
+        </div>
     </div>
 </template>
 <script>
 export default {
     data() {
         return {
-            newarr1:[],
-            newarr2:[],
-            boolean:''
+            arr:[]
         }
     },
     created() {
         this.axios({
-            url:"/automenu/easonNew",
+            url:"http://10.12.156.94:8181/druginfor/druginforbyname",
+            params:{drugname:this.$route.query.drugname},
             method:"get" 
         }).then((ok)=>{
-            var data =ok.data.departmentClassify[0].list
-            var arr=data.filter((v,i)=>{
-                if(v.content==this.$route.query.title){
-                    return v
-                }
-            })
-            this.newarr1=arr
-            // console.log(this.newarr1)
-        }),
-
-
-        
-          this.axios({
-            url:"http://10.12.156.149:8181/officeType/findByNameDetails",
-            //这步是通过接受到的关键字来请求数据
-            params:{officeTypeDetails:this.$route.query.officeTypeName},
-            method:"get" 
-        }).then((ok)=>{
-            this.newarr2=ok.data
             console.log(ok.data)
+            this.arr=ok.data
         })
     },
-
-     methods: {
+    methods: {
          fun(){
             this.$router.go(-1) 
          }
    },
-    computed: {
+     computed: {
              booleans(){
-                 if(this.newarr2==''){
+                 if(this.arr==''){
                      this.boolean=true
                  }else{
                      this.boolean=false
@@ -149,10 +119,11 @@ export default {
                  return this.boolean
              }
          },
+    
 }
 </script>
 <style scoped>
-   /* top_bar */
+    /* top_bar */
     .top_bar{
         padding: 10px 10px;
         display: flex;
@@ -246,11 +217,11 @@ export default {
         padding: 0px 10px 10px;
         border-bottom: 6px solid #f1f1f1;
     }
+    .relConsult_pp{
+        margin: 10px 0px 0px;
+    }
     .relConsult_p{
         margin: 5px 0px;
-    }
-     .relConsult_pp{
-        margin: 10px 0px 0px;
     }
     .relConsult_span1{
         color:black;
@@ -270,7 +241,7 @@ export default {
     .redommandDoc{
         padding: 0px 10px 10px;
         border-bottom: 6px solid #f1f1f1;
-        height: 282px;
+        height: 306px;
         overflow: hidden;
     }
    
@@ -335,7 +306,7 @@ export default {
          float: right;
          color: #666666;
      }
-     .load{
+      .load{
          font-size: 30px;
          text-align: center;
      }
