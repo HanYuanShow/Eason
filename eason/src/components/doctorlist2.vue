@@ -67,6 +67,11 @@ export default {
     border-bottom: 1px solid #f4f4f4;
     font-size: 14px;
     color: #999999;
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 .doctorbox{
     display: flex;
