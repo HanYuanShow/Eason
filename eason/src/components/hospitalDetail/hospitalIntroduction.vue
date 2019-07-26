@@ -4,14 +4,14 @@
             <h3>医院介绍</h3>
         </div>
         <div class="intr" v-html="introFilter"></div>
-        <a href="#" class="moreBtn" @click="toDetailIntro(id)">查看详细介绍>></a>
+        <a href="#" class="moreBtn" @click="toDetailIntro(hID)">查看详细介绍>></a>
     </div>
 </template>
 <script>
 export default {
     props:{
         hospitalIntro:String,
-        id:Number
+        hID:Number
     },
     computed: {
         introFilter(){
@@ -24,8 +24,8 @@ export default {
     },
     methods: {
         toDetailIntro(clickId){
-            console.log(clickId)
-            this.$router.push("/hospitalIntro/"+clickId)
+            console.log("在组件获取的id:"+clickId)
+            this.$router.push("/hospitalIntro/"+clickId)    
         }
     },
 }

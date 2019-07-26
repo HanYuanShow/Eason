@@ -26,27 +26,6 @@ export default {
 </script>
 
 <style scoped>
-<<<<<<< HEAD
-.shareTit{
-    font-size: 14px;
-    text-align: center;
-    padding: 15px;
-}
-.van-button--primary{
-    background: none;
-    border: none;
-}
-.shareIcon{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-.shareIcon img{
-    width: 48px;
-    height: 48px;
-}
-=======
->>>>>>> 3ccce16b71ab4f2a3b844b46a62cee9838c2a305
 .returnComp{
     width: 100%;
     height: 50px;

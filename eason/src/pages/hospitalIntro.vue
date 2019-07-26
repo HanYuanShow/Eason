@@ -20,7 +20,7 @@ export default {
     data() {
         return {
             id:0,
-            allData:{},
+            allData:[],
             hospitalName:"",
             HospitalIntroData:"", //医院介绍数据
             loadBtn:"",
@@ -43,20 +43,21 @@ export default {
     },
     created() {
         this.id = this.$route.params.clickId;//获取传过来的id
-        // console.log(this.id)
+        console.log(this.id)
         this.axios({
-            url:"/reqHospitalData/hospitalIntro/",  //"/reqHospitalData/hospitalIntro?id="+this.id
+            url:"http://47.112.208.93:8181/hospital/findHospitalById/"+this.id,  //"/reqHospitalData/hospitalIntro?id="+this.id
             method:"get"
         }).then((ok)=>{
             this.allData = ok.data;//获取页面所需所有的数据
-            this.HospitalIntroData = this.allData.HospitalIntroduction;
-            this.hospitalName = this.allData.hospitalName;
-            this.contactWay = this.allData.contactWay;
+            console.log(this.allData)
+            this.HospitalIntroData = this.allData.info;
+            this.hospitalName = this.allData.name;
+            this.contactWay = this.allData.phone;
             this.detailAddress = this.allData.detailAddress;
             this.city = this.allData.address;
-            this.keyword = this.allData.hospitalName;
-            this.carLines = this.allData.carLines;
-            // console.log(this.allData)
+            this.keyword = this.allData.name;
+            this.carLines = this.allData.site;
+            
         })
     },
     computed: {

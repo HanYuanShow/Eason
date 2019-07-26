@@ -1,14 +1,10 @@
 <template>
     <div class="onlineDoctor">
-        <div class="online-title">
-            <h3>在线医生</h3>
-            <a href="#" @click="toDoctorList(onlineDoctor[0].hospital)">更多</a>
-        </div>
         <ul class="doctorList">
-            <li class="doctorItem" v-for="(v,i) in onlineDoctor" :key="i" @click="toDoctorDetail(v.id)">
-                <div class="doctorPic"><img :src="v.impSrc" :alt="v.realaName"></div>
+            <li class="doctorItem" v-for="(v,i) in doctorItems" :key="i" @click="toDoctorDetail(v.id)">
+                <div class="doctorPic"><img :src="v.impSrc" :alt="v.doctorName"></div>
                 <div class="doctorIntr">
-                    <p class="doctorName"><span>{{v.realaName}}</span><span>{{v.title}}</span></p>
+                    <p class="doctorName"><span>{{v.realaName}}</span><span>{{v.office}}</span><span>{{v.title}}</span></p>
                     <p class="inHospital">{{v.hospital}}</p>
                     <p class="goodAt">{{v.adept|goodAtFilter}}</p>
                 </div>
@@ -19,7 +15,7 @@
 <script>
 export default {
     props:{
-        onlineDoctor:Array
+        doctorItems:Array
     },
     filters:{
         goodAtFilter(val){
@@ -32,13 +28,7 @@ export default {
     },
     methods: {
         toDoctorDetail(id){
-            this.$router.push("/DetailsOfDoctor/"+id);
-        },
-        toDoctorList(hospital){
-            console.log(hospital)
-            this.$router.push({path:"/DoctorList",query:{value:hospital}
-        })
-
+           this.$router.push("/DetailsOfDoctor/"+id);
         }
     },
 }
@@ -49,19 +39,7 @@ export default {
     overflow: hidden;
     margin-bottom: 10px;
 }
-.online-title{
-    padding: 15px;
-    overflow: hidden;
-}
-.online-title h3,.online-title a{
-    font-weight: normal;
-    font-size: 16px;
-    color: #666;
-    float: left;
-}
-.online-title a{
-    float:right;
-}
+
 .doctorList{
     padding: 0 15px;
 }
@@ -88,12 +66,15 @@ export default {
     border-radius: 30px;
 }
 .doctorName span{
-    font-size: 16px;
-    color: #323232;
-}
-.doctorName span:last-of-type{
     font-size: 14px;
-    margin-left: 15px;
+    color: #666;
+    margin-right: 15px;
+}
+.doctorName span:first-of-type{
+    font-size: 16px;
+    font-weight: bold;
+    color: #323232;
+    margin-right: 15px;
 }
 .inHospital,.goodAt{
     font-size: 14px;

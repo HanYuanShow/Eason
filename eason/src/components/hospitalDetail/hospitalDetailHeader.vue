@@ -15,8 +15,7 @@
 export default {
   data() {
     return {
-      isTrue:false,
-      // hospitalRankingList:[]
+      isTrue:true,
     }
   },
     props:{
@@ -35,7 +34,7 @@ export default {
           return this.hospitalRankingList;
         }else{
           let ranking = this.hospitalRankingList
-          // this.hospitalRankingList = ranking.slice(0,4)
+          this.hospitalRankingList = ranking.slice(0,4)
           return this.hospitalRankingList;
         }
       }
@@ -73,7 +72,7 @@ export default {
     background-color: #F6F6F6;
     display: inline-block;
     margin-right: 6px;
-    margin-bottom: 8px;
+    margin-bottom: 12px;
 }
 .morebtn{
   margin-top: 10px;
