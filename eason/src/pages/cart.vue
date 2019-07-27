@@ -193,7 +193,7 @@ export default {
         total(){
             // this.tatal = 0;
             for(let i = 0;i<this.dingdanarr.length;i++){
-                if(this.che === true){
+                if(this.che == true){
                     this.dingdanarr[i].checked = true
                     this.tatal += this.dingdanarr[i].druginfor.drugPrice*this.dingdanarr[i].drugnum
                 }else{
