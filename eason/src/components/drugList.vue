@@ -1,19 +1,26 @@
 <template>
-    <div class="drug-list" @click="fundrug(title)"> 
+    <div class="drug-list" @click="fundrug(typeid)"> 
         <img :src="urls" />
         <span>{{title}}</span>
     </div>
 </template>
 <script>
 export default {
+    data(){
+        return{
+            arr:""
+        }
+    },
     props:{
-        urls:String,
-        title:String
+       urls:String,
+        title:String,
+         typeid:""
+       
     },
     methods: {
         fundrug(i){
-            console.log(i)
-            this.$router.push("/drugDetails?title="+i)
+            // console.log(i)
+            this.$router.push("/drugDetails?typeid="+i)
         }
     },
 }

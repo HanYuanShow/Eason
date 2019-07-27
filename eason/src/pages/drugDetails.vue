@@ -11,7 +11,7 @@
         </div>
         
         <div>
-            <Drug v-for="(v,i) in mList" :key="i" :url="v.url" :name="v.name" :standards="v.standards" :content="v.content" :price="v.price"></Drug>
+            <Drug :arr="arr"  :drugId="drugId" ></Drug>
         </div>
     </div> 
 </template>
@@ -28,7 +28,9 @@ export default {
            arr:[],
            itemList:{},
            mList:[],
-           title:""
+           title:"",
+           typeid:"",
+            drugId:""
         }
     },
     methods: {
@@ -37,33 +39,15 @@ export default {
             },
     },
      created(){
-         this.title=this.$route.query.title;
-        //  console.log(this.title);
-        this.axios({
-            url:"/link/data",
-            method:"get"
-        }).then((ok)=>{
-            this.arr=ok.data.buyMedicine[0];
-            this.itemList = this.arr.drugList[0];
-            if(this.title=="妇科"){
-                this.mList= this.itemList.fuke.medicine;
-            }else if(this.title=="皮肤疾病"){
-                 this.mList= this.itemList.pifuIll.medicine;
-            }else if(this.title=="风湿骨病"){
-                 this.mList= this.itemList.fengshiIll.medicine;
-            }else if(this.title=="糖尿病"){
-                 this.mList= this.itemList.tangniaoIll.medicine;
-            }else if(this.title=="心血管病"){
-                 this.mList= this.itemList.xinxueguanIll.medicine;
-            }else if(this.title=="呼吸用药"){
-                 this.mList= this.itemList.huxiIll.medicine;
-            }else if(this.title=="肠胃用药"){
-                 this.mList= this.itemList.changweiIDrug.medicine;
-            }else if(this.title=="营养保健"){
-                 this.mList= this.itemList.yingyang.medicine;
-            }
-            
-        })
+         this.typeid=this.$route.query.typeid;
+         this.axios({
+                url:"http://47.95.140.83:8181/drug/findallbytypeid?typeid="+this.typeid,
+                method:"get"
+            }).then((ok)=>{
+                console.log(this.arr)
+                this.arr=ok.data;
+            })
+       
     },
 
     components:{

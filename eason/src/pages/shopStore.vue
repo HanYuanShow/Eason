@@ -1,6 +1,6 @@
 <template>
     <div>
-        <ShopStoreItem ></ShopStoreItem>
+        <ShopStoreItem></ShopStoreItem>
     </div>
 </template>
 <script>
@@ -9,15 +9,21 @@ import ShopStoreItem from "../components/shopStoreItem"
 export default {
     data(){
         return{
-            arr:[]
+            // asyncData:"",
+            arr:'',
+            drugid:"",
+            drugImg:"",
+            drugName:"",
+            drugStandard:"",
+            drugPrice:"",
+            drugId:"",
+
         }
     },
     components:{
        ShopStoreItem
-      
     },
-    
-   
+
 }
 </script>
 <style scoped>

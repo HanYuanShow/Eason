@@ -16,10 +16,10 @@
           >
 
           <van-card
-                price="2.00"
+                :price="price"
                 desc="描述信息"  
                 title="商品标题"
-                thumb="../../static/images/r/drug.png"
+                :thumb="url"
               >
               <div>
                 <span>购买数量</span>
@@ -27,7 +27,7 @@
                 <div slot="footer">
                    <span class="buy">购买数量</span>
                  <van-stepper v-model="value" integer />
-                  <p class="ok" @click="okfun()">确定</p>
+                  <p class="ok" @click="okfun(value)">确定</p>
                 </div>
                
           </van-card>
@@ -45,28 +45,66 @@
 <script>
 
 export default {
-  data() {
-    return {
-          show: false,
-            value: 1
-    }
+  props:{
+    price:Number,
+    url:String,
+    drugid:String,
+    dingdanarr:[]
   },
-    methods: {
+  data() {
+    return { 
+          show: false,
+          value: 1,
+          arr:[],
+          userid:2
+    }   
+  },
+   methods: {
     test() {
-      console.log(this.newInfo)
+      // console.log(this.newInfo)
     },
-    onClickIcon() {
-     this.$router.push("/cart")
+    onClickIcon(v) {
+     this.$router.push(
+     {path:"/cart",
+     query:{userid:this.userid}
+     })
+    //  var objid = []
+      // this.$store.commit("cartMutation",this.$store.state.info);
+      // userId = localStorage.getItem('userId')
+      // obj.drugid = this.$route.query.drugid;
+      // obj.num = v
+     
+      
+
 
     },
     onClickButton() {
-      this.$store.commit("cartMutation",this.$store.state.info++),
+      
       this.show=!this.show
     },
     butfun1(){
       this.cartbool=false;
     },
-    okfun(){
+    okfun(v){
+      
+      // this.$store.commit("cartMutation",this.$store.state.info);
+      // obj.userId = localStorage.getItem('userId')
+      // obj.userid = 2
+      // this.userid = this.$route.query.userid;
+      // obj.drugnum = v;
+       var param=new URLSearchParams();
+      param.append("userid",this.userid)
+      param.append("drugid",this.$route.query.drugid)
+      param.append("drugnum",v)
+      this.axios({
+        url: 'http://47.95.140.83:8181/shopcart/adddrug',
+        method: 'POST',
+        data: param
+      }).then((res) => {
+      
+      }).catch((err) => {
+        // console.log(err)
+      })
       this.show=!this.show;
     },
         showPopup() {
@@ -78,6 +116,23 @@ export default {
       return this.$store.state.info
     }
   },
+  created(){
+    //  this.typeid=this.$route.query.typeid;
+    // this.axios({
+    //         url:"http://47.95.140.32:8181/drug/findallbyid?drugid="+ this.drugid,
+    //         method:"get"
+    //     }).then((ok)=>{
+    //         this.allDrugArr=ok.data.druginfor;
+    //         this.price=this.allDrugArr.drugPrice
+    //          this.allDrugType=ok.data.drugtype
+    //         console.log(ok.data)
+    //     })
+  },
+  fiters:{
+  newarr(val){
+    return val.length;
+  }
+  }
 }
 </script>
 <style scoped>

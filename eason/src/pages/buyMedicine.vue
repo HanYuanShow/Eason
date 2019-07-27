@@ -7,16 +7,17 @@
                   <van-search placeholder="请输入药品名" v-model="value" />
             </div>
           
+          
         </div>
         <!-- 科类 -->
         <div class="con">
-            <DrugList  class="cop" v-for="(v,i) in itemList" :key="i" :urls="v.urls" :title="v.title"></DrugList>
+            <DrugList  class="cop" v-for="(v,i) in allDrugType" :key="i" :typeid="v.typeId" :urls="v.typeImg" :title="v.typeName"></DrugList>
         </div>
         <!-- 基本药品介绍 -->
         <div class="drug-cons">
               <div class="drug-left">
                   <!-- 通过遍历获取数据 -->
-                <Medicine class="drugItrm" v-for="(v,i) in medicineList" :key="i" :url="v.url" :medicineBriefa="v.medicineBrief.name" :medicineBriefb="v.medicineBrief.standards" :price="v.price"></Medicine>
+                <Medicine class="drugItrm" v-for="(v,i) in allDrugArr" :drugId="v.drugId" :key="i" :drugImg="v.drugImg" :drugName="v.drugName" :drugStandard="v.drugStandard" :drugPrice="v.drugPrice"></Medicine>
             </div>
         </div>
       
@@ -33,16 +34,26 @@ export default {
             title:"快速购药",
             itemList:{},
             medicineList:[],
-            arr:[]
+            arr:[],
+            allDrugArr:[],
+            allDrugType:[],
+            drugId:""
         }
     },
     components:{
         Nav1,
         DrugList,
         Medicine
-
     },
     created(){
+        this.axios({
+            url:"http://47.95.140.83:8181/drug/findall",
+            method:"get"
+        }).then((ok)=>{
+            this.allDrugArr=ok.data.druginfor;
+             this.allDrugType=ok.data.drugtype
+            console.log(ok.data)
+        })
         this.axios({
             url:"/link/data",
             method:"get"
@@ -50,7 +61,7 @@ export default {
             this.arr=ok.data.buyMedicine[0];
             this.itemList = this.arr.drugList[0];
             this.medicineList=ok.data.medicines;
-            console.log(this.itemList)
+
         })
     },
     

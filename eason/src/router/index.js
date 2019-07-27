@@ -81,10 +81,11 @@ import BuyMedicine from '../pages/buyMedicine'
 import DrugDetails from '../pages/drugDetails'
 import ShopStore from '../pages/shopStore'
 import Address from '../pages/address'
-import NewAdress from '../pages/newAdress'
 import Cart from '../pages/cart'
 import Payoff from '../pages/Payoff'
 import Code from '../pages/code'
+import Newaddress from '../pages/newaddress'
+
 Vue.use(Router)
 
 export default new Router({
@@ -424,14 +425,6 @@ export default new Router({
       component:DiscussContent
     },
     {
-      path:"/*",
-      redirect:"/Home"
-    }
-
-  ]
-
-},
-{
       path: '/buyMedicine',
       name: 'BuyMedicine',
       component: BuyMedicine
@@ -452,11 +445,6 @@ export default new Router({
       component: Address
     },
     {
-      path: '/newAdress',
-      name: 'NewAdress',
-      component: NewAdress
-    },
-    {
       path: '/cart',
       name: 'Cart',
       component: Cart
@@ -471,5 +459,19 @@ export default new Router({
       name: 'Code',
       component: Code
     },
-  
-)
+    {
+      path: '/newaddress',
+      name: 'Newaddress',
+      component: Newaddress
+    },
+    
+    {
+      path:"/*",
+      redirect:"/Home"
+    }
+
+
+
+  ]
+
+})

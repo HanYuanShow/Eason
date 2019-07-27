@@ -1,28 +1,34 @@
 <template>
-    <div class="drug-box">
-        <div class="drug-con" @click="funMedicine()">
-             <img :src="url" />
+    <div class="drug-box" @click="funMedicine(drugId)">
+        <div class="drug-con" >
+             <img :src="drugImg" />
              <div class="drugP">
-                    <p>{{medicineBriefa}}</p>
-                    <p>{{medicineBriefb}}</p>
+                    <p>{{drugName}}</p>
+                    <p>{{drugStandard}}</p>
              </div>
-            
-            <span>￥{{price}}</span>
+            <span>￥{{drugPrice}}</span>
         </div>
        
     </div>
 </template>
 <script>
 export default {
+    data(){
+       return{
+            allDrugArr:[],
+       }
+    },
     props:{
-        url:String,
-        medicineBriefa:String,
-        medicineBriefb:String,
-        price:String
+        drugImg:String,
+        drugName:String,
+        drugStandard:String,
+        drugPrice:String,
+        drugId:""
     },
     methods:{
-    funMedicine(){
-        this.$router.push("/shopStore");
+    funMedicine(i){
+        this.$router.push("/shopStore?drugid="+i)
+        console.log(i)
     }
 
     }

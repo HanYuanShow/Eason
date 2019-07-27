@@ -4,107 +4,115 @@
         "drugList":[
                 { 
                 "fuke":{
+                    "typeid":1,
                     "urls":"../../../static/images/w/aq6.png",
                     "title":"妇科",
                     "medicine":[
-                        {"id":"1","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"2","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"3","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"4","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"5","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"6","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"7","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"}
+                        {"drugid":"1","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"2","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"3","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"4","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"5","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"6","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"7","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"}
                     ]
                 },
                 "pifuIll":{
+                    "typeid":"2",
                     "urls":"../../../static/images/w/aq6.png",
                     "title":"皮肤疾病",
                     "medicine":[
-                        {"id":"1","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"2","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"3","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"4","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"5","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"6","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"7","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"}
+                        {"drugid":"1","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"2","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"3","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"4","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"5","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"6","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"7","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"}
                     ]
                 },
                 "fengshiIll":{
+                    "typeid":3,
                     "urls":"../../../static/images/w/aq6.png",
                     "title":"风湿骨病",
                     "medicine":[
-                        {"id":"1","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"2","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"3","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"4","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"5","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"6","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"7","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"}
+                        {"drugid":"1","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"2","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"3","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"4","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"5","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"6","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"7","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"}
                     ]
                 },
                 "tangniaoIll":{
+                    "typeid":4,
                     "urls":"../../../static/images/w/aq6.png",
                     "title":"糖尿病",
                     "medicine":[
-                        {"id":"1","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"2","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"3","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"4","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"5","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"6","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"7","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"}
+                        {"drugid":"1","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"2","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"3","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"4","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"5","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"6","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"7","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"}
                     ]
                 },
                 "xinxueguanIll":{
+                    "typeid":5,
                     "urls":"../../../static/images/w/aq6.png",
                     "title":"心血管病",
                     "medicine":[
-                        {"id":"1","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"2","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"3","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"4","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"5","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"6","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"7","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"}
+                        {"drugid":"1","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"2","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"3","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"4","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"5","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"6","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"7","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"}
                     ]
                 },
                 "huxiIll":{
+                    "typeid":6,
                     "urls":"../../../static/images/w/aq6.png",
                     "title":"呼吸用药",
                     "medicine":[
-                        {"id":"1","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"2","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"3","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"4","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"5","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"6","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"7","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"}
+                        {"drugid":"1","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"2","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"3","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"4","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"5","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"6","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"7","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"}
                     ]
                 },
                 "changweiIDrug":{
+                    "typeid":7,
                     "urls":"../../../static/images/w/aq6.png",
                     "title":"肠胃用药",
                     "medicine":[
-                        {"id":"1","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"2","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"3","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"4","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"5","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"6","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"7","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"}
+                        {"drugid":"1","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"2","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"3","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"4","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"5","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"6","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"7","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"}
                     ]
                 },
                 "yingyang":{
+                    "typeid":8,
                     "urls":"../../../static/images/w/aq6.png",
                     "title":"营养保健",
                     "medicine":[
-                        {"id":"1","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"2","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"3","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"4","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"5","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"6","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
-                        {"id":"7","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"}
+                        {"drugid":"1","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"2","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"3","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"4","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"5","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"6","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"},
+                        {"drugid":"7","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等","price":"20"}
                     ]
                 }
            }
@@ -113,21 +121,21 @@
 
     }],
     "medicines":[
-        {"id":"1","url":"../../../static/images/r/drug.png","medicineBrief":{"name":"星元佳 氯雷他定片","standards":"10毫克*6片"},"price":"20"},
-        {"id":"2","url":"../../../static/images/r/drug.png","medicineBrief":{"name":"星元佳 氯雷他定片","standards":"10毫克*6片"},"price":"20"},
-        {"id":"3","url":"../../../static/images/r/drug.png","medicineBrief":{"name":"星元佳 氯雷他定片","standards":"10毫克*6片"},"price":"20"},
-        {"id":"4","url":"../../../static/images/r/drug.png","medicineBrief":{"name":"星元佳 氯雷他定片","standards":"10毫克*6片"},"price":"20"},
-        {"id":"5","url":"../../../static/images/r/drug.png","medicineBrief":{"name":"星元佳 氯雷他定片","standards":"10毫克*6片"},"price":"20"},
-        {"id":"6","url":"../../../static/images/r/drug.png","medicineBrief":{"name":"星元佳 氯雷他定片","standards":"10毫克*6片"},"price":"20"},
-        {"id":"7","url":"../../../static/images/r/drug.png","medicineBrief":{"name":"星元佳 氯雷他定片","standards":"10毫克*6片"},"price":"20"}
+        {"drugid":"1","url":"../../../static/images/r/drug.png","medicineBrief":{"name":"星元佳 氯雷他定片","standards":"10毫克*6片"},"price":"20"},
+        {"drugid":"2","url":"../../../static/images/r/drug.png","medicineBrief":{"name":"星元佳 氯雷他定片","standards":"10毫克*6片"},"price":"20"},
+        {"drugid":"3","url":"../../../static/images/r/drug.png","medicineBrief":{"name":"星元佳 氯雷他定片","standards":"10毫克*6片"},"price":"20"},
+        {"drugid":"4","url":"../../../static/images/r/drug.png","medicineBrief":{"name":"星元佳 氯雷他定片","standards":"10毫克*6片"},"price":"20"},
+        {"drugid":"5","url":"../../../static/images/r/drug.png","medicineBrief":{"name":"星元佳 氯雷他定片","standards":"10毫克*6片"},"price":"20"},
+        {"drugid":"6","url":"../../../static/images/r/drug.png","medicineBrief":{"name":"星元佳 氯雷他定片","standards":"10毫克*6片"},"price":"20"},
+        {"drugid":"7","url":"../../../static/images/r/drug.png","medicineBrief":{"name":"星元佳 氯雷他定片","standards":"10毫克*6片"},"price":"20"}
     ],
 
         "drugDetails":{
-            "drug":[{"id":"1","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等....","price":"20"},
-                {"id":"2","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等....","price":"20"},
-                {"id":"3","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等....","price":"20"},
-                {"id":"4","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等....","price":"20"},
-                {"id":"5","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等....","price":"20"}
+            "drug":[{"drugid":"1","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等....","price":"20"},
+                {"drugid":"2","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等....","price":"20"},
+                {"drugid":"3","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等....","price":"20"},
+                {"drugid":"4","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等....","price":"20"},
+                {"drugid":"5","url":"../../../static/images/r/drug.png","name":"星元佳 氯雷他定片","standards":"10毫克*6片","content":"用于缓解过敏性鼻炎有关的症状如喷嚏、流涕、鼻痒、鼻塞以及眼部痒等....","price":"20"}
             ]
         },
         "shopStore":{"imgurl":"../../../static/images/r/drug.png"},
@@ -154,7 +162,37 @@
         "url": {"urlsrc1":"../../../static/images/r/drug1.png","urlsrc2":"../../../static/images/r/drug2.png"},
         "detailImage":{"url":"药品图片URL（标浅蓝色的部分）"},
 
-        "buyMedicine-cart":{"title":"快速购药","name":"含邮费6元，满99元包邮"}
+        "buyMedicine-cart":{"title":"快速购药","name":"含邮费6元，满99元包邮"},
            
         
-}
+            "shopcat":[
+                {
+                    "shoptitle":"「童心•折纸」系列 18K玫瑰金Akoya珍珠项链",
+                    "shopSummary":"在爱的人生远航中，无论风雨，深情陪伴",
+                    "num":3,
+                    "price":"2998",
+                    "color":"黑色",
+                    "checked":true,
+                    "shopImgurl":"../../static/images/shop1.png"
+                },
+                {
+                    "shoptitle":"「童心•折纸」系列 18K玫瑰金Akoya珍珠项链",
+                    "shopSummary":"在爱的人生远航中，无论风雨，深情陪伴",
+                    "num":3,
+                    "price":"2998",
+                    "color":"黑色",
+                    "checked":true,
+                    "shopImgurl":"../../static/images/shop1.png"
+                },
+                {
+                    "shoptitle":"「童心•折纸」系列 18K玫瑰金Akoya珍珠项链",
+                    "shopSummary":"在爱的人生远航中，无论风雨，深情陪伴",
+                    "num":3,
+                    "price":"2998",
+                    "color":"黑色",
+                    "checked":true,
+                    "shopImgurl":"../../static/images/shop1.png"
+                }
+            ]
+    }
+

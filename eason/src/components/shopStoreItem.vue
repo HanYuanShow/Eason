@@ -3,45 +3,64 @@
         
         <Nav2></Nav2>
         <div class="sec">
-            <div class="cart">
+            <div class="cart" >
             <van-swipe @change="onChange">
-                <van-swipe-item><img :src="imgurl"/></van-swipe-item>
-                <van-swipe-item><img :src="imgurl"/></van-swipe-item>
-                <van-swipe-item><img :src="imgurl"/></van-swipe-item>  
+                <van-swipe-item><img :src="asyncData.drugImg"/></van-swipe-item>
+                <van-swipe-item><img :src="asyncData.drugImg"/></van-swipe-item>
+                <van-swipe-item><img :src="asyncData.drugImg"/></van-swipe-item>  
             </van-swipe>
         </div>
-        <div class="drugName">
-            <h3>{{name}}  {{standards}}</h3>
-            <p >{{content}}</p>
-            <span>￥{{price}}</span>
+        <div class="drugName" >
+            <h3>{{asyncData.drugName}}  {{asyncData.drugStandard}}</h3>
+            <p>{{asyncData.drugFunction}}</p>
+            <span>￥{{asyncData.drugPrice}}</span>
         </div>
         <div class="free-Shipping">
-            <span><img src="../../static/images/w/ao6.png" >{{shipping}}</span>
-            <span><img src="../../static/images/w/ao6.png" >{{normal}}</span>
+            <span><img src="../../static/images/w/ao6.png" >满99元包邮</span>
+            <span><img src="../../static/images/w/ao6.png" >正品保证</span>
         </div>
         <div class="choose">
-            <h3>{{choosed}}  {{name}}  {{standards}},{{number}}</h3>
-            <span><img src="../../static/images/w/ajr.png" ></span>
+            <h3>已选  {{asyncData.drugName}}  {{asyncData.drugStandard}}</h3>
             
         </div>
         <div class="medicineH" @click="fun()" >
-            <h3>{{medicineDetail}}</h3>
+            <h3>商品详情</h3>
             <span><img src="../../static/images/w/ajr.png" ></span>
         </div>
-        <div class="shopdetail" v-if="bool">
-            <div class="shopdetails" v-for="(v,i) in arr.medicineDetails" :key="i">
-            <h4>【{{v.title}}】</h4>
-            <p>{{v.content}}</p>
-        </div>
+        <div class="shopdetail" v-if="bool" >
+            <div class="shopdetails">
+                <h4>【药品成分】</h4>
+                <p>{{details.drugElement}}</p>
+            </div>
+            <div class="shopdetails">
+                <h4>【药品成分】</h4>
+                <p>xxxxx</p>
+            </div>
+            <div class="shopdetails">
+                <h4>【主治功能】</h4>
+                <p>{{ details.drugFunction}}</p>
+            </div>
+            <div class="shopdetails">
+                <h4>【用法用量】</h4>
+                <p>{{ details.drugUsage}}</p>
+            </div>
+            <div class="shopdetails">
+                <h4>【药品性状】</h4>
+                <p>{{ details.drugStandard}}</p>
+            </div>
+            <div class="shopdetails">
+                <h4>【不良反应】</h4>
+                <p>药不能乱吃</p>
+            </div>
         <div class="shopImg">
-            <img :src="urlsrc1" />
-            <img :src="urlsrc2" />
+            <img :src="asyncData.drugImg" />
+            <img :src="asyncData.drugImg" />
         </div>
         </div>
         
     </div>
 
-        <Bottombar ></Bottombar>
+        <Bottombar :price="asyncData.drugPrice" :url="asyncData.drugImg"></Bottombar>
       
     </div>
 </template>
@@ -51,13 +70,14 @@ import Nav2 from "../components/nav2"
 export default {
     data() {
         return {
+            asyncData: '',
             current: 0,
             arr:[],
             imgurl:String,
             name:String,
             standards:String,
             content:String,
-            price:String,
+            price:Number,
             shipping:String,
             normal:String,
             choosed:String,
@@ -68,10 +88,13 @@ export default {
             urlsrc1:String,
             urlsrc2:String,
             bool:false,
-             typeData:[],
+            typeData:[],
             chilkId:0,
-            type:""
+            type:"",
+            drugId:"",
+            details: ''
         }
+        
   },
   methods: {
         onChange(index) {
@@ -85,33 +108,30 @@ export default {
        Bottombar,
        Nav2
     },
-    props:{
+     created(){
+          this.drugid=this.$route.query.drugid;
+          this.axios({
+                url:"http://47.95.140.83:8181/drug/findallbyid?drugid="+ this.drugid,
+                method:"get"
+            }).then((ok)=>{
+                this.asyncData=ok.data;
+                // console.log(this.arr)
+            })
+            this.axios({
+                url:"http://47.95.140.83:8181/drug/findall?drugid="+ this.drugid,
+                method:"get"
+            }).then((ok)=>{
+                this.allDrugArr=ok.data;
+                console.log( this.allDrugArr)
+                const result =  this.allDrugArr.druginfor.find((item)=>{
+                    return item.drugId === Number(this.drugid)
+                })
+                this.details = result
+                console.log(result)
+            })
         
     },
-     created(){
-        this.axios({
-            url:"/link/data",
-            method:"get"
-        }).then((ok)=>{
-            if(this.type=="shopSrore"){
-                this.typeData=ok.data.shopStore;
-            }
-            this.arr=ok.data
-            this.imgurl= this.arr.shopStore.imgurl;
-            this.name = this.arr.shopDetails.name;
-            this.standards=this.arr.shopDetails.standards;
-            this.content = this.arr.shopDetails.content;
-            this.price=this.arr.shopDetails.price;
-            this.shipping=this.arr.mass.title1;
-            this.normal=this.arr.mass.title2;
-            this.choosed=this.arr.choose.choosed;
-            this.number=this.arr.choose.number;
-            this.medicineDetail=this.arr.medicineDetail;
-            this.urlsrc1=this.arr.url.urlsrc1;
-            this.urlsrc2=this.arr.url.urlsrc2;
-            console.log(this.urlsrc1);
-        })
-    }
+    
 }
 </script>
 <style scoped>
@@ -124,6 +144,7 @@ export default {
     margin-bottom: 30px;
 }
 .cart{
+    overflow:hidden;
     height:310px;
     text-align: center;
     border-bottom:1px solid #f4f4f4;

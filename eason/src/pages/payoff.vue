@@ -11,11 +11,10 @@
     <div class="server">
          <div class="allpay">
             <p>特色服务</p>
-            <span>￥{{14}}</span>
         </div>
         <div class="allpay">
             <p>共需支付</p>
-            <span>￥{{14}}</span>
+            <span>￥{{total}}</span>
            
         </div>
         <div class="payMode">
@@ -44,7 +43,8 @@
 export default {
     data() {
     return {
-      checked: true
+      checked: true,
+      total:Number
     }
     
   },
@@ -56,6 +56,10 @@ export default {
             this.$router.go(-1);
         }
     },
+    created(){
+       this.total=this.$route.query.total;
+        console.log(1111,this.total)
+    }
 }
 </script>
 <style scoped>

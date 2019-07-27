@@ -1,10 +1,9 @@
 <template>
 <div class="adds">
     <div class="address">
-        <div class="addressGo">
+        <div class="addressGo" @click="addressfun()" >
             <img src="../../static/images/w/agf.png"/>
             <span>返回</span>
-            <span>关闭</span>
         </div>
         <div class="addressGet">
             <span>新建</span>
@@ -12,6 +11,7 @@
         </div>
     </div>
     <div class="buildLink">
+        
         <div class="buildAdress">
             <span>收货人</span>
             <input  class="receiver" type="text" placeholder="请输入收货人信息">
@@ -68,6 +68,9 @@ export default {
   },
 
   methods: {
+      addressfun(){
+          
+      },
       fun(){
           this.citybool=!this.citybool
       },
@@ -149,7 +152,7 @@ export default {
     background-color: transparent;
     margin-left: 10px;
     box-sizing: border-box;
-    /* width: 100%; */
+    width: 70%;
     text-align: left;
     /* display: block; */
 }
