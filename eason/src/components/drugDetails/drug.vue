@@ -1,36 +1,45 @@
 <template>
-    <div class="drug">
-        <div class="drugLeft"  @click="clickDrugfun()">
+<div>
+    <div class="drug" v-for="(v,i) in arr" :key="i" @click="clickDrugfun(v.drugId)">
+        <div class="drugLeft"  >
             <div class="left-drug">
-                <img :src="url" />
+                <img :src="v.drugImg" />
             </div>
             
         </div>
-        <div class="drugRright"  @click="clickDrugfun()">
-            <span class="span1">{{name}} {{standards}}</span>
-            <p>{{content}}</p>
-            <span class="span2">￥{{price}}</span>
+        <div class="drugRright">
+            <span class="span1">{{v.drugName}} {{v.drugStandard}}</span>
+            <p>{{v.drugFunction}}</p>
+            <span class="span2">￥{{v.drugPrice}}</span>
         </div>
     </div>
+</div>
+    
 </template>
 <script>
 
 export default {
     data(){
         return{
-            value:""
+            value:"",
+            add:""
         }
     },
     props:{
-        url:String,
-        name:String,
-        content:String,
-        standards:String,
-        price:String
+        arr:"",
+        drugId:""
     },
     methods:{
-        clickDrugfun(){
-            this.$router.push("/shopStore")
+        clickDrugfun(i){
+            this.$router.push("/shopStore?drugid="+i)
+            console.log(i)
+            // this.axios({
+            //     url:"http://47.112.208.93:8181/drug/findallbyid?drugid="+i,
+            //     method:"get"
+            // }).then((ok)=>{
+            //     this.add=ok.data;
+            //     console.log(this.add)
+            // })
         }
     }
     

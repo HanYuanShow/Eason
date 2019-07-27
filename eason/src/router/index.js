@@ -137,6 +137,15 @@ import DetailPagehip from '../pages/DetailPagehip'
 import DetailPagebone from '../pages/DetailPagebone'
 import DetailPagehead from '../pages/DetailPagehead'
 
+import BuyMedicine from '../pages/buyMedicine'
+import DrugDetails from '../pages/drugDetails'
+import ShopStore from '../pages/shopStore'
+import Address from '../pages/address'
+import Cart from '../pages/cart'
+import Payoff from '../pages/Payoff'
+import Code from '../pages/code'
+import Newaddress from '../pages/newaddress'
+
 Vue.use(Router)
 
 export default new Router({
@@ -684,8 +693,51 @@ export default new Router({
       component: DrugStore
     },
     {
+      path:"/DiscussContent",
+      name:"DiscussContent",
+      component:DiscussContent
+    },
+    {
+      path: '/buyMedicine',
+      name: 'BuyMedicine',
+      component: BuyMedicine
+    },
+    {
+      path: '/drugDetails',
+      name: 'DrugDetails',
+      component: DrugDetails
+    },
+    {
+      path: '/shopStore',
+      name: 'ShopStore',
+      component: ShopStore
+    },
+    {
+      path: '/address',
+      name: 'Address',
+      component: Address
+    },
+    {
+      path: '/cart',
+      name: 'Cart',
+      component: Cart
+    },
+    {
+      path: '/payoff',
+      name: 'Payoff',
+      component: Payoff
+    },
+    {
+      path: '/newaddress',
+      name: 'Newaddress',
+      component: Newaddress
+    },
+    {
       path: "/*",
       redirect: "/Home"
     },
   ]
 })
+    
+    
+  
