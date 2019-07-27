@@ -3,13 +3,24 @@
         <div class="header">
             <Installhead :headtitle="title" :himg="himg"></Installhead>
         </div>
-        <div class="section">
+        <div class="show" v-for="(v,i) in content" :key="i">
+            <van-image fit="fill" height="60" width="60" :src="v.img" />
+            <div>
+                 <p>{{v.title}}</p>
+             <p>{{v.date}}</p>
+            </div>
+           
+        </div>
+        
+        <!-- <div class="section">
             <van-tabs v-model="active" title-active-color="#6bce72" line-width="50%" line-hight="2px"
             :animated="ceshi" color = "#6bce72">
             <van-tab title="科普">
                <kong :kongtext="kongtext" :kongimg="kongimg">
                    
                </kong>
+
+          
                
             </van-tab>
             <van-tab title="问答">
@@ -17,7 +28,7 @@
                 
             </van-tab>
             </van-tabs>
-        </div>
+        </div> -->
     </div>
 </template>
 
@@ -29,7 +40,8 @@ import kong from "../components/inviteSomeOnce/kong"
 export default {
     components:{
        Installhead ,
-       kong
+       kong,
+       userid:'',
     },
     data(){
         return{
@@ -41,19 +53,41 @@ export default {
            kongimg:"../../static/images/w/ant.png",
            active:"",
            ceshi:true,
+                 content:{},
         }
     },
     created() {
+    
                   //回踢效果
-            let id = localStorage.getItem("userId");
-            if(id==0){
-            this.$router.push("/logon")    
+            this.userid = localStorage.getItem("userId");
+            console.log(this.userid)
+
+            if( this.userid == null){
+            this.$router.push("/logon")
+            }else if(this.userid!==null){
+                            this.axios({
+                        url:"http://47.95.140.83:8181/news/myCollectNews/50" ,
+                        method:"get"
+                    }).then((ok)=>{
+                        this.content = ok.data  
+                        console.log(this.content)
+                    })
+            }    
+         
         }
-    },
+    
 
 }
 </script>
 <style scoped>
+.show{
+    display:flex;
+    width: 100%;
+    height: 80px;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid gainsboro;
+}
 .quan{
       position: fixed;
         width: 100%;

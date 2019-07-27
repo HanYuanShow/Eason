@@ -4,7 +4,7 @@
                 
                 <router-link to="/body">
                     <div class="symptom_list">
-                        <img src="../../static/images/w/aqe.png" class="tree_img"/>
+                        <img src="../../static/images/w/aqd.png" class="tree_img"/>
                         <p class="diagnosis_p">全身症状</p>
                     </div>
                 </router-link>

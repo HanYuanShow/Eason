@@ -203,7 +203,7 @@ export default {
     created() {
             //回踢效果
             let id = localStorage.getItem("userId");
-            if(id==0){
+            if(id==null){
             this.$router.push("/logon")    
         }else{
                     this.userId=localStorage.getItem('userId')

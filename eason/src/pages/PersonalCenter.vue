@@ -186,7 +186,7 @@ export default {
     },
     funh() {
       let id = localStorage.getItem("userId")
-      if(id==0){
+      if(id==null){
           
           this.$router.push({ path: "/logon" });
       }else{

@@ -168,12 +168,12 @@ export default {
         collectNews(){
             // // 用户点击收藏的接口
             // console.log(val)
-            // this.userid = localStorage.getItem("userId")
+         
             this.isCollect = !this.isCollect
             this.num = 1;
             this.axios({    
                                                 // 1预留放用户id
-                url:"http://47.95.140.83:8181/news/collectNews/1/"+this.newsid,
+                url:"http://47.95.140.83:8181/news/collectNews/"+this.userid+"/"+this.newsid,
                 method:"get",
                 // data:param
             }).then((ok)=>{
@@ -193,7 +193,7 @@ export default {
             this.num = 0;
             this.axios({    
                                                             // 1预留放用户id
-                url:"http://47.95.140.83:8181/news/reverseCollectNews/1/"+this.newsid,
+                url:"http://47.95.140.83:8181/news/reverseCollectNews/"+this.userid+"/"+this.newsid,
                 method:"get",
                 // data:param
             }).then((ok)=>{
@@ -236,7 +236,7 @@ export default {
     created(){
         this.num = 0;
         this.numtwo = 0;
-
+           this.userid = localStorage.getItem("userId")
     }
 }
 </script>

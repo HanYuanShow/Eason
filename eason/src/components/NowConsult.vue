@@ -50,7 +50,7 @@ export default {
   created() {
     //判断回踢 效果
     let id = localStorage.getItem("userId");
-    if(id==0){
+    if(id==null){
             this.$router.push("/logon")    
         }else{
             //获取本地医生id

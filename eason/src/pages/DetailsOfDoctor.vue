@@ -130,13 +130,13 @@
          <!-- 底部关注栏 -->
         <div class="bottomnav">
             <div class="guanzhu">
-                <div :class="style?'star':'newstar'" @click="guanzhu()" v-if="bool"></div>
-                <div :class="style?'star':'newstar'" @click="Closeguanzhu()" v-else></div>
-                <span class="guanzhutxt">{{style?"关注":"已关注"}}</span>
+                <div :class="bool?'newstar':'star'" @click="Closeguanzhu()"  v-if="bool"></div>
+                <div :class="bool?'newstar':'star'" @click="guanzhu()" v-else></div>
+                
+                <span class="guanzhutxt">{{bool?"已关注":"关注"}}</span>
             </div>
             <div class="zixunbtn">{{newprice==null?'暂未开通':newtitle+'(￥'+newprice+'元/次)'}}</div>
         </div>
-
     </div>  
 </template>
 
@@ -200,12 +200,13 @@ export default {
             url:"http://47.95.140.83:8181/doctorTopic/isFollowDoctor/"+this.userid +"/"+this.newid,
             method:"get"
         }).then((ok)=>{
-            if(ok.data==true){
-                //关注 style = true
-                this.style=false;
-            }else if(ok.data==false){
-                this.style=true;
-            }
+            // if(ok.data==true){
+            //     //关注 style = true
+            //     this.bool=false
+                
+            // }else if(ok.data==false){
+               this.bool=ok.data;
+            // }
         })
     },
     methods: {
@@ -223,7 +224,6 @@ export default {
         guanzhu(){
             //关注 用户id 医生id
              this.bool=true;
-            if(this.style==true){
                     this.axios({
                 url:"http://47.95.140.83:8181/doctorTopic/followDoctor/"+this.userid +"/"+this.newid,
                 method:"get",
@@ -232,15 +232,12 @@ export default {
                
             })
 
-            }
-        
-                      
-            
+             
         },
         Closeguanzhu(){
             this.bool=false;
             //取消关注
-               if(this.style==false){
+               
                       this.axios({
                 url:"http://47.95.140.83:8181/doctorTopic/reverseFollowDoctor/"+this.userid +"/"+this.newid,
                 method:"get",
@@ -248,7 +245,7 @@ export default {
                 console.log(ok)
                 
             })
-               }
+               
           
         },
         back(){
