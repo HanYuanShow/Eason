@@ -196,6 +196,9 @@ export default {
                 if(this.che === true){
                     this.dingdanarr[i].checked = true
                     this.tatal += this.dingdanarr[i].druginfor.drugPrice*this.dingdanarr[i].drugnum
+                }else{
+                    this.dingdanarr[i].checked = false
+                    this.tatal = 0
                 }
             }
             return this.tatal
