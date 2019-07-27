@@ -44,15 +44,16 @@ export default {
   data() {
     return {
       mydoctor: [],
-      bool: true
+      bool: true,
     };
   },
   created() {
     //判断回踢 效果
-    // let userid = localStorage.setItem("userId");
-    let userid=2;
-    if(userid!=0){
-                     //获取本地医生id
+    let id = localStorage.getItem("userId");
+    if(id==0){
+            this.$router.push("/logon")    
+        }else{
+            //获取本地医生id
         let doctorarr =localStorage.getItem("doctorIdList")
         console.log(doctorarr)
         this.axios({
@@ -65,8 +66,6 @@ export default {
           this.mydoctor = ok.data;
           console.log(this.mydoctor);     
         });
-        }else{
-            this.$router.push("/logon")
     }
   },
   watch: {

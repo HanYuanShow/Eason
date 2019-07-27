@@ -86,10 +86,88 @@ import ChooseDoctor from '../pages/ChooseDoctor'
 // import Cart from '../pages/cart'
 // import Payoff from '../pages/Payoff'
 // import Code from '../pages/code'
+import diseaseData from '../pages/diseaseData'
+import detailDepartment from '../pages/detailDepartment'
+import DrugStoreDetail from '../pages/DrugStoreDetail'
+import DetailPagebody from '../pages/DetailPagebody'
+import DetailPageskin from '../pages/DetailPageskin'
+import DetailPagearm from '../pages/DetailPagearm'
+import DetailPagebreast from '../pages/DetailPagebreast'
+import DetailPagethroat from '../pages/DetailPagethroat'
+import DetailPagereproduction from '../pages/DetailPagereproduction'
+import DetailPagehip from '../pages/DetailPagehip'
+import DetailPagebone from '../pages/DetailPagebone'
+import DetailPagehead from '../pages/DetailPagehead'
 Vue.use(Router)
 
 export default new Router({
   routes: [
+    {
+      path:'/DetailPagehead',
+      name:'DetailPagehead',
+      component:DetailPagehead
+    },
+    {
+      path:'/DetailPagebone',
+      name:'DetailPagebone',
+      component:DetailPagebone
+    },
+    {
+      path:'/DetailPagehip',
+      name:'DetailPagehip',
+      component:DetailPagehip
+    },
+    {
+      path:'/DetailPagereproduction',
+      name:'DetailPagereproduction',
+      component:DetailPagereproduction
+    },
+    {
+      path:'/DetailPagethroat',
+      name:'DetailPagethroat',
+      component:DetailPagethroat
+    },
+    {
+      path:'/DetailPagebreast',
+      name:'DetailPagebreast',
+      component:DetailPagebreast
+    },
+    {
+      path:'/DetailPagearm',
+      name:'DetailPagearm',
+      component:DetailPagearm
+    },
+    {
+      path:'/DetailPageskin',
+      name:'DetailPageskin',
+      component:DetailPageskin
+    },
+    {
+      path:'/DetailPagebody',
+      name:'DetailPagebody',
+      component:DetailPagebody
+    },
+    {
+      path:'/DrugStoreDetail',
+      name:'DrugStoreDetail',
+      component:DrugStoreDetail
+    },
+    {
+      path:'/detailDepartment',
+      name:'detailDepartment',
+      component:detailDepartment
+    },
+    {
+      path:'/diseaseData',
+      name:'diseaseData',
+      component:diseaseData
+    },
+    {
+      path:'/SelfTest',
+      name:'SelfTest',
+      component:SelfTest
+    },
+
     {
       path: '/DetailsOfDoctor/:id',
       name: 'DetailsOfDoctor',
@@ -287,7 +365,27 @@ export default new Router({
       path: '/autognosis',
       name: 'Autognosis',
       component: Autognosis,
-    },
+      children: [
+      {
+      path: '/symptomlist', name: 'Symptomlist', component: Symptomlist,
+      children: [
+      { path: '/body', name: "Body", component: Body },
+      { path: '/skin', name: "Skin", component: Skin },
+      { path: '/head', name: "Head", component: Head },
+      { path: '/throat', name: "Throat", component: Throat },
+      { path: '/breast', name: "Breast", component: Breast },
+      { path: '/belly', name: "Belly", component: Belly },
+      { path: '/reproduction', name: "Reproduction", component: Reproduction },
+      { path: '/bone', name: "Bone", component: Bone },
+      { path: '/arm', name: "Arm", component: Arm },
+      { path: '/belt', name: "Belt", component: Belt },
+      { path: '/hip', name: "Hip", component: Hip },
+      ]
+      },
+      
+      { path: '/bodypic', name: 'Bodypic', component: Bodypic }
+      ]
+      },
     {
       path: '/Science',
       name: 'Science',

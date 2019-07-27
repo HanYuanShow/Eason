@@ -12,10 +12,12 @@
                         <p>症状自诊</p>
                     </van-col>
                 </router-link>
-                <van-col span="6">
-                     <img src="../../static/images/w/b3d.png"/>
-                    <p>疾病库</p>
-                </van-col>
+                <router-link to="/diseaseData">
+                    <van-col span="6">
+                        <img src="../../static/images/w/b3d.png"/>
+                        <p>疾病库</p>
+                    </van-col>
+                </router-link>
                 <router-link to="/DrugStore">
                     <van-col span="6">
                         <img src="../../static/images/w/b3e.png"/>
@@ -101,7 +103,7 @@ export default {
          border: 1px solid #f4f4f4;
          background: #f4f4f4;
          text-align: center;
-         margin: 0px;
+         margin: 10px 0px 10px;
     }
     .search_recommand h4{
         margin: 16px 0px 0px;

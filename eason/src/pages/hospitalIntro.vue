@@ -45,7 +45,7 @@ export default {
         this.id = this.$route.params.clickId;//获取传过来的id
         console.log(this.id)
         this.axios({
-            url:"http://47.112.208.93:8181/hospital/findHospitalById/"+this.id,  //"/reqHospitalData/hospitalIntro?id="+this.id
+            url:"http://47.95.140.83:8181/hospital/findHospitalById/"+this.id,  //"/reqHospitalData/hospitalIntro?id="+this.id
             method:"get"
         }).then((ok)=>{
             this.allData = ok.data;//获取页面所需所有的数据

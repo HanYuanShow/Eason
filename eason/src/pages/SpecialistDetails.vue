@@ -44,7 +44,7 @@ export default {
   created() {
     this.hospitalID = this.$route.query.id;
     this.axios({
-      url: "http://47.112.208.93:8181/hospital/loadOfficeAndDoctor/"+this.hospitalID,
+      url: "http://47.95.140.83:8181/hospital/loadOfficeAndDoctor/"+this.hospitalID,
       method: "get"
     }).then((ok) => {
       console.log(ok.data);

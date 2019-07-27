@@ -1,4 +1,4 @@
-<template>
+﻿<template>
     <div>
         <div v-if="bool1" class="loading">
             <van-loading type="spinner" color="#6bce72" />
@@ -71,6 +71,20 @@
             </div>
         </div>
         <hr/>
+	<!-- 医生擅长 -->
+        <div @click="DoctorIntroduce()">
+            <div class="goodat">
+                <p class="goodatp">医生擅长</p>
+                <van-icon name="arrow" class="right"/>
+            </div>
+            <div class="goodattext">
+                <div class="goodatcontent">
+                    {{this.newarr.adept}}
+                </div>
+                
+            </div>
+        </div>
+        <hr/>
         <!-- 热度咨询 -->
         <div>
             <div class="goodat">
@@ -113,15 +127,6 @@
             </div>
         </div>
         <hr/>
-        <!-- 底部关注栏 -->
-        <!-- <div class="bottomnav">
-            <div class="guanzhu">
-                <div :class="style?'star':'newstar'" @click="guanzhu()" v-if="bool"></div>
-                <div :class="style?'star':'newstar'" @click="Closeguanzhu()" v-else></div>
-                <span class="guanzhutxt">{{style?"关注":"已关注"}}</span>
-            </div>
-            <div class="zixunbtn">{{newprice==null?'暂未开通':newtitle+'(￥'+newprice+'元/次)'}}</div>
-        </div> -->
          <!-- 底部关注栏 -->
         <div class="bottomnav">
             <div class="guanzhu">
@@ -166,8 +171,9 @@ export default {
         // ------------------------------------
         // 接收各个医生列表传的医生id
         this.newid=this.$route.params.id;
+        console.log( this.newid)
         this.axios({
-            url:"http://10.12.156.39:8181/Doctorin/findById?id="+this.newid,
+            url:"http://47.95.140.83:8181/Doctorin/findById?id="+this.newid,
             method:"get"
         }).then((ok)=>{
             this.newarr=ok.data.Doctorinfor;
@@ -186,12 +192,12 @@ export default {
             this.newprice=this.consultarr[0].price;
         })
         // -----------------------------------------
-        this.userid = localStorage.getItem("userID");
+        this.userid = localStorage.getItem("userId");
 
         //判断用户是否已经关注医生
         //发送 用户id  userid 医生id  newid
-        thix.axios({
-            url:"http://10.12.156.83:8181/doctorTopic/isFollowDoctor/"+this.userid +"/"+this.newid,
+        this.axios({
+            url:"http://47.95.140.83:8181/doctorTopic/isFollowDoctor/"+this.userid +"/"+this.newid,
             method:"get"
         }).then((ok)=>{
             if(ok.data==true){
@@ -216,23 +222,34 @@ export default {
         },
         guanzhu(){
             //关注 用户id 医生id
-            this.style=!this.style;
-
-            this.axios({
-                url:"http://10.12.156.83:8181/doctorTopic/followDoctor/"+this.userid +"/"+this.newid,
+             this.bool=true;
+            if(this.style==true){
+                    this.axios({
+                url:"http://47.95.140.83:8181/doctorTopic/followDoctor/"+this.userid +"/"+this.newid,
                 method:"get",
+            }).then((ok)=>{
+                console.log(ok)
+               
             })
-            this.bool=false;
+
+            }
+        
+                      
             
         },
         Closeguanzhu(){
+            this.bool=false;
             //取消关注
-                 this.style=!this.style;
-             this.axios({
-                url:"http://10.12.156.83:8181/doctorTopic/reverseFollowDoctor/"+this.userid +"/"+this.newid,
+               if(this.style==false){
+                      this.axios({
+                url:"http://47.95.140.83:8181/doctorTopic/reverseFollowDoctor/"+this.userid +"/"+this.newid,
                 method:"get",
+            }).then((ok)=>{
+                console.log(ok)
+                
             })
-            this.bool=true;
+               }
+          
         },
         back(){
             this.$router.go(-1);

@@ -50,7 +50,7 @@ export default {
         let num =rand(1,6)
         console.log(num);
         this.axios({
-          url: "http://10.12.156.149:8181/classRoom/findById",
+          url: "http://47.95.140.83:8181/classRoom/findById",
           method: "get",
           params:{
               id:num
@@ -67,7 +67,7 @@ export default {
         }
         let num =rand(1,6)
          this.axios({
-          url: "http://10.12.156.149:8181/classRoom/findById",
+          url: "http://47.95.140.83:8181/classRoom/findById",
           method: "get",
           params:{
               id:num

@@ -41,7 +41,7 @@ export default {
     var hospitalID = this.$route.params.clickId
     console.log("在详情页获取到的id："+hospitalID);
     this.axios({
-      url:"http://47.112.208.93:8181/hospital/loadHospitalAndDoctor/"+hospitalID,
+      url:"http://47.95.140.83:8181/hospital/loadHospitalAndDoctor/"+hospitalID,
       method:"get"
     }).then((ok)=>{
       this.hospitalDetailData = ok.data[0];

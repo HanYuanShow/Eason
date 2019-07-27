@@ -72,7 +72,7 @@ export default {
   methods: {
     onSearch() {
       this.axios({
-        url:"http://10.12.156.83:8181/hospital/queryHospital/" + this.value,
+        url:"http://47.95.140.83:8181/hospital/queryHospital/" + this.value,
         method: "get"
       }).then((ok) => {
         this.hospitalData = ok.data;
@@ -85,7 +85,7 @@ export default {
     department(site,ks){
       console.log(site,ks);
       this.axios({
-        url:"http://10.12.156.83:8181/hospital/selectHospital/"+site+"/"+ks,
+        url:"http://47.95.140.83:8181/hospital/selectHospital/"+site+"/"+ks,
         method:"get",
       }).then((ok)=>{
         this.hospitalData = ok.data
@@ -101,7 +101,7 @@ export default {
     site(site,ks){
       console.log(site,ks);
       this.axios({
-        url:"http://10.12.156.83:8181/hospital/selectHospital/"+site+"/"+ks,
+        url:"http://47.95.140.83:8181/hospital/selectHospital/"+site+"/"+ks,
         method:"get",
       }).then((ok)=>{
         this.hospitalData = ok.data
@@ -117,7 +117,7 @@ export default {
   },
   created() {
     this.axios({
-      url: "http://47.112.208.93:8181/hospital/findHospital",
+      url: "http://47.95.140.83:8181/hospital/findHospital",
       method: "get"
     }).then((ok) => {
       // 医院数据

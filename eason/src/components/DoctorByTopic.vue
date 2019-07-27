@@ -33,7 +33,7 @@ export default {
     },
     created() {
         this.axios({
-            url:"http://47.112.208.93:8181/doctorTopic/findAllTopic",
+            url:"http://47.95.140.83:8181/doctorTopic/findAllTopic",
             method:"get"
         }).then((ok)=>{
             this.getcontent=ok.data.slice(4,9);

@@ -52,15 +52,15 @@ export default {
   created() {
     
         //获取本地账户id
-        // this.userid =localStorage.getItem("userId")
+        this.userid =localStorage.getItem("userId")
 
     this.axios({
-      url: " http://47.95.140.83:8181/talk/alluserproblems",
+      url: " http://47.95.140.83:8181/talk/alluserproblems?userId="+ this.userid,
       method: "get",
-        params:{
-                userId:10,
-            }
-    }).then(ok => {
+        // params:{
+        //         userId: this.userid,
+        //     }
+    }).then((ok) => {
       this.history = ok.data;
       console.log(this.mydoctor);
     });

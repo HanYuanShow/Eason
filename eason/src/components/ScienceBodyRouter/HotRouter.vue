@@ -31,7 +31,7 @@ export default {
     created(){
         //请求热点内的所有新闻接口
         this.axios({
-            url:"http://47.112.208.93:8181/news/findHotNews",
+            url:"http://47.95.140.83:8181/news/findHotNews",
             method:"get",
         }).then((ok)=>{
             console.log(ok)

@@ -52,6 +52,7 @@ p{
     line-height: 35px;
     text-align: center;
     font-size: 17px;
+    margin-top: 60px;
 }
 
 </style>

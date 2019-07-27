@@ -26,7 +26,7 @@ export default {
     },
     created(){
         this.axios({
-            url:"http://47.112.208.93:8181/news/findNewsByType/%E5%87%8F%E8%82%A5",
+            url:"http://47.95.140.83:8181/news/findNewsByType/%E5%87%8F%E8%82%A5",
             method:"get",
         }).then((ok)=>{
             console.log(ok)

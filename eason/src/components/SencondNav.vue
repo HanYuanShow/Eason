@@ -4,7 +4,7 @@
       <van-col span="22">
         <div class="SencondNav-out">
           
-          <router-link to="/Autognosis">
+          <router-link to="/bodypic">
             <div class="SencondNav-signle">
               <van-image src="../../static/images/w/ao2.png" width="30" height="30" />
               <p>症状自诊</p>

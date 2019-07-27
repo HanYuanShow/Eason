@@ -74,7 +74,7 @@ export default {
         this.value1=this.$route.query.id;
         this.ks=this.$route.query.string;
         this.axios({
-            url:"http://10.12.156.39:8181/Doctorin/findall?string="+this.ks,
+            url:"http://47.95.140.83:8181/Doctorin/findall?string="+this.ks,
             method:"get"
         }).then((ok)=>{
             this.sarr=ok.data;
@@ -87,7 +87,7 @@ export default {
         // ----------------------
         this.name=this.$route.query.value;
         this.axios({
-        url:"http://10.12.156.39:8181/Doctorin/findall?string="+this.name,
+        url:"http://47.95.140.83:8181/Doctorin/findall?string="+this.name,
         method:"get"
         }).then((ok)=>{
             this.sarr=ok.data;
@@ -102,7 +102,7 @@ export default {
     methods: {
         keshi(ks){
            this.axios({
-                url:"http://10.12.156.39:8181/Doctorin/findall?string="+ks,
+                url:"http://47.95.140.83:8181/Doctorin/findall?string="+ks,
                 method:"get"
             }).then((ok)=>{
                 this.sarr=ok.data;
@@ -114,7 +114,7 @@ export default {
             })
             if(ks=="全部科室"){
                 this.axios({
-                url:"http://10.12.156.39:8181/Doctorin/load",
+                url:"http://47.95.140.83:8181/Doctorin/load",
                 method:"get"
                 }).then((ok)=>{
                     this.sarr=ok.data;
@@ -128,7 +128,7 @@ export default {
         },
         region(re){
            this.axios({
-                url:"http://10.12.156.39:8181/Doctorin/findall?string="+re,
+                url:"http://47.95.140.83:8181/Doctorin/findall?string="+re,
                 method:"get"
             }).then((ok)=>{
                 this.sarr=ok.data;
@@ -140,7 +140,7 @@ export default {
             })
             if(re=="全部地区"){
                 this.axios({
-                url:"http://10.12.156.39:8181/Doctorin/load",
+                url:"http://47.95.140.83:8181/Doctorin/load",
                 method:"get"
                 }).then((ok)=>{
                     this.sarr=ok.data;
@@ -157,7 +157,7 @@ export default {
         },
         search(value){
             this.axios({
-            url:"http://10.12.156.39:8181/Doctorin/findall?string="+value,
+            url:"http://47.95.140.83:8181/Doctorin/findall?string="+value,
             method:"get"
             }).then((ok)=>{
                 this.sarr=ok.data;

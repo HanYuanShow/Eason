@@ -1,15 +1,10 @@
 <template>
       <div class="treeselct">
-            <div class="symptom">
-                <!-- <router-link to="/automenu">
-                    <div class="symptom_list" v-for="(v,i) in arr" :key="i"  @click="fun(i)" :class="v.style?'red':''">
-                        <Treeselectitem :imgurl="v.url" :imgurldick="v.urldick" :autognosisTitle="v.title"></Treeselectitem>
-                    </div>
-                </router-link> -->
+             <div class="symptom">
+                
                 <router-link to="/body">
                     <div class="symptom_list">
-                        <img src="../../static/images/w/aqd.png" class="tree_img"/>
-                        
+                        <img src="../../static/images/w/aqe.png" class="tree_img"/>
                         <p class="diagnosis_p">全身症状</p>
                     </div>
                 </router-link>
@@ -22,6 +17,7 @@
                 <router-link to="/head">
                     <div class="symptom_list">
                          <img src="../../static/images/w/aqq.png" class="tree_img"/>
+                         
                          <p class="diagnosis_p">头部</p>
                     </div>
                 </router-link>
@@ -85,26 +81,14 @@ export default {
     },
     data() {
         return {
-        //    arr:[
-        //        {id:'001',url:'../../static/images/w/aqd.png',title:'全身症状',urldick:'../../static/images/w/aqe.png',style:'false'},
-        //        {id:'002',url:'../../static/images/w/ar2.png',title:'皮肤症状',urldick:'../../static/images/w/ar1.png',style:'false'},
-        //        {id:'003',url:'../../static/images/w/aqq.png',title:'头部',urldick:'../../static/images/w/aqp.png',style:'false'},
-        //        {id:'004',url:'../../static/images/w/aqw.png',title:'咽颈部',urldick:'../../static/images/w/aqv.png',style:'false'},
-        //        {id:'005',url:'../../static/images/w/aqg.png',title:'胸部',urldick:'../../static/images/w/aqf.png',style:'false'},
-        //        {id:'006',url:'../../static/images/w/aqc.png',title:'腹部',urldick:'../../static/images/w/aqb.png',style:'false'},
-        //        {id:'007',url:'../../static/images/w/aqo.png',title:'生殖部位',urldick:'../../static/images/w/aqn.png',style:'false'},
-        //        {id:'008',url:'../../static/images/w/ar0.png',title:'骨盆',urldick:'../../static/images/w/aqz.png',style:'false'},
-        //        {id:'009',url:'../../static/images/w/aq7.png',title:'四肢',urldick:'../../static/images/w/aq6.png',style:'false'},
-        //        {id:'010',url:'../../static/images/w/aqa.png',title:'腰背部',urldick:'../../static/images/w/aq_.png',style:'false'},
-        //        {id:'011',url:'../../static/images/w/aq9.png',title:'臀部及肛门',urldick:'../../static/images/w/aq8.png',style:'false'},
-        //    ] ,
+       
+        boolean:true
         }
     },
     methods: {
-    //   fun(i){
-    //         this.arr[i].url=this.arr[i].urldick
-    //         this.arr[i].style=!this.arr[i].style   
-    //   }
+      func(){
+           this.boolean=!this.boolean  
+      }
     }
 }
 </script>

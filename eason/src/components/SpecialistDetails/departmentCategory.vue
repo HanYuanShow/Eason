@@ -23,7 +23,7 @@ export default {
         // 定义函数抛出要传给父元素的值
         selectDepartment(val){    
             this.axios({
-                url: "http://10.12.156.83:8181/hospital/findDoctorsByOffice/"+this.hid+"/"+val,
+                url: "http://47.95.140.83:8181/hospital/findDoctorsByOffice/"+this.hid+"/"+val,
                 method: "get"
             }).then((ok) => {
                 this.doctorData = ok.data;

@@ -100,13 +100,13 @@ export default {
         let newcode = code.toString();
       //转提问内容为字符串类型
         let newcontent = String(this.contentqusetion);
-
+        let id = localStorage.getItem("userId")
         localStorage.setItem("doctorIdList",newcode)
         this.axios({
             url:"http://47.95.140.83:8181/talk/addproblem",
             method:"post",
             params:{
-                userId:10,
+                userId:id,
                 userProblem:newcontent,
                 doctorIdList:newcode
             }

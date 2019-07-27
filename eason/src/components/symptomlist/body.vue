@@ -1,11 +1,10 @@
 <template>
-    <div>
-        
+    <div>   
        <ul class="sym_ul">
             <li v-for="(v,i) in newarr" :key="i" class="sym_li"> 
-                    <div v-for="(v,i) in v.title" :key="i" @click="fun(v.id)" class="sym_li_li">{{v.title}}</div>
-            </li>
-        </ul> 
+                <P class="sym_li_p" @click="fun(v.name)">{{v.name}}</p>
+             </li>
+        </ul>
     </div>
 </template>
 <script>
@@ -20,38 +19,37 @@ export default {
        }
    },
    methods: {
-       fun(num){
-           this.$router.push({path:"/DetailPage",query:{id:num}})
+       fun(n){
+           //传参到详情页
+           this.$router.push({path:"/DetailPagebody",query:{hehe:n}})
        }
    },
     created() {
         this.axios({
-            url:'/automenu/eason',
-            method:'get', 
+            url:'http://47.95.140.83:8181/symptom/findByBadyParts',
+            method:'get',
+            params:{badyParts:"全身症状"}
         }).then((ok)=>{
-            var data=ok.data.autognosis[0].symptomList
-            var arr1=data.filter((v,i)=>{
-                if(v.id==123456789){
-                     return v.title
-                }  
-            })
-            this.newarr=arr1;
+             this.newarr=ok.data;
         })
     },
 }
 </script>
 
 <style scoped>
+
  .sym_ul{
+        height:500px;
         margin-left:30px; 
-        width: 200px;
+        width: 220px;
+        overflow: auto;
     }
   .sym_li{
     height: 50px;
     line-height: 50px;
+    border-bottom: 1px solid #dedede;  
   }
-  .sym_li_li{
-      border-bottom: 1px solid #dedede;  
+  .sym_li_p{
       color: #666666;
   }
 </style>

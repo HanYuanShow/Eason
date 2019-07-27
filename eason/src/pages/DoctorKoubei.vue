@@ -49,7 +49,7 @@ export default {
     },
     created() {
         this.axios({
-            url:"http://10.12.156.39:8181/Doctorin/load",
+            url:"http://47.95.140.83:8181/Doctorin/load",
             method:"get"
         }).then((ok)=>{
             this.newarr=ok.data; 
@@ -63,7 +63,7 @@ export default {
     methods: {
         keshi(ks){
            this.axios({
-                url:"http://10.12.156.39:8181/Doctorin/findall?string="+ks,
+                url:"http://47.95.140.83:8181/Doctorin/findall?string="+ks,
                 method:"get"
             }).then((ok)=>{
                 this.newarr=ok.data;
@@ -75,7 +75,7 @@ export default {
             })
             if(ks=="全部科室"){
                 this.axios({
-                url:"http://10.12.156.39:8181/Doctorin/load",
+                url:"http://47.95.140.83:8181/Doctorin/load",
                 method:"get"
                 }).then((ok)=>{
                     this.newarr=ok.data;

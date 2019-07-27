@@ -1,7 +1,7 @@
 <template>
   <div>
     <van-row type="flex" justify="center" class="more">
-      <van-col span="4" class="inner">
+      <van-col span="6" class="inner">
         <van-image
           fit="fill"
           height="15"
@@ -9,8 +9,9 @@
           src="../../static/images/w/a60.png"
           @click="back()"
         />
+        <span class="homeback" @click="home()">返回</span>
       </van-col>
-      <van-col span="16" class="inner">问题详情</van-col>
+      <van-col span="14" class="inner">问题详情</van-col>
       <van-col span="4" class="inner">
         <van-button type="primary" @click="showPopup" class="btn">
           <van-image
@@ -187,6 +188,9 @@ export default {
     },
     showPopup() {
       this.show = true;
+    },
+    home(){
+      this.$router.push("/home");
     }
   },
   // computed: {
@@ -214,6 +218,10 @@ export default {
 </script>
 
 <style scoped>
+.homeback{
+  margin-left: 8px;
+    color: rgb(39, 224, 39);
+}
 .loading{
   text-align: center;
 }

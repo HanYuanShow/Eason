@@ -52,10 +52,10 @@ export default {
   },
   created() {
     //获取本地账户id
-    // let userId = localStorage.getItem("userId");
+    let userId = localStorage.getItem("userId");
 
     this.axios({
-      url: "http://47.112.208.93:8181/doctorTopic/myDoctor/"+1,
+      url: "http://47.95.140.83:8181/doctorTopic/myDoctor/"+userId,
       method: "get",
       // params:{
       //     userId=1

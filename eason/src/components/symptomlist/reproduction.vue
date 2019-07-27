@@ -1,36 +1,57 @@
 <template>
-    <div>
-        <P>reproduction</P>
-         <ul>
-            <li v-for="(v,i) in newarr" :key="i">
-                <div v-for="(v,i) in v.reproduction" :key="i">{{v.title}}</div>
-            </li>
-        </ul> 
+    <div>   
+       <ul class="sym_ul">
+            <li v-for="(v,i) in newarr" :key="i" class="sym_li"> 
+                <P class="sym_li_p" @click="fun(v.name)">{{v.name}}</p>
+             </li>
+        </ul>
     </div>
 </template>
 <script>
 
 
 export default {
-    data() {
+    components:{     
+    },
+   data() {
        return {
            newarr:[]
        }
    },
+   methods: {
+       fun(n){
+           //传参到详情页
+           this.$router.push({path:"/DetailPagereproduction",query:{hehe:n}})
+       }
+   },
     created() {
         this.axios({
-            url:'/automenu/infor',
-            method:'get', 
+            url:'http://47.95.140.83:8181/symptom/findByBadyParts',
+            method:'get',
+            params:{badyParts:"生殖部位"}
         }).then((ok)=>{
-            var data=ok.data.autognosis[0].symptomList
-            this.newarr=data
+             this.newarr=ok.data;
         })
     },
 }
 </script>
 
 <style scoped>
-  
+
+ .sym_ul{
+        height:500px;
+        margin-left:30px; 
+        width: 220px;
+        overflow: auto;
+    }
+  .sym_li{
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px solid #dedede;  
+  }
+  .sym_li_p{
+      color: #666666;
+  }
 </style>
 
 

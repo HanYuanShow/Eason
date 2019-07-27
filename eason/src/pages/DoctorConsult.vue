@@ -57,6 +57,9 @@
             :doctor_job="v.title"
             :imgsrc="v.impSrc"
             :doctor_id="v.id"
+            :doctor_hospital="v.hospital"
+            :doctor_adept="v.adept"
+            :doctor_printreferint="v.printreferint"
             ></Doctorlist> 
         </div>
            <div class="end"></div>
@@ -112,7 +115,7 @@ export default {
         this.keshi=this.arr[0].keshi;
         // 加载页面后直接显示内科
         this.axios({
-            url:"http://10.12.156.39:8181/Doctorin/findall?string=内科",
+            url:"http://47.95.140.83:8181/Doctorin/findall?string=内科",
             method:"get"
         }).then((ok)=>{
             this.sarr=ok.data;
@@ -136,7 +139,7 @@ export default {
             this.newindex=i;   
 // ===========================
         this.axios({
-            url:"http://10.12.156.39:8181/Doctorin/findall?string="+ks,
+            url:"http://47.95.140.83:8181/Doctorin/findall?string="+ks,
             method:"get"
         }).then((ok)=>{
             this.sarr=ok.data;
@@ -149,10 +152,11 @@ export default {
             this.newindex=i;
 
             this.axios({
-                url:"http://10.12.156.39:8181/Doctorin/findall?string="+ks,
+                url:"http://47.95.140.83:8181/Doctorin/findall?string="+ks,
                 method:"get"
             }).then((ok)=>{
                 this.sarr=ok.data;
+            console.log(this.sarr)
             });
         },
         doctorlist2(ks,i){
@@ -160,7 +164,7 @@ export default {
             this.newindex=i;
 
             this.axios({
-                url:"http://10.12.156.39:8181/Doctorin/findall?string="+ks,
+                url:"http://47.95.140.83:8181/Doctorin/findall?string="+ks,
                 method:"get"
             }).then((ok)=>{
                 this.sarr=ok.data;

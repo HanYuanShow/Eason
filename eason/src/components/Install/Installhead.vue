@@ -1,7 +1,7 @@
 <template>
        <div class="header">
-            <div class="home" @click="func()">
-                <img :src="himg" alt="">
+            <div class="home">
+                <img :src="himg" alt=""  @click="func()">
                 <span>{{home}}</span>
             </div>
             <div class="p">
@@ -32,7 +32,7 @@ export default {
     },
     methods: {
         func(){
-             this.$router.go(-1 )
+             this.$router.push("/personalCentter")
         }
     },
 }
@@ -55,8 +55,8 @@ export default {
     font-size: 25px;
 }
 .home img{
-width:12px ;
-height: 24px;
+width:15px ;
+height: 26px;
 margin-left:15px;
 }
 .home span{
@@ -72,7 +72,7 @@ text-align: center;
 }
 .reght{
      margin-right:10px;
-      font-size: 15px;
+      font-size: 16px;
       color: #6bce72;
       width: 65px;
 }
