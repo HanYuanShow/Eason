@@ -168,8 +168,11 @@ export default {
         collectNews(){
             // // 用户点击收藏的接口
             // console.log(val)
-         
-            this.isCollect = !this.isCollect
+            let id = localStorage.getItem("userId");
+            if(id==null){
+                this.$router.push("/logon")
+            }else{  
+                this.isCollect = !this.isCollect
             this.num = 1;
             this.axios({    
                                                 // 1预留放用户id
@@ -181,6 +184,7 @@ export default {
                 // this.isCollectTrue = ok.data
             })
 
+            }         
             
         },
 

@@ -121,24 +121,36 @@ export default {
             this.$router.go(-1)
         },
         question(){
-            this.$router.push("/Question")
+              let id = localStorage.getItem("userId");
+            if(id==null){
+                this.$router.push("/logon")
+            }else{
+                  this.$router.push("/Question")
+            }
+          
         },
         showPopup() {
             this.show = true;
         },
         isGiveStarTrue(){
-            this.isGiveStar = !this.isGiveStar
-            this.numtwo = 1
-            // 点赞话题接口
-            // this.userid = localStorage.getItem("userId")
-            
-            this.axios({
-                                                                // 预留用户id
-                url:"http://47.95.140.83:8181/doctorTopic/giveStar/1/"+this.topicid,
-                method:"get"
-            }).then((ok)=>{
+            let id = localStorage.getItem("userId");
+            if(id==null){
+                this.$router.push("/logon")
+            }else{
+                
+                this.isGiveStar = !this.isGiveStar
+                this.numtwo = 1
+                // 点赞话题接口
+                
+                this.axios({
+                                                                    // 预留用户id
+                    url:"http://47.95.140.83:8181/doctorTopic/giveStar/"+id+"/"+this.topicid,
+                    method:"get"
+                }).then((ok)=>{
 
-            })
+                })
+            }
+
         },
         isFollowDoctorTrue(){
             this.isFollowDoctor = !this.isFollowDoctor

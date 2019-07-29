@@ -79,8 +79,13 @@ export default {
 
     },
     onClickButton() {
-      
-      this.show=!this.show
+      let id = localStorage.getItem("userId");
+      if(id==null){
+        this.$router.push("/logon")
+      }else{
+           this.show=!this.show
+      }
+   
     },
     butfun1(){
       this.cartbool=false;

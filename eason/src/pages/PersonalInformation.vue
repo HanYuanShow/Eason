@@ -86,11 +86,17 @@ export default {
                 },
     },
     created() {
-       this.getuserIMG=localStorage.getItem('userImg');
-    this.userNickname = localStorage.getItem('userNickname');
-    this.userPhone=localStorage.getItem('userPhone');
-    this.userId=localStorage.getItem('userId');
-    console.log(this.userId)
+        let id = localStorage.getItem("userId");
+        if(id==null){
+            this.$router.push("/logon")
+        }else{
+                   this.getuserIMG=localStorage.getItem('userImg');
+                this.userNickname = localStorage.getItem('userNickname');
+                this.userPhone=localStorage.getItem('userPhone');
+                this.userId=localStorage.getItem('userId');
+                console.log(this.userId)
+        }
+
   
     },
 

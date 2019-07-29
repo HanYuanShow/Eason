@@ -39,7 +39,13 @@ export default {
     methods: {
     },
     created() {
-         this.userBalance = localStorage.getItem('userBalance')
+          let id = localStorage.getItem("userId");
+        if(id==null){
+            this.$router.push("/logon")
+        }else{
+               this.userBalance = localStorage.getItem('userBalance')
+        }
+      
     },
 }
 </script>

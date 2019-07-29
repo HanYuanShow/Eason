@@ -1,9 +1,12 @@
 <template>
     <div class="quan">
+
         <div class="header">
             <Installhead :headtitle="title" :himg="himg"></Installhead>
         </div>
-        <div class="show" v-for="(v,i) in content" :key="i">
+
+        <div class="out">
+                        <div class="show" v-for="(v,i) in content" :key="i" @click="go(v.id)">
             <van-image fit="fill" height="60" width="60" :src="v.img" />
             <div>
                  <p>{{v.title}}</p>
@@ -11,6 +14,8 @@
             </div>
            
         </div>
+        </div>
+
         
         <!-- <div class="section">
             <van-tabs v-model="active" title-active-color="#6bce72" line-width="50%" line-hight="2px"
@@ -53,7 +58,7 @@ export default {
            kongimg:"../../static/images/w/ant.png",
            active:"",
            ceshi:true,
-                 content:{},
+            content:{},
         }
     },
     created() {
@@ -63,10 +68,11 @@ export default {
             console.log(this.userid)
 
             if( this.userid == null){
+         
             this.$router.push("/logon")
             }else if(this.userid!==null){
                             this.axios({
-                        url:"http://47.95.140.83:8181/news/myCollectNews/50" ,
+                        url:"http://47.95.140.83:8181/news/myCollectNews/"+this.userid ,
                         method:"get"
                     }).then((ok)=>{
                         this.content = ok.data  
@@ -74,12 +80,20 @@ export default {
                     })
             }    
          
-        }
+        },
+        methods: {
+            go(num){
+                this.$router.push("/ContentNews/"+num)
+            }
+        },
     
 
 }
 </script>
 <style scoped>
+.out{
+    margin-top: 55px;
+}
 .show{
     display:flex;
     width: 100%;
@@ -89,14 +103,16 @@ export default {
     border-bottom: 1px solid gainsboro;
 }
 .quan{
-      position: fixed;
         width: 100%;
         height: 100%;
-        top: 0px;
         background-color: #f7f7f7;
+        z-index: -999;
 }
 .header{
     border-bottom: 1px solid #cecdcd;
+    position: fixed;
+    top:0;
+    z-index: 999;
 }
 .content{
     margin:140px;

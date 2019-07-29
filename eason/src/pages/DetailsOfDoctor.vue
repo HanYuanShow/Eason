@@ -193,21 +193,26 @@ export default {
         })
         // -----------------------------------------
         this.userid = localStorage.getItem("userId");
+        if(this.userid==null){
+            this.bool=false
+        }else{
+                   //判断用户是否已经关注医生
+            //发送 用户id  userid 医生id  newid
+            this.axios({
+                url:"http://47.95.140.83:8181/doctorTopic/isFollowDoctor/"+this.userid +"/"+this.newid,
+                method:"get"
+            }).then((ok)=>{
+                // if(ok.data==true){
+                //     //关注 style = true
+                //     this.bool=false
+                    
+                // }else if(ok.data==false){
+                this.bool=ok.data;
+                // }
+            })
+        }
 
-        //判断用户是否已经关注医生
-        //发送 用户id  userid 医生id  newid
-        this.axios({
-            url:"http://47.95.140.83:8181/doctorTopic/isFollowDoctor/"+this.userid +"/"+this.newid,
-            method:"get"
-        }).then((ok)=>{
-            // if(ok.data==true){
-            //     //关注 style = true
-            //     this.bool=false
-                
-            // }else if(ok.data==false){
-               this.bool=ok.data;
-            // }
-        })
+ 
     },
     methods: {
         lunli(i,title,price){
@@ -222,15 +227,21 @@ export default {
                 })
         },
         guanzhu(){
-            //关注 用户id 医生id
-             this.bool=true;
-                    this.axios({
-                url:"http://47.95.140.83:8181/doctorTopic/followDoctor/"+this.userid +"/"+this.newid,
-                method:"get",
-            }).then((ok)=>{
-                console.log(ok)
-               
-            })
+            let userid = localStorage.getItem("userId");
+            if(userid==null){
+                this.$router.push("/logon")
+            }else{
+                             //关注 用户id 医生id
+                    this.bool=true;
+                            this.axios({
+                        url:"http://47.95.140.83:8181/doctorTopic/followDoctor/"+this.userid +"/"+this.newid,
+                        method:"get",
+                    }).then((ok)=>{
+                        console.log(ok)
+                    
+                    })
+            }
+   
 
              
         },

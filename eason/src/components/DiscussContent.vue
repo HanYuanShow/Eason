@@ -139,7 +139,11 @@ export default {
     };
   },
  created() {
-    this.itemid = this.$route.query.id;
+   let id = localStorage.getItem("userId");
+   if(id==null){
+     this.$router.push("/logon")
+   }else{
+       this.itemid = this.$route.query.id;
     this.axios({
       url: "http://47.95.140.83:8181/talk/alldoctorinfors",
       method: "get"
@@ -152,6 +156,8 @@ export default {
        }
       console.log(ok);
     });  
+   }
+   
   },
   methods: {
     back() {

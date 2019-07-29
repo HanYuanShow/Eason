@@ -51,6 +51,12 @@ export default {
         },
 
     },
+    created() {
+        let id = localStorage.getItem("userId")
+        if(id==null){
+            this.$router.push("/logon")
+        }
+    },
     // beforeCreate() {
     //     document.querySelector('body').setAttribute('style', 'background:#f0f0ee')
     // }

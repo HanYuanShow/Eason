@@ -37,6 +37,12 @@ export default {
             
         }
     },
+       created() {
+          let id = localStorage.getItem("userId");
+        if(id==null){
+            this.$router.push("/logon")
+        }
+    },
 }
 </script>
 <style scoped>
